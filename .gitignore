@@ -3,6 +3,10 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+target/
+nb-configuration.xml
+faces-config.NavData
+
 # Package Files #
 *.jar
 *.war

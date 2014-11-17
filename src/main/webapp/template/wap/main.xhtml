@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <f:facet name="first">
+            <meta charset="utf-8"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <title><ui:insert name="title">Vietnamobile Entertaiment Information Portal</ui:insert></title>
+        </f:facet>
+
+        <f:facet name="middle">
+            <!-- Bootstrap CSS -->
+            <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+            <!-- jQuery -->
+            <h:outputScript library="js" name="jquery.min.js"/>
+            <!-- Bootstrap JavaScript -->
+            <h:outputScript library="js" name="bootstrap.min.js"/>
+            <!-- Sidr Menu -->
+            <h:outputScript library="js" name="jquery.sidr.min.js"/>
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+                    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+        </f:facet>
+
+        <f:facet name="last">
+            <h:outputStylesheet library="css" name="layout.css"/>
+            <h:outputStylesheet library="css" name="main.css"/>
+            <h:outputStylesheet library="css" name="menu.css"/>
+            <h:outputScript library="js" name="main.js"/>
+        </f:facet>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <ui:include src="header.xhtml"/>
+            <ui:include src="mainNav.xhtml"/>
+            <h:messages id="messages"
+                        tooltip="true"
+                        showDetail="true"
+                        styleClass="messages"
+                        globalOnly="true" 
+                        errorClass="alert alert-danger"
+                        fatalClass="alert alert-danger"
+                        infoClass="alert alert-success"
+                        warnClass="alert alert-warning"/>
+            <ui:insert name="main-content">hellomoto</ui:insert>
+            <ui:include src="footer.xhtml"/>
+            <ui:include src="leftNav.xhtml"/>
+            <ui:include src="search.xhtml"/>
+        </div><!-- end div.container -->
+    </h:body>
+</html>
+

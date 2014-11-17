@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <p:panel>
+        <f:facet name="header">
+            <h:outputLabel value="#{msg['game.cateory']}" rendered="#{entityType == 'game'}"/>
+            <h:outputLabel value="#{msg['music.category']}" rendered="#{entityType == 'music'}"/>
+            <h:outputLabel value="#{msg['picture.category']}" rendered="#{entityType == 'picture'}"/>
+            <h:outputLabel value="#{msg['video.category']}" rendered="#{entityType == 'video'}"/>
+            <h:outputLabel value="#{msg['post.category']}" rendered="#{entityType == 'post'}"/>
+        </f:facet>
+
+        <h:form id="listForm">
+            <p:messages globalOnly="true" closable="true"/>
+            <p:toolbar>
+                <f:facet name="left">
+                    <p:commandButton id="addButton"
+                                     value="#{msg['add']}" 
+                                     immediate="true"
+                                     icon="ui-icon-plus"
+                                     actionListener="#{entityBean.resetEntity()}"
+                                     update=":createDl"
+                                     oncomplete="PF('createDl').show();">
+                        <p:resetInput target=":createDl"/>
+                    </p:commandButton>
+                </f:facet>
+            </p:toolbar>
+
+            <p:spacer height="10"/>
+
+            <p:dataTable id="listTable"
+                         widgetVar="listTable"
+                         value="#{entityBean.model}"
+                         var="cat"
+                         rowIndexVar="index"
+                         lazy="true"
+                         paginator="true"
+                         rows="10"
+                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                         rowsPerPageTemplate="10,15,20" 
+                         paginatorPosition="bottom"
+                         rowStyleClass="#{index mod 2 == 1 ? 'odd' : null}">
+
+                <p:column headerText="#{msg['title']}" 
+                          filterBy="#{cat.title}" 
+                          sortBy="#{cat.title}" 
+                          filterStyle="width: 90%;">
+                    <h:outputText value="#{cat.title}"/>
+                </p:column>
+
+                <p:column headerText="#{msg['createdDate']}" 
+                          sortBy="#{cat.createdDate}">
+                    <h:outputText value="#{cat.createdDate}">
+                        <f:convertDateTime parent="dd/MM/yyyy"/>
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="#{msg['modifiedDate']}" 
+                          sortBy="#{cat.modifiedDate}">
+                    <h:outputText value="#{cat.modifiedDate}">
+                        <f:convertDateTime parent="dd/MM/yyyy"/>
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="#{msg['description']}" 
+                          sortBy="#{cat.description}"
+                          filterBy="#{cat.description}"
+                          filterStyle="width: 90%">
+                    <h:outputText value="#{cat.description}"/>
+                </p:column>
+
+                <p:column style="width: 90px" toggleable="false" >
+                    <p:commandButton icon="ui-icon-pencil" 
+                                     update=":editDl" 
+                                     immediate="true"
+                                     actionListener="#{entityBean.prepareEntity(cat)}"
+                                     oncomplete="PF('editDl').show();"/>
+
+                    <p:commandButton icon="ui-icon-trash" 
+                                     actionListener="#{entityBean.remove(cat)}"
+                                     immediate="true"
+                                     update="@form :growl">
+                        <p:confirm header="Confirmation"
+                                   message="#{msg['category.action.delete.confirm']}" 
+                                   icon="ui-icon-alert"/>
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </p:panel>
+</ui:fragment>
+

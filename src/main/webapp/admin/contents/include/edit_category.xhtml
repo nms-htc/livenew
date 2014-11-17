@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:p="http://primefaces.org/ui"
+              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <p:dialog id="#{mode}Dl" widgetVar="#{mode}Dl"
+              closeOnEscape="true" modal="true">
+        <f:facet name="header">
+            <ui:fragment rendered="#{mode == 'create'}">
+                <h:outputLabel value="#{msg['gameCat.action.create.dialog']}" rendered="#{entityType == 'game'}"/>
+                <h:outputLabel value="#{msg['musicCat.action.create.dialog']}" rendered="#{entityType == 'music'}"/>
+                <h:outputLabel value="#{msg['pictureCat.action.create.dialog']}" rendered="#{entityType == 'picture'}"/>
+                <h:outputLabel value="#{msg['videoCat.action.create.dialog']}" rendered="#{entityType == 'video'}"/>
+                <h:outputLabel value="#{msg['postCat.action.create.dialog']}" rendered="#{entityType == 'post'}"/>
+            </ui:fragment>
+            
+            <ui:fragment rendered="#{mode == 'edit'}">
+                <h:outputFormat value="#{msg['gameCat.action.edit.dialog']}" rendered="#{entityType == 'game'}">
+                    <f:param value="#{entityBean.current.title}"/>
+                </h:outputFormat>
+                <h:outputFormat value="#{msg['musicCat.action.edit.dialog']}" rendered="#{entityType == 'music'}">
+                    <f:param value="#{entityBean.current.title}"/>
+                </h:outputFormat>
+                <h:outputFormat value="#{msg['pictureCat.action.edit.dialog']}" rendered="#{entityType == 'picture'}">
+                    <f:param value="#{entityBean.current.title}"/>
+                </h:outputFormat>
+                <h:outputFormat value="#{msg['videoCat.action.edit.dialog']}" rendered="#{entityType == 'video'}">
+                    <f:param value="#{entityBean.current.title}"/>
+                </h:outputFormat>
+                <h:outputFormat value="#{msg['postCat.action.edit.dialog']}" rendered="#{entityType == 'post'}">
+                    <f:param value="#{entityBean.current.title}"/>
+                </h:outputFormat>
+            </ui:fragment>
+        </f:facet>
+        <h:form id="#{mode}Form">
+            <p:messages globalOnly="true" closable="true"/>
+            <h:panelGrid columns="3">
+                <p:outputLabel for="title" value="#{msg['title']}:"/>
+                <p:inputText id="title" size="30" value="#{entityBean.current.title}"/>
+                <p:message for="title"/>
+                
+                <p:outputLabel for="description" value="#{msg['description']}"/>
+                <p:inputTextarea id="description" cols="33" rows="4"
+                                 value="#{entityBean.current.description}"/>
+                <p:message for="description"/>
+                
+                <f:facet name="footer">
+                    <p:separator/>
+                    <p:commandButton value="#{msg['create']}"
+                                     actionListener="#{entityBean.persist()}"
+                                     icon="ui-icon-disk"
+                                     update="@form :listForm"
+                                     rendered="#{mode == 'create'}"/>
+                    
+                    <p:commandButton value="#{msg['update']}"
+                                     actionListener="#{entityBean.update()}"
+                                     icon="ui-icon-disk"
+                                     update="@form :listForm"
+                                     rendered="#{mode == 'edit'}"/>
+                    
+                    <p:commandButton value="#{msg['cancel']}"
+                                     type="button"
+                                     onclick="PF('#{mode}Dl').hide()"
+                                     update="@form :listForm"
+                                     icon="ui-icon-close"/>
+                </f:facet>
+            </h:panelGrid>
+        </h:form>
+    </p:dialog>
+</ui:component>

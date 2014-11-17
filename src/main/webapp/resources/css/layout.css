@@ -1,0 +1,9 @@
+body {
+  font-family: Segoe UI,Arial,Geneva,sans-serif; }
+
+@media (max-width: 768px) {
+  .container {
+    padding-right: 5px;
+    padding-left: 5px; } }
+
+/*# sourceMappingURL=layout.css.map */

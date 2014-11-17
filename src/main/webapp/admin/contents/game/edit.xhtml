@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:p="http://primefaces.org/ui"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <p:dialog id="#{mode}Dl"
+              widgetVar="#{mode}Dl"
+              modal="true"
+              closeOnEscape="true">
+        <f:facet name="header">
+            <h:outputText value="#{msg['game.action.create.dialog.header']}" rendered="#{mode == 'create'}"/>
+            <h:outputFormat value="#{msg['game.action.edit.dialog.header']}" rendered="#{mode == 'edit'}">
+                <f:param value="#{gameBean.current.title}"/>
+            </h:outputFormat>
+        </f:facet>
+        <h:form id="#{mode}Form">
+            <p:messages globalOnly="true" closable="true"/>
+            <p:panelGrid>
+                <p:row>
+                    <p:column><p:outputLabel for="code" value="#{msg['product.code']}:"/></p:column>
+                    <p:column>
+                        <p:inputText id="code" value="#{gameBean.current.code}" disabled="#{mode == 'edit'}"/>
+                        <p:message for="code" />
+                    </p:column>
+
+                    <p:column><p:outputLabel for="title" value="#{msg['product.title']}:"/></p:column>
+                    <p:column>
+                        <p:inputText id="title" size="33" value="#{gameBean.current.title}"/>
+                        <p:message for="title"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column><p:outputLabel for="price" value="#{msg['product.price']}:"/></p:column>
+                    <p:column>
+                        <p:spinner id="price" value="#{gameBean.current.price}"/>
+                        <p:message for="price"/>
+                    </p:column>
+
+                    <p:column><p:outputLabel for="category" value="#{msg['category']}:"/></p:column>
+                    <p:column>
+                        <p:selectOneMenu id="category" value="#{gameBean.current.category}" converter="gameCatConverter">
+                            <f:selectItems value="#{gameCatBean.selectItems}"/>
+                        </p:selectOneMenu>
+                        <p:message for="category"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column><p:outputLabel for="flatforms" value="#{msg['game.flatforms']}:"/></p:column>
+                    <p:column colspan="3">
+                        <p:selectManyCheckbox id="flatforms" value="#{gameBean.current.flatforms}" converter="enumConverter">
+                            <f:selectItems value="#{gameBean.flatforms}"/>
+                        </p:selectManyCheckbox>
+                        <p:message for="flatforms"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column><p:outputLabel for="thumbnailUrl" value="#{msg['thumbnail']}"/></p:column>
+                    <p:column colspan="3">
+                        <p:inputText id="thumbnailUrl" size="50" value="#{gameBean.current.thumbnailUrl}"/>
+                        <p:message for="thumbnailUrl"/>
+                    </p:column>
+                </p:row>
+                
+                <p:row>
+                    <p:column><p:outputLabel for="description" value="#{msg['description']}:"/></p:column>
+                    <p:column>
+                        <p:inputTextarea id="description" cols="32" rows="3" value="#{gameBean.current.description}" autoResize="false"/>
+                        <p:message for="description"/>
+                    </p:column>
+                    <p:column><p:outputLabel for="devicesSupport" value="#{msg['game.devicesSupport']}:"/></p:column>
+                    <p:column>
+                        <p:inputTextarea id="devicesSupport" cols="32" rows="3" value="#{gameBean.current.devicesSupport}" autoResize="false"/>
+                        <p:message for="devicesSupport"/>
+                    </p:column>
+                </p:row>
+                
+                <p:row>
+                    <p:column><p:outputLabel for="specification" value="#{msg['product.specification']}:"/></p:column>
+                    <p:column colspan="3">
+                        <p:editor id="specification" value="#{gameBean.current.specification}" width="700"/>
+                        <p:message for="specification"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+            <p:separator/>
+            <p:commandButton value="#{msg['create']}"
+                             validateClient="true"
+                             update="@form :listForm :growl"
+                             actionListener="#{gameBean.persist()}"
+                             icon="ui-icon-disk"
+                             rendered="#{mode == 'create'}"/>
+            <p:commandButton value="#{msg['update']}"
+                             validateClient="true"
+                             update="@form :listForm :growl"
+                             actionListener="#{gameBean.update()}"
+                             icon="ui-icon-disk"
+                             rendered="#{mode == 'edit'}"/>
+            <p:commandButton value="#{msg['cancel']}"
+                             type="button"
+                             onclick="PF('#{mode}Dl').hide();"
+                             icon="ui-icon-close"/>
+        </h:form>
+    </p:dialog>
+</ui:component>
+

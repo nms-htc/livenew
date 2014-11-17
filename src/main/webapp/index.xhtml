@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/template/wap/main.xhtml">
+    <ui:define name="main-content">
+        <ui:include src="include/carousel.xhtml"/>
+        
+        <ui:include src="include/product_tabbed.xhtml">
+            <ui:param name="tabbedTitle" value="#{msg['panel.product.hot']}"/>
+            <ui:param name="tabbedName" value="productHots"/>
+            
+            <ui:param name="gameEntities" value="#{gameController.hots}"/>
+            <ui:param name="musicEntities" value="#{musicController.hots}"/>
+            <ui:param name="pictureEntities" value="#{pictureController.hots}"/>
+            <ui:param name="videoEntities" value="#{videoController.hots}"/>
+            <ui:param name="postEntities" value="#{postController.hots}"/>
+        </ui:include>
+        
+        <ui:include src="include/product_tabbed.xhtml">
+            <ui:param name="tabbedTitle" value="#{msg['panel.product.new']}"/>
+            <ui:param name="tabbedName" value="productNews"/>
+            
+            <ui:param name="gameEntities" value="#{gameController.news}"/>
+            <ui:param name="musicEntities" value="#{musicController.news}"/>
+            <ui:param name="pictureEntities" value="#{pictureController.news}"/>
+            <ui:param name="videoEntities" value="#{videoController.news}"/>
+            <ui:param name="postEntities" value="#{postController.news}"/>
+        </ui:include>
+        
+    </ui:define>
+</ui:composition>

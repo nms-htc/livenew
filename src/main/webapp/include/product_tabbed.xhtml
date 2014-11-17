@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <section class="product-tabbed">
+        <header class="row">
+            <div class="col-xs-12 col-ms-8 col-md-6 col-lg-4">
+                <h3>#{tabbedTitle}</h3>
+            </div>
+        </header>
+        <input id="#{tabbedName}-1" type="radio" name="#{tabbedName}" class="tab-selector-1" checked="checked"/>
+        <input id="#{tabbedName}-2" type="radio" name="#{tabbedName}" class="tab-selector-2"/>
+        <input id="#{tabbedName}-3" type="radio" name="#{tabbedName}" class="tab-selector-3"/>
+        <input id="#{tabbedName}-4" type="radio" name="#{tabbedName}" class="tab-selector-4"/>
+        <input id="#{tabbedName}-5" type="radio" name="#{tabbedName}" class="tab-selector-5"/>
+
+        <div class="tabs-label row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div>
+                    <label for="#{tabbedName}-1" class="tab-label-1">
+                        <h:graphicImage styleClass="img-responsive" library="image" name="controller1.png"/>
+                        <span>#{msg['tabbed.product.game']}</span>
+                    </label>
+                </div>
+
+
+
+                <div>
+                    <label for="#{tabbedName}-2" class="tab-label-2">
+                        <h:graphicImage styleClass="img-responsive" library="image" name="music.png"/>
+                        <span>#{msg['tabbed.product.music']}</span>
+                    </label>
+                </div>
+
+
+                <div>
+                    <label for="#{tabbedName}-3" class="tab-label-3">
+                        <h:graphicImage styleClass="img-responsive" library="image" name="video.png"/>
+                        <span>#{msg['tabbed.product.video']}</span>
+                    </label>
+                </div>
+
+
+                <div>
+                    <label for="#{tabbedName}-4" class="tab-label-4">
+                        <h:graphicImage styleClass="img-responsive" library="image" name="picture.png"/>
+                        <span>#{msg['tabbed.product.picture']}</span>
+                    </label>
+                </div>
+
+
+                <div>
+                    <label for="#{tabbedName}-5" class="tab-label-5">
+                        <h:graphicImage styleClass="img-responsive" library="image" name="information.png"/>
+                        <span>#{msg['tabbed.product.post']}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tab panes -->
+        <div class="tabs-content">
+            <div class="content-1">
+                <ui:include src="product_items.xhtml">
+                    <ui:param name="productType" value="game"/>
+                    <ui:param name="productEntities" value="#{gameEntities}"/>
+                </ui:include>
+            </div>
+
+            <div class="content-2">
+                <ui:include src="product_items.xhtml">
+                    <ui:param name="productType" value="music"/>
+                    <ui:param name="productEntities" value="#{musicEntities}"/>
+                </ui:include>
+            </div>
+
+            <div class="content-3">
+                <ui:include src="product_items.xhtml">
+                    <ui:param name="productType" value="video"/>
+                    <ui:param name="productEntities" value="#{videoEntities}"/>
+                </ui:include>
+            </div>
+
+            <div class="content-4">
+                <ui:include src="product_items.xhtml">
+                    <ui:param name="productType" value="picture"/>
+                    <ui:param name="productEntities" value="#{pictureEntities}"/>
+                </ui:include>
+            </div>
+
+            <div class="content-5">
+                <ui:include src="product_items.xhtml">
+                    <ui:param name="productType" value="post"/>
+                    <ui:param name="productEntities" value="#{postEntities}"/>
+                </ui:include>
+            </div>
+        </div>
+    </section>
+</ui:component>
+

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <div class="col-xs-12 product-item clearfix">
+        <c:choose>
+            <c:when test="#{productType == 'game'}">
+                <ui:include src="game_item.xhtml">
+                    <ui:param name="productEntity" value="#{productEntity}"/>
+                </ui:include>
+            </c:when>
+            <c:when test="#{productType == 'video'}">
+                <ui:include src="video_item.xhtml">
+                    <ui:param name="productEntity" value="#{productEntity}"/>
+                </ui:include>
+            </c:when>
+            <c:when test="#{productType == 'music'}">
+                <ui:include src="music_item.xhtml">
+                    <ui:param name="productEntity" value="#{productEntity}"/>
+                </ui:include>
+            </c:when>
+            <c:when test="#{productType == 'post'}">
+                <ui:include src="post_item.xhtml">
+                    <ui:param name="productEntity" value="#{productEntity}"/>
+                </ui:include>
+            </c:when>
+            <c:when test="#{productType == 'picture'}">
+                <ui:include src="picture_item.xhtml">
+                    <ui:param name="productEntity" value="#{productEntity}"/>
+                </ui:include>
+            </c:when>
+            <c:otherwise>
+                <ui:include src="game_item.xhtml">
+                    <ui:param name="productEntity" value="#{productEntity}"/>
+                </ui:include>
+            </c:otherwise>
+        </c:choose>
+    </div>
+</ui:component>
+

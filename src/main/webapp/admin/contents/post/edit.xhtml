@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>     
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:p="http://primefaces.org/ui"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <p:dialog id="#{mode}Dl"
+              widgetVar="#{mode}Dl"
+              closeOnEscape="true"
+              modal="true">
+        <f:facet name="header">
+            <h:outputText value="#{msg['post.action.create.dialog']}" rendered="#{mode == 'create'}"/>
+            <h:outputFormat value="#{msg['post.action.edit.dialog']}" rendered="#{mode == 'edit'}">
+                <f:param value="#{postBean.current.title}"/>
+            </h:outputFormat>
+        </f:facet>
+        <h:form id="#{mode}Form">
+            <p:messages globalOnly="true" closable="true"/>
+            <p:panelGrid>
+                <p:row>
+                    <p:column><p:outputLabel for="code" value="#{msg['product.code']}"/></p:column>
+                    <p:column>
+                        <p:inputText id="code" value="#{postBean.current.code}" disabled="#{mode == 'edit'}"/>
+                    </p:column>
+                    <p:column colspan="2"><p:message for="code"/></p:column>
+                </p:row>
+                
+                <p:row>
+                    <p:column><p:outputLabel for="title" value="#{msg['product.title']}"/></p:column>
+                    <p:column>
+                        <p:inputText id="title" size="33" value="#{postBean.current.title}"/>
+                        <p:message for="title"/>
+                    </p:column>
+                    <p:column><p:outputLabel for="category" value="#{msg['category']}"/></p:column>
+                    <p:column>
+                        <p:selectOneMenu id="category" value="#{postBean.current.category}" converter="postCatConverter">
+                            <f:selectItems value="#{postCatBean.selectItems}"/>
+                        </p:selectOneMenu>
+                        <p:message for="category"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column><p:outputLabel for="thumbnailUrl" value="#{msg['product.thumbnailUrl']}"/></p:column>
+                    <p:column colspan="3">
+                        <p:inputText id="thumbnailUrl" value="#{postBean.current.thumbnailUrl}" size="80"/>
+                        <p:message for="thumbnailUrl"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column><p:outputLabel for="description" value="#{msg['description']}:"/></p:column>
+                    <p:column colspan="3">
+                        <p:inputTextarea id="description" cols="90" rows="5" value="#{postBean.current.description}" autoResize="false"/>
+                        <p:message for="description"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column><p:outputLabel for="specification" value="#{msg['post.content']}:"/></p:column>
+                    <p:column colspan="3">
+                        <p:editor id="specification" value="#{postBean.current.specification}" width="630"/>
+                        <p:message for="specification"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+            <p:separator/>
+            <p:commandButton value="#{msg['create']}"
+                             validateClient="true"
+                             update="@form :listForm :growl"
+                             actionListener="#{postBean.persist()}"
+                             icon="ui-icon-disk"
+                             rendered="#{mode == 'create'}"/>
+            <p:commandButton value="#{msg['update']}"
+                             validateClient="true"
+                             update="@form :listForm :growl"
+                             actionListener="#{postBean.update()}"
+                             icon="ui-icon-disk"
+                             rendered="#{mode == 'edit'}"/>
+            <p:commandButton value="#{msg['cancel']}"
+                             type="button"
+                             onclick="PF('#{mode}Dl').hide();"
+                             icon="ui-icon-close"/>
+        </h:form>
+    </p:dialog>
+
+</ui:component>
+

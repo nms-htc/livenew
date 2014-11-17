@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../template.xhtml">
+    <ui:define name="dialogs">
+        <ui:include src="../include/edit_category.xhtml">
+            <ui:param name="entityType" value="game"/>
+            <ui:param name="mode" value="create"/>
+            <ui:param name="entityBean" value="#{gameCatBean}"/>
+        </ui:include>
+        <ui:include src="../include/edit_category.xhtml">
+            <ui:param name="entityType" value="game"/>
+            <ui:param name="mode" value="edit"/>
+            <ui:param name="entityBean" value="#{gameCatBean}"/>
+        </ui:include>
+    </ui:define>
+
+    <ui:define name="content">
+        <ui:include src="../include/categories.xhtml">
+            <ui:param name="entityType" value="game"/>
+            <ui:param name="entityBean" value="#{gameCatBean}"/>
+        </ui:include>
+    </ui:define>
+</ui:composition>

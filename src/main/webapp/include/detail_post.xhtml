@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <c:if test="#{post != null}">
+        <h:form>
+            <div class="product-detail clearfix">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>#{post.title}</h3>
+                        <ul>
+                            <li class="view">#{post.viewCount}</li>
+                            <li class="createDate">
+                                <h:outputText value="#{post.createdDate}">
+                                    <f:convertDateTime parent="dd/MM/yyyy" locale="vi"/>
+                                </h:outputText>
+                            </li>
+                        </ul>
+                        <div class="separator"></div>
+                        <div class="spec" style="width: 100%;">
+                            <h:outputText escape="false" value="#{post.specification}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </c:if>
+</ui:component>

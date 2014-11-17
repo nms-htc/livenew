@@ -1,0 +1,73 @@
+/**
+ * Copyright (C) 2014 Next Generation Mobile Service JSC., (NMS).
+ * All rights reserved.
+ * Created on : Oct 24, 2014, 1:43:10 PM
+ * Author     : CuongNT
+*/
+/*Primefaces stylesheet*/
+.ui-widget {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px !important; }
+.ui-widget .ui-widget {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px !important; }
+
+.ui-panel .ui-panel-titlebar {
+    padding: 5px 15px; }
+
+.ui-corner-all {
+    /*    border-radius: 1px;*/ }
+
+.ui-chkbox-box {
+    /*    vertical-align: bottom;*/ }
+
+table.form-grid {
+    tbody {
+        tr {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+html {
+    min-height: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 5px;
+    margin: 0 auto;
+    &>div {
+        margin-bottom: 10px;
+    }
+}
+
+div#header {
+    height: 50px;
+    position: relative;
+    
+    .logo {
+        display: block;
+        img {
+            height: 50px;
+            margin-left: 10px;
+        }
+    }
+    
+    .greeting {
+        position: absolute;
+        line-height: 50px;
+        right: 10px;
+        top: 0;
+        font-size: 12px;
+        color: #654b24;
+        font-family: 'Open Sans', sans-serif;
+        span {
+            
+            font-weight: bold;
+            span {
+                color: #f60000;
+            }
+        }
+    }
+}

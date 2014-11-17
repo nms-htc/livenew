@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+    <ui:composition>
+        <cc:interface>
+            <cc:attribute name="startAction" required="true" method-signature="java.lang.String action()"/>
+            <cc:attribute name="startRendered" required="true" type="java.lang.Boolean"/>
+            <cc:attribute name="previewAction" required="true" method-signature="java.lang.String action()"/>
+            <cc:attribute name="previewRendered" required="true" type="java.lang.Boolean"/>
+            <cc:attribute name="nextAction" required="true" method-signature="java.lang.String action()"/>
+            <cc:attribute name="nextRendered" required="true" type="java.lang.Boolean"/>
+            <cc:attribute name="endAction" required="true" method-signature="java.lang.String action()"/>
+            <cc:attribute name="endRendered" required="true" type="java.lang.Boolean"/>
+        </cc:interface>
+        <cc:implementation>
+            <div class="datatable-pagination clearfix">
+                <h:commandLink value="#{msg['datatable.nav.endpage.title']}" 
+                               action="#{cc.attrs.endAction}"
+                               rendered="#{cc.attrs.endRendered}"/>
+                <h:commandLink value="#{msg['datatable.nav.nextpage.title']}" 
+                               action="#{cc.attrs.nextAction}"
+                               rendered="#{cc.attrs.nextRendered}"/>
+                <h:commandLink value="#{msg['datatable.nav.previewpage.title']}" 
+                               action="#{cc.attrs.previewAction}"
+                               rendered="#{cc.attrs.previewRendered}"/>
+                <h:commandLink value="#{msg['datatable.nav.startpage.title']}" 
+                               action="#{cc.attrs.startAction}"
+                               rendered="#{cc.attrs.startRendered}"/>
+            </div>
+        </cc:implementation>
+    </ui:composition>
+</html>

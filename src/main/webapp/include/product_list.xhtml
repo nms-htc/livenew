@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <section class="product-list">
+        <h:panelGroup layout="block" styleClass="row"  rendered="#{listTitle != null and listTitle != ''}">
+            <div class="col-xs-12 col-ms-8 col-md-6 col-lg-4">
+                <h3>#{listTitle}</h3>
+            </div>
+        </h:panelGroup>
+
+        <ui:include src="/include/product_items.xhtml">
+            <ui:param name="productType" value="#{productType}"/>
+            <ui:param name="productEntities" value="#{productEntities}"/>
+        </ui:include>
+    </section>
+</ui:component>
+

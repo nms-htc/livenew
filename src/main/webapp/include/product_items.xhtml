@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <div class="product-items row">
+        <ui:repeat value="#{productEntities}" var="product" varStatus="vs" rendered="#{productEntities != null and productEntities != ''}">
+            <ui:include src="product_item.xhtml">
+                <ui:param name="productType" value="#{productType}"/>
+                <ui:param name="productEntity" value="#{product}"/>
+            </ui:include>
+        </ui:repeat>
+    </div>
+</ui:component>
+

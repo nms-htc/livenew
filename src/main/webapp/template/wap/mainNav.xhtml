@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <nav id="main-nav">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <a id="nav-trigger" class ="togger" href="#">
+                    <h:graphicImage library="image" name="menu.png" styleClass="img-responsive"/>
+                </a>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <h:link styleClass="game" outcome="/game.xhtml">
+                    <h:graphicImage library="image" name="controller.png" styleClass="img-responsive"/>
+                </h:link>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <h:link styleClass="music" outcome="/music.xhtml">
+                    <h:graphicImage library="image" name="music.png" styleClass="img-responsive"/>
+                </h:link>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <h:link styleClass="video" outcome="/video.xhtml">
+                    <h:graphicImage library="image" name="video.png" styleClass="img-responsive"/>
+                </h:link>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <h:link styleClass="picture" outcome="/picture.xhtml">
+                    <h:graphicImage library="image" name="picture.png" styleClass="img-responsive"/>
+                </h:link>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <a id="search-trigger" class="search" href="#">
+                    <h:graphicImage library="image" name="search.png" styleClass="img-responsive"/>
+                </a>
+            </div>
+        </div>
+    </nav>
+</ui:component>
+

@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:f="http://xmlns.jcp.org/jsf/core"
+              xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+              xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions">
+
+    <c:if test="#{controller.current != null}">
+        <ol class="breadcrumb">
+            <li><h:link value="#{msg['leftNav.homePage']}" outcome="/index.xhtml"/></li>
+            <li><h:link value="#{msg[productType]}" outcome="/#{productType}.xhtml"/></li>
+            <li class="active">#{fn:substring(controller.current.title, 0, 15)} #{fn:length(controller.current.title) > 15 ? ' ...' : ''}</li>
+        </ol>
+        <ui:include src="/include/detail_#{productType}.xhtml">
+            <ui:param name="#{productType}" value="#{controller.current}"/>
+        </ui:include>
+    </c:if>
+    <c:if test="#{(controller.category != null or controller.current != null) and controller.model.size() > 0}">
+        <header class="row panel-title">
+            <div class="col-xs-12 col-ms-8 col-md-6 col-lg-4">
+                <h3>
+                    <h:outputText value="#{referenceLabel}" rendered="#{controller.current != null}"/>
+
+                    <h:outputText value="#{controller.category.title}" rendered="#{controller.category != null}"/>
+                </h3>
+            </div>
+        </header>
+
+        <ui:include src="/include/product_list.xhtml">
+            <ui:param name="productEntities" value="#{controller.model}"/>
+            <ui:param name="productType" value="#{productType}"/>
+        </ui:include>
+
+        <ul class="pager">
+            <li class="previous #{controller.hasPreview ? '' : 'disabled'}">
+                <h:link outcome="/#{productType}.xhtml" 
+                        value="#{msg['pager.back']}" 
+                        rendered="#{controller.current != null}"
+                        disabled="#{!controller.hasPreview}">
+                    <f:param name="id" value="#{controller.current.id}" />
+                    <f:param name="page" value="#{controller.page - 1}"/>
+                </h:link>
+                <h:link outcome="/#{productType}.xhtml" 
+                        value="#{msg['pager.back']}" 
+                        rendered="#{controller.category != null}"
+                        disabled="#{!controller.hasPreview}">
+                    <f:param name="cat" value="#{controller.category.id}" />
+                    <f:param name="page" value="#{controller.page - 1}"/>
+                </h:link>
+            </li>
+            <li class="next #{controller.hasNext ? '' : 'disabled'}">
+                <h:link outcome="/#{productType}.xhtml" 
+                        value="#{msg['pager.next']}" 
+                        rendered="#{controller.current != null}"
+                        disabled="#{!controller.hasNext}">
+                    <f:param name="id" value="#{controller.current.id}"/>
+                    <f:param name="page" value="#{controller.page + 1}"/>
+                </h:link>
+
+                <h:link outcome="/#{productType}.xhtml" 
+                        value="#{msg['pager.next']}" 
+                        rendered="#{controller.category != null}"
+                        disabled="#{!controller.hasNext}">
+                    <f:param name="cat" value="#{controller.category.id}"/>
+                    <f:param name="page" value="#{controller.page + 1}"/>
+                </h:link>
+            </li>
+        </ul>
+    </c:if>
+    <c:if test="#{controller.category == null and controller.current == null}">
+        <ol class="breadcrumb">
+            <li><h:link value="#{msg['leftNav.homePage']}" outcome="/index.xhtml"/></li>
+            <li class="active">#{msg[productType]}</li>
+        </ol>
+
+        <header class="row panel-title">
+            <div class="col-xs-12 col-ms-8 col-md-6 col-lg-4">
+                <h3>#{msg['panel.product.hot']}</h3>
+            </div>
+        </header>
+
+        <ui:include src="/include/product_list.xhtml">
+            <ui:param name="productEntities" value="#{controller.hots}"/>
+            <ui:param name="productType" value="#{productType}"/>
+        </ui:include>
+
+        <header class="row panel-title">
+            <div class="col-xs-12 col-ms-8 col-md-6 col-lg-4">
+                <h3>#{msg['panel.product.new']}</h3>
+            </div>
+        </header>
+
+        <ui:include src="/include/product_list.xhtml">
+            <ui:param name="productEntities" value="#{controller.news}"/>
+            <ui:param name="productType" value="#{productType}"/>
+        </ui:include>
+    </c:if>
+</ui:component>
+

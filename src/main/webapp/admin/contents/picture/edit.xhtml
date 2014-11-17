@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>     
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:p="http://primefaces.org/ui"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <p:dialog id="#{mode}Dl"
+              widgetVar="#{mode}Dl"
+              closeOnEscape="true"
+              modal="true">
+        <f:facet name="header">
+            <h:outputText value="#{msg['picture.action.create.dialog']}" rendered="#{mode == 'create'}"/>
+            <h:outputFormat value="#{msg['picture.action.edit.dialog']}" rendered="#{mode == 'edit'}">
+                <f:param value="#{pictureBean.current.title}"/>
+            </h:outputFormat>
+        </f:facet>
+        <h:form id="#{mode}Form">
+            <p:messages globalOnly="true" closable="true"/>
+            <p:panelGrid>
+                <p:row>
+                    <p:column><p:outputLabel for="code" value="#{msg['product.code']}"/></p:column>
+                    <p:column>
+                        <p:inputText id="code" value="#{pictureBean.current.code}" disabled="#{mode == 'edit'}"/>
+                        <p:message for="code"/>
+                    </p:column>
+                    <p:column><p:outputLabel for="title" value="#{msg['product.title']}"/></p:column>
+                    <p:column>
+                        <p:inputText id="title" size="33" value="#{pictureBean.current.title}"/>
+                        <p:message for="title"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column><p:outputLabel for="price" value="#{msg['product.price']}"/></p:column>
+                    <p:column>
+                        <p:spinner id="price" value="#{pictureBean.current.price}"/>
+                        <p:message for="price"/>
+                    </p:column>
+                    <p:column><p:outputLabel for="category" value="#{msg['category']}"/></p:column>
+                    <p:column>
+                        <p:selectOneMenu id="category" value="#{pictureBean.current.category}" converter="pictureCatConverter">
+                            <f:selectItems value="#{pictureCatBean.selectItems}"/>
+                        </p:selectOneMenu>
+                        <p:message for="category"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column><p:outputLabel for="thumbnailUrl" value="#{msg['product.thumbnailUrl']}"/></p:column>
+                    <p:column colspan="3">
+                        <p:inputText id="thumbnailUrl" value="#{pictureBean.current.thumbnailUrl}" size="80"/>
+                        <p:message for="thumbnailUrl"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column><p:outputLabel for="reviewUrl" value="#{msg['picture.reviewUrl']}"/></p:column>
+                    <p:column colspan="3">
+                        <p:inputText id="reviewUrl" value="#{pictureBean.current.reviewUrl}" size="80"/>
+                        <p:message for="reviewUrl"/>
+                    </p:column>
+                </p:row>
+
+            </p:panelGrid>
+            <p:separator/>
+            <p:commandButton value="#{msg['create']}"
+                             validateClient="true"
+                             update="@form :listForm :growl"
+                             actionListener="#{pictureBean.persist()}"
+                             icon="ui-icon-disk"
+                             rendered="#{mode == 'create'}"/>
+            <p:commandButton value="#{msg['update']}"
+                             validateClient="true"
+                             update="@form :listForm :growl"
+                             actionListener="#{pictureBean.update()}"
+                             icon="ui-icon-disk"
+                             rendered="#{mode == 'edit'}"/>
+            <p:commandButton value="#{msg['cancel']}"
+                             type="button"
+                             onclick="PF('#{mode}Dl').hide();"
+                             icon="ui-icon-close"/>
+        </h:form>
+    </p:dialog>
+
+</ui:component>
+

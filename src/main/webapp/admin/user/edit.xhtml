@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:component>
+        <p:dialog id="#{mode}Dl"
+                  widgetVar="#{mode}Dl"
+                  modal="true"
+                  closeOnEscape="true">
+            <f:facet name="header">
+                <h:outputText value="#{msg['user.action.add']}" rendered="#{mode == 'create'}"/>
+                <h:outputFormat value="#{msg['user.action.update']}" rendered="#{mode == 'edit'}">
+                    <f:param value="#{userBean.current.username}"/>
+                </h:outputFormat>
+            </f:facet>
+
+            <h:form id="#{mode}Form">
+                <p:messages globalOnly="true" closable="true"/>
+
+                <h:panelGrid columns="3" style="width: 100%">
+
+                    <p:outputLabel for="code" value="#{msg['user.code']}:"/>
+                    <p:inputText id="code" value="#{userBean.current.code}" disabled="#{mode == 'edit'}"/>
+                    <p:message for="code"/>
+
+                    <p:outputLabel for="fullname" value="#{msg['user.fullname']}:"/>
+                    <p:inputText id="fullname" value="#{userBean.current.fullname}" size="35"/>
+                    <p:message for="fullname"/>
+
+                    <p:outputLabel for="username" value="#{msg['user.username']}:"/>
+                    <p:inputText id="username" value="#{userBean.current.username}" size="35" disabled="#{mode == 'edit'}"/>
+                    <p:message for="username"/>
+
+                    <p:outputLabel for="password" value="#{msg['user.password']}:" rendered="#{mode == 'create'}"/>
+                    <p:password id="password" value="#{userBean.current.password}" size="35" rendered="#{mode == 'create'}"/>
+                    <p:message for="password" rendered="#{mode == 'create'}"/>
+
+                    <p:outputLabel for="email" value="#{msg['user.email']}:"/>
+                    <p:inputText id="email" value="#{userBean.current.email}" size="35"/>
+                    <p:message for="email"/>
+
+                    <p:outputLabel for="groups" value="#{msg['user.groups']}:"/>
+                    <p:selectManyCheckbox id="groups" value="#{userBean.current.groups}"
+                                          converter="enumConverter">
+                        <f:selectItems value="#{userBean.userGroups}"/>
+                    </p:selectManyCheckbox>
+                    <p:message for="groups"/>
+
+                    <p:outputLabel for="description" value="#{msg['description']}:"/>
+                    <p:inputTextarea id="description" cols="37" rows="3" value="#{userBean.current.description}"/>
+                    <p:message for="description"/>
+
+                    <f:facet name="footer">
+                        <p:separator/>
+                        <p:commandButton value="#{msg['save']}" actionListener="#{userBean.persist()}" update="createForm :listForm" rendered="#{mode == 'create'}"/>
+                        <p:commandButton value="#{msg['update']}" actionListener="#{userBean.update()}" update="editForm :listForm" rendered="#{mode == 'edit'}"/>
+                        <p:commandButton value="#{msg['cancel']}" type="button" onclick="PF('#{mode}Dl').hide();"/>
+                    </f:facet>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:component>
+</html>

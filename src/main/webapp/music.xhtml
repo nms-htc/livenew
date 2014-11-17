@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/template/wap/main.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:metadata>
+        <f:viewParam name="id" value="#{musicController.current}" converter="musicConverter"/>
+        <f:viewParam name="cat" value="#{musicController.category}" converter="musicCatConverter"/>
+        <f:viewParam name="page" value="#{musicController.page}"/>
+        <f:viewAction action="#{musicController.initData()}"/>
+    </f:metadata>
+    <ui:define name="main-content">
+        <ui:include src="/include/detail_product.xhtml">
+            <ui:param name="controller" value="#{musicController}"/>
+            <ui:param name="productType" value="music"/>
+            <ui:param name="referenceLabel" value="#{msg['panel.referenceLabel.music']}"/>
+        </ui:include>
+    </ui:define>
+</ui:composition>

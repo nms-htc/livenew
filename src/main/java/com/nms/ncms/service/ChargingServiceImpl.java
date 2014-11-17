@@ -35,7 +35,7 @@ public class ChargingServiceImpl implements ChargingService {
             request.setUserName("");
             request.setPassword("");
             //request.setTimeout(60000);
-            request.setCpName(product.getCpCode());
+            request.setCpName("NGUYEN TRONG CUONG");
             request.setContentCode(product.getCode());
             request.setIsdn(mobileChecker.getPhoneNumber());
             request.setOsCode(String.valueOf(mobileChecker.getOsCode()));

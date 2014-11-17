@@ -5,15 +5,18 @@
 package com.nms.ncms.entity;
 
 import com.nms.ncms.web.util.MessageUtil;
-import java.util.Collection;
-import javax.persistence.CollectionTable;
+import java.io.File;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.DiscriminatorValue;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -49,15 +52,17 @@ public class Game extends Product {
         }
     }
 
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "MAIN_FILEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    protected FileEntry gameFile;
+
     @Size(max = 2000)
     @Column(name = "DEVICES_SUPPORT", length = 2000)
     private String devicesSupport;
 
-    @ElementCollection(targetClass = Flatform.class)
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "NCMS_FLATFORM", joinColumns = @JoinColumn(name = "PRODUCT_ID"))
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "FLATFORM")
-    private Collection<Flatform> flatforms;
+    private Flatform flatform;
 
     public String getDevicesSupport() {
         return devicesSupport;
@@ -67,11 +72,20 @@ public class Game extends Product {
         this.devicesSupport = devicesSupport;
     }
 
-    public Collection<Flatform> getFlatforms() {
-        return flatforms;
+    public Flatform getFlatform() {
+        return flatform;
     }
 
-    public void setFlatforms(Collection<Flatform> flatforms) {
-        this.flatforms = flatforms;
+    public void setFlatform(Flatform flatforms) {
+        this.flatform = flatforms;
     }
+
+    public FileEntry getGameFile() {
+        return gameFile;
+    }
+
+    public void setGameFile(FileEntry gameFile) {
+        this.gameFile = gameFile;
+    }
+
 }

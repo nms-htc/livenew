@@ -4,8 +4,9 @@
  */
 package com.nms.ncms.entity;
 
-import com.nms.ncms.entity.validation.Url;
+import java.io.File;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
@@ -19,7 +20,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -41,10 +41,9 @@ public abstract class Product extends BaseEntity {
     @Column(name = "CODE", length = 150, nullable = false)
     protected String code;
 
-    @NotNull
-    @Size(max = 75)
-    @Column(name = "CPCODE", length = 75, nullable = false)
-    protected String cpCode;
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "THUMBNAIL_FILEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    protected FileEntry thumbFile;
 
     @NotNull
     @Size(max = 250)
@@ -72,12 +71,8 @@ public abstract class Product extends BaseEntity {
     @Column(name = "PRICE")
     protected double price;
 
-    @Url
-    @Column(name = "THUMBNAIL_URL")
-    protected String thumbnailUrl;
-
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "NCMS_SCREENSHORT", joinColumns = @JoinColumn(name = "PRODUCT_ID"))
+    @CollectionTable(name = "NCMS_SCREENSHORT", joinColumns = @JoinColumn(name = "PRODUCT_ID"), foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     @Column(name = "SCREENSHORT_URL")
     protected List<String> screenShorts;
 
@@ -96,14 +91,6 @@ public abstract class Product extends BaseEntity {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public String getCpCode() {
-        return cpCode;
-    }
-
-    public void setCpCode(String cpCode) {
-        this.cpCode = cpCode;
     }
 
     public String getTitle() {
@@ -146,14 +133,6 @@ public abstract class Product extends BaseEntity {
         this.price = price;
     }
 
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
-    }
-
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
-    }
-
     public List<String> getScreenShorts() {
         return screenShorts;
     }
@@ -190,14 +169,15 @@ public abstract class Product extends BaseEntity {
         return category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public FileEntry getThumbFile() {
+        return thumbFile;
     }
 
-    @PrePersist
-    public void fillCpCode() {
-        if (user != null) {
-            setCpCode(user.code);
-        }
+    public void setThumbFile(FileEntry thumbFile) {
+        this.thumbFile = thumbFile;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

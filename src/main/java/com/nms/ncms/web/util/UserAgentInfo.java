@@ -1,8 +1,10 @@
 /**
- * Copyright (C) 2014 Next Generation Mobile Service JSC., (NMS). All rights reserved.
+ * Copyright (C) 2014 Next Generation Mobile Service JSC., (NMS). All rights
+ * reserved.
  */
 package com.nms.ncms.web.util;
 
+import java.io.Serializable;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -56,15 +58,17 @@ import javax.servlet.http.HttpServletRequest;
  // *******************************************
  */
 /**
- * The DetectSmartPhone class encapsulates information about a browser's connection to your web
- * site. You can use it to find out whether the browser asking for your site's content is probably
- * running on a mobile device. The methods were written so you can be as granular as you want. For
- * example, enquiring whether it's as specific as an iPod Touch or as general as a smartphone class
- * device. The object's methods return true, or false.
+ * The DetectSmartPhone class encapsulates information about a browser's
+ * connection to your web site. You can use it to find out whether the browser
+ * asking for your site's content is probably running on a mobile device. The
+ * methods were written so you can be as granular as you want. For example,
+ * enquiring whether it's as specific as an iPod Touch or as general as a
+ * smartphone class device. The object's methods return true, or false.
  */
-public final class UserAgentInfo {
-    // User-Agent and Accept HTTP request headers
+public final class UserAgentInfo implements Serializable {
 
+    private static final long serialVersionUID = 35276220523684153L;
+    // User-Agent and Accept HTTP request headers
     private String userAgent = "";
     private String httpAccept = "";
 
@@ -325,8 +329,8 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects *any* Android OS-based device: phone, tablet, and multi-media player. Also detects
-     * Google TV.
+     * Detects *any* Android OS-based device: phone, tablet, and multi-media
+     * player. Also detects Google TV.
      *
      * @return detection of an Android device
      */
@@ -339,9 +343,10 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current device is a (small-ish) Android OS-based device used for calling
-     * and/or multi-media (like a Samsung Galaxy Player). Google says these devices will have
-     * 'Android' AND 'mobile' in user agent. Ignores tablets (Honeycomb and later).
+     * Detects if the current device is a (small-ish) Android OS-based device
+     * used for calling and/or multi-media (like a Samsung Galaxy Player).
+     * Google says these devices will have 'Android' AND 'mobile' in user agent.
+     * Ignores tablets (Honeycomb and later).
      *
      * @return detection of an Android phone
      */
@@ -357,8 +362,9 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current device is a (self-reported) Android tablet. Google says these devices
-     * will have 'Android' and NOT 'mobile' in their user agent.
+     * Detects if the current device is a (self-reported) Android tablet. Google
+     * says these devices will have 'Android' and NOT 'mobile' in their user
+     * agent.
      *
      * @return detection of an Android tablet
      */
@@ -382,8 +388,8 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current device is an Android OS-based device and the browser is based on
-     * WebKit.
+     * Detects if the current device is an Android OS-based device and the
+     * browser is based on WebKit.
      *
      * @return detection of an Android WebKit browser
      */
@@ -422,8 +428,9 @@ public final class UserAgentInfo {
 
     /**
      *
-     * Detects if the current device is any Symbian OS-based device, including older S60, Series 70,
-     * Series 80, Series 90, and UIQ, or other browsers running on these devices.
+     * Detects if the current device is any Symbian OS-based device, including
+     * older S60, Series 70, Series 80, Series 90, and UIQ, or other browsers
+     * running on these devices.
      *
      * @return detection of SymbianOS
      */
@@ -445,8 +452,8 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current browser is a Windows Mobile device. Excludes Windows Phone 7 devices.
-     * Focuses on Windows Mobile 6.xx and earlier.
+     * Detects if the current browser is a Windows Mobile device. Excludes
+     * Windows Phone 7 devices. Focuses on Windows Mobile 6.xx and earlier.
      *
      * @return detection of Windows Mobile
      */
@@ -482,7 +489,8 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current browser is on a BlackBerry tablet device. Example: PlayBook
+     * Detects if the current browser is on a BlackBerry tablet device. Example:
+     * PlayBook
      *
      * @return detection of a Blackberry Tablet
      */
@@ -491,8 +499,9 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current browser is a BlackBerry device AND uses a WebKit-based browser. These
-     * are signatures for the new BlackBerry OS 6. Examples: Torch. Includes the Playbook.
+     * Detects if the current browser is a BlackBerry device AND uses a
+     * WebKit-based browser. These are signatures for the new BlackBerry OS 6.
+     * Examples: Torch. Includes the Playbook.
      *
      * @return detection of a Blackberry device with WebKit browser
      */
@@ -502,8 +511,8 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current browser is a BlackBerry Touch device, such as the Storm, Torch, and
-     * Bold Touch. Excludes the Playbook.
+     * Detects if the current browser is a BlackBerry Touch device, such as the
+     * Storm, Torch, and Bold Touch. Excludes the Playbook.
      *
      * @return detection of a Blackberry touchscreen device
      */
@@ -515,9 +524,9 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current browser is a BlackBerry device AND has a more capable recent browser.
-     * Excludes the Playbook. Examples, Storm, Bold, Tour, Curve2 Excludes the new BlackBerry OS 6
-     * and 7 browser!!
+     * Detects if the current browser is a BlackBerry device AND has a more
+     * capable recent browser. Excludes the Playbook. Examples, Storm, Bold,
+     * Tour, Curve2 Excludes the new BlackBerry OS 6 and 7 browser!!
      *
      * @return detection of a Blackberry device with a better browser
      */
@@ -537,8 +546,8 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current browser is a BlackBerry device AND has an older, less capable browser.
-     * Examples: Pearl, 8800, Curve1
+     * Detects if the current browser is a BlackBerry device AND has an older,
+     * less capable browser. Examples: Pearl, 8800, Curve1
      *
      * @return detection of a Blackberry device with a poorer browser
      */
@@ -595,7 +604,8 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Check to see whether the device is any device in the 'smartphone' category.
+     * Check to see whether the device is any device in the 'smartphone'
+     * category.
      *
      * @return detection of a general smartphone device
      */
@@ -676,8 +686,8 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current device is an Amazon Kindle (eInk devices only). Note: For the Kindle
-     * Fire, use the normal Android methods.
+     * Detects if the current device is an Amazon Kindle (eInk devices only).
+     * Note: For the Kindle Fire, use the normal Android methods.
      *
      * @return detection of a Kindle
      */
@@ -687,8 +697,9 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current device is a mobile device. This method catches most of the popular
-     * modern devices. Excludes Apple iPads and other modern tablets.
+     * Detects if the current device is a mobile device. This method catches
+     * most of the popular modern devices. Excludes Apple iPads and other modern
+     * tablets.
      *
      * @return detection of any mobile device using the quicker method
      */
@@ -780,7 +791,8 @@ public final class UserAgentInfo {
     }
 
     /**
-     * Detects if the current device is on one of the Maemo-based Nokia Internet Tablets.
+     * Detects if the current device is on one of the Maemo-based Nokia Internet
+     * Tablets.
      *
      * @return detection of a Maemo OS tablet
      */
@@ -812,10 +824,11 @@ public final class UserAgentInfo {
     }
 
     /**
-     * The longer and more thorough way to detect for a mobile device. Will probably detect most
-     * feature phones, smartphone-class devices, Internet Tablets, Internet-enabled game consoles,
-     * etc. This ought to catch a lot of the more obscure and older devices, also -- but no promises
-     * on thoroughness!
+     * The longer and more thorough way to detect for a mobile device. Will
+     * probably detect most feature phones, smartphone-class devices, Internet
+     * Tablets, Internet-enabled game consoles, etc. This ought to catch a lot
+     * of the more obscure and older devices, also -- but no promises on
+     * thoroughness!
      *
      * @return detection of any mobile device using the more thorough method
      */
@@ -853,9 +866,9 @@ public final class UserAgentInfo {
     // For Mobile Web Site Design
     //*****************************
     /**
-     * The quick way to detect for a tier of devices. This method detects for the new generation of
-     * HTML 5 capable, larger screen tablets. Includes iPad, Android (e.g., Xoom), BB Playbook,
-     * WebOS, etc.
+     * The quick way to detect for a tier of devices. This method detects for
+     * the new generation of HTML 5 capable, larger screen tablets. Includes
+     * iPad, Android (e.g., Xoom), BB Playbook, WebOS, etc.
      *
      * @return detection of any device in the Tablet Tier
      */
@@ -867,9 +880,9 @@ public final class UserAgentInfo {
     }
 
     /**
-     * The quick way to detect for a tier of devices. This method detects for devices which can
-     * display iPhone-optimized web content. Includes iPhone, iPod Touch, Android, Windows Phone 7,
-     * Palm WebOS, etc.
+     * The quick way to detect for a tier of devices. This method detects for
+     * devices which can display iPhone-optimized web content. Includes iPhone,
+     * iPod Touch, Android, Windows Phone 7, Palm WebOS, etc.
      *
      * @return detection of any device in the iPhone/Android/WP7/WebOS Tier
      */
@@ -884,9 +897,10 @@ public final class UserAgentInfo {
     }
 
     /**
-     * The quick way to detect for a tier of devices. This method detects for devices which are
-     * likely to be capable of viewing CSS content optimized for the iPhone, but may not necessarily
-     * support JavaScript. Excludes all iPhone Tier devices.
+     * The quick way to detect for a tier of devices. This method detects for
+     * devices which are likely to be capable of viewing CSS content optimized
+     * for the iPhone, but may not necessarily support JavaScript. Excludes all
+     * iPhone Tier devices.
      *
      * @return detection of any device in the 'Rich CSS' Tier
      */
@@ -914,8 +928,9 @@ public final class UserAgentInfo {
     }
 
     /**
-     * The quick way to detect for a tier of devices. This method detects for all other types of
-     * phones, but excludes the iPhone and RichCSS Tier devices.
+     * The quick way to detect for a tier of devices. This method detects for
+     * all other types of phones, but excludes the iPhone and RichCSS Tier
+     * devices.
      *
      * @return detection of a mobile device in the less capable tier
      */

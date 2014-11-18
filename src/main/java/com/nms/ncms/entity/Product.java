@@ -85,6 +85,10 @@ public abstract class Product extends BaseEntity {
     @XmlTransient
     protected Category category;
 
+    public Product() {
+        thumbFile = new FileEntry();
+    }
+
     public String getCode() {
         return code;
     }

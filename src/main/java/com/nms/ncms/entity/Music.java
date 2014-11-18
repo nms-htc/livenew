@@ -5,7 +5,6 @@
 package com.nms.ncms.entity;
 
 import com.nms.ncms.entity.validation.Url;
-import java.io.File;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
@@ -52,6 +51,8 @@ public class Music extends Product {
     protected FileEntry musicFile;
 
     public Music() {
+        super();
+        musicFile = new FileEntry();
     }
 
     public FileEntry getMusicFile() {

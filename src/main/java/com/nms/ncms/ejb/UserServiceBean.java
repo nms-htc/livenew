@@ -83,6 +83,7 @@ public class UserServiceBean extends AbstractFacadeBean<User> implements UserSer
         cq.select(cb.count(root));
         cq.where(cb.isMember(User.Group.Admin, root.get("groups")));
         TypedQuery<Long> q = em.createQuery(cq);
+        q.setParameter("adminRole", User.Group.Admin);
         int count = q.getSingleResult().intValue();
         return count > 0;
     }

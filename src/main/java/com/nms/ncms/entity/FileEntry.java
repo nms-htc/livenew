@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.servlet.http.Part;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -40,7 +41,7 @@ public class FileEntry extends BaseEntity {
 
     @Transient
     @XmlTransient
-    protected InputStream is;
+    protected Part part;
 
     public FileEntry() {
     }
@@ -77,12 +78,12 @@ public class FileEntry extends BaseEntity {
         this.filePath = filePath;
     }
 
-    public InputStream getIs() {
-        return is;
+    public Part getPart() {
+        return part;
     }
 
-    public void setIs(InputStream is) {
-        this.is = is;
+    public void setPart(Part part) {
+        this.part = part;
     }
 
     public boolean isUpload() {
@@ -106,6 +107,14 @@ public class FileEntry extends BaseEntity {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+    
+    public boolean isHasFile() {
+        if (upload) {
+            return part != null;
+        } else {
+            return title != null && !"".equals(title);
+        }
     }
 
     @Override

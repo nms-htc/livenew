@@ -15,7 +15,7 @@
                 <f:param value="#{musicBean.current.title}"/>
             </h:outputFormat>
         </f:facet>
-        <h:form id="#{mode}Form">
+        <h:form id="#{mode}Form" enctype="multipart/form-data">
             <p:messages globalOnly="true" closable="true"/>
             <p:panelGrid>
                 <p:row>
@@ -60,31 +60,30 @@
                 </p:row>
 
                 <p:row>
-                    <p:column><p:outputLabel for="thumbnailUrl" value="#{msg['product.thumbnailUrl']}"/></p:column>
-                    <p:column colspan="3">
-                        <p:inputText id="thumbnailUrl" value="#{musicBean.current.thumbnailUrl}" size="80"/>
-                        <p:message for="thumbnailUrl"/>
-                    </p:column>
-                </p:row>
-
-                <p:row>
-                    <p:column><p:outputLabel for="album" value="#{msg['music.album']}"/></p:column>
                     <p:column>
-                        <p:inputText id="album" value="#{musicBean.current.album}"/>
-                        <p:message for="album"/>
+                        <h:outputText value="#{msg['product.thumbImage']}"/>
                     </p:column>
-                    <p:column><p:outputLabel for="albumThumbUrl" value="#{msg['music.albumThumbUrl']}"/></p:column>
                     <p:column>
-                        <p:inputText id="albumThumbUrl" value="#{musicBean.current.albumThumbUrl}"/>
-                        <p:message for="albumThumbUrl"/>
+                        <h:outputLabel value="#{msg['fileEntry.upload']} ">
+                            <h:selectBooleanCheckbox value="#{musicBean.current.thumbFile.upload}">
+                                <f:ajax render="thumbFileContainer thumbFileLabelContainer"/>
+                            </h:selectBooleanCheckbox>
+                        </h:outputLabel>
                     </p:column>
-                </p:row>
+                    <p:column>
+                        <h:panelGroup id="thumbFileLabelContainer">
+                            <h:outputText value="#{msg['fileEntry.upload']}" rendered="#{musicBean.current.thumbFile.upload}"/>
+                            <h:outputText value="#{msg['fileEntry.url']}" rendered="#{!musicBean.current.thumbFile.upload}"/>
+                        </h:panelGroup>
+                    </p:column>
+                    <p:column>
 
-                <p:row>
-                    <p:column><p:outputLabel for="musicUrl" value="#{msg['music.musicUrl']}"/></p:column>
-                    <p:column colspan="3">
-                        <p:inputText id="musicUrl" value="#{musicBean.current.musicUrl}" size="80"/>
-                        <p:message for="musicUrl"/>
+                        <h:panelGroup id="thumbFileContainer">
+                            <h:inputFile id="thumbFile" value="#{musicBean.current.thumbFile.part}" rendered="#{musicBean.current.thumbFile.upload}"/>
+                            <p:inputText id="thumbFileUrl" value="#{musicBean.current.thumbFile.title}" rendered="#{!musicBean.current.thumbFile.upload}"/>
+                            <p:message for="thumbFile"/>
+                            <p:message for="thumbFileUrl"/>
+                        </h:panelGroup>
                     </p:column>
                 </p:row>
 

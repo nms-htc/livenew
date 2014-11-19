@@ -26,9 +26,7 @@
                                          immediate="true"
                                          icon="ui-icon-plus"
                                          actionListener="#{musicBean.resetEntity()}"
-                                         update=":createDl"
-                                         oncomplete="PF('createDl').show();">
-                            <p:resetInput target=":createDl"/>
+                                         action="edit_music">
                         </p:commandButton>
                     </f:facet>
                 </p:toolbar>
@@ -48,7 +46,6 @@
                              paginatorPosition="bottom">
 
                     <p:column width="50">
-                        <p:graphicImage url="#{music.thumbnailUrl}" alt="#{music.title}" width="50" height="50"/>
                     </p:column>
                     
                     <p:column headerText="#{msg['title']}" 

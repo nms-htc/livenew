@@ -4,7 +4,6 @@
  */
 package com.nms.ncms.entity;
 
-import java.io.File;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;

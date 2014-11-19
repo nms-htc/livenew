@@ -1,13 +1,14 @@
 package com.nms.ncms.entity;
 
-import java.io.InputStream;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.servlet.http.Part;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.primefaces.model.UploadedFile;
 
 /**
  * @author Nguyen Trong Cuong
@@ -41,7 +42,7 @@ public class FileEntry extends BaseEntity {
 
     @Transient
     @XmlTransient
-    protected Part part;
+    protected UploadedFile file;
 
     public FileEntry() {
     }
@@ -78,12 +79,12 @@ public class FileEntry extends BaseEntity {
         this.filePath = filePath;
     }
 
-    public Part getPart() {
-        return part;
+    public UploadedFile getFile() {
+        return file;
     }
 
-    public void setPart(Part part) {
-        this.part = part;
+    public void setFile(UploadedFile file) {
+        this.file = file;
     }
 
     public boolean isUpload() {
@@ -111,7 +112,7 @@ public class FileEntry extends BaseEntity {
     
     public boolean isHasFile() {
         if (upload) {
-            return part != null;
+            return file != null;
         } else {
             return title != null && !"".equals(title);
         }
@@ -122,5 +123,14 @@ public class FileEntry extends BaseEntity {
         return "File{" + "title=" + title + ", contentType=" + contentType
                 + ", fileSize=" + fileSize + ", filePath=" + filePath + '}';
     }
-
+    
+    @PrePersist
+    @PreUpdate
+    public void fillInfo() {
+        if (upload && file != null) {
+            this.contentType = file.getContentType();
+            this.fileSize = file.getSize();
+            this.title = file.getFileName();
+        }
+    }
 }

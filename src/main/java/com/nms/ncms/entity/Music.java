@@ -48,11 +48,9 @@ public class Music extends Product {
 
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name = "MAIN_FILEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    protected FileEntry musicFile;
+    protected FileEntry musicFile = new FileEntry();
 
     public Music() {
-        super();
-        musicFile = new FileEntry();
     }
 
     public FileEntry getMusicFile() {

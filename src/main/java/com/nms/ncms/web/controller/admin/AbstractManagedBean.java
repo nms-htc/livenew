@@ -12,6 +12,7 @@ import com.nms.ncms.web.util.MessageUtil;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 import javax.faces.model.SelectItem;
 import org.primefaces.model.LazyDataModel;
 
@@ -199,4 +200,5 @@ public abstract class AbstractManagedBean<T extends BaseEntity> implements Seria
     protected void alterModelFilters(Map<String, Object> filters) {
     }
     
+    protected abstract Logger getLogger();
 }

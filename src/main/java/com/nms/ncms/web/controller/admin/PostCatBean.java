@@ -7,6 +7,7 @@ package com.nms.ncms.web.controller.admin;
 import com.nms.ncms.entity.PostCategory;
 import com.nms.ncms.service.entity.BaseService;
 import com.nms.ncms.service.entity.PostCategoryService;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -16,6 +17,8 @@ import javax.inject.Named;
 public class PostCatBean extends AbstractManagedBean<PostCategory> {
 
     private static final long serialVersionUID = 4723089730520397755L;
+    private static final Logger LOGGER = Logger.getLogger(PostCatBean.class.getName());
+
     @EJB
     private PostCategoryService postCatService;
 
@@ -29,4 +32,8 @@ public class PostCatBean extends AbstractManagedBean<PostCategory> {
         return postCatService;
     }
 
+    @Override
+    protected Logger getLogger() {
+        return LOGGER;
+    }
 }

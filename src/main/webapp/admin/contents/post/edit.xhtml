@@ -19,17 +19,44 @@
             <p:messages globalOnly="true" closable="true"/>
             <p:panelGrid>
                 <p:row>
+                    <p:column>
+                        <h:outputText value="#{msg['product.thumbImage']}"/> <br/>
+                        <label>
+                            <h:selectBooleanCheckbox value="#{postBean.current.thumbFile.upload}">
+                                <f:ajax execute="@this" render="thumbFileInputColumn"/>
+                            </h:selectBooleanCheckbox>#{msg['fileEntry.upload']}
+                        </label>
+                    </p:column>
+                    <p:column>
+                        <h:panelGroup id="thumbFileInputColumn">
+                            <p:fileUpload fileUploadListener="#{postBean.handleThumbnailUpload}" 
+                                          mode="advanced" 
+                                          multiple="false"
+                                          update="thumbPicture"
+                                          previewWidth="30"
+                                          rendered="#{postBean.current.thumbFile.upload}"/>
+                            <p:inputText value="#{postBean.current.thumbFile.url}"
+                                         rendered="#{!postBean.current.thumbFile.upload}"
+                                         size="40"/>
+                        </h:panelGroup>
+                    </p:column>
+                    <p:column colspan="2">
+                        <h:outputText id="thumbPicture" 
+                                      value="#{postBean.current.thumbFile.upload ? postBean.current.thumbFile.title : ''}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
                     <p:column><p:outputLabel for="code" value="#{msg['product.code']}"/></p:column>
                     <p:column>
                         <p:inputText id="code" value="#{postBean.current.code}" disabled="#{mode == 'edit'}"/>
                     </p:column>
                     <p:column colspan="2"><p:message for="code"/></p:column>
                 </p:row>
-                
+
                 <p:row>
                     <p:column><p:outputLabel for="title" value="#{msg['product.title']}"/></p:column>
                     <p:column>
-                        <p:inputText id="title" size="33" value="#{postBean.current.title}"/>
+                        <p:inputText id="title" size="40" value="#{postBean.current.title}"/>
                         <p:message for="title"/>
                     </p:column>
                     <p:column><p:outputLabel for="category" value="#{msg['category']}"/></p:column>
@@ -39,14 +66,6 @@
                         </p:selectOneMenu>
                         <p:message for="category"/>
                     </p:column>
-                </p:row>
-
-                <p:row>
-                    <!--p:column><p:outputLabel for="thumbnailUrl" value="#{msg['product.thumbnailUrl']}"/></p:column>
-                    <p:column colspan="3">
-                        <p:inputText id="thumbnailUrl" value="#{postBean.current.thumbnailUrl}" size="80"/>
-                        <p:message for="thumbnailUrl"/>
-                    </p:column-->
                 </p:row>
 
                 <p:row>

@@ -19,6 +19,34 @@
             <p:messages globalOnly="true" closable="true"/>
             <p:panelGrid>
                 <p:row>
+                    <p:column>
+                        <h:outputText value="#{msg['product.thumbImage']}"/> <br/>
+                        <label>
+                            <h:selectBooleanCheckbox value="#{gameBean.current.thumbFile.upload}">
+                                <f:ajax execute="@this" render="thumbFileInputColumn"/>
+                            </h:selectBooleanCheckbox>#{msg['fileEntry.upload']}
+                        </label>
+                    </p:column>
+                    <p:column>
+                        <h:panelGroup id="thumbFileInputColumn">
+                            <p:fileUpload fileUploadListener="#{gameBean.handleThumbnailUpload}" 
+                                          mode="advanced" 
+                                          multiple="false"
+                                          update="thumbPicture"
+                                          previewWidth="30"
+                                          rendered="#{gameBean.current.thumbFile.upload}"/>
+                            <p:inputText value="#{gameBean.current.thumbFile.url}"
+                                         rendered="#{!gameBean.current.thumbFile.upload}"
+                                         size="40"/>
+                        </h:panelGroup>
+                    </p:column>
+                    <p:column colspan="2">
+                        <h:outputText id="thumbPicture" 
+                                      value="#{gameBean.current.thumbFile.upload ? gameBean.current.thumbFile.title : ''}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+
                     <p:column><p:outputLabel for="code" value="#{msg['product.code']}:"/></p:column>
                     <p:column>
                         <p:inputText id="code" value="#{gameBean.current.code}" disabled="#{mode == 'edit'}"/>
@@ -49,23 +77,43 @@
                 </p:row>
 
                 <p:row>
-                    <p:column><p:outputLabel for="flatforms" value="#{msg['game.flatforms']}:"/></p:column>
+                    <p:column><p:outputLabel for="flatform" value="#{msg['game.flatform']}:"/></p:column>
                     <p:column colspan="3">
-                        <p:selectManyCheckbox id="flatforms" value="#{gameBean.current.flatforms}" converter="enumConverter">
+                        <p:selectOneRadio id="flatform" value="#{gameBean.current.flatform}" converter="enumConverter">
                             <f:selectItems value="#{gameBean.flatforms}"/>
-                        </p:selectManyCheckbox>
-                        <p:message for="flatforms"/>
+                        </p:selectOneRadio>
+                        <p:message for="flatform"/>
                     </p:column>
                 </p:row>
 
                 <p:row>
-                    <p:column><p:outputLabel for="thumbnailUrl" value="#{msg['thumbnail']}"/></p:column>
-                    <p:column colspan="3">
-                        <p:inputText id="thumbnailUrl" size="50" value="#{gameBean.current.thumbnailUrl}"/>
-                        <p:message for="thumbnailUrl"/>
+                    <p:column>
+                        <h:outputText value="#{msg['game.gameFile']}"/> <br/>
+                        <label>
+                            <h:selectBooleanCheckbox value="#{gameBean.current.gameFile.upload}">
+                                <f:ajax execute="@this" render="contentFileInputColumn"/>
+                            </h:selectBooleanCheckbox>#{msg['fileEntry.upload']}
+                        </label>
+                    </p:column>
+                    <p:column>
+                        <h:panelGroup id="contentFileInputColumn">
+                            <p:fileUpload fileUploadListener="#{gameBean.handleContentUpload}" 
+                                          mode="advanced" 
+                                          multiple="false"
+                                          update="contentFile"
+                                          previewWidth="30"
+                                          rendered="#{gameBean.current.gameFile.upload}"/>
+                            <p:inputText value="#{gameBean.current.gameFile.url}"
+                                         rendered="#{!gameBean.current.gameFile.upload}"
+                                         size="40"/>
+                        </h:panelGroup>
+                    </p:column>
+                    <p:column colspan="2">
+                        <h:outputText id="contentFile" 
+                                      value="#{gameBean.current.gameFile.upload ? gameBean.current.gameFile.title : ''}"/>
                     </p:column>
                 </p:row>
-                
+
                 <p:row>
                     <p:column><p:outputLabel for="description" value="#{msg['description']}:"/></p:column>
                     <p:column>
@@ -78,7 +126,7 @@
                         <p:message for="devicesSupport"/>
                     </p:column>
                 </p:row>
-                
+
                 <p:row>
                     <p:column><p:outputLabel for="specification" value="#{msg['product.specification']}:"/></p:column>
                     <p:column colspan="3">

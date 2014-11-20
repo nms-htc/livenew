@@ -4,11 +4,14 @@
  */
 package com.nms.ncms.entity;
 
-import com.nms.ncms.entity.validation.Url;
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
+import javax.persistence.ConstraintMode;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.validation.constraints.Size;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -18,20 +21,19 @@ public class Video extends Product {
 
     private static final long serialVersionUID = -1171685629743520442L;
 
-    @Url
-    @Size(max = 500)
-    @Column(name = "REVIEW_URL", length = 500)
-    protected String videoUrl;
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "MAIN_FILEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    protected FileEntry videoFile = new FileEntry();
 
     public Video() {
     }
 
-    public String getVideoUrl() {
-        return videoUrl;
+    public FileEntry getVideoFile() {
+        return videoFile;
     }
 
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
+    public void setVideoFile(FileEntry videoFile) {
+        this.videoFile = videoFile;
     }
 
 }

@@ -42,7 +42,7 @@ public abstract class Product extends BaseEntity {
 
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name = "THUMBNAIL_FILEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    protected FileEntry thumbFile;
+    protected FileEntry thumbFile = new FileEntry();
 
     @NotNull
     @Size(max = 250)
@@ -85,7 +85,6 @@ public abstract class Product extends BaseEntity {
     protected Category category;
 
     public Product() {
-        thumbFile = new FileEntry();
     }
 
     public String getCode() {

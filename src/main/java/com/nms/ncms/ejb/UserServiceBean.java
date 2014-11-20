@@ -26,7 +26,7 @@ import javax.persistence.criteria.Root;
 public class UserServiceBean extends AbstractFacadeBean<User> implements UserService {
 
     private static final long serialVersionUID = 1508900539829327598L;
-    private static final Logger LOG = Logger.getLogger(UserService.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(UserService.class.getName());
 
     public UserServiceBean() {
         super(User.class);
@@ -101,7 +101,7 @@ public class UserServiceBean extends AbstractFacadeBean<User> implements UserSer
             query.setParameter("code", code);
             return query.getSingleResult();
         } catch (NoResultException e) {
-            LOG.log(Level.WARNING, e.toString(), e);
+            LOGGER.log(Level.WARNING, e.toString(), e);
             return null;
         } catch (NonUniqueResultException e) {
             throw new AppException(ErrorInfo.UNIQUE_CONSTRAINT_ERROR, "Has more than one records existing with code =" + code, e);
@@ -115,7 +115,7 @@ public class UserServiceBean extends AbstractFacadeBean<User> implements UserSer
             query.setParameter("email", email);
             return query.getSingleResult();
         } catch (NoResultException e) {
-            LOG.log(Level.WARNING, e.toString(), e);
+            LOGGER.log(Level.WARNING, e.toString(), e);
             return null;
         } catch (NonUniqueResultException e) {
             throw new AppException(ErrorInfo.UNIQUE_CONSTRAINT_ERROR, "Has more than one records existing with email =" + email, e);
@@ -129,7 +129,7 @@ public class UserServiceBean extends AbstractFacadeBean<User> implements UserSer
             query.setParameter("username", username);
             return query.getSingleResult();
         } catch (NoResultException e) {
-            LOG.log(Level.WARNING, e.toString(), e);
+            LOGGER.log(Level.WARNING, e.toString(), e);
             return null;
         } catch (NonUniqueResultException e) {
             throw new AppException(ErrorInfo.UNIQUE_CONSTRAINT_ERROR, "Has more than one records existing with username =" + username, e);
@@ -144,7 +144,7 @@ public class UserServiceBean extends AbstractFacadeBean<User> implements UserSer
             query.setParameter("password", StringUtil.digest("SHA-256", password));
             return query.getSingleResult();
         } catch (NoResultException e) {
-            LOG.log(Level.WARNING, e.toString(), e);
+            LOGGER.log(Level.WARNING, e.toString(), e);
             return null;
         } catch (NonUniqueResultException e) {
             throw new AppException(ErrorInfo.UNIQUE_CONSTRAINT_ERROR, "Has more than one records existing with username ="
@@ -157,31 +157,36 @@ public class UserServiceBean extends AbstractFacadeBean<User> implements UserSer
         Predicate predicate = null;
         switch (entry.getKey()) {
             case "username":
-                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase()  + "%");
+                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase() + "%");
                 break;
             case "fullname":
-                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase()  + "%");
+                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase() + "%");
                 break;
             case "email":
-                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase()  + "%");
+                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase() + "%");
                 break;
             case "groups":
                 if (entry.getValue() != null) {
                     Object[] groups = (Object[]) entry.getValue();
                     Predicate[] predicates = new Predicate[groups.length];
                     for (int i = 0; i < groups.length; i++) {
-                        predicates[i] = cb.isMember((User.Group)groups[i], root.get(entry.getKey()));
+                        predicates[i] = cb.isMember((User.Group) groups[i], root.get(entry.getKey()));
                     }
                     predicate = cb.or(predicates);
                 }
                 break;
             case "description":
-                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase()  + "%");
+                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase() + "%");
                 break;
             case "code":
-                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase()  + "%");
+                predicate = cb.like(cb.upper(root.get(entry.getKey())), "%" + entry.getValue().toString().toUpperCase() + "%");
                 break;
         }
         return predicate;
+    }
+
+    @Override
+    protected Logger getLogger() {
+        return LOGGER;
     }
 }

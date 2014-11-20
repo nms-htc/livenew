@@ -5,9 +5,15 @@
 package com.nms.ncms.entity;
 
 import com.nms.ncms.entity.validation.Url;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -18,20 +24,19 @@ public class Picture extends Product {
 
     private static final long serialVersionUID = 496486137872024515L;
     
-    @Url
-    @Size(max = 500)
-    @Column(name="REVIEW_URL", length = 500)
-    protected String reviewUrl;
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "MAIN_FILEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    protected FileEntry pictureFile = new FileEntry();
     
     public Picture() {
     }
 
-    public String getReviewUrl() {
-        return reviewUrl;
+    public FileEntry getPictureFile() {
+        return pictureFile;
     }
 
-    public void setReviewUrl(String reviewUrl) {
-        this.reviewUrl = reviewUrl;
+    public void setPictureFile(FileEntry pictureFile) {
+        this.pictureFile = pictureFile;
     }
-    
+
 }

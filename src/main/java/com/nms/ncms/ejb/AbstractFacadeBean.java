@@ -9,6 +9,7 @@ import com.nms.ncms.service.entity.BaseService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -177,4 +178,6 @@ public abstract class AbstractFacadeBean<T extends BaseEntity> implements BaseSe
         }
         return orders.toArray(new Order[]{});
     }
+    
+    protected abstract Logger getLogger();
 }

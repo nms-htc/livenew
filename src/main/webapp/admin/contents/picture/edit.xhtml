@@ -19,6 +19,33 @@
             <p:messages globalOnly="true" closable="true"/>
             <p:panelGrid>
                 <p:row>
+                    <p:row>
+                        <p:column>
+                            <h:outputText value="#{msg['product.thumbImage']}"/> <br/>
+                            <label>
+                                <h:selectBooleanCheckbox value="#{pictureBean.current.thumbFile.upload}">
+                                    <f:ajax execute="@this" render="thumbFileInputColumn"/>
+                                </h:selectBooleanCheckbox>#{msg['fileEntry.upload']}
+                            </label>
+                        </p:column>
+                        <p:column>
+                            <h:panelGroup id="thumbFileInputColumn">
+                                <p:fileUpload fileUploadListener="#{pictureBean.handleThumbnailUpload}" 
+                                              mode="advanced" 
+                                              multiple="false"
+                                              update="thumbPicture"
+                                              previewWidth="30"
+                                              rendered="#{pictureBean.current.thumbFile.upload}"/>
+                                <p:inputText value="#{pictureBean.current.thumbFile.url}"
+                                             rendered="#{!pictureBean.current.thumbFile.upload}"
+                                             size="40"/>
+                            </h:panelGroup>
+                        </p:column>
+                        <p:column colspan="2">
+                            <h:outputText id="thumbPicture" 
+                                          value="#{pictureBean.current.thumbFile.upload ? pictureBean.current.thumbFile.title : ''}"/>
+                        </p:column>
+                    </p:row>
                     <p:column><p:outputLabel for="code" value="#{msg['product.code']}"/></p:column>
                     <p:column>
                         <p:inputText id="code" value="#{pictureBean.current.code}" disabled="#{mode == 'edit'}"/>

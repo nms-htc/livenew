@@ -19,6 +19,33 @@
             <p:messages globalOnly="true" closable="true"/>
             <p:panelGrid>
                 <p:row>
+                    <p:column>
+                        <h:outputText value="#{msg['product.thumbImage']}"/> <br/>
+                        <label>
+                            <h:selectBooleanCheckbox value="#{videoBean.current.thumbFile.upload}">
+                                <f:ajax execute="@this" render="thumbFileInputColumn"/>
+                            </h:selectBooleanCheckbox>#{msg['fileEntry.upload']}
+                        </label>
+                    </p:column>
+                    <p:column>
+                        <h:panelGroup id="thumbFileInputColumn">
+                            <p:fileUpload fileUploadListener="#{videoBean.handleThumbnailUpload}" 
+                                          mode="advanced" 
+                                          multiple="false"
+                                          update="thumbPicture"
+                                          previewWidth="30"
+                                          rendered="#{videoBean.current.thumbFile.upload}"/>
+                            <p:inputText value="#{videoBean.current.thumbFile.url}"
+                                         rendered="#{!videoBean.current.thumbFile.upload}"
+                                         size="40"/>
+                        </h:panelGroup>
+                    </p:column>
+                    <p:column colspan="2">
+                        <h:outputText id="thumbPicture" 
+                                      value="#{videoBean.current.thumbFile.upload ? videoBean.current.thumbFile.title : ''}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
                     <p:column><p:outputLabel for="code" value="#{msg['product.code']}"/></p:column>
                     <p:column>
                         <p:inputText id="code" value="#{videoBean.current.code}" disabled="#{mode == 'edit'}"/>
@@ -45,23 +72,7 @@
                         <p:message for="category"/>
                     </p:column>
                 </p:row>
-
-                <p:row>
-                    <p:column><p:outputLabel for="thumbnailUrl" value="#{msg['product.thumbnailUrl']}"/></p:column>
-                    <p:column colspan="3">
-                        <p:inputText id="thumbnailUrl" value="#{videoBean.current.thumbnailUrl}" size="80"/>
-                        <p:message for="thumbnailUrl"/>
-                    </p:column>
-                </p:row>
                 
-                <p:row>
-                    <p:column><p:outputLabel for="videoUrl" value="#{msg['video.videoUrl']}"/></p:column>
-                    <p:column colspan="3">
-                        <p:inputText id="videoUrl" value="#{videoBean.current.videoUrl}" size="80"/>
-                        <p:message for="videoUrl"/>
-                    </p:column>
-                </p:row>
-
             </p:panelGrid>
             <p:separator/>
             <p:commandButton value="#{msg['create']}"

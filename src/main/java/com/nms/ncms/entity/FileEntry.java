@@ -1,5 +1,7 @@
 package com.nms.ncms.entity;
 
+import com.nms.ncms.entity.validation.Url;
+import java.io.InputStream;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrePersist;
@@ -34,6 +36,7 @@ public class FileEntry extends BaseEntity {
     @Column(name = "FILEPATH", length = 250)
     protected String filePath;
 
+    @Url
     @Column(name = "URL", length = 250)
     protected String url;
 
@@ -42,7 +45,7 @@ public class FileEntry extends BaseEntity {
 
     @Transient
     @XmlTransient
-    protected UploadedFile file;
+    protected InputStream inputStream;
 
     public FileEntry() {
     }
@@ -79,14 +82,6 @@ public class FileEntry extends BaseEntity {
         this.filePath = filePath;
     }
 
-    public UploadedFile getFile() {
-        return file;
-    }
-
-    public void setFile(UploadedFile file) {
-        this.file = file;
-    }
-
     public boolean isUpload() {
         return upload;
     }
@@ -109,12 +104,20 @@ public class FileEntry extends BaseEntity {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
     
     public boolean isHasFile() {
         if (upload) {
-            return file != null;
+            return inputStream != null;
         } else {
-            return title != null && !"".equals(title);
+            return title != null && !"".equals(url.trim());
         }
     }
 
@@ -124,13 +127,4 @@ public class FileEntry extends BaseEntity {
                 + ", fileSize=" + fileSize + ", filePath=" + filePath + '}';
     }
     
-    @PrePersist
-    @PreUpdate
-    public void fillInfo() {
-        if (upload && file != null) {
-            this.contentType = file.getContentType();
-            this.fileSize = file.getSize();
-            this.title = file.getFileName();
-        }
-    }
 }

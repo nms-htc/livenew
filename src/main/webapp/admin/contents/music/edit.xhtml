@@ -19,6 +19,33 @@
             <p:messages globalOnly="true" closable="true"/>
             <p:panelGrid>
                 <p:row>
+                    <p:column>
+                        <h:outputText value="#{msg['product.thumbImage']}"/> <br/>
+                        <label>
+                            <h:selectBooleanCheckbox value="#{musicBean.current.thumbFile.upload}">
+                                <f:ajax execute="@this" render="thumbFileInputColumn"/>
+                            </h:selectBooleanCheckbox>#{msg['fileEntry.upload']}
+                        </label>
+                    </p:column>
+                    <p:column>
+                        <h:panelGroup id="thumbFileInputColumn">
+                            <p:fileUpload fileUploadListener="#{musicBean.handleThumbnailUpload}" 
+                                          mode="advanced" 
+                                          multiple="false"
+                                          update="thumbPicture"
+                                          previewWidth="30"
+                                          rendered="#{musicBean.current.thumbFile.upload}"/>
+                            <p:inputText value="#{musicBean.current.thumbFile.url}"
+                                         rendered="#{!musicBean.current.thumbFile.upload}"
+                                         size="40"/>
+                        </h:panelGroup>
+                    </p:column>
+                    <p:column colspan="2">
+                        <h:outputText id="thumbPicture" 
+                                      value="#{musicBean.current.thumbFile.upload ? musicBean.current.thumbFile.title : ''}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
                     <p:column><p:outputLabel for="code" value="#{msg['product.code']}"/></p:column>
                     <p:column>
                         <p:inputText id="code" value="#{musicBean.current.code}" disabled="#{mode == 'edit'}"/>

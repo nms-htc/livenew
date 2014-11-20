@@ -5,7 +5,6 @@
 package com.nms.ncms.entity;
 
 import com.nms.ncms.web.util.MessageUtil;
-import java.io.File;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
@@ -54,7 +53,7 @@ public class Game extends Product {
 
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name = "MAIN_FILEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    protected FileEntry gameFile;
+    protected FileEntry gameFile = new FileEntry();
 
     @Size(max = 2000)
     @Column(name = "DEVICES_SUPPORT", length = 2000)
@@ -63,6 +62,9 @@ public class Game extends Product {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "FLATFORM")
     private Flatform flatform;
+
+    public Game() {
+    }
 
     public String getDevicesSupport() {
         return devicesSupport;

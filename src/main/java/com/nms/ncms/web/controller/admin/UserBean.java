@@ -10,6 +10,7 @@ import com.nms.ncms.service.entity.UserService;
 import com.nms.ncms.web.util.JsfUtil;
 import com.nms.ncms.web.util.MessageUtil;
 import java.util.Arrays;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -19,6 +20,7 @@ import javax.inject.Named;
 public class UserBean extends AbstractManagedBean<User> {
 
     private static final long serialVersionUID = 1335928742902659838L;
+    private static final Logger LOGGER = Logger.getLogger(UserBean.class.getName());
 
     @EJB
     private UserService userService;
@@ -38,7 +40,7 @@ public class UserBean extends AbstractManagedBean<User> {
             userService.updatePassword(u);
         }, current, MessageUtil.REQUEST_SUCCESS_MESSAGE, MessageUtil.REQUEST_FAIL_MESSAGE);
     }
-    
+
     public String saveSystemUser() {
         try {
             current.setGroups(Arrays.asList(User.Group.Admin));
@@ -53,5 +55,10 @@ public class UserBean extends AbstractManagedBean<User> {
 
     public User.Group[] getUserGroups() {
         return User.Group.values();
+    }
+
+    @Override
+    protected Logger getLogger() {
+        return LOGGER;
     }
 }

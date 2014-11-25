@@ -91,7 +91,7 @@
     </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>
-        <realm-name>eip-realm</realm-name>
+        <realm-name>ncmsRealm</realm-name>
         <form-login-config>
             <form-login-page>/admin/login.xhtml</form-login-page>
             <form-error-page>/admin/login.xhtml</form-error-page>

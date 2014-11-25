@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <f:facet name="first">
             <meta charset="utf-8"/>
@@ -37,6 +38,26 @@
         </f:facet>
     </h:head>
     <h:body>
+        <div id="header-wrapper">
+            <header></header>
+            <nav></nav>
+        </div>
+        
+        <section class="container">
+            <section class="feather">
+                
+            </section>
+            <aside class="sidebar-a">
+                <nav class="accordion-menu">
+                    
+                </nav>
+            </aside>
+        </section>
+        
+        <footer id="footer" class="container">
+            
+        </footer>
+        
         <div class="container">
             <ui:include src="header.xhtml"/>
             <ui:include src="mainNav.xhtml"/>

@@ -6,7 +6,7 @@
     <ui:define name="main-content">
         <ui:include src="include/carousel.xhtml"/>
         
-        <ui:include src="include/product_tabbed.xhtml">
+<!--        <ui:include src="include/product_tabbed.xhtml">
             <ui:param name="tabbedTitle" value="#{msg['panel.product.hot']}"/>
             <ui:param name="tabbedName" value="productHots"/>
             
@@ -15,9 +15,9 @@
             <ui:param name="pictureEntities" value="#{pictureController.hots}"/>
             <ui:param name="videoEntities" value="#{videoController.hots}"/>
             <ui:param name="postEntities" value="#{postController.hots}"/>
-        </ui:include>
+        </ui:include>-->
         
-        <ui:include src="include/product_tabbed.xhtml">
+<!--        <ui:include src="include/product_tabbed.xhtml">
             <ui:param name="tabbedTitle" value="#{msg['panel.product.new']}"/>
             <ui:param name="tabbedName" value="productNews"/>
             
@@ -26,7 +26,7 @@
             <ui:param name="pictureEntities" value="#{pictureController.news}"/>
             <ui:param name="videoEntities" value="#{videoController.news}"/>
             <ui:param name="postEntities" value="#{postController.news}"/>
-        </ui:include>
+        </ui:include>-->
         
     </ui:define>
 </ui:composition>

@@ -38,21 +38,25 @@
             <ui:include src="header.xhtml"/>
             <ui:include src="main-nav.xhtml"/>
         </div>
-
+        
         <section id="main-content" class="container">
-            <section class="feather">
-
-            </section>
-            <aside class="sidebar-a">
-                <nav class="accordion-menu">
-
-                </nav>
-            </aside>
+            <div class="row">
+                <div class="col-lg-9">
+                    <ui:insert name="main-content"/>
+                </div>
+                
+                <aside class="col-lg-3">
+                    <nav class="cat-nav">
+                        <ui:include src="product-categories.xhtml"/>
+                    </nav>
+                    <ui:insert name="sidebar">
+                    </ui:insert>
+                </aside>
+            </div>
         </section>
 
-        <footer id="footer" class="container">
-
-        </footer>
+        <!-- footer -->
+        <ui:include src="footer.xhtml"/>
 
         <!-- jQuery -->
         <h:outputScript library="js" name="jquery.min.js"/>

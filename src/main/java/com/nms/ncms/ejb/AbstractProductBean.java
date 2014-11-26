@@ -273,27 +273,4 @@ public abstract class AbstractProductBean<C extends Category, P extends Product>
         }
     }
 
-    // save file after update or persist
-    protected void saveFile(FileEntry file) throws IOException {
-        if (file.isHasFile()) {
-            if (file.isUpload()) {
-                // fill metadata
-                file.setFilePath(file.getId() + File.separator + file.getTitle());
-                em.merge(file);
-                // delete old file
-                FileUtils.deleteQuietly(new File(AppConfig.getFileStorePath() + file.getId()));
-                // save file
-                FileUtils.copyInputStreamToFile(file.getInputStream(), new File(AppConfig.getFileStorePath() + file.getFilePath()));
-            } else {
-                // fill metadata
-                file.setTitle(null);
-                file.setContentType(null);
-                file.setFileSize(0);
-                file.setFilePath(null);
-                em.merge(file);
-                // delete file if exist
-                FileUtils.deleteQuietly(new File(AppConfig.getFileStorePath() + file.getId()));
-            }
-        }
-    }
 }

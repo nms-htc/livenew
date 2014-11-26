@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html"
+              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+              xmlns:p="http://primefaces.org/ui"
+              xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <p:dialog 
+        id="#{mode}Dl"
+        widgetVar="#{mode}Dl"
+        modal="true"
+        closeOnEscape="true">
+        <h:form>
+            <p:messages globalOnly="true" closable="true"/>
+            <p:panelGrid>
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for="title" value="#{msg['product.title']}"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="title" value="#{slideContentBean.current.title}"/>
+                    </p:column>
+                    <p:column>
+                        <p:message for="title"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for="position" value="#{msg['slide-content.position']}"/>
+
+                    </p:column>
+                    <p:column>
+                        <p:spinner id="position" value="#{slideContentBean.current.position}"/>
+
+                    </p:column>
+                    <p:column>
+                        <p:message for="position"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for="url" value="#{msg['slide-content.url']}"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputText id="url" value="#{slideContentBean.current.url}"/>
+                    </p:column>
+                    <p:column>
+                        <p:message for="url"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for="description" value="#{msg['description']}"/>
+                    </p:column>
+                    <p:column>
+                        <p:inputTextarea id="description" cols="33" rows="4" value="#{slideContentBean.current.description}"/>
+                    </p:column>
+                    <p:column>
+                        <p:message for="description"/>
+                    </p:column>
+                </p:row>
+
+                <p:row>
+                    <p:column>
+                        <h:outputText value="#{msg['slide-content.image']}"/> <br/>
+                        <label>
+                            <h:selectBooleanCheckbox value="#{slideContentBean.current.image.upload}">
+                                <f:ajax execute="@this" render="imageFileInputColumn"/>
+                            </h:selectBooleanCheckbox>#{msg['fileEntry.upload']}
+                        </label>
+                    </p:column>
+                    <p:column>
+                        <h:panelGroup id="imageFileInputColumn">
+                            <p:fileUpload fileUploadListener="#{slideContentBean.handleImageUpload}" 
+                                          mode="advanced" 
+                                          multiple="false"
+                                          update="thumbPicture"
+                                          previewWidth="30"
+                                          rendered="#{slideContentBean.current.image.upload}"/>
+                            <p:inputText value="#{slideContentBean.current.image.url}"
+                                         rendered="#{!slideContentBean.current.image.upload}"
+                                         size="40"/>
+                        </h:panelGroup>
+                    </p:column>
+                    <p:column colspan="2">
+                        <h:outputText id="thumbPicture" 
+                                      value="#{slideContentBean.current.image.upload ? slideContentBean.current.image.title : ''}"/>
+                    </p:column>
+                </p:row>
+
+            </p:panelGrid>
+            <p:separator/>
+            <p:commandButton value="#{msg['create']}"
+                             validateClient="true"
+                             update="@form"
+                             actionListener="#{slideContentBean.persist()}"
+                             icon="ui-icon-disk"
+                             rendered="#{mode == 'create'}"/>
+            <p:commandButton value="#{msg['update']}"
+                             validateClient="true"
+                             update="@form"
+                             actionListener="#{slideContentBean.update()}"
+                             icon="ui-icon-disk"
+                             rendered="#{mode == 'edit'}"/>
+            <p:commandButton value="#{msg['cancel']}"
+                             type="button"
+                             onclick="PF('#{mode}Dl').hide();"
+                             icon="ui-icon-close"/>
+        </h:form>
+    </p:dialog>
+</ui:component>
+

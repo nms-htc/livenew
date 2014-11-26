@@ -3,17 +3,21 @@
 <ui:fragment xmlns="http://www.w3.org/1999/xhtml"
              xmlns:h="http://xmlns.jcp.org/jsf/html"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <header id="header">
-        <div class="row">
-            <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-                <h:link outcome="/index.xhtml" value="">
-                    <h:graphicImage library="image" name="logo.png" styleClass="img-responsive"/>
-                </h:link>
-            </div>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="social-icons col-xs-12 col-md-3">
+                    <a href="" class="facebook"><span class="fa fa-facebook-square"></span></a>
+                    <a href="" class="twitter"><span class="fa fa-twitter-square"></span></a>
+                    <a href="" class="linkedin"><span class="fa fa-linkedin-square"></span></a>
+                </div>
 
-            <div class="col-xs-8 col-sm-9 col-md-9 col-lg-9 greeting">
-                
-                <span>#{msg['header.greeting']}<span>#{mobileChecker.phoneNumber == null ? msg['header.guest'] : mobileChecker.phoneNumber}</span></span>
+                <div class="col-xs-12 col-md-9">
+                    <form class="search-box pull-right">
+                        <input type="search" placeholder="Tim kiem ..."/>
+                        <input type="submit" value="Tim kiem"/>
+                    </form>
+                </div>
             </div>
         </div>
     </header>

@@ -2,15 +2,14 @@ package com.nms.ncms.entity;
 
 import com.nms.ncms.entity.validation.Url;
 import java.io.InputStream;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-import org.primefaces.model.UploadedFile;
 
 /**
  * @author Nguyen Trong Cuong
@@ -91,10 +90,25 @@ public class FileEntry extends BaseEntity {
     }
 
     public String getURL() {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         if (isUpload()) {
-            return null;
+            return externalContext.getRequestScheme() + "://"
+                    + externalContext.getRequestServerName() + ":"
+                    + externalContext.getRequestServerPort()
+                    + externalContext.getRequestContextPath() + "/file?id=" + id;
         }
-        return title;
+        return url;
+    }
+
+    public String getDownloadURL() {
+        if (this.isUpload()) {
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            return externalContext.getRequestScheme()
+                    + "://" + externalContext.getRequestServerName()
+                    + ":" + externalContext.getRequestServerPort()
+                    + externalContext.getRequestContextPath() + "/file?id=" + id + "&act=1";
+        }
+        return null;
     }
 
     public String getUrl() {
@@ -112,7 +126,7 @@ public class FileEntry extends BaseEntity {
     public void setInputStream(InputStream inputStream) {
         this.inputStream = inputStream;
     }
-    
+
     public boolean isHasFile() {
         if (upload) {
             return inputStream != null;
@@ -126,5 +140,5 @@ public class FileEntry extends BaseEntity {
         return "File{" + "title=" + title + ", contentType=" + contentType
                 + ", fileSize=" + fileSize + ", filePath=" + filePath + '}';
     }
-    
+
 }

@@ -5,7 +5,11 @@
 package com.nms.ncms.ejb;
 
 import com.nms.ncms.entity.BaseEntity;
+import com.nms.ncms.entity.FileEntry;
 import com.nms.ncms.service.entity.BaseService;
+import com.nms.ncms.web.util.AppConfig;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +22,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.apache.commons.io.FileUtils;
 
 public abstract class AbstractFacadeBean<T extends BaseEntity> implements BaseService<T> {
 
@@ -177,6 +182,30 @@ public abstract class AbstractFacadeBean<T extends BaseEntity> implements BaseSe
             }
         }
         return orders.toArray(new Order[]{});
+    }
+    
+    // save file after update or persist
+    protected void saveFile(FileEntry file) throws IOException {
+        if (file.isHasFile()) {
+            if (file.isUpload()) {
+                // fill metadata
+                file.setFilePath(file.getId() + File.separator + file.getTitle());
+                em.merge(file);
+                // delete old file
+                FileUtils.deleteQuietly(new File(AppConfig.getFileStorePath() + file.getId()));
+                // save file
+                FileUtils.copyInputStreamToFile(file.getInputStream(), new File(AppConfig.getFileStorePath() + file.getFilePath()));
+            } else {
+                // fill metadata
+                file.setTitle(null);
+                file.setContentType(null);
+                file.setFileSize(0);
+                file.setFilePath(null);
+                em.merge(file);
+                // delete file if exist
+                FileUtils.deleteQuietly(new File(AppConfig.getFileStorePath() + file.getId()));
+            }
+        }
     }
     
     protected abstract Logger getLogger();

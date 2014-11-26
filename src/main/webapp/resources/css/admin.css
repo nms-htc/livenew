@@ -1,10 +1,3 @@
-/**
- * Copyright (C) 2014 Next Generation Mobile Service JSC., (NMS).
- * All rights reserved.
- * Created on : Oct 24, 2014, 1:43:10 PM
- * Author     : CuongNT
-*/
-/*Primefaces stylesheet*/
 .ui-widget {
   font-family: 'Open Sans', sans-serif;
   font-size: 13px !important; }
@@ -55,5 +48,3 @@ div#header {
       font-weight: bold; }
       div#header .greeting span span {
         color: #f60000; }
-
-/*# sourceMappingURL=admin.css.map */

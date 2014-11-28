@@ -5,28 +5,59 @@
                 template="/template/wap/main.xhtml">
     <ui:define name="main-content">
         <ui:include src="include/carousel.xhtml"/>
+
+        <section class="list-product">
+            <h2 class="center-block">Mới nhất</h2>
+            <ul id="myTab" class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a href="#home" data-toggle="tab">
+                        Video clip
+                    </a>
+                </li>
+                <li><a href="#ios" data-toggle="tab">Am nhac - sang tao</a></li>
+               
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <p>Tutorials Point is a place for beginners in all technical areas. 
+                        This website covers most of the latest technoligies and explains 
+                        each of the technology with simple examples. You also have a 
+                        <b>tryit</b> editor, wherein you can edit your code and 
+                        try out different possibilities of the examples.</p>
+                </div>
+                <div class="tab-pane fade" id="ios">
+                    <p>iOS is a mobile operating system developed and distributed by Apple 
+                        Inc. Originally released in 2007 for the iPhone, iPod Touch, and 
+                        Apple TV. iOS is derived from OS X, with which it shares the 
+                        Darwin foundation. iOS is Apple's mobile version of the 
+                        OS X operating system used on Apple computers.</p>
+                </div>
+                    
+            </div>
+        </section>
         
-<!--        <ui:include src="include/product_tabbed.xhtml">
-            <ui:param name="tabbedTitle" value="#{msg['panel.product.hot']}"/>
-            <ui:param name="tabbedName" value="productHots"/>
-            
-            <ui:param name="gameEntities" value="#{gameController.hots}"/>
-            <ui:param name="musicEntities" value="#{musicController.hots}"/>
-            <ui:param name="pictureEntities" value="#{pictureController.hots}"/>
-            <ui:param name="videoEntities" value="#{videoController.hots}"/>
-            <ui:param name="postEntities" value="#{postController.hots}"/>
-        </ui:include>-->
-        
-<!--        <ui:include src="include/product_tabbed.xhtml">
-            <ui:param name="tabbedTitle" value="#{msg['panel.product.new']}"/>
-            <ui:param name="tabbedName" value="productNews"/>
-            
-            <ui:param name="gameEntities" value="#{gameController.news}"/>
-            <ui:param name="musicEntities" value="#{musicController.news}"/>
-            <ui:param name="pictureEntities" value="#{pictureController.news}"/>
-            <ui:param name="videoEntities" value="#{videoController.news}"/>
-            <ui:param name="postEntities" value="#{postController.news}"/>
-        </ui:include>-->
-        
+
+        <!--        <ui:include src="include/product_tabbed.xhtml">
+                    <ui:param name="tabbedTitle" value="#{msg['panel.product.hot']}"/>
+                    <ui:param name="tabbedName" value="productHots"/>
+                    <ui:param name="gameEntities" value="#{gameController.hots}"/>
+                    <ui:param name="musicEntities" value="#{musicController.hots}"/>
+                    <ui:param name="pictureEntities" value="#{pictureController.hots}"/>
+                    <ui:param name="videoEntities" value="#{videoController.hots}"/>
+                    <ui:param name="postEntities" value="#{postController.hots}"/>
+                    
+                </ui:include>-->
+
+        <!--        <ui:include src="include/product_tabbed.xhtml">
+                    <ui:param name="tabbedTitle" value="#{msg['panel.product.new']}"/>
+                    <ui:param name="tabbedName" value="productNews"/>
+                    
+                    <ui:param name="gameEntities" value="#{gameController.news}"/>
+                    <ui:param name="musicEntities" value="#{musicController.news}"/>
+                    <ui:param name="pictureEntities" value="#{pictureController.news}"/>
+                    <ui:param name="videoEntities" value="#{videoController.news}"/>
+                    <ui:param name="postEntities" value="#{postController.news}"/>
+                </ui:include>-->
+
     </ui:define>
 </ui:composition>

@@ -47,7 +47,7 @@
                              paginatorPosition="bottom">
 
                     <p:column width="50">
-                        <p:graphicImage url="#{video.thumbnailUrl}" alt="#{video.title}" width="50" height="50"/>
+                        <p:graphicImage url="#{video.thumbFile.URL}" rendered="${video.thumbFile != null}" height="40" width="40"/>
                     </p:column>
 
                     <p:column headerText="#{msg['title']}" 

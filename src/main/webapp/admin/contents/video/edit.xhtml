@@ -33,6 +33,8 @@
                                           mode="advanced" 
                                           multiple="false"
                                           update="thumbPicture"
+                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                          sizeLimit="100000"
                                           previewWidth="30"
                                           rendered="#{videoBean.current.thumbFile.upload}"/>
                             <p:inputText value="#{videoBean.current.thumbFile.url}"
@@ -43,6 +45,34 @@
                     <p:column colspan="2">
                         <h:outputText id="thumbPicture" 
                                       value="#{videoBean.current.thumbFile.upload ? videoBean.current.thumbFile.title : ''}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="#{msg['video.videoFile']}"/> <br/>
+                        <label>
+                            <h:selectBooleanCheckbox value="#{videoBean.current.videoFile.upload}">
+                                <f:ajax execute="@this" render="videoFileInputColumn"/>
+                            </h:selectBooleanCheckbox>#{msg['fileEntry.upload']}
+                        </label>
+                    </p:column>
+                    <p:column>
+                        <h:panelGroup id="videoFileInputColumn">
+                            <p:fileUpload fileUploadListener="#{videoBean.handleContentUpload}" 
+                                          mode="advanced" 
+                                          multiple="false"
+                                          update="videoFileName"
+                                          allowTypes="/(\.|\/)(flv|mp4)$/"
+                                          previewWidth="30"
+                                          rendered="#{videoBean.current.videoFile.upload}"/>
+                            <p:inputText value="#{videoBean.current.videoFile.url}"
+                                         rendered="#{!videoBean.current.videoFile.upload}"
+                                         size="40"/>
+                        </h:panelGroup>
+                    </p:column>
+                    <p:column colspan="2">
+                        <h:outputText id="videoFileName" 
+                                      value="#{videoBean.current.videoFile.upload ? videoBean.current.videoFile.title : ''}"/>
                     </p:column>
                 </p:row>
                 <p:row>

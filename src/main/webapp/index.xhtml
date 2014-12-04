@@ -2,40 +2,129 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                template="/template/wap/main.xhtml">
+                template="/template/wap/main.xhtml"
+                xmlns:ncms="http://xmlns.jcp.org/jsf/composite/ncms"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:jsf="http://xmlns.jcp.org/jsf ">
     <ui:define name="main-content">
         <ui:include src="include/carousel.xhtml"/>
 
-        <section class="list-product">
-            <h2 class="center-block">Mới nhất</h2>
-            <ul id="myTab" class="nav nav-tabs nav-justified">
-                <li class="active">
-                    <a href="#home" data-toggle="tab">
-                        Video clip
-                    </a>
-                </li>
-                <li><a href="#ios" data-toggle="tab">Am nhac - sang tao</a></li>
-               
-            </ul>
-            <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade in active" id="home">
-                    <p>Tutorials Point is a place for beginners in all technical areas. 
-                        This website covers most of the latest technoligies and explains 
-                        each of the technology with simple examples. You also have a 
-                        <b>tryit</b> editor, wherein you can edit your code and 
-                        try out different possibilities of the examples.</p>
-                </div>
-                <div class="tab-pane fade" id="ios">
-                    <p>iOS is a mobile operating system developed and distributed by Apple 
-                        Inc. Originally released in 2007 for the iPhone, iPod Touch, and 
-                        Apple TV. iOS is derived from OS X, with which it shares the 
-                        Darwin foundation. iOS is Apple's mobile version of the 
-                        OS X operating system used on Apple computers.</p>
-                </div>
-                    
-            </div>
-        </section>
+        <ui:decorate template="include/bs_tab.xhtml">
+            <ui:param name="tab_id" value="hotProduct"/>
+
+            <ui:define name="tabTitle">Hot nhat</ui:define>
+
+            <ui:define name="tabLabels">
+                <ncms:bs_tab_label for="hotVideo" active="true">Video</ncms:bs_tab_label>
+
+                <ncms:bs_tab_label for="hotMusic">Music</ncms:bs_tab_label>
+
+                <ncms:bs_tab_label for="hotPicture">Picture</ncms:bs_tab_label>
+            </ui:define>
+
+            <ui:define name="tabContents">
+                <ncms:bs_tab_content id="hotVideo" active="true">
+                    <div class="row">
+                        <ui:repeat value="#{videoController.hots}" var="video">
+                            <div class="col-xs-6 col-sm-3 col-lg-3 ">
+                                <div class="product-item video">
+                                    <h:link outcome="/video.xhtml?id=${video.id}"><h:graphicImage alt="#{video.title}" url="#{video.thumbFile.URL}" styleClass="img-responsive"/></h:link>
+                                    <p><h:link outcome="/video.xhtml?id=${video.id}">#{video.title}</h:link></p>
+                                    <p class="meta">#{video.viewCount} luot xem - #{video.downloadCount} luot tai</p>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </ncms:bs_tab_content>
+
+                <ncms:bs_tab_content id="hotMusic">
+                    <div class="row">
+                        <ui:repeat value="#{videoController.hots}" var="video">
+                            <div class="col-xs-6 col-sm-3 col-lg-3 ">
+                                <div class="product-item video">
+                                    <h:link outcome="/video.xhtml?id=${video.id}"><h:graphicImage alt="#{video.title}" url="#{video.thumbFile.URL}" styleClass="img-responsive"/></h:link>
+                                    <p><h:link outcome="/video.xhtml?id=${video.id}">#{video.title}</h:link></p>
+                                    <p class="meta">#{video.viewCount} luot xem - #{video.downloadCount} luot tai</p>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </ncms:bs_tab_content>
+
+                <ncms:bs_tab_content id="hotPicture">
+                    <div class="row">
+                        <ui:repeat value="#{videoController.hots}" var="video">
+                            <div class="col-xs-6 col-sm-3 col-lg-3 ">
+                                <div class="product-item video">
+                                    <h:link outcome="/video.xhtml?id=${video.id}"><h:graphicImage alt="#{video.title}" url="#{video.thumbFile.URL}" styleClass="img-responsive"/></h:link>
+                                    <p><h:link outcome="/video.xhtml?id=${video.id}">#{video.title}</h:link></p>
+                                    <p class="meta">#{video.viewCount} luot xem - #{video.downloadCount} luot tai</p>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </ncms:bs_tab_content>
+            </ui:define>
+        </ui:decorate>
         
+        <ui:decorate template="include/bs_tab.xhtml">
+            <ui:param name="tab_id" value="newProduct"/>
+
+            <ui:define name="tabTitle">Moi nhat</ui:define>
+
+            <ui:define name="tabLabels">
+                <ncms:bs_tab_label for="newVideo" active="true">Video</ncms:bs_tab_label>
+
+                <ncms:bs_tab_label for="newMusic">Music</ncms:bs_tab_label>
+
+                <ncms:bs_tab_label for="newPicture">Picture</ncms:bs_tab_label>
+            </ui:define>
+
+            <ui:define name="tabContents">
+                <ncms:bs_tab_content id="newVideo" active="true">
+                    <div class="row">
+                        <ui:repeat value="#{videoController.hots}" var="video">
+                            <div class="col-xs-6 col-sm-3 col-lg-3 ">
+                                <div class="product-item video">
+                                    <h:link outcome="/video.xhtml?id=${video.id}"><h:graphicImage alt="#{video.title}" url="#{video.thumbFile.URL}" styleClass="img-responsive"/></h:link>
+                                    <p><h:link outcome="/video.xhtml?id=${video.id}">#{video.title}</h:link></p>
+                                    <p class="meta">#{video.viewCount} luot xem - #{video.downloadCount} luot tai</p>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </ncms:bs_tab_content>
+
+                <ncms:bs_tab_content id="newMusic">
+                    <div class="row">
+                        <ui:repeat value="#{videoController.hots}" var="video">
+                            <div class="col-xs-6 col-sm-3 col-lg-3 ">
+                                <div class="product-item video">
+                                    <h:link outcome="/video.xhtml?id=${video.id}"><h:graphicImage alt="#{video.title}" url="#{video.thumbFile.URL}" styleClass="img-responsive"/></h:link>
+                                    <p><h:link outcome="/video.xhtml?id=${video.id}">#{video.title}</h:link></p>
+                                    <p class="meta">#{video.viewCount} luot xem - #{video.downloadCount} luot tai</p>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </ncms:bs_tab_content>
+
+                <ncms:bs_tab_content id="newPicture">
+                    <div class="row">
+                        <ui:repeat value="#{videoController.hots}" var="video">
+                            <div class="col-xs-6 col-sm-3 col-lg-3 ">
+                                <div class="product-item video">
+                                    <h:link outcome="/video.xhtml?id=${video.id}"><h:graphicImage alt="#{video.title}" url="#{video.thumbFile.URL}" styleClass="img-responsive"/></h:link>
+                                    <p><h:link outcome="/video.xhtml?id=${video.id}">#{video.title}</h:link></p>
+                                    <p class="meta">#{video.viewCount} luot xem - #{video.downloadCount} luot tai</p>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </ncms:bs_tab_content>
+            </ui:define>
+        </ui:decorate>
+
 
         <!--        <ui:include src="include/product_tabbed.xhtml">
                     <ui:param name="tabbedTitle" value="#{msg['panel.product.hot']}"/>

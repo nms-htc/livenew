@@ -228,6 +228,7 @@ public abstract class AbstractProductBean<C extends Category, P extends Product>
     @Override
     protected void onBeforeUpdate(P entity) {
         super.onBeforeUpdate(entity);
+
         if (entity.getThumbFile() != null) {
             if (entity.getThumbFile().isHasFile()) {
                 try {
@@ -236,9 +237,6 @@ public abstract class AbstractProductBean<C extends Category, P extends Product>
                     getLogger().log(Level.SEVERE, "Error when save file to the fileStore", e);
                     throw new EJBException("product.error.thumbnail.storefile");
                 }
-            } else {
-                em.remove(entity.getThumbFile());
-                entity.setThumbFile(null);
             }
         }
     }

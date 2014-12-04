@@ -92,33 +92,33 @@ public abstract class AbstractProductController<T extends Product, C extends Cat
     }
 
     public List<T> getHots() {
-        return getProductService().findByCat(0, 5, category, "downloadCount", false);
+        return getProductService().findByCat(0, 8, category, "downloadCount", false);
     }
 
     public List<T> getTops() {
         if (tops == null) {
-            tops = getProductService().findByCat(0, 5, category, "downloadCount", false);
+            tops = getProductService().findByCat(0, 8, category, "downloadCount", false);
         }
         return tops;
     }
 
     public List<T> getNews() {
         if (news == null) {
-            news = getProductService().findByCat(0, 5, category, "createdDate", false);
+            news = getProductService().findByCat(0, 8, category, "createdDate", false);
         }
         return news;
     }
 
     public List<T> getFrees() {
         if (frees == null) {
-            frees = getProductService().getFrees(0, 5, category, "createdDate", false);
+            frees = getProductService().getFrees(0, 8, category, "createdDate", false);
         }
         return frees;
     }
 
     public List<T> getPromos() {
         if (promos == null) {
-            promos = getProductService().getPromotions(0, 5, category, "createdDate", false);
+            promos = getProductService().getPromotions(0, 8, category, "createdDate", false);
         }
         return promos;
     }

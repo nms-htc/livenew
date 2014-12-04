@@ -30,7 +30,7 @@ public class VideoServiceBean extends AbstractProductBean<VideoCategory, Video> 
     protected Logger getLogger() {
         return LOGGER;
     }
-    
+
     @Override
     protected void onAfterPersist(Video entity) {
         super.onAfterPersist(entity);
@@ -51,11 +51,8 @@ public class VideoServiceBean extends AbstractProductBean<VideoCategory, Video> 
                     saveFile(entity.getVideoFile());
                 } catch (Exception e) {
                     getLogger().log(Level.SEVERE, "Error when save video file to the fileStore", e);
-            throw new EJBException("video.error.videoFile.storefile");
+                    throw new EJBException("video.error.videoFile.storefile");
                 }
-            } else {
-                em.remove(entity.getVideoFile());
-                entity.setVideoFile(null);
             }
         }
     }

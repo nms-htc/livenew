@@ -183,18 +183,20 @@ public abstract class AbstractFacadeBean<T extends BaseEntity> implements BaseSe
         }
         return orders.toArray(new Order[]{});
     }
-    
+
     // save file after update or persist
     protected void saveFile(FileEntry file) throws IOException {
         if (file.isHasFile()) {
             if (file.isUpload()) {
-                // fill metadata
-                file.setFilePath(file.getId() + File.separator + file.getTitle());
-                em.merge(file);
-                // delete old file
-                FileUtils.deleteQuietly(new File(AppConfig.getFileStorePath() + file.getId()));
-                // save file
-                FileUtils.copyInputStreamToFile(file.getInputStream(), new File(AppConfig.getFileStorePath() + file.getFilePath()));
+                if (file.getInputStream() != null) {
+                    // fill metadata
+                    file.setFilePath(file.getId() + File.separator + file.getTitle());
+                    em.merge(file);
+                    // delete old file
+                    FileUtils.deleteQuietly(new File(AppConfig.getFileStorePath() + file.getId()));
+                    // save file
+                    FileUtils.copyInputStreamToFile(file.getInputStream(), new File(AppConfig.getFileStorePath() + file.getFilePath()));
+                }
             } else {
                 // fill metadata
                 file.setTitle(null);
@@ -207,6 +209,6 @@ public abstract class AbstractFacadeBean<T extends BaseEntity> implements BaseSe
             }
         }
     }
-    
+
     protected abstract Logger getLogger();
 }

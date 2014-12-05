@@ -4,9 +4,7 @@
  */
 package com.nms.ncms.entity;
 
-import com.nms.ncms.entity.validation.Url;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -14,7 +12,6 @@ import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity

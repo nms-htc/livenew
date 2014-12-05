@@ -26,7 +26,8 @@
                                          immediate="true"
                                          icon="ui-icon-plus"
                                          actionListener="#{musicBean.resetEntity()}"
-                                         action="edit_music">
+                                         update=":createDl"
+                                         oncomplete="PF('createDl').show();">
                         </p:commandButton>
                     </f:facet>
                 </p:toolbar>

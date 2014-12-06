@@ -1,5 +1,15 @@
-/* Header stylesheet */
+/**
+Extra small devices (phones, less than 768px)
+@media (max-width: 768px) {}
+Small devices (tablets, 768px and up)
+@media (min-width: 769px) and (max-width: 991px) {}
+Medium devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199px) {}
+Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+**/
 
+/* Header stylesheet */
 #header-wrapper {
     background-color: #3095B2;
     border-bottom: 1px solid #206579;
@@ -29,31 +39,75 @@
     color: #3ec9f1;	
 }
 
+@media (max-width: 768px) {    
+    #header-wrapper header .social-icons a {
+        font-size: 25px;
+        line-height: 50px;
+    }
+}
+@media (min-width: 769px) and (max-width: 991px) {}
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+
+/*nav toggle*/
+
+#nav-toggle {
+    color: #FF77A0;
+    font-size: 30px;
+    line-height: 50px;
+    outline: none;
+}
 /* Search Form stylesheet */
 
-#header-wrapper header .search-box {
-    padding-top: 7px;
+.search-box {
+    position: relative; 
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 50px;
 }
-#header-wrapper header .search-box input[type=text], #header-wrapper header .search-box input[type=search] {
-    padding:8px 15px;
-    background:rgba(50, 50, 50, 0.1);
-    border:0px solid #dbdbdb;
-    width: 200px;
+.search-box input[type=text], .search-box input[type=search] {
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0 5px;
+    background:rgba(255, 255, 255, 0.5);
+    border:1px solid #dbdbdb;
+    width: 100px;
+    z-index: 10;
+    padding-right: 30px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+.search-box input[type=text]:focus, .search-box input[type=search]:focus {
+    width: 250px;
 }
 
-#header-wrapper header .search-box input[type=submit], #header-wrapper header .search-box input[type=button], #header-wrapper header .search-box button {
-    position:relative;
-    padding:6px 15px;
-    left:-8px;
-    border:2px solid #207cca;
-    background-color:#207cca;
-    color:#fafafa;
+.search-box span {
+    display: block;
+    text-align: center;
+    width: 30px;
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    font-size: 18px;
+    line-height: 48px;
+    color: #FF77A0;
+    text-shadow: 1px 1px 1px #1f5f72;
 }
 
-#header-wrapper header .search-box input[type=submit]:hover, #header-wrapper header .search-box input[type=button]:hover, #header-wrapper header .search-box button:hover {
-    background-color:#fafafa;
-    color:#207cca;
+@media (max-width: 768px) {
+    .search-box input[type=text], .search-box input[type=search] {
+        margin: 0 auto;
+        
+    }
 }
+@media (min-width: 769px) and (max-width: 991px) {}
+@media (min-width: 992px) and (max-width: 1199px) {}
 
 /* main (top) navigation stylesheet */
 
@@ -132,6 +186,46 @@
     width: 100%;
     display: block;
 }
+
+@media (max-width: 768px) {
+    #header-wrapper nav .logo {
+        text-align: left;
+        line-height: 50px;
+        font-size: 30px;
+        font-weight: bolder;
+        color: #FF77A0;
+    }
+
+    #header-wrapper nav .logo a {
+        text-decoration: none;
+        color: #FF77A0;
+    }
+    
+    #header-wrapper nav ul.top-nav {
+        list-style: none;
+        padding: 0;
+    }
+
+    #header-wrapper nav ul.top-nav li {
+        display: block;
+        float: left;
+    }
+
+    #header-wrapper nav ul.top-nav a {
+        color: #fff;
+        font-size: 12px;
+        line-height: 50px;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-weight: bold;
+    }
+
+    #header-wrapper nav ul.top-nav a:after {
+        height: 2px;
+    }
+}
+@media (min-width: 769px) and (max-width: 991px) {}
+@media (min-width: 992px) and (max-width: 1199px) {}
 
 /* category navigation */
 

@@ -17,8 +17,7 @@
             <h:outputStylesheet library="css" name="font-awesome.min.css"/>
             <!-- Bootstrap CSS -->
             <h:outputStylesheet library="css" name="bootstrap.min.css"/>
-            <!-- Sidr Menu -->
-            <!--h:outputScript library="js" name="jquery.sidr.min.js"/-->
+
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
             <!--[if lt IE 9]>
@@ -31,6 +30,9 @@
             <!-- main css-->
             <h:outputStylesheet library="css" name="main.css"/>
             
+            <!-- Sidr Menu -->
+            <h:outputStylesheet library="css" name="jquery.sidr.css"/>
+
         </f:facet>
     </h:head>
     <h:body>
@@ -38,14 +40,14 @@
             <ui:include src="header.xhtml"/>
             <ui:include src="main-nav.xhtml"/>
         </div>
-        
+
         <section id="main-content" class="container">
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-xs-12 col-md-8 col-lg-9">
                     <ui:insert name="main-content"/>
                 </div>
-                
-                <aside class="col-lg-3">
+
+                <aside class="col-xs-12 col-md-4 col-lg-3">
                     <nav class="cat-nav">
                         <ui:include src="product-categories.xhtml"/>
                     </nav>
@@ -54,6 +56,10 @@
                 </aside>
             </div>
         </section>
+        
+        <nav id="mobile-category" class="cat-nav">
+            <ui:include src="product-categories.xhtml"/>
+        </nav>
 
         <!-- footer -->
         <ui:include src="footer.xhtml"/>
@@ -62,6 +68,8 @@
         <h:outputScript library="js" name="jquery.min.js"/>
         <!-- Bootstrap JavaScript -->
         <h:outputScript library="js" name="bootstrap.min.js"/>
+        <!-- Sidr Menu -->
+        <h:outputScript library="js" name="jquery.sidr.min.js"/>
         <!-- main js-->
         <h:outputScript library="js" name="main.js"/>
     </h:body>

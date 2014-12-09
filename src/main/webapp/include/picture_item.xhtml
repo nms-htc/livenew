@@ -7,7 +7,7 @@
     <h:link outcome="/picture.xhtml">
         <f:param name="id" value="#{productEntity.id}"/>
         <div class="postImg">
-            <img src="#{productEntity.thumbnailUrl}" alt="#{productEntity.title}" class="img-responsive" />
+            <img src="#{productEntity.thumbFile.URL}" alt="#{productEntity.title}" class="img-responsive" />
         </div>
 
         <div class="postDesc">

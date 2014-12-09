@@ -12,6 +12,11 @@ $(document).ready(function () {
 //    $('nav#nav-panel > ul > li > a').click(function (event) {
 //        $(this).parent().toggleClass('current').siblings().removeClass('current');
 //    });
+
+    // Loading JWPlayer
+    if($('#jwPlayer')) {
+        
+    }
 });
 
 

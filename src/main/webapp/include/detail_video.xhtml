@@ -7,13 +7,42 @@
               xmlns:f="http://xmlns.jcp.org/jsf/core">
     <c:if test="#{video != null}">
         <h:form>
-            <div class="product-detail clearfix">
-                <div class="postImg">
-                    <img src="#{video.thumbnailUrl}" alt="#{video.title}" class="img-responsive" width="100px"/>
+            <div class="product-detail clearfix row">
+                <div class="col-xs-12">
+                    <h:messages globalOnly="true"/>
 
-                    <h:commandButton value="#{msg['download-now']}" styleClass="btn btn-warning" actionListener="#{videoController.chargingProduct()}">
-                        <f:ajax render=":messages"/>
-                    </h:commandButton>
+                    <c:choose>
+                        <!-- Desktop -->
+                        <c:when test="${!mobileChecker.mobile}">
+                            <div id="jwPlayer">Loading the player ...</div>
+                            <video width="100%" controls="controls" poster="${videoController.current.thumbFile.URL}">
+                                <source src="http://192.168.88.179:1935/NMS/_definst_/mp4:324/6.8_join_more_tbls.mp4/manifest.f4m" type="video/mp4"/>
+                            </video>
+                        </c:when>
+
+                        <!-- Ios -->
+                        <c:when test="${mobileChecker.ios}">
+                            <div id="jwPlayer">Loading the player ...</div>
+                            <video width="100%" controls="controls" poster="${videoController.current.thumbFile.URL}">
+                                <source src="http://192.168.88.179:1935/NMS/_definst_/mp4:324/6.8_join_more_tbls.mp4/playlist.m3u8"/>
+                            </video>
+                        </c:when>
+
+                        <!-- Ios -->
+                        <c:when test="${mobileChecker.android}">
+                            <div id="jwPlayer">Loading the player ...</div>
+                       
+                            <video width="320" height="240" controls="true">
+                               
+                                <source src="${request.scheme}://${request.serverName}:${request.serverPort}${request.servletContext.contextPath}/file?id=${videoController.current.videoFile.id}"/>
+                            </video>
+                        </c:when>
+
+                        <!--Other -->
+                        <c:otherwise>
+
+                        </c:otherwise>
+                    </c:choose>
                 </div>
 
                 <div class="postDesc">

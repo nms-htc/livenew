@@ -11,7 +11,7 @@
         <ol class="breadcrumb">
             <li><h:link value="#{msg['leftNav.homePage']}" outcome="/index.xhtml"/></li>
             <li><h:link value="#{msg[productType]}" outcome="/#{productType}.xhtml"/></li>
-            <li class="active">#{fn:substring(controller.current.title, 0, 15)} #{fn:length(controller.current.title) > 15 ? ' ...' : ''}</li>
+            <li class="active">#{fn:substring(controller.current.title, 0, 50)} #{fn:length(controller.current.title) > 50 ? ' ...' : ''}</li>
         </ol>
         <ui:include src="/include/detail_#{productType}.xhtml">
             <ui:param name="#{productType}" value="#{controller.current}"/>

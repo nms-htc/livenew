@@ -17,8 +17,13 @@ public class AppConfig implements Serializable {
 
     private static final long serialVersionUID = -8269216861708175445L;
     private static final Logger LOGGER = Logger.getLogger(AppConfig.class.getName());
-    public static final String FILE_PATH = "config.properties";
+    public static final String FILE_PATH = "com/nms/cofig/config.properties";
     public static final String FILE_STORE_PATH_PROPERTY = "filestore.path";
+    public static final String RTMP_URL = "rtmp.url";
+    public static final String RTSP_URL = "rtsp.url";
+    public static final String HTTP_M3U8_URL = "http.m3u8.url";
+    public static final String HTTP_HDS_URL = "http.hds.url";
+    
     public static Properties props = null;
 
     static {

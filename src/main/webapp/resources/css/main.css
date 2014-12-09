@@ -267,7 +267,7 @@ Large devices (large desktops, 1200px and up)
     color: #f1f1f1;
 }
 
-.cat-nav ul a:hover {
+.cat-nav ul ul a:hover {
     color: #FF77A0;
     text-decoration: underline;
 }
@@ -276,6 +276,19 @@ Large devices (large desktops, 1200px and up)
     background: none;
     color: #333;
     padding-left: 20px;
+}
+
+/*product navigation mobile menu*/
+
+#mobile-category {
+    background: #f1f1f1;
+    box-shadow: inset -2px 0px 5px rgba(0, 0, 0,0.5);
+    -moz-box-shadow: inset -2px 0px 5px rgba(0, 0, 0,0.5);
+    -webkit-box-shadow: inset -2px 0px 5px rgba(0, 0, 0,0.5);
+}
+
+#mobile-category h3 {
+    text-align: center;
 }
 
 /*product list items*/
@@ -299,6 +312,51 @@ Large devices (large desktops, 1200px and up)
     font-size: 12px;
     font-weight: bold;
     cursor: pointer;
+}
+
+/*site footer*/
+
+#footer {
+    background-color: #3095B2;
+    border-top: 2px solid #FF77A0;
+    color: #fff;
+}
+
+#footer h2 {
+    font-size: 18px;
+    border-bottom: 1px solid #ff77a0;
+    padding-bottom: 5px;
+}
+
+#footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+#footer a {
+    color: #FF77A0;
+}
+
+#footer ul li {
+    padding: 0;
+    margin: 0;
+}
+
+#footer ul a {
+    text-decoration: none;
+    display: block;
+    line-height: 30px;
+    color: white;
+    padding-left: 30px;
+    transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+}
+
+#footer ul a:hover {
+    background-color: #5eb8d2;
+    color: #ff77a0;
 }
 
 

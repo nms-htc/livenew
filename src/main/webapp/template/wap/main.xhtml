@@ -8,7 +8,7 @@
         <f:facet name="first">
             <meta charset="utf-8"/>
             <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
             <title><ui:insert name="title">Mlove store</ui:insert></title>
         </f:facet>
 
@@ -44,11 +44,11 @@
         <section id="main-content" class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-8 col-lg-9">
-                    <ui:insert name="main-content"/>
+                    <ui:insert name="main-content"/> 
                 </div>
 
                 <aside class="col-xs-12 col-md-4 col-lg-3">
-                    <nav class="cat-nav">
+                    <nav class="cat-nav hidden-xs hidden-sm">
                         <ui:include src="product-categories.xhtml"/>
                     </nav>
                     <ui:insert name="sidebar">
@@ -70,8 +70,12 @@
         <h:outputScript library="js" name="bootstrap.min.js"/>
         <!-- Sidr Menu -->
         <h:outputScript library="js" name="jquery.sidr.min.js"/>
+        <!-- Sidr Menu -->
+        <h:outputScript library="js" name="jquery.sidr.min.js"/>
         <!-- main js-->
         <h:outputScript library="js" name="main.js"/>
+        
+        <ui:insert name="scripts"></ui:insert>
     </h:body>
 </html>
 

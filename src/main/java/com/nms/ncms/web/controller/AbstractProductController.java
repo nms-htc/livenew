@@ -143,15 +143,15 @@ public abstract class AbstractProductController<T extends Product, C extends Cat
         if (current != null) {
             // increase view count
             getProductService().increaseViewCount(current);
-            model = getProductService().findExcludeCurrent(page * 10, 10, current);
+            model = getProductService().findExcludeCurrent(page * 12, 12, current);
             count = getProductService().countByCat(category) - 1;
 
         } else if (category != null) {
-            model = getProductService().findByCat(page * 10, 10, category, orderField, false);
+            model = getProductService().findByCat(page * 12, 12, category, orderField, false);
             count = getProductService().countByCat(category);
         }
         if (current != null || category != null) {
-            if ((page + 1) * 10 <= count) {
+            if ((page + 1) * 12 < count -1) {
                 hasNext = true;
             }
             if (page > 0) {

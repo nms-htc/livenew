@@ -15,58 +15,45 @@
                         <!-- Desktop -->
                         <c:when test="${!mobileChecker.mobile}">
                             <div id="jwPlayer">Loading the player ...</div>
-                            <video width="100%" controls="controls" poster="${videoController.current.thumbFile.URL}">
-                                <source src="http://192.168.88.179:1935/NMS/_definst_/mp4:324/6.8_join_more_tbls.mp4/manifest.f4m" type="video/mp4"/>
-                            </video>
                         </c:when>
 
                         <!-- Ios -->
                         <c:when test="${mobileChecker.ios}">
-                            <div id="jwPlayer">Loading the player ...</div>
                             <video width="100%" controls="controls" poster="${videoController.current.thumbFile.URL}">
-                                <source src="http://192.168.88.179:1935/NMS/_definst_/mp4:324/6.8_join_more_tbls.mp4/playlist.m3u8"/>
+                                <source src="${videoController.current.m3u8Url}"/>
                             </video>
                         </c:when>
 
                         <!-- Ios -->
                         <c:when test="${mobileChecker.android}">
-                            <div id="jwPlayer">Loading the player ...</div>
-                       
-                            <video width="320" height="240" controls="true">
-                               
-                                <source src="${request.scheme}://${request.serverName}:${request.serverPort}${request.servletContext.contextPath}/file?id=${videoController.current.videoFile.id}"/>
+                            <video width="100%" controls="controls" poster="${videoController.current.thumbFile.URL}">
+                                <source src="${videoController.current.m3u8Url}"/>
                             </video>
                         </c:when>
 
                         <!--Other -->
                         <c:otherwise>
-
+                            <video width="100%" controls="true">
+                                <source src="${videoController.current.rtspUrl}"/>
+                            </video>
                         </c:otherwise>
                     </c:choose>
                 </div>
 
-                <div class="postDesc">
+                <div class="postDesc col-xs-12">
                     <h3>#{video.title}</h3>
-                    <p>
+                    <p class="metadata">
                         <h:outputText value="#{video.price}">
                             <f:convertNumber currencyCode="VND" locale="vi_VN"/>
                         </h:outputText> VND
+                        - <i class="fa fa-eye"></i> #{video.viewCount} lượt xem
+                        - <i class="fa fa-download"></i> #{video.downloadCount} lượt tải
                     </p>
-                    <ul>
-                        <li class="view">#{video.viewCount}</li>
-                        <li class="download">#{video.downloadCount}</li>
-                    </ul>
 
-                    <div class="sms">
+                    <div class="sms hidden">
                         <span>TG #{video.code} gui 8973</span>
                     </div>
                 </div>
-
-                <div class="separator"></div>
-                <div class="spec">
-                    <h:outputText escape="false" value="#{video.specification}"/>
-                </div>
-
             </div>
         </h:form>
     </c:if>

@@ -4,23 +4,11 @@
              xmlns:h="http://xmlns.jcp.org/jsf/html"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:link outcome="/video.xhtml">
-        <f:param name="id" value="#{productEntity.id}"/>
-        <div class="postImg">
-            <img src="#{productEntity.thumbFile.URL}" alt="#{productEntity.title}" class="img-responsive" />
+    <div class="product-item video">
+        <h:link outcome="/video.xhtml?id=${productEntity.id}"><h:graphicImage alt="#{productEntity.title}" url="#{productEntity.thumbFile.URL}" styleClass="img-responsive"/></h:link>
+        <div class="product-description">
+            <p><h:link outcome="/video.xhtml?id=${productEntity.id}">#{productEntity.title}</h:link></p>
+            <p class="meta">#{productEntity.viewCount} luot xem - #{productEntity.downloadCount} luot tai</p>
         </div>
-
-        <div class="postDesc">
-            <h3>#{productEntity.title}</h3>
-            <p>
-                <h:outputText value="#{productEntity.price}">
-                    <f:convertNumber currencyCode="VND" locale="vi_VN"/>
-                </h:outputText> VND
-            </p>
-            <ul>
-                <li class="view">#{productEntity.viewCount}</li>
-                <li class="download">productEntity.downloadCount</li>
-            </ul>
-        </div>
-    </h:link>
+    </div>
 </ui:fragment>

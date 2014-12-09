@@ -4,6 +4,10 @@
  */
 package com.nms.ncms.entity;
 
+import com.nms.ncms.web.util.AppConfig;
+import com.nms.ncms.web.util.AppUtil;
+import java.text.Format;
+import java.text.MessageFormat;
 import javax.persistence.CascadeType;
 import javax.persistence.ConstraintMode;
 import javax.persistence.DiscriminatorValue;
@@ -12,6 +16,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -35,5 +40,31 @@ public class Video extends Product {
     public void setVideoFile(FileEntry videoFile) {
         this.videoFile = videoFile;
     }
-
+    
+    @Transient
+    public String getRtmpUrl() {
+        if (videoFile != null && videoFile.filePath != null) {
+            String si = AppUtil.buildStreamingIdentifier(videoFile.getFilePath());
+            return MessageFormat.format(AppConfig.getConfig(AppConfig.RTMP_URL), si);
+        }
+        return null;
+    }
+    
+    @Transient
+    public String getM3u8Url() {
+        if (videoFile != null && videoFile.filePath != null) {
+            String si = AppUtil.buildStreamingIdentifier(videoFile.getFilePath());
+            return MessageFormat.format(AppConfig.getConfig(AppConfig.HTTP_M3U8_URL), si);
+        }
+        return null;
+    }
+    
+    @Transient
+    public String getRtspUrl() {
+        if (videoFile != null && videoFile.filePath != null) {
+            String si = AppUtil.buildStreamingIdentifier(videoFile.getFilePath());
+            return MessageFormat.format(AppConfig.getConfig(AppConfig.RTSP_URL), si);
+        }
+        return null;
+    }
 }

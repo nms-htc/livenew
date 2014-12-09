@@ -5,6 +5,9 @@
 package com.nms.ncms.entity;
 
 import com.nms.ncms.entity.validation.Url;
+import com.nms.ncms.web.util.AppConfig;
+import com.nms.ncms.web.util.AppUtil;
+import java.text.MessageFormat;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
@@ -15,6 +18,7 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -99,5 +103,32 @@ public class Music extends Product {
 
     public void setLyric(String lyric) {
         this.lyric = lyric;
+    }
+    
+    @Transient
+    public String getRtmpUrl() {
+        if (musicFile != null && musicFile.filePath != null) {
+            String si = AppUtil.buildStreamingIdentifier(musicFile.getFilePath());
+            return MessageFormat.format(AppConfig.getConfig(AppConfig.RTMP_URL), si);
+        }
+        return null;
+    }
+    
+    @Transient
+    public String getM3u8Url() {
+        if (musicFile != null && musicFile.filePath != null) {
+            String si = AppUtil.buildStreamingIdentifier(musicFile.getFilePath());
+            return MessageFormat.format(AppConfig.getConfig(AppConfig.HTTP_M3U8_URL), si);
+        }
+        return null;
+    }
+    
+    @Transient
+    public String getRtspUrl() {
+        if (musicFile != null && musicFile.filePath != null) {
+            String si = AppUtil.buildStreamingIdentifier(musicFile.getFilePath());
+            return MessageFormat.format(AppConfig.getConfig(AppConfig.RTSP_URL), si);
+        }
+        return null;
     }
 }

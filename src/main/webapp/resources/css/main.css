@@ -52,10 +52,16 @@ Large devices (large desktops, 1200px and up)
 /*nav toggle*/
 
 #nav-toggle {
+    display: block;
     color: #FF77A0;
     font-size: 30px;
+    text-align: left;
     line-height: 50px;
-    outline: none;
+}
+
+#nav-toggle i {
+    text-align: center;
+    padding: 0 5px;
 }
 /* Search Form stylesheet */
 
@@ -140,6 +146,7 @@ Large devices (large desktops, 1200px and up)
 
 #header-wrapper nav ul.top-nav a {
     color: #f1f1f1;
+    white-space: nowrap;
     font-size: 17px;
     text-decoration: none;
     display: block;
@@ -189,7 +196,6 @@ Large devices (large desktops, 1200px and up)
 
 @media (max-width: 768px) {
     #header-wrapper nav .logo {
-        text-align: left;
         line-height: 50px;
         font-size: 30px;
         font-weight: bolder;
@@ -202,6 +208,10 @@ Large devices (large desktops, 1200px and up)
     }
     
     #header-wrapper nav ul.top-nav {
+        display: block;
+        width: auto;
+        margin: 0 auto;
+        text-align: center;
         list-style: none;
         padding: 0;
     }
@@ -313,6 +323,41 @@ Large devices (large desktops, 1200px and up)
     font-weight: bold;
     cursor: pointer;
 }
+
+.product-detail {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    box-shadow: inset 0px -1px 2px rgba(0,0,0,0.2);
+}
+
+.postDesc h3 {
+    color: #FF77A0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.metadata {
+    color: #888;
+    font-size: 11px;
+}
+
+@media (max-width: 768px) {
+    .product-item {
+        position: relative;
+        height: auto;
+    }
+    
+    .product-description {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,.8);
+        width: 100%;
+    }
+}
+@media (min-width: 769px) and (max-width: 991px) {}
+@media (min-width: 992px) and (max-width: 1199px) {}
 
 /*site footer*/
 

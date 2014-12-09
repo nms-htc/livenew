@@ -24,24 +24,12 @@
             <h:outputScript library="jwplayer" name="jwplayer.js"/>
             <h:outputScript>
                 jwplayer("jwPlayer").setup({
-                    file: "rtmp://192.168.88.179:1935/NMS/mp4:324/6.8_join_more_tbls.mp4",
+                    file: "${videoController.current.rtmpUrl}",
                     image: "${videoController.current.thumbFile.URL}",
                     width: "100%",
                     aspectratio: "16:9"
-
                 });
-               
             </h:outputScript>
-             <!--                    levels: [
-                       {file: "rtmp://192.168.88.179:1935/vod/mp4:324/6.8_join_more_tbls.mp4"},
-                       {file: "http://192.168.88.179:1935/vod/mp4:324\6.8_join_more_tbls.mp4/playlist.m3u8"},
-                       {file: "rtsp://192.168.88.179:1935/vod/324\6.8_join_more_tbls.mp4"}
-                    ],
-                    modes: [
-                        { type: "flash" },
-                        { type: "flash", src: "Player.swf" },
-                        { type: "download" }
-                    ]-->
         </ui:fragment>
     </ui:define>
 </ui:composition>

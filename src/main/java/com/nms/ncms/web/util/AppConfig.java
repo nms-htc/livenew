@@ -24,6 +24,8 @@ public class AppConfig implements Serializable {
     public static final String HTTP_M3U8_URL = "http.m3u8.url";
     public static final String HTTP_HDS_URL = "http.hds.url";
     
+    // using java.util.ResourceBundle and java.text.MessageFormat
+    
     public static Properties props = null;
 
     static {

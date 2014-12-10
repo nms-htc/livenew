@@ -5,7 +5,6 @@
 package com.nms.ncms.ejb;
 
 import com.nms.ncms.entity.Picture;
-import com.nms.ncms.entity.Picture;
 import com.nms.ncms.entity.PictureCategory;
 import com.nms.ncms.service.entity.PictureService;
 import com.nms.ncms.web.util.AppConfig;
@@ -31,7 +30,7 @@ public class PictureServiceBean extends AbstractProductBean<PictureCategory, Pic
     protected Logger getLogger() {
         return LOGGER;
     }
-    
+
     @Override
     protected void onAfterPersist(Picture entity) {
         super.onAfterPersist(entity);
@@ -52,11 +51,8 @@ public class PictureServiceBean extends AbstractProductBean<PictureCategory, Pic
                     saveFile(entity.getPictureFile());
                 } catch (Exception e) {
                     getLogger().log(Level.SEVERE, "Error when save picture file to the fileStore", e);
-            throw new EJBException("picture.error.pictureFile.storefile");
+                    throw new EJBException("picture.error.pictureFile.storefile");
                 }
-            } else {
-                em.remove(entity.getPictureFile());
-                entity.setPictureFile(null);
             }
         }
     }

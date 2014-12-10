@@ -3,7 +3,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/template/wap/main.xhtml"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
     <f:metadata>
         <f:viewParam name="id" value="#{musicController.current}" converter="musicConverter"/>
         <f:viewParam name="cat" value="#{musicController.category}" converter="musicCatConverter"/>
@@ -16,5 +17,18 @@
             <ui:param name="productType" value="music"/>
             <ui:param name="referenceLabel" value="#{msg['panel.referenceLabel.music']}"/>
         </ui:include>
+    </ui:define>
+    <ui:define name="scripts">
+        <ui:fragment rendered="${musicController.current != null}">
+            <!-- JW Player -->
+            <h:outputScript library="jwplayer" name="jwplayer.js"/>
+            <h:outputScript>
+                jwplayer("jwPlayer").setup({
+                file: "${musicController.current.rtmpUrl}",
+                height: 30,
+                width: "100%"
+                });
+            </h:outputScript>
+        </ui:fragment>
     </ui:define>
 </ui:composition>

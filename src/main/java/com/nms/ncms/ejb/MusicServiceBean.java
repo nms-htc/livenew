@@ -30,7 +30,7 @@ public class MusicServiceBean extends AbstractProductBean<MusicCategory, Music> 
     protected Logger getLogger() {
         return LOGGER;
     }
-    
+
     @Override
     protected void onAfterPersist(Music entity) {
         super.onAfterPersist(entity);
@@ -51,11 +51,8 @@ public class MusicServiceBean extends AbstractProductBean<MusicCategory, Music> 
                     saveFile(entity.getMusicFile());
                 } catch (Exception e) {
                     getLogger().log(Level.SEVERE, "Error when save music file to the fileStore", e);
-            throw new EJBException("music.error.musicFile.storefile");
+                    throw new EJBException("music.error.musicFile.storefile");
                 }
-            } else {
-                em.remove(entity.getMusicFile());
-                entity.setMusicFile(null);
             }
         }
     }

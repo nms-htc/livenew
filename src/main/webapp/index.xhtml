@@ -30,15 +30,15 @@
 
                 <ncms:bs_tab_content id="hotMusic">
                     <ui:include src="/include/product_items.xhtml">
-                        <ui:param name="productType" value="video"/>
-                        <ui:param name="productEntities" value="#{videoController.hots}"/>
+                        <ui:param name="productType" value="music"/>
+                        <ui:param name="productEntities" value="#{musicController.hots}"/>
                     </ui:include>
                 </ncms:bs_tab_content>
 
                 <ncms:bs_tab_content id="hotPicture">
                     <ui:include src="/include/product_items.xhtml">
-                        <ui:param name="productType" value="video"/>
-                        <ui:param name="productEntities" value="#{videoController.hots}"/>
+                        <ui:param name="productType" value="picture"/>
+                        <ui:param name="productEntities" value="#{pictureController.hots}"/>
                     </ui:include>
                 </ncms:bs_tab_content>
             </ui:define>

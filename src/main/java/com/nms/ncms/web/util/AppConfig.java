@@ -44,7 +44,11 @@ public class AppConfig implements Serializable {
         String path = null;
 
         if (bundle != null) {
-            path = bundle.getString(FILE_STORE_PATH_PROPERTY);
+            try {
+                path = bundle.getString(FILE_STORE_PATH_PROPERTY);
+            } catch (MissingResourceException e) {
+                LOGGER.log(Level.WARNING, "Cannot fint resource with key {0}", FILE_STORE_PATH_PROPERTY);
+            }
         }
 
         if (path == null) {

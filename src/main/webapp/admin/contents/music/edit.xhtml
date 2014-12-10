@@ -33,16 +33,48 @@
                                           mode="advanced" 
                                           multiple="false"
                                           update="thumbPicture"
+                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                          sizeLimit="100000"
                                           previewWidth="30"
                                           rendered="#{musicBean.current.thumbFile.upload}"/>
                             <p:inputText value="#{musicBean.current.thumbFile.url}"
+                                         id="thumbUrl"
                                          rendered="#{!musicBean.current.thumbFile.upload}"
                                          size="40"/>
+                            <p:message for="thumbUrl"/>
                         </h:panelGroup>
                     </p:column>
                     <p:column colspan="2">
                         <h:outputText id="thumbPicture" 
                                       value="#{musicBean.current.thumbFile.upload ? musicBean.current.thumbFile.title : ''}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <h:outputText value="#{msg['music.musicFile']}"/> <br/>
+                        <label>
+                            <h:selectBooleanCheckbox value="#{musicBean.current.musicFile.upload}">
+                                <f:ajax execute="@this" render="musicFileInputColumn"/>
+                            </h:selectBooleanCheckbox>#{msg['fileEntry.upload']}
+                        </label>
+                    </p:column>
+                    <p:column>
+                        <h:panelGroup id="musicFileInputColumn">
+                            <p:fileUpload fileUploadListener="#{musicBean.handleContentUpload}" 
+                                          mode="advanced" 
+                                          multiple="false"
+                                          update="musicFileName"
+                                          allowTypes="/(\.|\/)(mp3)$/"
+                                          previewWidth="30"
+                                          rendered="#{musicBean.current.musicFile.upload}"/>
+                            <p:inputText value="#{musicBean.current.musicFile.url}"
+                                         rendered="#{!musicBean.current.musicFile.upload}"
+                                         size="40"/>
+                        </h:panelGroup>
+                    </p:column>
+                    <p:column colspan="2">
+                        <h:outputText id="musicFileName" 
+                                      value="#{musicBean.current.musicFile.upload ? musicBean.current.musicFile.title : ''}"/>
                     </p:column>
                 </p:row>
                 <p:row>
@@ -83,59 +115,6 @@
                     <p:column>
                         <p:inputText id="creator" value="#{musicBean.current.creator}"/>
                         <p:message for="creator"/>
-                    </p:column>
-                </p:row>
-
-                <p:row>
-                    <p:column>
-                        <h:outputText value="#{msg['product.thumbImage']}"/>
-                    </p:column>
-                    <p:column>
-                        <h:outputLabel value="#{msg['fileEntry.upload']} ">
-                            <h:selectBooleanCheckbox value="#{musicBean.current.thumbFile.upload}">
-                                <f:ajax render="thumbFileContainer thumbFileLabelContainer"/>
-                            </h:selectBooleanCheckbox>
-                        </h:outputLabel>
-                    </p:column>
-                    <p:column>
-                        <h:panelGroup id="thumbFileLabelContainer">
-                            <h:outputText value="#{msg['fileEntry.upload']}" rendered="#{musicBean.current.thumbFile.upload}"/>
-                            <h:outputText value="#{msg['fileEntry.url']}" rendered="#{!musicBean.current.thumbFile.upload}"/>
-                        </h:panelGroup>
-                    </p:column>
-                    <p:column>
-                        <h:panelGroup id="thumbFileContainer">
-                            <p:fileUpload id="thumbFile" value="#{musicBean.current.thumbFile.file}" rendered="#{musicBean.current.thumbFile.upload}" mode="simple"/>
-                            <p:inputText id="thumbFileUrl" value="#{musicBean.current.thumbFile.title}" rendered="#{!musicBean.current.thumbFile.upload}"/>
-                            <p:message for="thumbFile"/>
-                            <p:message for="thumbFileUrl"/>
-                        </h:panelGroup>
-                    </p:column>
-                </p:row>
-                <p:row>
-                    <p:column>
-                        <h:outputText value="#{msg['music.musicFile']}"/>
-                    </p:column>
-                    <p:column>
-                        <h:outputLabel value="#{msg['fileEntry.upload']} ">
-                            <h:selectBooleanCheckbox value="#{musicBean.current.musicFile.upload}">
-                                <f:ajax render="musicFileContainer musicFileLabelContainer"/>
-                            </h:selectBooleanCheckbox>
-                        </h:outputLabel>
-                    </p:column>
-                    <p:column>
-                        <h:panelGroup id="musicFileLabelContainer">
-                            <h:outputText value="#{msg['fileEntry.upload']}" rendered="#{musicBean.current.musicFile.upload}"/>
-                            <h:outputText value="#{msg['fileEntry.url']}" rendered="#{!musicBean.current.musicFile.upload}"/>
-                        </h:panelGroup>
-                    </p:column>
-                    <p:column>
-                        <h:panelGroup id="musicFileContainer">
-                            <p:fileUpload id="musicFile" value="#{musicBean.current.musicFile.file}" rendered="#{musicBean.current.musicFile.upload}" mode="simple"/>
-                            <p:inputText id="musicFileUrl" value="#{musicBean.current.musicFile.title}" rendered="#{!musicBean.current.musicFile.upload}"/>
-                            <p:message for="musicFile"/>
-                            <p:message for="musicFileUrl"/>
-                        </h:panelGroup>
                     </p:column>
                 </p:row>
 

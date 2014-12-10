@@ -3,24 +3,24 @@
 <ui:fragment xmlns="http://www.w3.org/1999/xhtml"
              xmlns:h="http://xmlns.jcp.org/jsf/html"
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-             xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:link outcome="/picture.xhtml">
-        <f:param name="id" value="#{productEntity.id}"/>
-        <div class="postImg">
-            <img src="#{productEntity.thumbFile.URL}" alt="#{productEntity.title}" class="img-responsive" />
-        </div>
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <div class="col-xs-12 col-sm-6">
+        <div class="product-item picture">
+            <f:param name="id" value="#{productEntity.id}"/>
+            <div class="thumb">
+                <h:link outcome="/picture.xhtml?id=${productEntity.id}">
+                    <img src="#{productEntity.thumbFile.URL}" 
+                         alt="#{productEntity.title}" 
+                         class="img-responsive img-thumbnail"
+                         jsf:rendered="#{productEntity.thumbFile.hasFile}"/>
+                </h:link>
+            </div>
 
-        <div class="postDesc">
-            <h3>#{productEntity.title}</h3>
-            <p>
-                <h:outputText value="#{productEntity.price}">
-                    <f:convertNumber currencyCode="VND" locale="vi_VN"/>
-                </h:outputText> VND
-            </p>
-            <ul>
-                <li class="view">#{productEntity.viewCount}</li>
-                <li class="download">#{productEntity.downloadCount}  </li>
-            </ul>
+            <div class="product-description">
+                <p><h:link outcome="/picture.xhtml?id=${productEntity.id}">#{productEntity.title}</h:link></p>
+                <p class="meta">#{productEntity.viewCount} luot xem - #{productEntity.downloadCount} luot tai</p>
+            </div>
         </div>
-    </h:link>
+    </div>
 </ui:fragment>

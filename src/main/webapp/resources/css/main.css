@@ -318,6 +318,58 @@ Large devices (large desktops, 1200px and up)
     color: #666;
 }
 
+.product-item.music {
+    position: relative;
+    height: 80px;
+    border: 1px solid #f1f1f1;
+    
+}
+
+.product-item.music .thumb {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.product-item.music .thumb img {
+    width: 70px;
+    height: 70px;  
+    margin: 5px;
+}
+
+.product-item.music .product-description {
+    padding-left: 80px;
+    padding-top: 10px;
+}
+
+.product-item.picture {
+    position: relative;
+    height: 120px;
+    border: 1px solid #f1f1f1;
+    
+}
+
+.product-item.picture .thumb {
+    width: 150px;
+    height: 80px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.product-item.picture .thumb img {
+    width: 150px;
+    height: 90px;  
+    margin: 5px;
+}
+
+.product-item.picture .product-description {
+    padding-left: 160px;
+    padding-top: 10px;
+}
+
 .product-item p a {
     font-size: 12px;
     font-weight: bold;
@@ -325,10 +377,28 @@ Large devices (large desktops, 1200px and up)
 }
 
 .product-detail {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 5px;
     border-bottom: 1px solid #f1f1f1;
     box-shadow: inset 0px -1px 2px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.product-detail .thumb {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.detail-description {
+    padding-left: 110px;
+    min-height: 110px;
+}
+
+.detail-description h3 {
+    margin: 10px 0 5px 0;
+    color: #FF77A0;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .postDesc h3 {
@@ -339,7 +409,7 @@ Large devices (large desktops, 1200px and up)
 
 .metadata {
     color: #888;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 @media (max-width: 768px) {
@@ -348,12 +418,31 @@ Large devices (large desktops, 1200px and up)
         height: auto;
     }
     
+    .product-item.music {
+        height: 80px;
+    }
+    
+    .product-item.picture {
+        height: 100px;
+    }
+    
     .product-description {
         position: absolute;
         bottom: 0;
         left: 0;
         background: rgba(0,0,0,.8);
         width: 100%;
+    }
+    
+    .product-item.music .product-description, .product-item.picture .product-description {
+        position: inherit;
+        background: inherit;
+        width: auto;
+    }
+    
+    .product-item.music .thumb, .product-item.picture .thumb {
+        top: 0;
+        left: 0;
     }
 }
 @media (min-width: 769px) and (max-width: 991px) {}
@@ -404,4 +493,17 @@ Large devices (large desktops, 1200px and up)
     color: #ff77a0;
 }
 
+@media (max-width: 768px) {
+    #footer ul a {
+        width: 50%;
+        float: left;
+    }
+}
+
+
+.separator {
+    margin: 5px;
+    padding: 0;
+    border-top: 2px solid #FF77A0;
+}
 

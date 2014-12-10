@@ -131,7 +131,7 @@ public class FileEntry extends BaseEntity {
         if (upload) {
             return inputStream != null;
         } else {
-            return title != null && !"".equals(url.trim());
+            return url != null && !"".equals(url.trim());
         }
     }
 

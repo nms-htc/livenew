@@ -47,6 +47,7 @@
                              paginatorPosition="bottom">
 
                     <p:column width="50">
+                        <p:graphicImage url="#{music.thumbFile.URL}" rendered="${music.thumbFile != null}" height="40" width="40"/>
                     </p:column>
                     
                     <p:column headerText="#{msg['title']}" 

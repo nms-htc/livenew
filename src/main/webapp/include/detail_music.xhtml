@@ -7,43 +7,54 @@
               xmlns:f="http://xmlns.jcp.org/jsf/core">
     <c:if test="#{music != null}">
         <h:form>
-            <div class="product-detail clearfix">
-                <div class="postImg">
-                    <img src="#{music.thumbnailUrl}" alt="#{music.title}" class="img-responsive" width="100px"/>
+            <div class="product-detail music clearfix">
+                <div class="thumb">
+                    <img src="#{music.thumbFile.URL}" alt="#{music.title}" class="img-responsive" width="100px"/>
                 </div>
 
-                <div class="postDesc">
+                <div class="detail-description">
                     <h3>#{music.title}</h3>
                     <span class="singer">#{music.singer}</span>
-                    <p>
+                    <p class="metadata">
                         <h:outputText value="#{music.price}">
                             <f:convertNumber currencyCode="VND" locale="vi_VN"/>
                         </h:outputText> VND
+                        - <i class="fa fa-eye"></i> #{video.viewCount} lượt xem
+                        - <i class="fa fa-download"></i> #{video.downloadCount} lượt tải
                     </p>
-                    <ul>
-                        <li class="view">#{music.viewCount}</li>
-                        <li class="download">#{music.downloadCount}</li>
-                    </ul>
                 </div>
-                <div class="mp3-player" style="width: 100%;margin: 20px 5px 0px 5px;">                                       
-                    <audio controls="true" autoplay="true">
-                        <source src="#{music.musicUrl}" type="audio/mpeg"/>
-                        Your browser does not support the audio element.
-                    </audio>
-                </div>
+                <div class="mp3-player">        
+                    <c:choose>
+                        <!-- Desktop -->
+                        <c:when test="${!mobileChecker.mobile}">
+                            <div id="jwPlayer">Loading the player ...</div>
+                        </c:when>
 
-                <div class="payment-scope">
-                    <div class="direct">
-                        <h:commandButton value="#{msg['download-now']}" styleClass="btn btn-warning" actionListener="#{musicController.chargingProduct()}">
-                            <f:ajax render=":messages"/>
-                        </h:commandButton>
-                    </div>
-                    <div class="sms">
-                        <span>TG #{music.code} gui 8973</span>
-                    </div>
+                        <!-- Ios -->
+                        <c:when test="${mobileChecker.ios}">
+                            <audio controls="controls">
+                                <source src="${musicController.current.m3u8Url}"/>
+                            </audio>
+                        </c:when>
+
+                        <!-- Ios -->
+                        <c:when test="${mobileChecker.android}">
+                            <audio width="100%" controls="controls">
+                                <source src="${musicController.current.m3u8Url}"/>
+                            </audio>
+                        </c:when>
+
+                        <!--Other -->
+                        <c:otherwise>
+                            <audio width="100%" controls="true">
+                                <source src="${musicController.current.rtspUrl}"/>
+                            </audio>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
 
                 <div class="separator"></div>
+
                 <div class="spec">
                     <h:outputText escape="false" value="#{music.lyric}"/>
                 </div>

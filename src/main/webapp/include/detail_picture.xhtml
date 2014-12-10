@@ -7,38 +7,27 @@
               xmlns:f="http://xmlns.jcp.org/jsf/core">
     <c:if test="#{picture != null}">
         <h:form>
-            <div class="product-detail clearfix">
-                <div class="picture-detail">
-                    <h3>#{picture.title}</h3>
-
-                    <img src="#{picture.thumbnailUrl}" 
-                         alt="#{picture.title}" 
-                         class="img-responsive"/>
+            <div class="product-detail clearfix row">
+                <div class="col-xs-12">
+                    <img src="#{picture.pictureFile.URL}" alt="#{productEntity.title}" class="img-responsive img-thumbnail" />
                 </div>
-                
-                <p class="price">
-                    <h:outputText value="#{picture.price}">
-                        <f:convertNumber currencyCode="VND" locale="vi_VN"/>
-                    </h:outputText> VND
-                </p>
-                
-                <ul class="viewDownload">
-                    <li class="view">#{picture.viewCount}</li>
-                    <li class="download">#{picture.downloadCount}</li>
-                </ul>
 
-                <div class="payment-scope">
-                    <div class="direct">
-                        <h:commandButton value="#{msg['download-now']}" styleClass="btn btn-warning" actionListener="#{pictureController.chargingProduct()}">
-                            <f:ajax render=":messages"/>
-                        </h:commandButton>
-                    </div>
-                    <div class="sms">
+                <div class="postDesc col-xs-12">
+                    <h3>#{picture.title}</h3>
+                    <p class="metadata">
+                        <h:outputText value="#{picture.price}">
+                            <f:convertNumber currencyCode="VND" locale="vi_VN"/>
+                        </h:outputText> VND
+                        - <i class="fa fa-eye"></i> #{picture.viewCount} lượt xem
+                        - <i class="fa fa-download"></i> #{picture.downloadCount} lượt tải
+                    </p>
+
+                    <div class="sms hidden">
                         <span>TG #{picture.code} gui 8973</span>
                     </div>
+                    
+                    <div class="separator"></div>
                 </div>
-
-                <div class="separator"></div>
             </div>
         </h:form>
     </c:if>

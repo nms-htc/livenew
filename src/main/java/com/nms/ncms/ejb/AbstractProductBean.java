@@ -255,11 +255,11 @@ public abstract class AbstractProductBean<C extends Category, P extends Product>
         Product testEntity = null;
         try { // check duplicate code of concreate product
             CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Product> cq = cb.createQuery(Product.class);
-            Root<Product> root = cq.from(Product.class);
+            CriteriaQuery<P> cq = cb.createQuery(entityClass);
+            Root<P> root = cq.from(entityClass);
             cq.select(root);
             cq.where(cb.equal(root.get("code"), product.getCode()));
-            TypedQuery<Product> q = em.createQuery(cq);
+            TypedQuery<P> q = em.createQuery(cq);
             testEntity = q.getSingleResult();
         } catch (Exception e) {
             getLogger().log(Level.OFF, "Check dupplicating product code, excetion for correcting", e);

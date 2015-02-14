@@ -65,7 +65,16 @@
     <mime-mapping>
         <extension>ico</extension>
         <mime-type>image/x-icon</mime-type>
-    </mime-mapping> 
+    </mime-mapping>
+        <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Secure pages</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Secure pages</web-resource-name>

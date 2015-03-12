@@ -43,8 +43,17 @@
                     <p:graphicImage url="#{slideContent.image.URL}"/>
                     <f:facet name="footer">
                         <h:form>
-                            <p:commandButton value="#{msg['update']}"/>
-                            <p:commandButton value="#{msg['delete']}"/>
+                            <p:commandButton value="#{msg['update']}" update=":editDl" immediate="true"
+                                             actionListener="#{slideContentBean.prepareEntity(slideContent)}"
+                                             oncomplete="PF('editDl').show();"/>
+                            <p:commandButton value="#{msg['delete']}" 
+                                             immediate="true"
+                                             update="@all"
+                                             actionListener="#{slideContentBean.remove(slideContent)}">
+                                <p:confirm header="Confirmation"
+                                           message="#{msg['post.action.delete.confirmation']}" 
+                                           icon="ui-icon-alert"/>
+                            </p:commandButton>
                         </h:form>
                     </f:facet>
                 </p:panelGrid>

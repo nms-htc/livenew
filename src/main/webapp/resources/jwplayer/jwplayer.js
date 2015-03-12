@@ -1,138 +1,2951 @@
-"undefined"==typeof jwplayer&&(jwplayer=function(f){if(jwplayer.api)return jwplayer.api.selectPlayer(f)},jwplayer.version="6.11.4923",jwplayer.vid=document.createElement("video"),jwplayer.audio=document.createElement("audio"),jwplayer.source=document.createElement("source"),function(){var f={},c=Array.prototype,k=Object.prototype,d=c.slice,e=c.concat,b=k.toString,h=k.hasOwnProperty,n=c.map,a=c.forEach,g=c.filter,m=c.some,p=c.indexOf,k=Array.isArray,l=Object.keys,j=function(a){if(a instanceof j)return a;
-if(!(this instanceof j))return new j(a)},t=j.each=j.forEach=function(r,g,b){if(null==r)return r;if(a&&r.forEach===a)r.forEach(g,b);else if(r.length===+r.length)for(var d=0,m=r.length;d<m;d++){if(g.call(b,r[d],d,r)===f)return}else for(var c=j.keys(r),d=0,m=c.length;d<m;d++)if(g.call(b,r[c[d]],c[d],r)===f)return;return r};j.map=j.collect=function(a,j,g){var b=[];if(null==a)return b;if(n&&a.map===n)return a.map(j,g);t(a,function(a,r,d){b.push(j.call(g,a,r,d))});return b};j.find=j.detect=function(a,j,
-g){var b;v(a,function(a,r,d){if(j.call(g,a,r,d))return b=a,!0});return b};j.filter=j.select=function(a,j,b){var d=[];if(null==a)return d;if(g&&a.filter===g)return a.filter(j,b);t(a,function(a,g,r){j.call(b,a,g,r)&&d.push(a)});return d};var v=j.some=j.any=function(a,g,b){g||(g=j.identity);var d=!1;if(null==a)return d;if(m&&a.some===m)return a.some(g,b);t(a,function(a,j,r){if(d||(d=g.call(b,a,j,r)))return f});return!!d};j.size=function(a){return null==a?0:a.length===+a.length?a.length:j.keys(a).length};
-j.after=function(a,j){return function(){if(1>--a)return j.apply(this,arguments)}};j.sortedIndex=function(a,g,b,d){b=null==b?j.identity:j.isFunction(b)?b:j.property(b);g=b.call(d,g);for(var m=0,c=a.length;m<c;){var l=m+c>>>1;b.call(d,a[l])<g?m=l+1:c=l}return m};j.find=j.detect=function(a,j,g){var b;v(a,function(a,d,m){if(j.call(g,a,d,m))return b=a,!0});return b};v=j.some=j.any=function(a,g,b){g||(g=j.identity);var d=!1;if(null==a)return d;if(m&&a.some===m)return a.some(g,b);t(a,function(a,j,m){if(d||
-(d=g.call(b,a,j,m)))return f});return!!d};j.contains=j.include=function(a,g){if(null==a)return!1;a.length!==+a.length&&(a=j.values(a));return 0<=j.indexOf(a,g)};j.difference=function(a){var g=e.apply(c,d.call(arguments,1));return j.filter(a,function(a){return!j.contains(g,a)})};j.without=function(a){return j.difference(a,d.call(arguments,1))};j.indexOf=function(a,g,b){if(null==a)return-1;var d=0,m=a.length;if(b)if("number"==typeof b)d=0>b?Math.max(0,m+b):b;else return d=j.sortedIndex(a,g),a[d]===
-g?d:-1;if(p&&a.indexOf===p)return a.indexOf(g,b);for(;d<m;d++)if(a[d]===g)return d;return-1};j.memoize=function(a,g){var b={};g||(g=j.identity);return function(){var d=g.apply(this,arguments);return j.has(b,d)?b[d]:b[d]=a.apply(this,arguments)}};j.keys=function(a){if(!j.isObject(a))return[];if(l)return l(a);var g=[],b;for(b in a)j.has(a,b)&&g.push(b);return g};j.pick=function(a){var j={},g=e.apply(c,d.call(arguments,1));t(g,function(g){g in a&&(j[g]=a[g])});return j};j.isArray=k||function(a){return"[object Array]"==
-b.call(a)};j.isObject=function(a){return a===Object(a)};t("Arguments Function String Number Date RegExp".split(" "),function(a){j["is"+a]=function(g){return b.call(g)=="[object "+a+"]"}});j.isArguments(arguments)||(j.isArguments=function(a){return!(!a||!j.has(a,"callee"))});"function"!==typeof/./&&(j.isFunction=function(a){return"function"===typeof a});j.isFinite=function(a){return isFinite(a)&&!isNaN(parseFloat(a))};j.isNaN=function(a){return j.isNumber(a)&&a!=+a};j.isBoolean=function(a){return!0===
-a||!1===a||"[object Boolean]"==b.call(a)};j.isNull=function(a){return null===a};j.isUndefined=function(a){return void 0===a};j.has=function(a,g){return h.call(a,g)};j.identity=function(a){return a};j.constant=function(a){return function(){return a}};j.property=function(a){return function(g){return g[a]}};this._=j}.call(jwplayer),function(f){function c(a){return function(){return h(a)}}function k(a,g,b,c,l){return function(){var j,e;if(l)b(a);else{try{if(j=a.responseXML)if(e=j.firstChild,j.lastChild&&
-"parsererror"===j.lastChild.nodeName){c&&c("Invalid XML",g,a);return}}catch(h){}if(j&&e)return b(a);(j=d.parseXML(a.responseText))&&j.firstChild?(a=d.extend({},a,{responseXML:j}),b(a)):c&&c(a.responseText?"Invalid XML":g,g,a)}}}var d=f.utils={},e=f._;d.exists=function(a){switch(typeof a){case "string":return 0<a.length;case "object":return null!==a;case "undefined":return!1}return!0};d.styleDimension=function(a){return a+(0<a.toString().indexOf("%")?"":"px")};d.getAbsolutePath=function(a,g){d.exists(g)||
-(g=document.location.href);if(d.exists(a)){var b;if(d.exists(a)){b=a.indexOf("://");var c=a.indexOf("?");b=0<b&&(0>c||c>b)}else b=void 0;if(b)return a;b=g.substring(0,g.indexOf("://")+3);var c=g.substring(b.length,g.indexOf("/",b.length+1)),l;0===a.indexOf("/")?l=a.split("/"):(l=g.split("?")[0],l=l.substring(b.length+c.length+1,l.lastIndexOf("/")),l=l.split("/").concat(a.split("/")));for(var j=[],e=0;e<l.length;e++)l[e]&&(d.exists(l[e])&&"."!==l[e])&&(".."===l[e]?j.pop():j.push(l[e]));return b+c+
-"/"+j.join("/")}};d.extend=function(){var a=Array.prototype.slice.call(arguments,0);if(1<a.length){for(var g=a[0],b=function(a,b){void 0!==b&&null!==b&&(g[a]=b)},c=1;c<a.length;c++)d.foreach(a[c],b);return g}return null};var b=window.console=window.console||{log:function(){}};d.log=function(){var a=Array.prototype.slice.call(arguments,0);"object"===typeof b.log?b.log(a):b.log.apply(b,a)};var h=e.memoize(function(a){return null!==navigator.userAgent.toLowerCase().match(a)});d.isFF=c(/firefox/i);d.isChrome=
-c(/chrome/i);d.isIPod=c(/iP(hone|od)/i);d.isIPad=c(/iPad/i);d.isSafari602=c(/Macintosh.*Mac OS X 10_8.*6\.0\.\d* Safari/i);d.isIETrident=function(a){return a?(a=parseFloat(a).toFixed(1),h(RegExp("trident/.+rv:\\s*"+a,"i"))):h(/trident/i)};d.isMSIE=function(a){return a?(a=parseFloat(a).toFixed(1),h(RegExp("msie\\s*"+a,"i"))):h(/msie/i)};d.isIE=function(a){return a?(a=parseFloat(a).toFixed(1),11<=a?d.isIETrident(a):d.isMSIE(a)):d.isMSIE()||d.isIETrident()};d.isSafari=function(){return h(/safari/i)&&
-!h(/chrome/i)&&!h(/chromium/i)&&!h(/android/i)};d.isIOS=function(a){return a?h(RegExp("iP(hone|ad|od).+\\sOS\\s"+a,"i")):h(/iP(hone|ad|od)/i)};d.isAndroidNative=function(a){return d.isAndroid(a,!0)};d.isAndroid=function(a,b){return b&&h(/chrome\/[123456789]/i)&&!h(/chrome\/18/)?!1:a?(d.isInt(a)&&!/\./.test(a)&&(a=""+a+"."),h(RegExp("Android\\s*"+a,"i"))):h(/Android/i)};d.isMobile=function(){return d.isIOS()||d.isAndroid()};d.isIframe=function(){return window.frameElement&&"IFRAME"===window.frameElement.nodeName};
-d.saveCookie=function(a,b){document.cookie="jwplayer."+a+"\x3d"+b+"; path\x3d/"};d.getCookies=function(){for(var a={},b=document.cookie.split("; "),d=0;d<b.length;d++){var c=b[d].split("\x3d");0===c[0].indexOf("jwplayer.")&&(a[c[0].substring(9,c[0].length)]=c[1])}return a};d.isInt=function(a){return 0===parseFloat(a)%1};d.typeOf=function(a){if(null===a)return"null";var b=typeof a;return"object"===b&&e.isArray(a)?"array":b};d.translateEventResponse=function(a,b){var c=d.extend({},b);if(a===f.events.JWPLAYER_FULLSCREEN&&
-!c.fullscreen)c.fullscreen="true"===c.message,delete c.message;else if("object"===typeof c.data){var e=c.data;delete c.data;c=d.extend(c,e)}else"object"===typeof c.metadata&&d.deepReplaceKeyName(c.metadata,["__dot__","__spc__","__dsh__","__default__"],["."," ","-","default"]);d.foreach(["position","duration","offset"],function(a,b){c[b]&&(c[b]=Math.round(1E3*c[b])/1E3)});return c};d.flashVersion=function(){if(d.isAndroid())return 0;var a=navigator.plugins,b;try{if("undefined"!==a&&(b=a["Shockwave Flash"]))return parseInt(b.description.replace(/\D+(\d+)\..*/,
-"$1"),10)}catch(c){}if("undefined"!==typeof window.ActiveXObject)try{if(b=new window.ActiveXObject("ShockwaveFlash.ShockwaveFlash"))return parseInt(b.GetVariable("$version").split(" ")[1].split(",")[0],10)}catch(e){}return 0};d.getScriptPath=function(a){for(var b=document.getElementsByTagName("script"),d=0;d<b.length;d++){var c=b[d].src;if(c&&0<=c.indexOf(a))return c.substr(0,c.indexOf(a))}return""};d.deepReplaceKeyName=function(a,b,c){switch(f.utils.typeOf(a)){case "array":for(var e=0;e<a.length;e++)a[e]=
-f.utils.deepReplaceKeyName(a[e],b,c);break;case "object":d.foreach(a,function(d,j){var e;if(b instanceof Array&&c instanceof Array){if(b.length!==c.length)return;e=b}else e=[b];for(var h=d,r=0;r<e.length;r++)h=h.replace(RegExp(b[r],"g"),c[r]);a[h]=f.utils.deepReplaceKeyName(j,b,c);d!==h&&delete a[d]})}return a};var n=d.pluginPathType={ABSOLUTE:0,RELATIVE:1,CDN:2};d.getPluginPathType=function(a){if("string"===typeof a){a=a.split("?")[0];var b=a.indexOf("://");if(0<b)return n.ABSOLUTE;var c=a.indexOf("/");
-a=d.extension(a);return 0>b&&0>c&&(!a||!isNaN(a))?n.CDN:n.RELATIVE}};d.getPluginName=function(a){return a.replace(/^(.*\/)?([^-]*)-?.*\.(swf|js)$/,"$2")};d.getPluginVersion=function(a){return a.replace(/[^-]*-?([^\.]*).*$/,"$1")};d.isYouTube=function(a,b){return"youtube"===b||/^(http|\/\/).*(youtube\.com|youtu\.be)\/.+/.test(a)};d.youTubeID=function(a){try{return/v[=\/]([^?&]*)|youtu\.be\/([^?]*)|^([\w-]*)$/i.exec(a).slice(1).join("").replace("?","")}catch(b){return""}};d.isRtmp=function(a,b){return 0===
-a.indexOf("rtmp")||"rtmp"===b};d.foreach=function(a,b){var c,e;for(c in a)"function"===d.typeOf(a.hasOwnProperty)?a.hasOwnProperty(c)&&(e=a[c],b(c,e)):(e=a[c],b(c,e))};d.isHTTPS=function(){return 0===window.location.href.indexOf("https")};d.repo=function(){var a="http://p.jwpcdn.com/"+f.version.split(/\W/).splice(0,2).join("/")+"/";try{d.isHTTPS()&&(a=a.replace("http://","https://ssl."))}catch(b){}return a};d.versionCheck=function(a){a=("0"+a).split(/\W/);var b=f.version.split(/\W/),d=parseFloat(a[0]),
-c=parseFloat(b[0]);return d>c||d===c&&parseFloat("0"+a[1])>parseFloat(b[1])?!1:!0};d.ajax=function(a,b,c,e){var h,j=!1;0<a.indexOf("#")&&(a=a.replace(/#.*$/,""));if(a&&0<=a.indexOf("://")&&a.split("/")[2]!==window.location.href.split("/")[2]&&d.exists(window.XDomainRequest))h=new window.XDomainRequest,h.onload=k(h,a,b,c,e),h.ontimeout=h.onprogress=function(){},h.timeout=5E3;else if(d.exists(window.XMLHttpRequest)){var f=h=new window.XMLHttpRequest,n=a;h.onreadystatechange=function(){if(4===f.readyState)switch(f.status){case 200:k(f,
-n,b,c,e)();break;case 404:c("File not found",n,f)}}}else return c&&c("",a,h),h;h.overrideMimeType&&h.overrideMimeType("text/xml");var r=a,q=h;h.onerror=function(){c("Error loading file",r,q)};try{h.open("GET",a,!0)}catch(u){j=!0}setTimeout(function(){if(j)c&&c(a,a,h);else try{h.send()}catch(b){c&&c(a,a,h)}},0);return h};d.parseXML=function(a){var b;try{if(window.DOMParser){if(b=(new window.DOMParser).parseFromString(a,"text/xml"),b.childNodes&&b.childNodes.length&&"parsererror"===b.childNodes[0].firstChild.nodeName)return}else b=
-new window.ActiveXObject("Microsoft.XMLDOM"),b.async="false",b.loadXML(a)}catch(c){return}return b};d.between=function(a,b,c){return Math.max(Math.min(a,c),b)};d.seconds=function(a){if(e.isNumber(a))return a;a=a.replace(",",".");var b=a.split(":"),c=0;"s"===a.slice(-1)?c=parseFloat(a):"m"===a.slice(-1)?c=60*parseFloat(a):"h"===a.slice(-1)?c=3600*parseFloat(a):1<b.length?(c=parseFloat(b[b.length-1]),c+=60*parseFloat(b[b.length-2]),3===b.length&&(c+=3600*parseFloat(b[b.length-3]))):c=parseFloat(a);
-return c};d.serialize=function(a){return null===a?null:"true"===a.toString().toLowerCase()?!0:"false"===a.toString().toLowerCase()?!1:isNaN(Number(a))||5<a.length||0===a.length?a:Number(a)};d.addClass=function(a,b){var c=e.isString(a.className)?a.className.split(" "):[],h=e.isArray(b)?b:b.split(" ");e.each(h,function(a){e.contains(c,a)||c.push(a)});a.className=d.trim(c.join(" "))};d.removeClass=function(a,b){var c=e.isString(a.className)?a.className.split(" "):[],h=e.isArray(b)?b:b.split(" ");a.className=
-d.trim(e.difference(c,h).join(" "))};d.indexOf=e.indexOf;d.noop=function(){};d.canCast=function(){var a=f.cast;return!(!a||!e.isFunction(a.available)||!a.available())}}(jwplayer),function(f){function c(a){var b=document.createElement("style");a&&b.appendChild(document.createTextNode(a));b.type="text/css";document.getElementsByTagName("head")[0].appendChild(b);return b}function k(a,c,d){if(!b.exists(c))return"";d=d?" !important":"";return"string"===typeof c&&isNaN(c)?/png|gif|jpe?g/i.test(c)&&0>c.indexOf("url")?
-"url("+c+")":c+d:0===c||"z-index"===a||"opacity"===a?""+c+d:/color/i.test(a)?"#"+b.pad(c.toString(16).replace(/^0x/i,""),6)+d:Math.ceil(c)+"px"+d}function d(a,b){for(var c=0;c<a.length;c++){var d=a[c],g,e;if(void 0!==d&&null!==d)for(g in b){e=g;e=e.split("-");for(var h=1;h<e.length;h++)e[h]=e[h].charAt(0).toUpperCase()+e[h].slice(1);e=e.join("");d.style[e]!==b[g]&&(d.style[e]=b[g])}}}function e(b){var c=h[b].sheet,d,g,e;if(c){d=c.cssRules;g=m[b];e=b;var f=a[e];e+=" { ";for(var n in f)e+=n+": "+f[n]+
-"; ";e+="}";if(void 0!==g&&g<d.length&&d[g].selectorText===b){if(e===d[g].cssText)return;c.deleteRule(g)}else g=d.length,m[b]=g;try{c.insertRule(e,g)}catch(k){}}}var b=f.utils,h={},n,a={},g=null,m={};b.cssKeyframes=function(a,b){var d=h.keyframes;d||(d=c(),h.keyframes=d);var d=d.sheet,e="@keyframes "+a+" { "+b+" }";try{d.insertRule(e,d.cssRules.length)}catch(g){}e=e.replace(/(keyframes|transform)/g,"-webkit-$1");try{d.insertRule(e,d.cssRules.length)}catch(f){}};var p=b.css=function(b,d,f){a[b]||(a[b]=
-{});var m=a[b];f=f||!1;var r=!1,p,u;for(p in d)u=k(p,d[p],f),""!==u?u!==m[p]&&(m[p]=u,r=!0):void 0!==m[p]&&(delete m[p],r=!0);if(r){if(!h[b]){d=n&&n.sheet&&n.sheet.cssRules&&n.sheet.cssRules.length||0;if(!n||5E4<d)n=c();h[b]=n}null!==g?g.styleSheets[b]=a[b]:e(b)}};p.style=function(a,b,c){if(!(void 0===a||null===a)){void 0===a.length&&(a=[a]);var e={},h;for(h in b)e[h]=k(h,b[h]);if(null!==g&&!c){b=(b=a.__cssRules)||{};for(var f in e)b[f]=e[f];a.__cssRules=b;0>g.elements.indexOf(a)&&g.elements.push(a)}else d(a,
-e)}};p.block=function(a){null===g&&(g={id:a,styleSheets:{},elements:[]})};p.unblock=function(a){if(g&&(!a||g.id===a)){for(var b in g.styleSheets)e(b);for(a=0;a<g.elements.length;a++)b=g.elements[a],d(b,b.__cssRules);g=null}};b.clearCss=function(b){for(var c in a)0<=c.indexOf(b)&&delete a[c];for(var d in h)0<=d.indexOf(b)&&e(d)};b.transform=function(a,b){var c={};b=b||"";c.transform=b;c["-webkit-transform"]=b;c["-ms-transform"]=b;c["-moz-transform"]=b;c["-o-transform"]=b;"string"===typeof a?p(a,c):
-p.style(a,c)};b.dragStyle=function(a,b){p(a,{"-webkit-user-select":b,"-moz-user-select":b,"-ms-user-select":b,"-webkit-user-drag":b,"user-select":b,"user-drag":b})};b.transitionStyle=function(a,b){navigator.userAgent.match(/5\.\d(\.\d)? safari/i)||p(a,{"-webkit-transition":b,"-moz-transition":b,"-o-transition":b,transition:b})};b.rotate=function(a,c){b.transform(a,"rotate("+c+"deg)")};b.rgbHex=function(a){a=String(a).replace("#","");3===a.length&&(a=a[0]+a[0]+a[1]+a[1]+a[2]+a[2]);return"#"+a.substr(-6)};
-b.hexToRgba=function(a,b){var c="rgb",d=[parseInt(a.substr(1,2),16),parseInt(a.substr(3,2),16),parseInt(a.substr(5,2),16)];void 0!==b&&100!==b&&(c+="a",d.push(b/100));return c+"("+d.join(",")+")"}}(jwplayer),function(f){var c=f.foreach,k={mp4:"video/mp4",ogg:"video/ogg",oga:"audio/ogg",vorbis:"audio/ogg",webm:"video/webm",aac:"audio/mp4",mp3:"audio/mpeg",hls:"application/vnd.apple.mpegurl"},d={mp4:k.mp4,f4v:k.mp4,m4v:k.mp4,mov:k.mp4,m4a:k.aac,f4a:k.aac,aac:k.aac,mp3:k.mp3,ogv:k.ogg,ogg:k.ogg,oga:k.vorbis,
-vorbis:k.vorbis,webm:k.webm,m3u8:k.hls,m3u:k.hls,hls:k.hls},e=f.extensionmap={};c(d,function(b,c){e[b]={html5:c}});c({flv:"video",f4v:"video",mov:"video",m4a:"video",m4v:"video",mp4:"video",aac:"video",f4a:"video",mp3:"sound",smil:"rtmp",m3u8:"hls",hls:"hls"},function(b,c){e[b]||(e[b]={});e[b].flash=c});e.types=k;e.mimeType=function(b){var d;c(k,function(c,a){!d&&a==b&&(d=c)});return d};e.extType=function(b){return e.mimeType(d[b])}}(jwplayer.utils),function(f){var c=f.loaderstatus={NEW:0,LOADING:1,
-ERROR:2,COMPLETE:3},k=document;f.scriptloader=function(d){function e(b){a=c.ERROR;n.sendEvent(h.ERROR,b)}function b(b){a=c.COMPLETE;n.sendEvent(h.COMPLETE,b)}var h=jwplayer.events,n=f.extend(this,new h.eventdispatcher),a=c.NEW;this.load=function(){if(a==c.NEW){var g=f.scriptloader.loaders[d];if(g&&(a=g.getStatus(),2>a)){g.addEventListener(h.ERROR,e);g.addEventListener(h.COMPLETE,b);return}var n=k.createElement("script");n.addEventListener?(n.onload=b,n.onerror=e):n.readyState&&(n.onreadystatechange=
-function(a){("loaded"==n.readyState||"complete"==n.readyState)&&b(a)});k.getElementsByTagName("head")[0].appendChild(n);n.src=d;a=c.LOADING;f.scriptloader.loaders[d]=this}};this.getStatus=function(){return a}};f.scriptloader.loaders={}}(jwplayer.utils),function(f){f.trim=function(c){return c.replace(/^\s+|\s+$/g,"")};f.pad=function(c,f,d){for(d||(d="0");c.length<f;)c=d+c;return c};f.xmlAttribute=function(c,f){for(var d=0;d<c.attributes.length;d++)if(c.attributes[d].name&&c.attributes[d].name.toLowerCase()===
-f.toLowerCase())return c.attributes[d].value.toString();return""};f.extension=function(c){if(!c||"rtmp"===c.substr(0,4))return"";var f;f=-1<c.indexOf("(format\x3dm3u8-")?"m3u8":!1;if(f)return f;c=c.substring(c.lastIndexOf("/")+1,c.length).split("?")[0].split("#")[0];if(-1<c.lastIndexOf("."))return c.substr(c.lastIndexOf(".")+1,c.length).toLowerCase()};f.stringToColor=function(c){c=c.replace(/(#|0x)?([0-9A-F]{3,6})$/gi,"$2");3===c.length&&(c=c.charAt(0)+c.charAt(0)+c.charAt(1)+c.charAt(1)+c.charAt(2)+
-c.charAt(2));return parseInt(c,16)}}(jwplayer.utils),function(f){var c="touchmove",k="touchstart";f.touch=function(d){function e(d){d.type===k?(a=!0,m=h(l.DRAG_START,d)):d.type===c?a&&(p||(b(l.DRAG_START,d,m),p=!0),b(l.DRAG,d)):(a&&(p?b(l.DRAG_END,d):(d.cancelBubble=!0,b(l.TAP,d))),a=p=!1,m=null)}function b(a,b,c){if(g[a]&&(b.preventManipulation&&b.preventManipulation(),b.preventDefault&&b.preventDefault(),b=c?c:h(a,b)))g[a](b)}function h(a,b){var c=null;b.touches&&b.touches.length?c=b.touches[0]:
-b.changedTouches&&b.changedTouches.length&&(c=b.changedTouches[0]);if(!c)return null;var d=n.getBoundingClientRect(),c={type:a,target:n,x:c.pageX-window.pageXOffset-d.left,y:c.pageY,deltaX:0,deltaY:0};a!==l.TAP&&m&&(c.deltaX=c.x-m.x,c.deltaY=c.y-m.y);return c}var n=d,a=!1,g={},m=null,p=!1,l=f.touchEvents;document.addEventListener(c,e);document.addEventListener("touchend",function(c){a&&p&&b(l.DRAG_END,c);a=p=!1;m=null});document.addEventListener("touchcancel",e);d.addEventListener(k,e);d.addEventListener("touchend",
-e);this.addEventListener=function(a,b){g[a]=b};this.removeEventListener=function(a){delete g[a]};return this}}(jwplayer.utils),function(f){f.touchEvents={DRAG:"jwplayerDrag",DRAG_START:"jwplayerDragStart",DRAG_END:"jwplayerDragEnd",TAP:"jwplayerTap"}}(jwplayer.utils),function(f){f.key=function(c){var k,d,e;this.edition=function(){return e&&e.getTime()<(new Date).getTime()?"invalid":k};this.token=function(){return d};f.exists(c)||(c="");try{c=f.tea.decrypt(c,"36QXq4W@GSBV^teR");var b=c.split("/");
-(k=b[0])?/^(free|pro|premium|enterprise|ads)$/i.test(k)?(d=b[1],b[2]&&0<parseInt(b[2])&&(e=new Date,e.setTime(String(b[2])))):k="invalid":k="free"}catch(h){k="invalid"}}}(jwplayer.utils),function(f){var c=f.tea={};c.encrypt=function(e,b){if(0==e.length)return"";var h=c.strToLongs(d.encode(e));1>=h.length&&(h[1]=0);for(var f=c.strToLongs(d.encode(b).slice(0,16)),a=h.length,g=h[a-1],m=h[0],p,l=Math.floor(6+52/a),j=0;0<l--;){j+=2654435769;p=j>>>2&3;for(var t=0;t<a;t++)m=h[(t+1)%a],g=(g>>>5^m<<2)+(m>>>
-3^g<<4)^(j^m)+(f[t&3^p]^g),g=h[t]+=g}h=c.longsToStr(h);return k.encode(h)};c.decrypt=function(e,b){if(0==e.length)return"";for(var h=c.strToLongs(k.decode(e)),f=c.strToLongs(d.encode(b).slice(0,16)),a=h.length,g=h[a-1],m=h[0],p,l=2654435769*Math.floor(6+52/a);0!=l;){p=l>>>2&3;for(var j=a-1;0<=j;j--)g=h[0<j?j-1:a-1],g=(g>>>5^m<<2)+(m>>>3^g<<4)^(l^m)+(f[j&3^p]^g),m=h[j]-=g;l-=2654435769}h=c.longsToStr(h);h=h.replace(/\0+$/,"");return d.decode(h)};c.strToLongs=function(c){for(var b=Array(Math.ceil(c.length/
-4)),d=0;d<b.length;d++)b[d]=c.charCodeAt(4*d)+(c.charCodeAt(4*d+1)<<8)+(c.charCodeAt(4*d+2)<<16)+(c.charCodeAt(4*d+3)<<24);return b};c.longsToStr=function(c){for(var b=Array(c.length),d=0;d<c.length;d++)b[d]=String.fromCharCode(c[d]&255,c[d]>>>8&255,c[d]>>>16&255,c[d]>>>24&255);return b.join("")};var k={code:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\x3d",encode:function(c,b){var h,f,a,g,m=[],p="",l,j,t=k.code;j=("undefined"==typeof b?0:b)?d.encode(c):c;l=j.length%3;if(0<l)for(;3>
-l++;)p+="\x3d",j+="\x00";for(l=0;l<j.length;l+=3)h=j.charCodeAt(l),f=j.charCodeAt(l+1),a=j.charCodeAt(l+2),g=h<<16|f<<8|a,h=g>>18&63,f=g>>12&63,a=g>>6&63,g&=63,m[l/3]=t.charAt(h)+t.charAt(f)+t.charAt(a)+t.charAt(g);m=m.join("");return m=m.slice(0,m.length-p.length)+p},decode:function(c,b){b="undefined"==typeof b?!1:b;var h,f,a,g,m,p=[],l,j=k.code;l=b?d.decode(c):c;for(var t=0;t<l.length;t+=4)h=j.indexOf(l.charAt(t)),f=j.indexOf(l.charAt(t+1)),g=j.indexOf(l.charAt(t+2)),m=j.indexOf(l.charAt(t+3)),
-a=h<<18|f<<12|g<<6|m,h=a>>>16&255,f=a>>>8&255,a&=255,p[t/4]=String.fromCharCode(h,f,a),64==m&&(p[t/4]=String.fromCharCode(h,f)),64==g&&(p[t/4]=String.fromCharCode(h));g=p.join("");return b?d.decode(g):g}},d={encode:function(c){c=c.replace(/[\u0080-\u07ff]/g,function(b){b=b.charCodeAt(0);return String.fromCharCode(192|b>>6,128|b&63)});return c=c.replace(/[\u0800-\uffff]/g,function(b){b=b.charCodeAt(0);return String.fromCharCode(224|b>>12,128|b>>6&63,128|b&63)})},decode:function(c){c=c.replace(/[\u00e0-\u00ef][\u0080-\u00bf][\u0080-\u00bf]/g,
-function(b){b=(b.charCodeAt(0)&15)<<12|(b.charCodeAt(1)&63)<<6|b.charCodeAt(2)&63;return String.fromCharCode(b)});return c=c.replace(/[\u00c0-\u00df][\u0080-\u00bf]/g,function(b){b=(b.charCodeAt(0)&31)<<6|b.charCodeAt(1)&63;return String.fromCharCode(b)})}}}(jwplayer.utils),function(f){f.events={COMPLETE:"COMPLETE",ERROR:"ERROR",API_READY:"jwplayerAPIReady",JWPLAYER_READY:"jwplayerReady",JWPLAYER_FULLSCREEN:"jwplayerFullscreen",JWPLAYER_RESIZE:"jwplayerResize",JWPLAYER_ERROR:"jwplayerError",JWPLAYER_SETUP_ERROR:"jwplayerSetupError",
-JWPLAYER_MEDIA_BEFOREPLAY:"jwplayerMediaBeforePlay",JWPLAYER_MEDIA_BEFORECOMPLETE:"jwplayerMediaBeforeComplete",JWPLAYER_COMPONENT_SHOW:"jwplayerComponentShow",JWPLAYER_COMPONENT_HIDE:"jwplayerComponentHide",JWPLAYER_MEDIA_BUFFER:"jwplayerMediaBuffer",JWPLAYER_MEDIA_BUFFER_FULL:"jwplayerMediaBufferFull",JWPLAYER_MEDIA_ERROR:"jwplayerMediaError",JWPLAYER_MEDIA_LOADED:"jwplayerMediaLoaded",JWPLAYER_MEDIA_COMPLETE:"jwplayerMediaComplete",JWPLAYER_MEDIA_SEEK:"jwplayerMediaSeek",JWPLAYER_MEDIA_TIME:"jwplayerMediaTime",
-JWPLAYER_MEDIA_VOLUME:"jwplayerMediaVolume",JWPLAYER_MEDIA_META:"jwplayerMediaMeta",JWPLAYER_MEDIA_MUTE:"jwplayerMediaMute",JWPLAYER_AUDIO_TRACKS:"jwplayerAudioTracks",JWPLAYER_AUDIO_TRACK_CHANGED:"jwplayerAudioTrackChanged",JWPLAYER_MEDIA_LEVELS:"jwplayerMediaLevels",JWPLAYER_MEDIA_LEVEL_CHANGED:"jwplayerMediaLevelChanged",JWPLAYER_CAPTIONS_CHANGED:"jwplayerCaptionsChanged",JWPLAYER_CAPTIONS_LIST:"jwplayerCaptionsList",JWPLAYER_CAPTIONS_LOADED:"jwplayerCaptionsLoaded",JWPLAYER_PLAYER_STATE:"jwplayerPlayerState",
-state:{BUFFERING:"BUFFERING",IDLE:"IDLE",PAUSED:"PAUSED",PLAYING:"PLAYING"},JWPLAYER_PLAYLIST_LOADED:"jwplayerPlaylistLoaded",JWPLAYER_PLAYLIST_ITEM:"jwplayerPlaylistItem",JWPLAYER_PLAYLIST_COMPLETE:"jwplayerPlaylistComplete",JWPLAYER_DISPLAY_CLICK:"jwplayerViewClick",JWPLAYER_PROVIDER_CLICK:"jwplayerProviderClick",JWPLAYER_VIEW_TAB_FOCUS:"jwplayerViewTabFocus",JWPLAYER_CONTROLS:"jwplayerViewControls",JWPLAYER_USER_ACTION:"jwplayerUserAction",JWPLAYER_INSTREAM_CLICK:"jwplayerInstreamClicked",JWPLAYER_INSTREAM_DESTROYED:"jwplayerInstreamDestroyed",
-JWPLAYER_AD_TIME:"jwplayerAdTime",JWPLAYER_AD_ERROR:"jwplayerAdError",JWPLAYER_AD_CLICK:"jwplayerAdClicked",JWPLAYER_AD_COMPLETE:"jwplayerAdComplete",JWPLAYER_AD_IMPRESSION:"jwplayerAdImpression",JWPLAYER_AD_COMPANIONS:"jwplayerAdCompanions",JWPLAYER_AD_SKIPPED:"jwplayerAdSkipped",JWPLAYER_AD_PLAY:"jwplayerAdPlay",JWPLAYER_AD_PAUSE:"jwplayerAdPause",JWPLAYER_AD_META:"jwplayerAdMeta",JWPLAYER_CAST_AVAILABLE:"jwplayerCastAvailable",JWPLAYER_CAST_SESSION:"jwplayerCastSession",JWPLAYER_CAST_AD_CHANGED:"jwplayerCastAdChanged"}}(jwplayer),
-function(f){var c=f.utils;f.events.eventdispatcher=function(k,d){function e(b,a,d){if(b)for(var e=0;e<b.length;e++){var h=b[e];if(h){null!==h.count&&0===--h.count&&delete b[e];try{h.listener(a)}catch(f){c.log('Error handling "'+d+'" event listener ['+e+"]: "+f.toString(),h.listener,a)}}}}var b,h;this.resetEventListeners=function(){b={};h=[]};this.resetEventListeners();this.addEventListener=function(d,a,g){try{c.exists(b[d])||(b[d]=[]),"string"===c.typeOf(a)&&(a=(new Function("return "+a))()),b[d].push({listener:a,
-count:g||null})}catch(e){c.log("error",e)}return!1};this.removeEventListener=function(d,a){var g;if(b[d]){try{if(void 0===a){b[d]=[];return}for(g=0;g<b[d].length;g++)if(b[d][g].listener.toString()===a.toString()){b[d].splice(g,1);break}}catch(e){c.log("error",e)}return!1}};this.addGlobalListener=function(b,a){try{"string"===c.typeOf(b)&&(b=(new Function("return "+b))()),h.push({listener:b,count:a||null})}catch(d){c.log("error",d)}return!1};this.removeGlobalListener=function(b){if(b){try{for(var a=
-h.length;a--;)h[a].listener.toString()===b.toString()&&h.splice(a,1)}catch(d){c.log("error",d)}return!1}};this.sendEvent=function(n,a){c.exists(a)||(a={});c.extend(a,{id:k,version:f.version,type:n});d&&c.log(n,a);e(b[n],a,n);e(h,a,n)}}}(window.jwplayer),function(f){var c={},k={};f.plugins=function(){};f.plugins.loadPlugins=function(d,e){k[d]=new f.plugins.pluginloader(new f.plugins.model(c),e);return k[d]};f.plugins.registerPlugin=function(d,e,b,h){var n=f.utils.getPluginName(d);c[n]||(c[n]=new f.plugins.plugin(d));
-c[n].registerPlugin(d,e,b,h)}}(jwplayer),function(f){f.plugins.model=function(c){this.addPlugin=function(k){var d=f.utils.getPluginName(k);c[d]||(c[d]=new f.plugins.plugin(k));return c[d]};this.getPlugins=function(){return c}}}(jwplayer),function(f){var c=jwplayer.utils,k=jwplayer.events;f.pluginmodes={FLASH:0,JAVASCRIPT:1,HYBRID:2};f.plugin=function(d){function e(){switch(c.getPluginPathType(d)){case c.pluginPathType.ABSOLUTE:return d;case c.pluginPathType.RELATIVE:return c.getAbsolutePath(d,window.location.href)}}
-function b(){p=setTimeout(function(){n=c.loaderstatus.COMPLETE;l.sendEvent(k.COMPLETE)},1E3)}function h(){n=c.loaderstatus.ERROR;l.sendEvent(k.ERROR,{url:d})}var n=c.loaderstatus.NEW,a,g,m,p,l=new k.eventdispatcher;c.extend(this,l);this.load=function(){if(n===c.loaderstatus.NEW)if(0<d.lastIndexOf(".swf"))a=d,n=c.loaderstatus.COMPLETE,l.sendEvent(k.COMPLETE);else if(c.getPluginPathType(d)===c.pluginPathType.CDN)n=c.loaderstatus.COMPLETE,l.sendEvent(k.COMPLETE);else{n=c.loaderstatus.LOADING;var g=new c.scriptloader(e());
-g.addEventListener(k.COMPLETE,b);g.addEventListener(k.ERROR,h);g.load()}};this.registerPlugin=function(b,d,e,h){p&&(clearTimeout(p),p=void 0);m=d;e&&h?(a=h,g=e):"string"===typeof e?a=e:"function"===typeof e?g=e:!e&&!h&&(a=b);n=c.loaderstatus.COMPLETE;l.sendEvent(k.COMPLETE)};this.getStatus=function(){return n};this.getPluginName=function(){return c.getPluginName(d)};this.getFlashPath=function(){if(a)switch(c.getPluginPathType(a)){case c.pluginPathType.ABSOLUTE:return a;case c.pluginPathType.RELATIVE:return 0<
-d.lastIndexOf(".swf")?c.getAbsolutePath(a,window.location.href):c.getAbsolutePath(a,e())}return null};this.getJS=function(){return g};this.getTarget=function(){return m};this.getPluginmode=function(){if("undefined"!==typeof a&&"undefined"!==typeof g)return f.pluginmodes.HYBRID;if("undefined"!==typeof a)return f.pluginmodes.FLASH;if("undefined"!==typeof g)return f.pluginmodes.JAVASCRIPT};this.getNewInstance=function(a,b,c){return new g(a,b,c)};this.getURL=function(){return d}}}(jwplayer.plugins),function(f){var c=
-f.utils,k=f.events,d=f._,e=c.foreach;f.plugins.pluginloader=function(b,h){function f(){p||(p=!0,m=c.loaderstatus.COMPLETE,v.sendEvent(k.COMPLETE))}function a(){(!l||0===d.keys(l).length)&&f();if(!p){var a=b.getPlugins();t=d.after(j,f);c.foreach(l,function(b){b=c.getPluginName(b);var d=a[b];b=d.getJS();var e=d.getTarget(),d=d.getStatus();d===c.loaderstatus.LOADING||d===c.loaderstatus.NEW||(b&&!c.versionCheck(e)&&v.sendEvent(k.ERROR,{message:"Incompatible player version"}),t())})}}function g(a){v.sendEvent(k.ERROR,
-{message:"File not found"});a.url&&c.log("File not found",a.url);t()}var m=c.loaderstatus.NEW,p=!1,l=h,j=d.size(l),t,v=new k.eventdispatcher;c.extend(this,v);this.setupPlugins=function(a,d,g){var h={length:0,plugins:{}},f=0,j={},m=b.getPlugins();e(d.plugins,function(b,e){var n=c.getPluginName(b),k=m[n],l=k.getFlashPath(),p=k.getJS(),v=k.getURL();l&&(h.plugins[l]=c.extend({},e),h.plugins[l].pluginmode=k.getPluginmode(),h.length++);try{if(p&&d.plugins&&d.plugins[v]){var t=document.createElement("div");
-t.id=a.id+"_"+n;t.style.position="absolute";t.style.top=0;t.style.zIndex=f+10;j[n]=k.getNewInstance(a,c.extend({},d.plugins[v]),t);f++;a.onReady(g(j[n],t,!0));a.onResize(g(j[n],t))}}catch(M){c.log("ERROR: Failed to load "+n+".")}});a.plugins=j;return h};this.load=function(){if(!(c.exists(h)&&"object"!==c.typeOf(h))){m=c.loaderstatus.LOADING;e(h,function(d){c.exists(d)&&(d=b.addPlugin(d),d.addEventListener(k.COMPLETE,a),d.addEventListener(k.ERROR,g))});var d=b.getPlugins();e(d,function(a,b){b.load()})}a()};
-this.destroy=function(){v&&(v.resetEventListeners(),v=null)};this.pluginFailed=g;this.getStatus=function(){return m}}}(jwplayer),function(f){f.parsers={localName:function(c){return c?c.localName?c.localName:c.baseName?c.baseName:"":""},textContent:function(c){return c?c.textContent?f.utils.trim(c.textContent):c.text?f.utils.trim(c.text):"":""},getChildNode:function(c,f){return c.childNodes[f]},numChildren:function(c){return c.childNodes?c.childNodes.length:0}}}(jwplayer),function(f){var c=f.parsers;
-(c.jwparser=function(){}).parseEntry=function(k,d){for(var e=[],b=[],h=f.utils.xmlAttribute,n=0;n<k.childNodes.length;n++){var a=k.childNodes[n];if("jwplayer"==a.prefix){var g=c.localName(a);"source"==g?(delete d.sources,e.push({file:h(a,"file"),"default":h(a,"default"),label:h(a,"label"),type:h(a,"type")})):"track"==g?(delete d.tracks,b.push({file:h(a,"file"),"default":h(a,"default"),kind:h(a,"kind"),label:h(a,"label")})):(d[g]=f.utils.serialize(c.textContent(a)),"file"==g&&d.sources&&delete d.sources)}d.file||
-(d.file=d.link)}if(e.length){d.sources=[];for(n=0;n<e.length;n++)0<e[n].file.length&&(e[n]["default"]="true"==e[n]["default"]?!0:!1,e[n].label.length||delete e[n].label,d.sources.push(e[n]))}if(b.length){d.tracks=[];for(n=0;n<b.length;n++)0<b[n].file.length&&(b[n]["default"]="true"==b[n]["default"]?!0:!1,b[n].kind=!b[n].kind.length?"captions":b[n].kind,b[n].label.length||delete b[n].label,d.tracks.push(b[n]))}return d}}(jwplayer),function(f){var c=jwplayer.utils,k=c.xmlAttribute,d=f.localName,e=f.textContent,
-b=f.numChildren,h=f.mediaparser=function(){};h.parseGroup=function(f,a){var g,m,p=[];for(m=0;m<b(f);m++)if(g=f.childNodes[m],"media"==g.prefix&&d(g))switch(d(g).toLowerCase()){case "content":k(g,"duration")&&(a.duration=c.seconds(k(g,"duration")));0<b(g)&&(a=h.parseGroup(g,a));k(g,"url")&&(a.sources||(a.sources=[]),a.sources.push({file:k(g,"url"),type:k(g,"type"),width:k(g,"width"),label:k(g,"label")}));break;case "title":a.title=e(g);break;case "description":a.description=e(g);break;case "guid":a.mediaid=
-e(g);break;case "thumbnail":a.image||(a.image=k(g,"url"));break;case "group":h.parseGroup(g,a);break;case "subtitle":var l={};l.file=k(g,"url");l.kind="captions";if(0<k(g,"lang").length){var j=l;g=k(g,"lang");var t={zh:"Chinese",nl:"Dutch",en:"English",fr:"French",de:"German",it:"Italian",ja:"Japanese",pt:"Portuguese",ru:"Russian",es:"Spanish"};g=t[g]?t[g]:g;j.label=g}p.push(l)}a.hasOwnProperty("tracks")||(a.tracks=[]);for(m=0;m<p.length;m++)a.tracks.push(p[m]);return a}}(jwplayer.parsers),function(f){function c(b){for(var a=
-{},c=0;c<b.childNodes.length;c++){var e=b.childNodes[c],p=h(e);if(p)switch(p.toLowerCase()){case "enclosure":a.file=k.xmlAttribute(e,"url");break;case "title":a.title=d(e);break;case "guid":a.mediaid=d(e);break;case "pubdate":a.date=d(e);break;case "description":a.description=d(e);break;case "link":a.link=d(e);break;case "category":a.tags=a.tags?a.tags+d(e):d(e)}}a=f.mediaparser.parseGroup(b,a);a=f.jwparser.parseEntry(b,a);return new jwplayer.playlist.item(a)}var k=jwplayer.utils,d=f.textContent,
-e=f.getChildNode,b=f.numChildren,h=f.localName;f.rssparser={};f.rssparser.parse=function(d){for(var a=[],g=0;g<b(d);g++){var f=e(d,g);if("channel"==h(f).toLowerCase())for(var k=0;k<b(f);k++){var l=e(f,k);"item"==h(l).toLowerCase()&&a.push(c(l))}}return a}}(jwplayer.parsers),function(f){var c=f.utils,k=f._;f.playlist=function(c){var b=[];c=k.isArray(c)?c:[c];k.each(c,function(c){b.push(new f.playlist.item(c))});return b};f.playlist.filterPlaylist=function(e,b){var h=[];k.each(e,function(e){e=c.extend({},
-e);e.sources=d(e.sources,!1,b);if(e.sources.length){for(var a=0;a<e.sources.length;a++)e.sources[a].label=e.sources[a].label||a.toString();h.push(e)}});return h};var d=f.playlist.filterSources=function(d,b,h){var n,a=[],g=b?f.embed.flashCanPlay:f.embed.html5CanPlay;if(d)return k.each(d,function(b){if(!b||!b.file)b=void 0;else{var d=c.trim(""+b.file),e=b.type;e||(e=c.extension(d),e=c.extensionmap.extType(e));b=c.extend({},b,{file:d,type:e})}b&&g(b.file,b.type,h)&&(n=n||b.type,b.type===n&&a.push(b))}),
-a}}(jwplayer),function(f){var c=f.item=function(k){var d=jwplayer.utils,e=d.extend({},c.defaults,k),b,h;e.tracks=k&&d.exists(k.tracks)?k.tracks:[];0===e.sources.length&&(e.sources=[new f.source(e)]);for(b=0;b<e.sources.length;b++)h=e.sources[b]["default"],e.sources[b]["default"]=h?"true"==h.toString():!1,e.sources[b]=new f.source(e.sources[b]);if(e.captions&&!d.exists(k.tracks)){for(k=0;k<e.captions.length;k++)e.tracks.push(e.captions[k]);delete e.captions}for(b=0;b<e.tracks.length;b++)e.tracks[b]=
-new f.track(e.tracks[b]);return e};c.defaults={description:void 0,image:void 0,mediaid:void 0,title:void 0,sources:[],tracks:[]}}(jwplayer.playlist),function(f){var c=f.utils,k=f.events,d=f.parsers;f.playlist.loader=function(){function e(a){try{var b=a.responseXML.childNodes;a="";for(var c=0;c<b.length&&!(a=b[c],8!==a.nodeType);c++);"xml"===d.localName(a)&&(a=a.nextSibling);if("rss"!==d.localName(a))h("Not a valid RSS feed");else{var e=new f.playlist(d.rssparser.parse(a));n.sendEvent(k.JWPLAYER_PLAYLIST_LOADED,
-{playlist:e})}}catch(l){h()}}function b(a){h(a.match(/invalid/i)?"Not a valid RSS feed":"")}function h(a){n.sendEvent(k.JWPLAYER_ERROR,{message:a?a:"Error loading file"})}var n=new k.eventdispatcher;c.extend(this,n);this.load=function(a){c.ajax(a,e,b)}}}(jwplayer),function(f){var c=jwplayer.utils,k={file:void 0,label:void 0,type:void 0,"default":void 0};f.source=function(d){var e=c.extend({},k);c.foreach(k,function(b){c.exists(d[b])&&(e[b]=d[b],delete d[b])});e.type&&0<e.type.indexOf("/")&&(e.type=
-c.extensionmap.mimeType(e.type));"m3u8"==e.type&&(e.type="hls");"smil"==e.type&&(e.type="rtmp");return e}}(jwplayer.playlist),function(f){var c=jwplayer.utils,k={file:void 0,label:void 0,kind:"captions","default":!1};f.track=function(d){var e=c.extend({},k);d||(d={});c.foreach(k,function(b){c.exists(d[b])&&(e[b]=d[b],delete d[b])});return e}}(jwplayer.playlist),function(f){function c(b,c,a){var d=b.style;d.backgroundColor="#000";d.color="#FFF";d.width=k.styleDimension(a.width);d.height=k.styleDimension(a.height);
-d.display="table";d.opacity=1;a=document.createElement("p");d=a.style;d.verticalAlign="middle";d.textAlign="center";d.display="table-cell";d.font="15px/20px Arial, Helvetica, sans-serif";a.innerHTML=c.replace(":",":\x3cbr\x3e");b.innerHTML="";b.appendChild(a)}var k=f.utils,d=f.events,e=f._,b=f.embed=function(h){function n(){if(!y){var c=j.playlist;if(e.isArray(c)){if(0===c.length){m();return}if(1===c.length&&(!c[0].sources||0===c[0].sources.length||!c[0].sources[0].file)){m();return}}if(!x)if(e.isString(c))w=
-new f.playlist.loader,w.addEventListener(d.JWPLAYER_PLAYLIST_LOADED,function(a){j.playlist=a.playlist;x=!1;n()}),w.addEventListener(d.JWPLAYER_ERROR,function(a){x=!1;m(a)}),x=!0,w.load(j.playlist);else if(u.getStatus()===k.loaderstatus.COMPLETE){for(c=0;c<j.modes.length;c++){var g=j.modes[c],r=g.type;if(r&&b[r]){var l=k.extend({},j),g=new b[r](D,g,l,u,h);if(g.supportsConfig())return g.addEventListener(d.ERROR,a),g.embed(),k.css("object.jwswf, .jwplayer:focus",{outline:"none"}),k.css(".jw-tab-focus:focus",
-{outline:"solid 2px #0B7EF4"}),h}}j.fallback?(c="No suitable players found and fallback enabled",p(c,!0),k.log(c),new b.download(D,j,m)):(c="No suitable players found and fallback disabled",p(c,!1),k.log(c),D.parentNode.replaceChild(C,D))}}}function a(a){l(r+a.message)}function g(a){h.dispatchEvent(d.JWPLAYER_ERROR,{message:"Could not load plugin: "+a.message})}function m(a){a&&a.message?l("Error loading playlist: "+a.message):l(r+"No playable sources found")}function p(a,b){clearTimeout(F);F=setTimeout(function(){h.dispatchEvent(d.JWPLAYER_SETUP_ERROR,
-{message:a,fallback:b})},0)}function l(a){y||(j.fallback?(y=!0,c(D,a,j),p(a,!0)):p(a,!1))}var j=new b.config(h.config),t=j.width,v=j.height,r="Error loading player: ",q=document.getElementById(h.id),u=f.plugins.loadPlugins(h.id,j.plugins),w,x=!1,y=!1,F=-1,C=null;j.fallbackDiv&&(C=j.fallbackDiv,delete j.fallbackDiv);j.id=h.id;j.aspectratio?h.config.aspectratio=j.aspectratio:delete h.config.aspectratio;var E=h;k.foreach(j.events,function(a,b){var c=E[a];"function"===typeof c&&c.call(E,b)});var D=document.createElement("div");
-D.id=q.id;D.style.width=0<t.toString().indexOf("%")?t:t+"px";D.style.height=0<v.toString().indexOf("%")?v:v+"px";q.parentNode.replaceChild(D,q);this.embed=function(){y||(u.addEventListener(d.COMPLETE,n),u.addEventListener(d.ERROR,g),u.load())};this.destroy=function(){u&&(u.destroy(),u=null);w&&(w.resetEventListeners(),w=null)};this.errorScreen=l;return this};f.embed.errorScreen=c}(jwplayer),function(f){function c(b){if(b.playlist)for(var c=0;c<b.playlist.length;c++)b.playlist[c]=new e(b.playlist[c]);
-else{var f={};d.foreach(e.defaults,function(a){k(b,f,a)});f.sources||(b.levels?(f.sources=b.levels,delete b.levels):(c={},k(b,c,"file"),k(b,c,"type"),f.sources=c.file?[c]:[]));b.playlist=[new e(f)]}}function k(b,c,e){d.exists(b[e])&&(c[e]=b[e],delete b[e])}var d=f.utils,e=f.playlist.item;(f.embed.config=function(b){var e={fallback:!0,height:270,primary:"html5",width:480,base:b.base?b.base:d.getScriptPath("jwplayer.js"),aspectratio:""};b=d.extend({},e,f.defaults,b);var e={type:"html5",src:b.base+"jwplayer.html5.js"},
-k={type:"flash",src:b.base+"jwplayer.flash.swf.xhtml?ln=jwplayer"};b.modes="flash"===b.primary?[k,e]:[e,k];b.listbar&&(b.playlistsize=b.listbar.size,b.playlistposition=b.listbar.position,b.playlistlayout=b.listbar.layout);b.flashplayer&&(k.src=b.flashplayer);b.html5player&&(e.src=b.html5player);c(b);k=b.aspectratio;if("string"!==typeof k||!d.exists(k))e=0;else{var a=k.indexOf(":");-1===a?e=0:(e=parseFloat(k.substr(0,a)),k=parseFloat(k.substr(a+1)),e=0>=e||0>=k?0:100*(k/e)+"%")}-1===b.width.toString().indexOf("%")?
-delete b.aspectratio:e?b.aspectratio=e:delete b.aspectratio;return b}).addConfig=function(b,e){c(e);return d.extend(b,e)}}(jwplayer),function(f){var c=f.utils,k=f.utils.css;f.embed.download=function(d,e,b){function f(a,b,c){a=document.createElement(a);b&&(a.className="jwdownload"+b);c&&c.appendChild(a);return a}var n=c.extend({},e),a,g=n.width?n.width:480,m=n.height?n.height:320,p;e=e.logo?e.logo:{prefix:c.repo(),file:"logo.png",margin:10};var l,j,t,v,r,q;j=n.playlist;n=["mp4","aac","mp3"];if(j&&
-j.length){t=j[0];v=t.sources;for(j=0;j<v.length;j++)r=v[j],r.file&&(q=r.type||c.extensionmap.extType(c.extension(r.file)),0<=c.indexOf(n,q)?(a=r.file,p=t.image):c.isYouTube(r.file,q)&&(l=r.file));a?(b=a,d&&(a=f("a","display",d),f("div","icon",a),f("div","logo",a),b&&a.setAttribute("href",c.getAbsolutePath(b))),b="#"+d.id+" .jwdownload",d.style.width="",d.style.height="",k(b+"display",{width:c.styleDimension(Math.max(320,g)),height:c.styleDimension(Math.max(180,m)),background:"black center no-repeat "+
-(p?"url("+p+")":""),backgroundSize:"contain",position:"relative",border:"none",display:"block"}),k(b+"display div",{position:"absolute",width:"100%",height:"100%"}),k(b+"logo",{top:e.margin+"px",right:e.margin+"px",background:"top right no-repeat url("+e.prefix+e.file+")"}),k(b+"icon",{background:"center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAgNJREFUeNrs28lqwkAYB/CZqNVDDj2r6FN41QeIy8Fe+gj6BL275Q08u9FbT8ZdwVfotSBYEPUkxFOoks4EKiJdaDuTjMn3wWBO0V/+sySR8SNSqVRKIR8qaXHkzlqS9jCfzzWcTCYp9hF5o+59sVjsiRzcegSckFzcjT+ruN80TeSlAjCAAXzdJSGPFXRpAAMYwACGZQkSdhG4WCzehMNhqV6vG6vVSrirKVEw66YoSqDb7cqlUilE8JjHd/y1MQefVzqdDmiaJpfLZWHgXMHn8F6vJ1cqlVAkEsGuAn83J4gAd2RZymQygX6/L1erVQt+9ZPWb+CDwcCC2zXGJaewl/DhcHhK3DVj+KfKZrMWvFarcYNLomAv4aPRSFZVlTlcSPA5fDweW/BoNIqFnKV53JvncjkLns/n/cLdS+92O7RYLLgsKfv9/t8XlDn4eDyiw+HA9Jyz2eyt0+kY2+3WFC5hluej0Ha7zQQq9PPwdDq1Et1sNsx/nFBgCqWJ8oAK1aUptNVqcYWewE4nahfU0YQnk4ntUEfGMIU2m01HoLaCKbTRaDgKtaVLk9tBYaBcE/6Artdr4RZ5TB6/dC+9iIe/WgAMYADDpAUJAxjAAAYwgGFZgoS/AtNNTF7Z2bL0BYPBV3Jw5xFwwWcYxgtBP5OkE8i9G7aWGOOCruvauwADALMLMEbKf4SdAAAAAElFTkSuQmCC)"})):
-l?(e=l,d=f("iframe","",d),d.src="http://www.youtube.com/embed/"+c.youTubeID(e),d.width=g,d.height=m,d.style.border="none"):b()}}}(jwplayer),function(f){var c=f.utils,k=f.events,d={};(f.embed.flash=function(b,h,n,a,g){function m(a,b,c){var d=document.createElement("param");d.setAttribute("name",b);d.setAttribute("value",c);a.appendChild(d)}function p(a,b,c){return function(){try{c&&document.getElementById(g.id+"_wrapper").appendChild(b);var d=document.getElementById(g.id).getPluginConfig("display");
-"function"===typeof a.resize&&a.resize(d.width,d.height);b.style.left=d.x;b.style.top=d.h}catch(e){}}}function l(a){if(!a)return{};var b={},d=[];c.foreach(a,function(a,e){var g=c.getPluginName(a);d.push(a);c.foreach(e,function(a,c){b[g+"."+a]=c})});b.plugins=d.join(",");return b}var j=new f.events.eventdispatcher,t=c.flashVersion();c.extend(this,j);this.embed=function(){n.id=g.id;if(10>t)return j.sendEvent(k.ERROR,{message:"Flash version must be 10.0 or greater"}),!1;var e,f,q=g.config.listbar,u=
-c.extend({},n);if(b.id+"_wrapper"===b.parentNode.id)e=document.getElementById(b.id+"_wrapper");else{e=document.createElement("div");f=document.createElement("div");f.style.display="none";f.id=b.id+"_aspect";e.id=b.id+"_wrapper";e.style.position="relative";e.style.display="block";e.style.width=c.styleDimension(u.width);e.style.height=c.styleDimension(u.height);if(g.config.aspectratio){var w=parseFloat(g.config.aspectratio);f.style.display="block";f.style.marginTop=g.config.aspectratio;e.style.height=
-"auto";e.style.display="inline-block";q&&("bottom"===q.position?f.style.paddingBottom=q.size+"px":"right"===q.position&&(f.style.marginBottom=-1*q.size*(w/100)+"px"))}b.parentNode.replaceChild(e,b);e.appendChild(b);e.appendChild(f)}e=a.setupPlugins(g,u,p);0<e.length?c.extend(u,l(e.plugins)):delete u.plugins;"undefined"!==typeof u["dock.position"]&&"false"===u["dock.position"].toString().toLowerCase()&&(u.dock=u["dock.position"],delete u["dock.position"]);e=u.wmode||(u.height&&40>=u.height?"transparent":
-"opaque");f="height width modes events primary base fallback volume".split(" ");for(q=0;q<f.length;q++)delete u[f[q]];f=c.getCookies();c.foreach(f,function(a,b){"undefined"===typeof u[a]&&(u[a]=b)});f=window.location.href.split("/");f.splice(f.length-1,1);f=f.join("/");u.base=f+"/";d[b.id]=u;c.isMSIE()?(f='\x3cobject classid\x3d"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" " width\x3d"100%" height\x3d"100%"id\x3d"'+b.id+'" name\x3d"'+b.id+'" tabindex\x3d0""\x3e',f+='\x3cparam name\x3d"movie" value\x3d"'+
-h.src+'"\x3e',f+='\x3cparam name\x3d"allowfullscreen" value\x3d"true"\x3e\x3cparam name\x3d"allowscriptaccess" value\x3d"always"\x3e',f+='\x3cparam name\x3d"seamlesstabbing" value\x3d"true"\x3e',f+='\x3cparam name\x3d"wmode" value\x3d"'+e+'"\x3e',f+='\x3cparam name\x3d"bgcolor" value\x3d"#000000"\x3e',f+="\x3c/object\x3e",b.outerHTML=f,e=document.getElementById(b.id)):(f=document.createElement("object"),f.setAttribute("type","application/x-shockwave-flash"),f.setAttribute("data",h.src),f.setAttribute("width",
-"100%"),f.setAttribute("height","100%"),f.setAttribute("bgcolor","#000000"),f.setAttribute("id",b.id),f.setAttribute("name",b.id),f.className="jwswf",m(f,"allowfullscreen","true"),m(f,"allowscriptaccess","always"),m(f,"seamlesstabbing","true"),m(f,"wmode",e),b.parentNode.replaceChild(f,b),e=f);g.config.aspectratio&&(e.style.position="absolute");g.container=e;g.setPlayer(e,"flash")};this.supportsConfig=function(){if(t)if(n){if("string"===c.typeOf(n.playlist))return!0;try{var a=n.playlist[0].sources;
-if("undefined"===typeof a)return!0;for(var b=0;b<a.length;b++)if(a[b].file&&e(a[b].file,a[b].type))return!0}catch(d){}}else return!0;return!1}}).getVars=function(b){return d[b]};var e=f.embed.flashCanPlay=function(b,d){if(c.isYouTube(b,d)||c.isRtmp(b,d)||"hls"===d)return!0;var e=c.extensionmap[d?d:c.extension(b)];return!e?!1:!!e.flash}}(jwplayer),function(f){var c=f.utils,k=c.extensionmap,d=f.events;f.embed.html5=function(e,b,h,k,a){function g(a,b,c){return function(){try{var d=document.querySelector("#"+
-e.id+" .jwmain");c&&d.appendChild(b);"function"===typeof a.resize&&(a.resize(d.clientWidth,d.clientHeight),setTimeout(function(){a.resize(d.clientWidth,d.clientHeight)},400));b.left=d.style.left;b.top=d.style.top}catch(f){}}}function m(a){p.sendEvent(a.type,{message:"HTML5 player not found"})}var p=this,l=new d.eventdispatcher;c.extend(p,l);p.embed=function(){if(f.html5){k.setupPlugins(a,h,g);e.innerHTML="";var j=f.utils.extend({},h);delete j.volume;j=new f.html5.player(j);a.container=document.getElementById(a.id);
-a.setPlayer(j,"html5")}else j=new c.scriptloader(b.src),j.addEventListener(d.ERROR,m),j.addEventListener(d.COMPLETE,p.embed),j.load()};p.supportsConfig=function(){if(f.vid.canPlayType)try{if("string"===c.typeOf(h.playlist))return!0;for(var a=h.playlist[0].sources,b=0;b<a.length;b++)if(f.embed.html5CanPlay(a[b].file,a[b].type,h.androidhls))return!0}catch(d){}return!1}};f.embed.html5CanPlay=function(d,b,h){if(null!==navigator.userAgent.match(/BlackBerry/i)||c.isIE(9))return!1;if(c.isYouTube(d,b))return!0;
-var n=c.extension(d);b=b||k.extType(n);if("hls"===b)if(h){h=c.isAndroidNative;if(h(2)||h(3)||h("4.0"))return!1;if(c.isAndroid())return!0}else if(c.isAndroid())return!1;if(c.isRtmp(d,b))return!1;d=k[b]||k[n];if(!d||d.flash&&!d.html5)return!1;var a;a:if(d=d.html5){try{a=!!f.vid.canPlayType(d);break a}catch(g){}a=!1}else a=!0;return a}}(jwplayer),function(f){var c=f.embed,k=f.embed.html5CanPlay,d=f.utils,e=f._,b=/\.(js|swf)$/;f.cast=f.cast||{};f.embed=d.extend(function(e){function k(){w="Adobe SiteCatalyst Error: Could not find Media Module"}
-var a=d.repo(),g=d.extend({},f.defaults),m=d.extend({},g,e.config),p=e.config,l=m.plugins,j=m.analytics,t=a+"jwpsrv.js",v=a+"sharing.js",r=a+"related.js",q=a+"gapro.js",g=f.key?f.key:g.key,u=(new f.utils.key(g)).edition(),w,l=l?l:{};"ads"==u&&m.advertising&&(b.test(m.advertising.client)?l[m.advertising.client]=m.advertising:l[a+m.advertising.client+".js"]=m.advertising);delete p.advertising;p.key=g;m.analytics&&b.test(m.analytics.client)&&(t=m.analytics.client);delete p.analytics;j&&!("ads"===u||
-"enterprise"===u)&&delete j.enabled;if("free"==u||!j||!1!==j.enabled)l[t]=j?j:{};delete l.sharing;delete l.related;switch(u){case "ads":case "enterprise":if(p.sitecatalyst)try{window.s&&window.s.hasOwnProperty("Media")?new f.embed.sitecatalyst(e):k()}catch(x){k()}case "premium":m.related&&(b.test(m.related.client)&&(r=m.related.client),l[r]=m.related),m.ga&&(b.test(m.ga.client)&&(q=m.ga.client),l[q]=m.ga);case "pro":m.sharing&&(b.test(m.sharing.client)&&(v=m.sharing.client),l[v]=m.sharing),m.skin&&
-(p.skin=m.skin.replace(/^(beelden|bekle|five|glow|modieus|roundster|stormtrooper|vapor)$/i,d.repo()+"skins/$1.xml"))}p.plugins=l;e.config=p;e=new c(e);w&&e.errorScreen(w);return e},f.embed);f.embed.html5CanPlay=function(b,c){var a;var d={file:b,type:c};a=f.html5&&f.html5.chooseProvider?f.html5.chooseProvider(d)!==f.html5.VideoProvider:e.any(f.unregisteredProviders,function(a){return a.supports(d)});return a?!0:k.apply(this,arguments)}}(jwplayer),function(f){var c=jwplayer.utils;f.sitecatalyst=function(f){function d(b){a.debug&&
-c.log(b)}function e(a){a=a.split("/");a=a[a.length-1];a=a.split("?");return a[0]}function b(){if(!j){j=!0;var a=n.getPosition();d("stop: "+m+" : "+a);s.Media.stop(m,a)}}function h(){t||(b(),t=!0,d("close: "+m),s.Media.close(m),v=!0,l=0)}var n=f,a=c.extend({},n.config.sitecatalyst),g={onPlay:function(){if(!v){var a=n.getPosition();j=!1;d("play: "+m+" : "+a);s.Media.play(m,a)}},onPause:b,onBuffer:b,onIdle:h,onPlaylistItem:function(b){try{v=!0;h();l=0;var d;if(a.mediaName)d=a.mediaName;else{var f=n.getPlaylistItem(b.index);
-d=f.title?f.title:f.file?e(f.file):f.sources&&f.sources.length?e(f.sources[0].file):""}m=d;p=a.playerName?a.playerName:n.id}catch(g){c.log(g)}},onTime:function(){if(v){var a=n.getDuration();if(-1==a)return;t=j=v=!1;d("open: "+m+" : "+a+" : "+p);s.Media.open(m,a,p);d("play: "+m+" : 0");s.Media.play(m,0)}a=n.getPosition();if(3<=Math.abs(a-l)){var b=l;d("seek: "+b+" to "+a);d("stop: "+m+" : "+b);s.Media.stop(m,b);d("play: "+m+" : "+a);s.Media.play(m,a)}l=a},onComplete:h},m,p,l,j=!0,t=!0,v;c.foreach(g,
-function(a){n[a](g[a])})}}(jwplayer.embed),function(f){function c(b,c){b[c]&&(b[c]=k.getAbsolutePath(b[c]))}var k=f.utils,d=f._,e=window.location.href;f.cast.setupCastConfig=function(b,d){var f=k.extend({},b.config);f.cast=k.extend({pageUrl:e},d);for(var a="base autostart controls fallback fullscreen width height mobilecontrols modes playlistlayout playlistposition playlistsize primary stretching sharing related ga skin logo listbar".split(" "),g=a.length;g--;)delete f[a[g]];a=f.plugins;delete f.plugins;
-for(var m in a)if(a.hasOwnProperty(m)){var p=a[m];if(p.client&&(/[\.\/]/.test(p.client)&&c(p,"client"),-1<p.client.indexOf("vast"))){g=f;p=k.extend({},p);p.client="vast";delete p.companiondiv;if(p.schedule){var l=void 0;for(l in p.schedule)p.schedule.hasOwnProperty(l)&&c(p.schedule[l].ad||p.schedule[l],"tag")}c(p,"tag");g.advertising=p}}b.position&&(f.position=b.position);0<b.item&&(f.item=b.item);f.captionLabel=k.getCookies().captionLabel;return f};f.cast.setupFlashCastConfig=function(b){var c=b.config;
-c.playlist=b.getPlaylist();var e;(e=d.find(c.plugins,function(a,b){return 0<b.indexOf("vast.js")}))?(e.client="vast",e={advertising:e}):e={};c=d.pick(c,"id captionLabel cast key playlist repeat".split(" "));c.cast.pageUrl=window.location.href;k.extend(c,{captionLabel:k.getCookies().captionLabel,volume:b.getVolume(),mute:b.getMute(),id:b.id,position:b.getPosition(),item:b.getPlaylistIndex()},e);return c}}(window.jwplayer),function(f,c){function k(a,b){a[b]&&(a[b]=e.getAbsolutePath(a[b]))}var d=c.cast,
-e=c.utils,b=c.events,h=b.state,n={};d.NS="urn:x-cast:com.longtailvideo.jwplayer";d.debug=!1;d.availability=null;d.available=function(a){a=a||d.availability;var b=f.chrome,c="available";b.cast&&b.cast.ReceiverAvailability&&(c=b.cast.ReceiverAvailability.AVAILABLE);return a===c};d.controller=function(a,g){var m,p;function l(a,b){d.log("send command",a,b);var c={command:a};void 0!==b&&(c.args=b);z.sendMessage(d.NS,c,M,function(a){d.log("error message",a);"Invalid namespace"===a.description&&w()})}function j(a){a=
-!!d.available(a.availability);N.available!==a&&(N.available=a,q(b.JWPLAYER_CAST_AVAILABLE))}function t(a){d.log("existing session",a);!z&&!H&&(H=a.session,H.addMessageListener(d.NS,v))}function v(e,f){var j=JSON.parse(f);if(!j)throw"Message not proper JSON";if(j.reconcile){H.removeMessageListener(d.NS,v);var h=j.diff,k=H;if(!h.id||!j.appid||!j.pageUrl)h.id=c().id,j.appid=G.appid,j.pageUrl=O,H=z=null;h.id===a.id&&(j.appid===G.appid&&j.pageUrl===O)&&(z||(a.jwInstreamState()&&a.jwInstreamDestroy(!0),
-y(k),g.sendEvent(b.JWPLAYER_PLAYER_STATE,{oldstate:h.oldstate,newstate:h.newstate})),J(j));H=null}}function r(a){N.active=!!a;a=N;var c;c=z&&z.receiver?z.receiver.friendlyName:"";a.deviceName=c;q(b.JWPLAYER_CAST_SESSION,{})}function q(a){var b=e.extend({},N);g.sendEvent(a,b)}function u(a){var b=f.chrome;a.code!==b.cast.ErrorCode.CANCEL&&(d.log("Cast Session Error:",a,z),a.code===b.cast.ErrorCode.SESSION_ERROR&&w())}function w(){z?(E(),z.stop(C,x)):C()}function x(a){d.error("Cast Session Stop error:",
-a,z);C()}function y(j){d.log("Session started:",j);z=j;z.addMessageListener(d.NS,D);z.addUpdateListener(F);a.jwPause(!0);a.jwSetFullscreen(!1);L=g.getVideo();m=g.volume;p=g.mute;B=new d.provider(l);B.init();g.setVideoProvider(B);a.jwPlay=function(a){!1===a?B.pause():B.play()};a.jwPause=function(b){a.jwPlay(!!b)};a.jwLoad=function(a){"number"===e.typeOf(a)&&g.setItem(a);B.load(a)};a.jwPlaylistItem=function(a){"number"===e.typeOf(a)&&g.setItem(a);B.playlistItem(a)};a.jwPlaylistNext=function(){a.jwPlaylistItem(g.item+
-1)};a.jwPlaylistPrev=function(){a.jwPlaylistItem(g.item-1)};a.jwSetVolume=function(a){e.exists(a)&&(a=Math.min(Math.max(0,a),100)|0,P(a)&&(a=Math.max(0,Math.min(a/100,1)),z.setReceiverVolumeLevel(a,K,function(a){d.error("set volume error",a);K()})))};a.jwSetMute=function(a){e.exists(a)||(a=!I.mute);Q(a)&&z.setReceiverMuted(!!a,K,function(a){d.error("set muted error",a);K()})};a.jwGetVolume=function(){return I.volume|0};a.jwGetMute=function(){return!!I.mute};a.jwIsBeforePlay=function(){return!1};var k=
-a.jwSetCurrentCaptions;a.jwSetCurrentCaptions=function(a){k(a);B.sendCommand("caption",a)};a.jwSkipAd=function(a){A&&(A.skipAd(a),a=A.getAdModel(),a.complete=!0,g.sendEvent(b.JWPLAYER_CAST_AD_CHANGED,a))};a.jwClickAd=function(d){if(A&&300<A.timeSinceClick()&&(A.clickAd(d),g.state!==h.PAUSED)){var e={tag:d.tag};d.sequence&&(e.sequence=d.sequence);d.podcount&&(e.podcount=d.podcount);c(a.id).dispatchEvent(b.JWPLAYER_AD_CLICK,e);f.open(d.clickthrough)}};a.jwPlayAd=a.jwPauseAd=a.jwSetControls=a.jwForceState=
-a.jwReleaseState=a.jwSetFullscreen=a.jwDetachMedia=a.jwAttachMedia=M;var n=c(a.id).plugins;n.vast&&n.vast.jwPauseAd!==M&&(R={jwPlayAd:n.vast.jwPlayAd,jwPauseAd:n.vast.jwPauseAd},n.vast.jwPlayAd=n.vast.jwPauseAd=M);K();r(!0);j!==H&&B.setup(S(),g)}function F(a){d.log("Cast Session status",a);a?K():(B.sendEvent(b.JWPLAYER_PLAYER_STATE,{oldstate:g.state,newstate:h.BUFFERING}),C())}function C(){d.log("_sessionStopped");z&&(E(),z=null);if(L){delete a.jwSkipAd;delete a.jwClickAd;a.initializeAPI();var f=
-c(a.id).plugins;f.vast&&e.extend(f.vast,R);g.volume=m;g.mute=p;g.setVideoProvider(L);g.duration=0;B&&(B.destroy(),B=null);A&&(A.destroy(),A=null);g.state!==h.IDLE?e.isIPad()||e.isIPod()?(a.jwStop(!0),L.sendEvent(b.JWPLAYER_PLAYER_STATE,{oldstate:h.BUFFERING,newstate:h.IDLE})):(g.state=h.IDLE,a.jwPlay(!0),a.jwSeek(g.position)):L.sendEvent(b.JWPLAYER_PLAYER_STATE,{oldstate:h.BUFFERING,newstate:h.IDLE});L=null}r(!1)}function E(){z.removeUpdateListener(F);z.removeMessageListener(d.NS,D)}function D(a,
-b){var c=JSON.parse(b);if(!c)throw"Message not proper JSON";J(c)}function J(c){if("state"===c.type){if(A&&(c.diff.newstate||c.diff.position))A.destroy(),A=null,g.setVideoProvider(B),g.sendEvent(b.JWPLAYER_CAST_AD_CHANGED,{done:!0});B.updateModel(c.diff,c.type);c=c.diff;void 0!==c.item&&g.item!==c.item&&(g.item=c.item,g.sendEvent(b.JWPLAYER_PLAYLIST_ITEM,{index:g.item}))}else if("ad"===c.type){null===A&&(A=new d.adprovider(d.NS,z),A.init(),g.setVideoProvider(A));A.updateModel(c.diff,c.type);var e=
-A.getAdModel();c.diff.clickthrough&&(e.onClick=a.jwClickAd);c.diff.skipoffset&&(e.onSkipAd=a.jwSkipAd);g.sendEvent(b.JWPLAYER_CAST_AD_CHANGED,e);c.diff.complete&&A.resetAdModel()}else"connection"===c.type?!0===c.closed&&w():d.error("received unhandled message",c.type,c)}function S(){var a=e.extend({},g.config);a.cast=e.extend({pageUrl:O},G);for(var b="base autostart controls fallback fullscreen width height mobilecontrols modes playlistlayout playlistposition playlistsize primary stretching sharing related ga skin logo listbar".split(" "),
-c=b.length;c--;)delete a[b[c]];b=a.plugins;delete a.plugins;for(var d in b)if(b.hasOwnProperty(d)){var f=b[d];if(f.client&&(/[\.\/]/.test(f.client)&&k(f,"client"),-1<f.client.indexOf("vast"))){c=a;f=e.extend({},f);f.client="vast";delete f.companiondiv;if(f.schedule){var j=void 0;for(j in f.schedule)f.schedule.hasOwnProperty(j)&&k(f.schedule[j].ad||f.schedule[j],"tag")}k(f,"tag");c.advertising=f}}g.position&&(a.position=g.position);0<g.item&&(a.item=g.item);a.captionLabel=e.getCookies().captionLabel;
-return a}function K(){if(z&&z.receiver){var a=z.receiver.volume;if(a){var b=100*a.level|0;Q(!!a.muted);P(b)}}}function P(a){var c=I.volume!==a;c&&(I.volume=a,B.sendEvent(b.JWPLAYER_MEDIA_VOLUME,{volume:a}));return c}function Q(a){var c=I.mute!==a;c&&(I.mute=a,B.sendEvent(b.JWPLAYER_MEDIA_MUTE,{mute:a}));return c}function M(){}var z=null,N={available:!1,active:!1,deviceName:""},I={volume:null,mute:null},O=e.getAbsolutePath(f.location.href),G,B=null,A=null,L=null;m=g.volume;p=g.mute;var H=null,R=null;
-G=e.extend({},n,g.cast);k(G,"loadscreen");k(G,"endscreen");k(G,"logo");if(G.appid&&(!f.cast||!f.cast.receiver))d.loader.addEventListener("availability",j),d.loader.addEventListener("session",t),d.loader.initialize(G.appid);this.startCasting=function(){z||a.jwInstreamState()||f.chrome.cast.requestSession(y,u)};this.stopCasting=w};d.log=function(){if(d.debug){var a=Array.prototype.slice.call(arguments,0);console.log.apply(console,a)}};d.error=function(){var a=Array.prototype.slice.call(arguments,0);
-console.error.apply(console,a)}}(window,jwplayer),function(f){function c(a){p.log("existing session",a);!y&&!w&&(w=a.session,w.addMessageListener(p.NS,k))}function k(a,c){var d=JSON.parse(c),e=w;if(!d)throw"Message not proper JSON";if(d.reconcile){w.removeMessageListener(p.NS,k);d.receiverFriendlyName=w.receiver.friendlyName;if(!d.pageUrl||!d.diff.id||!d.appid)d.pageUrl=x,d.diff.id=f().id,d.appid=u,w=y=null;r[d.diff.id]&&(u===d.appid&&d.pageUrl===x)&&(v=d.diff.id,u=d.appid,g(v,"jwInstreamDestroy"),
-b(e),g(v,q.message,d),w=null)}}function d(){y&&(y.removeUpdateListener(a),y.removeMessageListener(p.NS,h),y.stop(l.noop,n.bind(this)),y=null);g(v,q.cleanup)}function e(a,b){y.sendMessage(p.NS,{command:a,args:b},l.noop,function(a){p.error("message send error",a)})}function b(b){var c=f(v);y=b;y.addMessageListener(p.NS,h);y.addUpdateListener(a);c=f.cast.setupFlashCastConfig(c);w!==y&&e("setup",c);g(v,q.connected,{receiverFriendlyName:b.receiver.friendlyName})}function h(a,b){if(b){var c=JSON.parse(b);
-if(!c)throw"Message not proper JSON";g(v,q.message,c)}}function n(a){g(v,q.error,a||{})}function a(a){a||d()}function g(a,b,c){c?f(a).callInternal(b,c):f(a).callInternal(b)}function m(){}var p=f.cast,l=f.utils,j=f._,t=window.chrome||{},v,r={},q={},u,w,x=l.getAbsolutePath(window.location.href),y;p.NS="urn:x-cast:com.longtailvideo.jwplayer";p.flash={checkAvailability:function(a,b,d){q=d;u=b;r[a]=!0;p.loader.addEventListener("availability",function(b){"available"===b.availability&&g(a,q.available,b)});
-p.loader.addEventListener("session",c);p.loader.initialize(b)},startCasting:function(a){v=a;t.cast.requestSession(b.bind(this),n.bind(this))},stopCasting:d,mute:function(a){y.setReceiverMuted(a,m,function(a){p.error("set muted error",a)})},volume:function(a){a=Math.max(0,Math.min(a/100,1));y.setReceiverVolumeLevel(a,m,function(a){p.error("set volume error",a)})},messageReceiver:e,canCastItem:function(a){return j.any(a.levels,function(a){return f.embed.html5CanPlay(a.file,a.type)})}}}(window.jwplayer),
-function(f,c){function k(){c&&c.cast&&c.cast.isAvailable&&!a.apiConfig?(a.apiConfig=new c.cast.ApiConfig(new c.cast.SessionRequest(j),h,n,c.cast.AutoJoinPolicy.ORIGIN_SCOPED),c.cast.initialize(a.apiConfig,b,e)):15>l++&&setTimeout(k,1E3)}function d(){p&&(p.resetEventListeners(),p=null)}function e(){a.apiConfig=null}function b(){}function h(b){t.sendEvent("session",{session:b});b.sendMessage(a.NS,{whoami:1})}function n(b){a.availability=b;t.sendEvent("availability",{availability:b})}window.chrome=c;
-var a=f.cast,g=f.utils,m=f.events,p,l=0,j=null,t=g.extend({initialize:function(b){j=b;null!==a.availability?t.sendEvent("availability",{availability:a.availability}):c&&c.cast?k():p||(p=new g.scriptloader("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"),p.addEventListener(m.ERROR,d),p.addEventListener(m.COMPLETE,k),p.load())}},new m.eventdispatcher("cast.loader"));f.cast.loader=t}(window.jwplayer,window.chrome||{}),function(f,c){var k=[],d=f.utils,e=f.events,b=e.state,h="getBuffer getCaptionsList getControls getCurrentCaptions getCurrentQuality getCurrentAudioTrack getDuration getFullscreen getHeight getLockState getMute getPlaylistIndex getSafeRegion getPosition getQualityLevels getState getVolume getWidth isBeforeComplete isBeforePlay releaseState".split(" "),
-n="playlistNext stop forceState playlistPrev seek setCurrentCaptions setControls setCurrentQuality setVolume setCurrentAudioTrack".split(" "),a={onBufferChange:e.JWPLAYER_MEDIA_BUFFER,onBufferFull:e.JWPLAYER_MEDIA_BUFFER_FULL,onError:e.JWPLAYER_ERROR,onSetupError:e.JWPLAYER_SETUP_ERROR,onFullscreen:e.JWPLAYER_FULLSCREEN,onMeta:e.JWPLAYER_MEDIA_META,onMute:e.JWPLAYER_MEDIA_MUTE,onPlaylist:e.JWPLAYER_PLAYLIST_LOADED,onPlaylistItem:e.JWPLAYER_PLAYLIST_ITEM,onPlaylistComplete:e.JWPLAYER_PLAYLIST_COMPLETE,
-onReady:e.API_READY,onResize:e.JWPLAYER_RESIZE,onComplete:e.JWPLAYER_MEDIA_COMPLETE,onSeek:e.JWPLAYER_MEDIA_SEEK,onTime:e.JWPLAYER_MEDIA_TIME,onVolume:e.JWPLAYER_MEDIA_VOLUME,onBeforePlay:e.JWPLAYER_MEDIA_BEFOREPLAY,onBeforeComplete:e.JWPLAYER_MEDIA_BEFORECOMPLETE,onDisplayClick:e.JWPLAYER_DISPLAY_CLICK,onControls:e.JWPLAYER_CONTROLS,onQualityLevels:e.JWPLAYER_MEDIA_LEVELS,onQualityChange:e.JWPLAYER_MEDIA_LEVEL_CHANGED,onCaptionsList:e.JWPLAYER_CAPTIONS_LIST,onCaptionsChange:e.JWPLAYER_CAPTIONS_CHANGED,
-onAdError:e.JWPLAYER_AD_ERROR,onAdClick:e.JWPLAYER_AD_CLICK,onAdImpression:e.JWPLAYER_AD_IMPRESSION,onAdTime:e.JWPLAYER_AD_TIME,onAdComplete:e.JWPLAYER_AD_COMPLETE,onAdCompanions:e.JWPLAYER_AD_COMPANIONS,onAdSkipped:e.JWPLAYER_AD_SKIPPED,onAdPlay:e.JWPLAYER_AD_PLAY,onAdPause:e.JWPLAYER_AD_PAUSE,onAdMeta:e.JWPLAYER_AD_META,onCast:e.JWPLAYER_CAST_SESSION,onAudioTrackChange:e.JWPLAYER_AUDIO_TRACK_CHANGED,onAudioTracks:e.JWPLAYER_AUDIO_TRACKS},g={onBuffer:b.BUFFERING,onPause:b.PAUSED,onPlay:b.PLAYING,
-onIdle:b.IDLE};f.api=function(k){function p(a,b){d.foreach(a,function(a,c){q[a]=function(a){return b(c,a)}})}function l(a,b){var c="jw"+b.charAt(0).toUpperCase()+b.slice(1);q[b]=function(){var b=r.apply(this,[c].concat(Array.prototype.slice.call(arguments,0)));return a?q:b}}function j(a){F=[];E&&E.destroy&&E.destroy();f.api.destroyPlayer(a.id)}function t(a,b){try{a.jwAddEventListener(b,'function(dat) { jwplayer("'+q.id+'").dispatchEvent("'+b+'", dat); }')}catch(c){if("flash"===q.renderingMode){var e=
-document.createElement("a");e.href=x.data;e.protocol!==location.protocol&&d.log("Warning: Your site ["+location.protocol+"] and JWPlayer ["+e.protocol+"] are hosted using different protocols")}d.log("Could not add internal listener")}}function v(a,b){u[a]||(u[a]=[],x&&y&&t(x,a));u[a].push(b);return q}function r(){if(y){if(x){var a=Array.prototype.slice.call(arguments,0),b=a.shift();if("function"===typeof x[b]){switch(a.length){case 6:return x[b](a[0],a[1],a[2],a[3],a[4],a[5]);case 5:return x[b](a[0],
-a[1],a[2],a[3],a[4]);case 4:return x[b](a[0],a[1],a[2],a[3]);case 3:return x[b](a[0],a[1],a[2]);case 2:return x[b](a[0],a[1]);case 1:return x[b](a[0])}return x[b]()}}return null}F.push(arguments)}var q=this,u={},w={},x,y=!1,F=[],C,E,D={},J={};q.container=k;q.id=k.id;q.setup=function(a){if(f.embed){var b=document.getElementById(q.id);b&&(a.fallbackDiv=b);j(q);b=f(q.id);b.config=a;E=new f.embed(b);E.embed();return b}return q};q.getContainer=function(){return q.container};q.addButton=function(a,b,c,
-e){try{J[e]=c,r("jwDockAddButton",a,b,'jwplayer("'+q.id+'").callback("'+e+'")',e)}catch(f){d.log("Could not add dock button"+f.message)}};q.removeButton=function(a){r("jwDockRemoveButton",a)};q.callback=function(a){if(J[a])J[a]()};q.getMeta=function(){return q.getItemMeta()};q.getPlaylist=function(){var a=r("jwGetPlaylist");"flash"===q.renderingMode&&d.deepReplaceKeyName(a,["__dot__","__spc__","__dsh__","__default__"],["."," ","-","default"]);return a};q.getPlaylistItem=function(a){d.exists(a)||(a=
-q.getPlaylistIndex());return q.getPlaylist()[a]};q.getRenderingMode=function(){return q.renderingMode};q.setFullscreen=function(a){d.exists(a)?r("jwSetFullscreen",a):r("jwSetFullscreen",!r("jwGetFullscreen"));return q};q.setMute=function(a){d.exists(a)?r("jwSetMute",a):r("jwSetMute",!r("jwGetMute"));return q};q.lock=function(){return q};q.unlock=function(){return q};q.load=function(a){r("jwInstreamDestroy");f(q.id).plugins.googima&&r("jwDestroyGoogima");r("jwLoad",a);return q};q.playlistItem=function(a){r("jwPlaylistItem",
-parseInt(a,10));return q};q.resize=function(a,b){if("flash"!==q.renderingMode)r("jwResize",a,b);else{var c=document.getElementById(q.id+"_wrapper"),e=document.getElementById(q.id+"_aspect");e&&(e.style.display="none");c&&(c.style.display="block",c.style.width=d.styleDimension(a),c.style.height=d.styleDimension(b))}return q};q.play=function(a){if(a!==c)return r("jwPlay",a),q;a=q.getState();var d=C&&C.getState();d&&(d===b.IDLE||d===b.PLAYING||d===b.BUFFERING?r("jwInstreamPause"):r("jwInstreamPlay"));
-a===b.PLAYING||a===b.BUFFERING?r("jwPause"):r("jwPlay");return q};q.pause=function(a){a===c?(a=q.getState(),a===b.PLAYING||a===b.BUFFERING?r("jwPause"):r("jwPlay")):r("jwPause",a);return q};q.createInstream=function(){return new f.api.instream(this,x)};q.setInstream=function(a){return C=a};q.loadInstream=function(a,b){C=q.setInstream(q.createInstream()).init(b);C.loadItem(a);return C};q.destroyPlayer=function(){r("jwPlayerDestroy")};q.playAd=function(a){var b=f(q.id).plugins;b.vast?b.vast.jwPlayAd(a):
-r("jwPlayAd",a)};q.pauseAd=function(){var a=f(q.id).plugins;a.vast?a.vast.jwPauseAd():r("jwPauseAd")};p(g,function(a,b){w[a]||(w[a]=[],v(e.JWPLAYER_PLAYER_STATE,function(b){var c=b.newstate;b=b.oldstate;if(c===a){var d=w[c];if(d)for(var e=0;e<d.length;e++){var f=d[e];"function"===typeof f&&f.call(this,{oldstate:b,newstate:c})}}}));w[a].push(b);return q});p(a,v);d.foreach(h,function(a,b){l(!1,b)});d.foreach(n,function(a,b){l(!0,b)});q.remove=function(){if(!y)throw"Cannot call remove() before player is ready";
-j(this)};q.registerPlugin=function(a,b,c,d){f.plugins.registerPlugin(a,b,c,d)};q.setPlayer=function(a,b){x=a;q.renderingMode=b};q.detachMedia=function(){if("html5"===q.renderingMode)return r("jwDetachMedia")};q.attachMedia=function(a){if("html5"===q.renderingMode)return r("jwAttachMedia",a)};q.getAudioTracks=function(){return r("jwGetAudioTracks")};q.removeEventListener=function(a,b){var c=u[a];if(c)for(var d=c.length;d--;)c[d]===b&&c.splice(d,1)};q.dispatchEvent=function(a,b){var c=u[a];if(c)for(var c=
-c.slice(0),f=d.translateEventResponse(a,b),g=0;g<c.length;g++){var j=c[g];if("function"===typeof j)try{a===e.JWPLAYER_PLAYLIST_LOADED&&d.deepReplaceKeyName(f.playlist,["__dot__","__spc__","__dsh__","__default__"],["."," ","-","default"]),j.call(this,f)}catch(h){d.log("There was an error calling back an event handler",h)}}};q.dispatchInstreamEvent=function(a){C&&C.dispatchEvent(a,arguments)};q.callInternal=r;q.playerReady=function(a){y=!0;x||q.setPlayer(document.getElementById(a.id));q.container=document.getElementById(q.id);
-d.foreach(u,function(a){t(x,a)});v(e.JWPLAYER_PLAYLIST_ITEM,function(){D={}});v(e.JWPLAYER_MEDIA_META,function(a){d.extend(D,a.metadata)});v(e.JWPLAYER_VIEW_TAB_FOCUS,function(a){var b=q.getContainer();!0===a.hasFocus?d.addClass(b,"jw-tab-focus"):d.removeClass(b,"jw-tab-focus")});for(q.dispatchEvent(e.API_READY);0<F.length;)r.apply(this,F.shift())};q.getItemMeta=function(){return D};return q};f.playerReady=function(a){var b=f.api.playerById(a.id);b||(b=f.api.selectPlayer(a.id));b.playerReady(a)};
-f.api.selectPlayer=function(a){var b;d.exists(a)||(a=0);a.nodeType?b=a:"string"===typeof a&&(b=document.getElementById(a));return b?(a=f.api.playerById(b.id))?a:f.api.addPlayer(new f.api(b)):"number"===typeof a?k[a]:null};f.api.playerById=function(a){for(var b=0;b<k.length;b++)if(k[b].id===a)return k[b];return null};f.api.addPlayer=function(a){for(var b=0;b<k.length;b++)if(k[b]===a)return a;k.push(a);return a};f.api.destroyPlayer=function(a){var b,e,f;d.foreach(k,function(c,d){d.id===a&&(b=c,e=d)});
-if(b===c||e===c)return null;d.clearCss("#"+e.id);if(f=document.getElementById(e.id+("flash"===e.renderingMode?"_wrapper":""))){"html5"===e.renderingMode&&e.destroyPlayer();var g=document.createElement("div");g.id=e.id;f.parentNode.replaceChild(g,f)}k.splice(b,1);return null}}(window.jwplayer),function(f){var c=f.events,k=f.utils,d=c.state;f.api.instream=function(e,b){function f(a,c){m[a]||(m[a]=[],b.jwInstreamAddEventListener(a,'function(dat) { jwplayer("'+e.id+'").dispatchInstreamEvent("'+a+'", dat); }'));
-m[a].push(c);return this}function n(a,b){p[a]||(p[a]=[],f(c.JWPLAYER_PLAYER_STATE,function(b){var c=b.newstate,d=b.oldstate;if(c===a){var e=p[c];if(e)for(var f=0;f<e.length;f++){var g=e[f];"function"===typeof g&&g.call(this,{oldstate:d,newstate:c,type:b.type})}}}));p[a].push(b);return this}var a,g,m={},p={},l=this;l.type="instream";l.init=function(){e.callInternal("jwInitInstream");return l};l.loadItem=function(b,c){a=b;g=c||{};"array"===k.typeOf(b)?e.callInternal("jwLoadArrayInstream",a,g):e.callInternal("jwLoadItemInstream",
-a,g)};l.removeEvents=function(){m=p={}};l.removeEventListener=function(a,b){var c=m[a];if(c)for(var d=c.length;d--;)c[d]===b&&c.splice(d,1)};l.dispatchEvent=function(a,b){var c=m[a];if(c)for(var c=c.slice(0),d=k.translateEventResponse(a,b[1]),e=0;e<c.length;e++){var f=c[e];"function"===typeof f&&f.call(this,d)}};l.onError=function(a){return f(c.JWPLAYER_ERROR,a)};l.onMediaError=function(a){return f(c.JWPLAYER_MEDIA_ERROR,a)};l.onFullscreen=function(a){return f(c.JWPLAYER_FULLSCREEN,a)};l.onMeta=function(a){return f(c.JWPLAYER_MEDIA_META,
-a)};l.onMute=function(a){return f(c.JWPLAYER_MEDIA_MUTE,a)};l.onComplete=function(a){return f(c.JWPLAYER_MEDIA_COMPLETE,a)};l.onPlaylistComplete=function(a){return f(c.JWPLAYER_PLAYLIST_COMPLETE,a)};l.onPlaylistItem=function(a){return f(c.JWPLAYER_PLAYLIST_ITEM,a)};l.onTime=function(a){return f(c.JWPLAYER_MEDIA_TIME,a)};l.onBuffer=function(a){return n(d.BUFFERING,a)};l.onPause=function(a){return n(d.PAUSED,a)};l.onPlay=function(a){return n(d.PLAYING,a)};l.onIdle=function(a){return n(d.IDLE,a)};l.onClick=
-function(a){return f(c.JWPLAYER_INSTREAM_CLICK,a)};l.onInstreamDestroyed=function(a){return f(c.JWPLAYER_INSTREAM_DESTROYED,a)};l.onAdSkipped=function(a){return f(c.JWPLAYER_AD_SKIPPED,a)};l.play=function(a){b.jwInstreamPlay(a)};l.pause=function(a){b.jwInstreamPause(a)};l.hide=function(){e.callInternal("jwInstreamHide")};l.destroy=function(){l.removeEvents();e.callInternal("jwInstreamDestroy")};l.setText=function(a){b.jwInstreamSetText(a?a:"")};l.getState=function(){return b.jwInstreamState()};l.setClick=
-function(a){b.jwInstreamClick&&b.jwInstreamClick(a)}}}(jwplayer),function(f){var c=f.api,k=c.selectPlayer,d=f._;c.selectPlayer=function(c){return(c=k(c))?c:{registerPlugin:function(b,c,d){"jwpsrv"!==b&&f.plugins.registerPlugin(b,c,d)}}};f.unregisteredProviders=[];c.registerProvider=function(c){f&&f.html5&&d.isFunction(f.html5.registerProvider)?f.html5.registerProvider(c):f.unregisteredProviders.push(c)}}(jwplayer));
+"undefined" === typeof jwplayer && (jwplayer = function () {
+    if (jwplayer.api)
+        return jwplayer.api.selectPlayer.apply(this, arguments)
+}, jwplayer.version = "6.12.4950", jwplayer.vid = document.createElement("video"), jwplayer.audio = document.createElement("audio"), jwplayer.source = document.createElement("source"), function () {
+    var f = {}, d = Array.prototype, l = Object.prototype, b = d.slice, j = d.concat, c = l.toString, g = l.hasOwnProperty, k = d.map, a = d.forEach, e = d.filter, r = d.every, q = d.some, h = d.indexOf, l = Array.isArray, p = Object.keys, m = function (a) {
+        if (a instanceof
+                m)
+            return a;
+        if (!(this instanceof m))
+            return new m(a)
+    }, w = m.each = m.forEach = function (e, b, h) {
+        if (null == e)
+            return e;
+        if (a && e.forEach === a)
+            e.forEach(b, h);
+        else if (e.length === +e.length)
+            for (var c = 0, p = e.length; c < p; c++) {
+                if (b.call(h, e[c], c, e) === f)
+                    return
+            }
+        else
+            for (var d = m.keys(e), c = 0, p = d.length; c < p; c++)
+                if (b.call(h, e[d[c]], d[c], e) === f)
+                    return;
+        return e
+    };
+    m.map = m.collect = function (a, e, b) {
+        var h = [];
+        if (null == a)
+            return h;
+        if (k && a.map === k)
+            return a.map(e, b);
+        w(a, function (a, c, p) {
+            h.push(e.call(b, a, c, p))
+        });
+        return h
+    };
+    m.find = m.detect = function (a,
+            e, b) {
+        var h;
+        u(a, function (a, c, p) {
+            if (e.call(b, a, c, p))
+                return h = a, !0
+        });
+        return h
+    };
+    m.filter = m.select = function (a, b, h) {
+        var c = [];
+        if (null == a)
+            return c;
+        if (e && a.filter === e)
+            return a.filter(b, h);
+        w(a, function (a, e, p) {
+            b.call(h, a, e, p) && c.push(a)
+        });
+        return c
+    };
+    m.every = m.all = function (a, e, b) {
+        e || (e = m.identity);
+        var h = !0;
+        if (null == a)
+            return h;
+        if (r && a.every === r)
+            return a.every(e, b);
+        w(a, function (a, c, p) {
+            if (!(h = h && e.call(b, a, c, p)))
+                return f
+        });
+        return!!h
+    };
+    var u = m.some = m.any = function (a, e, b) {
+        e || (e = m.identity);
+        var h = !1;
+        if (null == a)
+            return h;
+        if (q && a.some === q)
+            return a.some(e, b);
+        w(a, function (a, c, p) {
+            if (h || (h = e.call(b, a, c, p)))
+                return f
+        });
+        return!!h
+    };
+    m.size = function (a) {
+        return null == a ? 0 : a.length === +a.length ? a.length : m.keys(a).length
+    };
+    m.after = function (a, e) {
+        return function () {
+            if (1 > --a)
+                return e.apply(this, arguments)
+        }
+    };
+    m.sortedIndex = function (a, e, h, b) {
+        h = null == h ? m.identity : m.isFunction(h) ? h : m.property(h);
+        e = h.call(b, e);
+        for (var c = 0, p = a.length; c < p; ) {
+            var d = c + p >>> 1;
+            h.call(b, a[d]) < e ? c = d + 1 : p = d
+        }
+        return c
+    };
+    m.find = m.detect = function (a, e, h) {
+        var b;
+        u(a, function (a,
+                c, p) {
+            if (e.call(h, a, c, p))
+                return b = a, !0
+        });
+        return b
+    };
+    u = m.some = m.any = function (a, e, h) {
+        e || (e = m.identity);
+        var b = !1;
+        if (null == a)
+            return b;
+        if (q && a.some === q)
+            return a.some(e, h);
+        w(a, function (a, c, p) {
+            if (b || (b = e.call(h, a, c, p)))
+                return f
+        });
+        return!!b
+    };
+    m.contains = m.include = function (a, e) {
+        if (null == a)
+            return!1;
+        a.length !== +a.length && (a = m.values(a));
+        return 0 <= m.indexOf(a, e)
+    };
+    m.where = function (a, e) {
+        return m.filter(a, m.matches(e))
+    };
+    m.difference = function (a) {
+        var e = j.apply(d, b.call(arguments, 1));
+        return m.filter(a, function (a) {
+            return!m.contains(e,
+                    a)
+        })
+    };
+    m.without = function (a) {
+        return m.difference(a, b.call(arguments, 1))
+    };
+    m.indexOf = function (a, e, b) {
+        if (null == a)
+            return-1;
+        var c = 0, p = a.length;
+        if (b)
+            if ("number" == typeof b)
+                c = 0 > b ? Math.max(0, p + b) : b;
+            else
+                return c = m.sortedIndex(a, e), a[c] === e ? c : -1;
+        if (h && a.indexOf === h)
+            return a.indexOf(e, b);
+        for (; c < p; c++)
+            if (a[c] === e)
+                return c;
+        return-1
+    };
+    m.partial = function (a) {
+        var e = b.call(arguments, 1);
+        return function () {
+            for (var b = 0, h = e.slice(), c = 0, p = h.length; c < p; c++)
+                h[c] === m && (h[c] = arguments[b++]);
+            for (; b < arguments.length; )
+                h.push(arguments[b++]);
+            return a.apply(this, h)
+        }
+    };
+    m.memoize = function (a, e) {
+        var b = {};
+        e || (e = m.identity);
+        return function () {
+            var h = e.apply(this, arguments);
+            return m.has(b, h) ? b[h] : b[h] = a.apply(this, arguments)
+        }
+    };
+    m.delay = function (a, e) {
+        var h = b.call(arguments, 2);
+        return setTimeout(function () {
+            return a.apply(null, h)
+        }, e)
+    };
+    m.defer = function (a) {
+        return m.delay.apply(m, [a, 1].concat(b.call(arguments, 1)))
+    };
+    m.keys = function (a) {
+        if (!m.isObject(a))
+            return[];
+        if (p)
+            return p(a);
+        var e = [], b;
+        for (b in a)
+            m.has(a, b) && e.push(b);
+        return e
+    };
+    m.pick = function (a) {
+        var e =
+                {}, h = j.apply(d, b.call(arguments, 1));
+        w(h, function (b) {
+            b in a && (e[b] = a[b])
+        });
+        return e
+    };
+    m.isArray = l || function (a) {
+        return"[object Array]" == c.call(a)
+    };
+    m.isObject = function (a) {
+        return a === Object(a)
+    };
+    w("Arguments Function String Number Date RegExp".split(" "), function (a) {
+        m["is" + a] = function (e) {
+            return c.call(e) == "[object " + a + "]"
+        }
+    });
+    m.isArguments(arguments) || (m.isArguments = function (a) {
+        return!(!a || !m.has(a, "callee"))
+    });
+    "function" !== typeof /./ && (m.isFunction = function (a) {
+        return"function" === typeof a
+    });
+    m.isFinite = function (a) {
+        return isFinite(a) &&
+                !isNaN(parseFloat(a))
+    };
+    m.isNaN = function (a) {
+        return m.isNumber(a) && a != +a
+    };
+    m.isBoolean = function (a) {
+        return!0 === a || !1 === a || "[object Boolean]" == c.call(a)
+    };
+    m.isNull = function (a) {
+        return null === a
+    };
+    m.isUndefined = function (a) {
+        return void 0 === a
+    };
+    m.has = function (a, e) {
+        return g.call(a, e)
+    };
+    m.identity = function (a) {
+        return a
+    };
+    m.constant = function (a) {
+        return function () {
+            return a
+        }
+    };
+    m.property = function (a) {
+        return function (e) {
+            return e[a]
+        }
+    };
+    m.matches = function (a) {
+        return function (e) {
+            if (e === a)
+                return!0;
+            for (var b in a)
+                if (a[b] !== e[b])
+                    return!1;
+            return!0
+        }
+    };
+    m.result = function (a, e) {
+        if (null != a) {
+            var b = a[e];
+            return m.isFunction(b) ? b.call(a) : b
+        }
+    };
+    this._ = m
+}.call(jwplayer), function (f) {
+    function d(a) {
+        return function () {
+            return g(a)
+        }
+    }
+    function l(a, e, c, d, h) {
+        return function () {
+            var p, g;
+            if (h)
+                c(a);
+            else {
+                try {
+                    if (p = a.responseXML)
+                        if (g = p.firstChild, p.lastChild && "parsererror" === p.lastChild.nodeName) {
+                            d && d("Invalid XML", e, a);
+                            return
+                        }
+                } catch (k) {
+                }
+                if (p && g)
+                    return c(a);
+                (p = b.parseXML(a.responseText)) && p.firstChild ? (a = b.extend({}, a, {responseXML: p}), c(a)) : d && d(a.responseText ? "Invalid XML" :
+                        e, e, a)
+            }
+        }
+    }
+    var b = f.utils = {}, j = f._;
+    b.exists = function (a) {
+        switch (typeof a) {
+            case "string":
+                return 0 < a.length;
+            case "object":
+                return null !== a;
+            case "undefined":
+                return!1
+        }
+        return!0
+    };
+    b.styleDimension = function (a) {
+        return a + (0 < a.toString().indexOf("%") ? "" : "px")
+    };
+    b.getAbsolutePath = function (a, e) {
+        b.exists(e) || (e = document.location.href);
+        if (b.exists(a)) {
+            var c;
+            if (b.exists(a)) {
+                c = a.indexOf("://");
+                var d = a.indexOf("?");
+                c = 0 < c && (0 > d || d > c)
+            } else
+                c = void 0;
+            if (c)
+                return a;
+            c = e.substring(0, e.indexOf("://") + 3);
+            var d = e.substring(c.length,
+                    e.indexOf("/", c.length + 1)), h;
+            0 === a.indexOf("/") ? h = a.split("/") : (h = e.split("?")[0], h = h.substring(c.length + d.length + 1, h.lastIndexOf("/")), h = h.split("/").concat(a.split("/")));
+            for (var p = [], g = 0; g < h.length; g++)
+                h[g] && (b.exists(h[g]) && "." !== h[g]) && (".." === h[g] ? p.pop() : p.push(h[g]));
+            return c + d + "/" + p.join("/")
+        }
+    };
+    b.extend = function () {
+        var a = Array.prototype.slice.call(arguments, 0);
+        if (1 < a.length) {
+            for (var e = a[0], c = function (a, b) {
+                void 0 !== b && null !== b && (e[a] = b)
+            }, d = 1; d < a.length; d++)
+                b.foreach(a[d], c);
+            return e
+        }
+        return null
+    };
+    var c = window.console = window.console || {log: function () {
+        }};
+    b.log = function () {
+        var a = Array.prototype.slice.call(arguments, 0);
+        "object" === typeof c.log ? c.log(a) : c.log.apply(c, a)
+    };
+    var g = j.memoize(function (a) {
+        return null !== navigator.userAgent.toLowerCase().match(a)
+    });
+    b.isFF = d(/firefox/i);
+    b.isChrome = d(/chrome/i);
+    b.isIPod = d(/iP(hone|od)/i);
+    b.isIPad = d(/iPad/i);
+    b.isSafari602 = d(/Macintosh.*Mac OS X 10_8.*6\.0\.\d* Safari/i);
+    b.isIETrident = function (a) {
+        return a ? (a = parseFloat(a).toFixed(1), g(RegExp("trident/.+rv:\\s*" +
+                a, "i"))) : g(/trident/i)
+    };
+    b.isMSIE = function (a) {
+        return a ? (a = parseFloat(a).toFixed(1), g(RegExp("msie\\s*" + a, "i"))) : g(/msie/i)
+    };
+    b.isIE = function (a) {
+        return a ? (a = parseFloat(a).toFixed(1), 11 <= a ? b.isIETrident(a) : b.isMSIE(a)) : b.isMSIE() || b.isIETrident()
+    };
+    b.isSafari = function () {
+        return g(/safari/i) && !g(/chrome/i) && !g(/chromium/i) && !g(/android/i)
+    };
+    b.isIOS = function (a) {
+        return a ? g(RegExp("iP(hone|ad|od).+\\sOS\\s" + a, "i")) : g(/iP(hone|ad|od)/i)
+    };
+    b.isAndroidNative = function (a) {
+        return b.isAndroid(a, !0)
+    };
+    b.isAndroid = function (a,
+            e) {
+        return e && g(/chrome\/[123456789]/i) && !g(/chrome\/18/) ? !1 : a ? (b.isInt(a) && !/\./.test(a) && (a = "" + a + "."), g(RegExp("Android\\s*" + a, "i"))) : g(/Android/i)
+    };
+    b.isMobile = function () {
+        return b.isIOS() || b.isAndroid()
+    };
+    b.isIframe = function () {
+        return window.frameElement && "IFRAME" === window.frameElement.nodeName
+    };
+    b.saveCookie = function (a, e) {
+        document.cookie = "jwplayer." + a + "\x3d" + e + "; path\x3d/"
+    };
+    b.getCookies = function () {
+        for (var a = {}, e = document.cookie.split("; "), b = 0; b < e.length; b++) {
+            var c = e[b].split("\x3d");
+            0 === c[0].indexOf("jwplayer.") &&
+                    (a[c[0].substring(9, c[0].length)] = c[1])
+        }
+        return a
+    };
+    b.isInt = function (a) {
+        return 0 === parseFloat(a) % 1
+    };
+    b.typeOf = function (a) {
+        if (null === a)
+            return"null";
+        var e = typeof a;
+        return"object" === e && j.isArray(a) ? "array" : e
+    };
+    b.translateEventResponse = function (a, e) {
+        var c = b.extend({}, e);
+        if (a === f.events.JWPLAYER_FULLSCREEN && !c.fullscreen)
+            c.fullscreen = "true" === c.message, delete c.message;
+        else if ("object" === typeof c.data) {
+            var d = c.data;
+            delete c.data;
+            c = b.extend(c, d)
+        } else
+            "object" === typeof c.metadata && b.deepReplaceKeyName(c.metadata,
+                    ["__dot__", "__spc__", "__dsh__", "__default__"], [".", " ", "-", "default"]);
+        b.foreach(["position", "duration", "offset"], function (a, e) {
+            c[e] && (c[e] = Math.round(1E3 * c[e]) / 1E3)
+        });
+        return c
+    };
+    b.flashVersion = function () {
+        if (b.isAndroid())
+            return 0;
+        var a = navigator.plugins, e;
+        try {
+            if ("undefined" !== a && (e = a["Shockwave Flash"]))
+                return parseInt(e.description.replace(/\D+(\d+)\..*/, "$1"), 10)
+        } catch (c) {
+        }
+        if ("undefined" !== typeof window.ActiveXObject)
+            try {
+                if (e = new window.ActiveXObject("ShockwaveFlash.ShockwaveFlash"))
+                    return parseInt(e.GetVariable("$version").split(" ")[1].split(",")[0],
+                            10)
+            } catch (d) {
+            }
+        return 0
+    };
+    b.getScriptPath = function (a) {
+        for (var e = document.getElementsByTagName("script"), c = 0; c < e.length; c++) {
+            var b = e[c].src;
+            if (b && 0 <= b.indexOf(a))
+                return b.substr(0, b.indexOf(a))
+        }
+        return""
+    };
+    b.deepReplaceKeyName = function (a, e, c) {
+        switch (f.utils.typeOf(a)) {
+            case "array":
+                for (var d = 0; d < a.length; d++)
+                    a[d] = f.utils.deepReplaceKeyName(a[d], e, c);
+                break;
+            case "object":
+                b.foreach(a, function (b, d) {
+                    var g;
+                    if (e instanceof Array && c instanceof Array) {
+                        if (e.length !== c.length)
+                            return;
+                        g = e
+                    } else
+                        g = [e];
+                    for (var k = b, j = 0; j <
+                            g.length; j++)
+                        k = k.replace(RegExp(e[j], "g"), c[j]);
+                    a[k] = f.utils.deepReplaceKeyName(d, e, c);
+                    b !== k && delete a[b]
+                })
+        }
+        return a
+    };
+    var k = b.pluginPathType = {ABSOLUTE: 0, RELATIVE: 1, CDN: 2};
+    b.getPluginPathType = function (a) {
+        if ("string" === typeof a) {
+            a = a.split("?")[0];
+            var e = a.indexOf("://");
+            if (0 < e)
+                return k.ABSOLUTE;
+            var c = a.indexOf("/");
+            a = b.extension(a);
+            return 0 > e && 0 > c && (!a || !isNaN(a)) ? k.CDN : k.RELATIVE
+        }
+    };
+    b.getPluginName = function (a) {
+        return a.replace(/^(.*\/)?([^-]*)-?.*\.(swf|js)$/, "$2")
+    };
+    b.getPluginVersion = function (a) {
+        return a.replace(/[^-]*-?([^\.]*).*$/,
+                "$1")
+    };
+    b.isYouTube = function (a, e) {
+        return"youtube" === e || /^(http|\/\/).*(youtube\.com|youtu\.be)\/.+/.test(a)
+    };
+    b.youTubeID = function (a) {
+        try {
+            return/v[=\/]([^?&]*)|youtu\.be\/([^?]*)|^([\w-]*)$/i.exec(a).slice(1).join("").replace("?", "")
+        } catch (e) {
+            return""
+        }
+    };
+    b.isRtmp = function (a, e) {
+        return 0 === a.indexOf("rtmp") || "rtmp" === e
+    };
+    b.foreach = function (a, e) {
+        var c, d;
+        for (c in a)
+            "function" === b.typeOf(a.hasOwnProperty) ? a.hasOwnProperty(c) && (d = a[c], e(c, d)) : (d = a[c], e(c, d))
+    };
+    b.isHTTPS = function () {
+        return 0 === window.location.href.indexOf("https")
+    };
+    b.repo = function () {
+        var a = "http://p.jwpcdn.com/" + f.version.split(/\W/).splice(0, 2).join("/") + "/";
+        try {
+            b.isHTTPS() && (a = a.replace("http://", "https://ssl."))
+        } catch (c) {
+        }
+        return a
+    };
+    b.versionCheck = function (a) {
+        a = ("0" + a).split(/\W/);
+        var c = f.version.split(/\W/), b = parseFloat(a[0]), d = parseFloat(c[0]);
+        return b > d || b === d && parseFloat("0" + a[1]) > parseFloat(c[1]) ? !1 : !0
+    };
+    b.ajax = function (a, c, d, g) {
+        var h, p = !1;
+        0 < a.indexOf("#") && (a = a.replace(/#.*$/, ""));
+        if (a && 0 <= a.indexOf("://") && a.split("/")[2] !== window.location.href.split("/")[2] &&
+                b.exists(window.XDomainRequest))
+            h = new window.XDomainRequest, h.onload = l(h, a, c, d, g), h.ontimeout = h.onprogress = function () {
+            }, h.timeout = 5E3;
+        else if (b.exists(window.XMLHttpRequest)) {
+            var k = h = new window.XMLHttpRequest, j = a;
+            h.onreadystatechange = function () {
+                if (4 === k.readyState)
+                    switch (k.status) {
+                        case 200:
+                            l(k, j, c, d, g)();
+                            break;
+                        case 404:
+                            d("File not found", j, k)
+                        }
+            }
+        } else
+            return d && d("", a, h), h;
+        h.overrideMimeType && h.overrideMimeType("text/xml");
+        var f = a, t = h;
+        h.onerror = function () {
+            d("Error loading file", f, t)
+        };
+        try {
+            h.open("GET",
+                    a, !0)
+        } catch (n) {
+            p = !0
+        }
+        setTimeout(function () {
+            if (p)
+                d && d(a, a, h);
+            else
+                try {
+                    h.send()
+                } catch (c) {
+                    d && d(a, a, h)
+                }
+        }, 0);
+        return h
+    };
+    b.parseXML = function (a) {
+        var c;
+        try {
+            if (window.DOMParser) {
+                if (c = (new window.DOMParser).parseFromString(a, "text/xml"), c.childNodes && c.childNodes.length && "parsererror" === c.childNodes[0].firstChild.nodeName)
+                    return
+            } else
+                c = new window.ActiveXObject("Microsoft.XMLDOM"), c.async = "false", c.loadXML(a)
+        } catch (b) {
+            return
+        }
+        return c
+    };
+    b.between = function (a, c, b) {
+        return Math.max(Math.min(a, b), c)
+    };
+    b.seconds = function (a) {
+        if (j.isNumber(a))
+            return a;
+        a = a.replace(",", ".");
+        var c = a.split(":"), b = 0;
+        "s" === a.slice(-1) ? b = parseFloat(a) : "m" === a.slice(-1) ? b = 60 * parseFloat(a) : "h" === a.slice(-1) ? b = 3600 * parseFloat(a) : 1 < c.length ? (b = parseFloat(c[c.length - 1]), b += 60 * parseFloat(c[c.length - 2]), 3 === c.length && (b += 3600 * parseFloat(c[c.length - 3]))) : b = parseFloat(a);
+        return b
+    };
+    b.serialize = function (a) {
+        return null === a ? null : "true" === a.toString().toLowerCase() ? !0 : "false" === a.toString().toLowerCase() ? !1 : isNaN(Number(a)) || 5 < a.length || 0 === a.length ? a : Number(a)
+    };
+    b.addClass = function (a,
+            c) {
+        var d = j.isString(a.className) ? a.className.split(" ") : [], g = j.isArray(c) ? c : c.split(" ");
+        j.each(g, function (a) {
+            j.contains(d, a) || d.push(a)
+        });
+        a.className = b.trim(d.join(" "))
+    };
+    b.removeClass = function (a, c) {
+        var d = j.isString(a.className) ? a.className.split(" ") : [], g = j.isArray(c) ? c : c.split(" ");
+        a.className = b.trim(j.difference(d, g).join(" "))
+    };
+    b.emptyElement = function (a) {
+        for (; a.firstChild; )
+            a.removeChild(a.firstChild)
+    };
+    b.indexOf = j.indexOf;
+    b.noop = function () {
+    };
+    b.canCast = function () {
+        var a = f.cast;
+        return!(!a || !j.isFunction(a.available) ||
+                !a.available())
+    }
+}(jwplayer), function (f) {
+    function d(a) {
+        var c = document.createElement("style");
+        a && c.appendChild(document.createTextNode(a));
+        c.type = "text/css";
+        document.getElementsByTagName("head")[0].appendChild(c);
+        return c
+    }
+    function l(a, b, e) {
+        if (!c.exists(b))
+            return"";
+        e = e ? " !important" : "";
+        return"string" === typeof b && isNaN(b) ? /png|gif|jpe?g/i.test(b) && 0 > b.indexOf("url") ? "url(" + b + ")" : b + e : 0 === b || "z-index" === a || "opacity" === a ? "" + b + e : /color/i.test(a) ? "#" + c.pad(b.toString(16).replace(/^0x/i, ""), 6) + e : Math.ceil(b) +
+                "px" + e
+    }
+    function b(a, c) {
+        for (var b = 0; b < a.length; b++) {
+            var e = a[b], d, g;
+            if (void 0 !== e && null !== e)
+                for (d in c) {
+                    g = d;
+                    g = g.split("-");
+                    for (var k = 1; k < g.length; k++)
+                        g[k] = g[k].charAt(0).toUpperCase() + g[k].slice(1);
+                    g = g.join("");
+                    e.style[g] !== c[d] && (e.style[g] = c[d])
+                }
+        }
+    }
+    function j(c) {
+        var b = g[c].sheet, e, d, k;
+        if (b) {
+            e = b.cssRules;
+            d = r[c];
+            k = c;
+            var j = a[k];
+            k += " { ";
+            for (var f in j)
+                k += f + ": " + j[f] + "; ";
+            k += "}";
+            if (void 0 !== d && d < e.length && e[d].selectorText === c) {
+                if (k === e[d].cssText)
+                    return;
+                b.deleteRule(d)
+            } else
+                d = e.length, r[c] = d;
+            try {
+                b.insertRule(k,
+                        d)
+            } catch (l) {
+            }
+        }
+    }
+    var c = f.utils, g = {}, k, a = {}, e = null, r = {};
+    c.cssKeyframes = function (a, c) {
+        var b = g.keyframes;
+        b || (b = d(), g.keyframes = b);
+        var b = b.sheet, e = "@keyframes " + a + " { " + c + " }";
+        try {
+            b.insertRule(e, b.cssRules.length)
+        } catch (k) {
+        }
+        e = e.replace(/(keyframes|transform)/g, "-webkit-$1");
+        try {
+            b.insertRule(e, b.cssRules.length)
+        } catch (j) {
+        }
+    };
+    var q = c.css = function (c, b, f) {
+        a[c] || (a[c] = {});
+        var r = a[c];
+        f = f || !1;
+        var u = !1, q, n;
+        for (q in b)
+            n = l(q, b[q], f), "" !== n ? n !== r[q] && (r[q] = n, u = !0) : void 0 !== r[q] && (delete r[q], u = !0);
+        if (u) {
+            if (!g[c]) {
+                b =
+                        k && k.sheet && k.sheet.cssRules && k.sheet.cssRules.length || 0;
+                if (!k || 5E4 < b)
+                    k = d();
+                g[c] = k
+            }
+            null !== e ? e.styleSheets[c] = a[c] : j(c)
+        }
+    };
+    q.style = function (a, c, d) {
+        if (!(void 0 === a || null === a)) {
+            void 0 === a.length && (a = [a]);
+            var g = {}, k;
+            for (k in c)
+                g[k] = l(k, c[k]);
+            if (null !== e && !d) {
+                c = (c = a.__cssRules) || {};
+                for (var j in g)
+                    c[j] = g[j];
+                a.__cssRules = c;
+                0 > f._.indexOf(e.elements, a) && e.elements.push(a)
+            } else
+                b(a, g)
+        }
+    };
+    q.block = function (a) {
+        null === e && (e = {id: a, styleSheets: {}, elements: []})
+    };
+    q.unblock = function (a) {
+        if (e && (!a || e.id === a)) {
+            for (var c in e.styleSheets)
+                j(c);
+            for (a = 0; a < e.elements.length; a++)
+                c = e.elements[a], b(c, c.__cssRules);
+            e = null
+        }
+    };
+    c.clearCss = function (c) {
+        for (var b in a)
+            0 <= b.indexOf(c) && delete a[b];
+        for (var e in g)
+            0 <= e.indexOf(c) && j(e)
+    };
+    c.transform = function (a, c) {
+        var b = {};
+        c = c || "";
+        b.transform = c;
+        b["-webkit-transform"] = c;
+        b["-ms-transform"] = c;
+        b["-moz-transform"] = c;
+        b["-o-transform"] = c;
+        "string" === typeof a ? q(a, b) : q.style(a, b)
+    };
+    c.dragStyle = function (a, c) {
+        q(a, {"-webkit-user-select": c, "-moz-user-select": c, "-ms-user-select": c, "-webkit-user-drag": c, "user-select": c, "user-drag": c})
+    };
+    c.transitionStyle = function (a, c) {
+        navigator.userAgent.match(/5\.\d(\.\d)? safari/i) || q(a, {"-webkit-transition": c, "-moz-transition": c, "-o-transition": c, transition: c})
+    };
+    c.rotate = function (a, b) {
+        c.transform(a, "rotate(" + b + "deg)")
+    };
+    c.rgbHex = function (a) {
+        a = String(a).replace("#", "");
+        3 === a.length && (a = a[0] + a[0] + a[1] + a[1] + a[2] + a[2]);
+        return"#" + a.substr(-6)
+    };
+    c.hexToRgba = function (a, c) {
+        var b = "rgb", e = [parseInt(a.substr(1, 2), 16), parseInt(a.substr(3, 2), 16), parseInt(a.substr(5, 2), 16)];
+        void 0 !== c && 100 !== c && (b += "a", e.push(c /
+                100));
+        return b + "(" + e.join(",") + ")"
+    }
+}(jwplayer), function (f) {
+    var d = jwplayer._, l = f.foreach, b = {mp4: "video/mp4", ogg: "video/ogg", oga: "audio/ogg", vorbis: "audio/ogg", webm: "video/webm", aac: "audio/mp4", mp3: "audio/mpeg", hls: "application/vnd.apple.mpegurl"}, j = {mp4: b.mp4, f4v: b.mp4, m4v: b.mp4, mov: b.mp4, m4a: b.aac, f4a: b.aac, aac: b.aac, mp3: b.mp3, ogv: b.ogg, ogg: b.ogg, oga: b.vorbis, vorbis: b.vorbis, webm: b.webm, m3u8: b.hls, m3u: b.hls, hls: b.hls}, c = f.extensionmap = {};
+    l(j, function (b, d) {
+        c[b] = {html5: d}
+    });
+    l({flv: "video", f4v: "video",
+        mov: "video", m4a: "video", m4v: "video", mp4: "video", aac: "video", f4a: "video", mp3: "sound", smil: "rtmp", m3u8: "hls", hls: "hls"}, function (b, d) {
+        c[b] || (c[b] = {});
+        c[b].flash = d
+    });
+    c.types = b;
+    c.mimeType = function (c) {
+        var k;
+        d.find(b, function (a, b) {
+            if (a === c)
+                return k = b, !0
+        });
+        return k
+    };
+    c.extType = function (b) {
+        return c.mimeType(j[b])
+    }
+}(jwplayer.utils), function (f) {
+    var d = f.loaderstatus = {NEW: 0, LOADING: 1, ERROR: 2, COMPLETE: 3};
+    f.scriptloader = function (l) {
+        function b(a) {
+            k = d.ERROR;
+            g.sendEvent(c.ERROR, a)
+        }
+        function j(a) {
+            k = d.COMPLETE;
+            g.sendEvent(c.COMPLETE,
+                    a)
+        }
+        var c = jwplayer.events, g = f.extend(this, new c.eventdispatcher), k = d.NEW;
+        this.load = function () {
+            if (k === d.NEW) {
+                var a = f.scriptloader.loaders[l];
+                if (a && (k = a.getStatus(), 2 > k)) {
+                    a.addEventListener(c.ERROR, b);
+                    a.addEventListener(c.COMPLETE, j);
+                    return
+                }
+                var e = document.getElementsByTagName("head")[0] || document.documentElement, g = document.createElement("script"), q = !1;
+                g.onload = g.onreadystatechange = function (a) {
+                    if (!q && (!this.readyState || "loaded" === this.readyState || "complete" === this.readyState))
+                        q = !0, j(a), g.onload = g.onreadystatechange =
+                                null, e && g.parentNode && e.removeChild(g)
+                };
+                g.onerror = b;
+                g.src = l;
+                e.insertBefore(g, e.firstChild);
+                k = d.LOADING;
+                f.scriptloader.loaders[l] = this
+            }
+        };
+        this.getStatus = function () {
+            return k
+        }
+    };
+    f.scriptloader.loaders = {}
+}(jwplayer.utils), function (f) {
+    f.trim = function (d) {
+        return d.replace(/^\s+|\s+$/g, "")
+    };
+    f.pad = function (d, f, b) {
+        for (b || (b = "0"); d.length < f; )
+            d = b + d;
+        return d
+    };
+    f.xmlAttribute = function (d, f) {
+        for (var b = 0; b < d.attributes.length; b++)
+            if (d.attributes[b].name && d.attributes[b].name.toLowerCase() === f.toLowerCase())
+                return d.attributes[b].value.toString();
+        return""
+    };
+    f.extension = function (d) {
+        if (!d || "rtmp" === d.substr(0, 4))
+            return"";
+        var f;
+        f = -1 < d.indexOf("(format\x3dm3u8-") ? "m3u8" : !1;
+        if (f)
+            return f;
+        d = d.substring(d.lastIndexOf("/") + 1, d.length).split("?")[0].split("#")[0];
+        if (-1 < d.lastIndexOf("."))
+            return d.substr(d.lastIndexOf(".") + 1, d.length).toLowerCase()
+    };
+    f.stringToColor = function (d) {
+        d = d.replace(/(#|0x)?([0-9A-F]{3,6})$/gi, "$2");
+        3 === d.length && (d = d.charAt(0) + d.charAt(0) + d.charAt(1) + d.charAt(1) + d.charAt(2) + d.charAt(2));
+        return parseInt(d, 16)
+    }
+}(jwplayer.utils),
+        function (f) {
+            var d = "touchmove", l = "touchstart";
+            f.touch = function (b) {
+                function j(b) {
+                    b.type === l ? (a = !0, r = g(h.DRAG_START, b)) : b.type === d ? a && (q || (c(h.DRAG_START, b, r), q = !0), c(h.DRAG, b)) : (a && (q ? c(h.DRAG_END, b) : (b.cancelBubble = !0, c(h.TAP, b))), a = q = !1, r = null)
+                }
+                function c(a, c, b) {
+                    if (e[a] && (c.preventManipulation && c.preventManipulation(), c.preventDefault && c.preventDefault(), c = b ? b : g(a, c)))
+                        e[a](c)
+                }
+                function g(a, c) {
+                    var b = null;
+                    c.touches && c.touches.length ? b = c.touches[0] : c.changedTouches && c.changedTouches.length && (b = c.changedTouches[0]);
+                    if (!b)
+                        return null;
+                    var e = k.getBoundingClientRect(), b = {type: a, target: k, x: b.pageX - window.pageXOffset - e.left, y: b.pageY, deltaX: 0, deltaY: 0};
+                    a !== h.TAP && r && (b.deltaX = b.x - r.x, b.deltaY = b.y - r.y);
+                    return b
+                }
+                var k = b, a = !1, e = {}, r = null, q = !1, h = f.touchEvents;
+                document.addEventListener(d, j);
+                document.addEventListener("touchend", function (b) {
+                    a && q && c(h.DRAG_END, b);
+                    a = q = !1;
+                    r = null
+                });
+                document.addEventListener("touchcancel", j);
+                b.addEventListener(l, j);
+                b.addEventListener("touchend", j);
+                this.addEventListener = function (a, c) {
+                    e[a] = c
+                };
+                this.removeEventListener = function (a) {
+                    delete e[a]
+                };
+                return this
+            }
+        }(jwplayer.utils), function (f) {
+    f.touchEvents = {DRAG: "jwplayerDrag", DRAG_START: "jwplayerDragStart", DRAG_END: "jwplayerDragEnd", TAP: "jwplayerTap"}
+}(jwplayer.utils), function (f) {
+    f.key = function (d) {
+        var l, b, j;
+        this.edition = function () {
+            return j && j.getTime() < (new Date).getTime() ? "invalid" : l
+        };
+        this.token = function () {
+            return b
+        };
+        f.exists(d) || (d = "");
+        try {
+            d = f.tea.decrypt(d, "36QXq4W@GSBV^teR");
+            var c = d.split("/");
+            (l = c[0]) ? /^(free|pro|premium|enterprise|ads)$/i.test(l) ?
+                    (b = c[1], c[2] && 0 < parseInt(c[2]) && (j = new Date, j.setTime(String(c[2])))) : l = "invalid" : l = "free"
+        } catch (g) {
+            l = "invalid"
+        }
+    }
+}(jwplayer.utils), function (f) {
+    var d = f.tea = {};
+    d.encrypt = function (j, c) {
+        if (0 == j.length)
+            return"";
+        var g = d.strToLongs(b.encode(j));
+        1 >= g.length && (g[1] = 0);
+        for (var k = d.strToLongs(b.encode(c).slice(0, 16)), a = g.length, e = g[a - 1], f = g[0], q, h = Math.floor(6 + 52 / a), p = 0; 0 < h--; ) {
+            p += 2654435769;
+            q = p >>> 2 & 3;
+            for (var m = 0; m < a; m++)
+                f = g[(m + 1) % a], e = (e >>> 5 ^ f << 2) + (f >>> 3 ^ e << 4) ^ (p ^ f) + (k[m & 3 ^ q] ^ e), e = g[m] += e
+        }
+        g = d.longsToStr(g);
+        return l.encode(g)
+    };
+    d.decrypt = function (j, c) {
+        if (0 == j.length)
+            return"";
+        for (var g = d.strToLongs(l.decode(j)), k = d.strToLongs(b.encode(c).slice(0, 16)), a = g.length, e = g[a - 1], f = g[0], q, h = 2654435769 * Math.floor(6 + 52 / a); 0 != h; ) {
+            q = h >>> 2 & 3;
+            for (var p = a - 1; 0 <= p; p--)
+                e = g[0 < p ? p - 1 : a - 1], e = (e >>> 5 ^ f << 2) + (f >>> 3 ^ e << 4) ^ (h ^ f) + (k[p & 3 ^ q] ^ e), f = g[p] -= e;
+            h -= 2654435769
+        }
+        g = d.longsToStr(g);
+        g = g.replace(/\0+$/, "");
+        return b.decode(g)
+    };
+    d.strToLongs = function (b) {
+        for (var c = Array(Math.ceil(b.length / 4)), d = 0; d < c.length; d++)
+            c[d] = b.charCodeAt(4 * d) + (b.charCodeAt(4 *
+                    d + 1) << 8) + (b.charCodeAt(4 * d + 2) << 16) + (b.charCodeAt(4 * d + 3) << 24);
+        return c
+    };
+    d.longsToStr = function (b) {
+        for (var c = Array(b.length), d = 0; d < b.length; d++)
+            c[d] = String.fromCharCode(b[d] & 255, b[d] >>> 8 & 255, b[d] >>> 16 & 255, b[d] >>> 24 & 255);
+        return c.join("")
+    };
+    var l = {code: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/\x3d", encode: function (d, c) {
+            var g, k, a, e, f = [], q = "", h, p, m = l.code;
+            p = ("undefined" == typeof c ? 0 : c) ? b.encode(d) : d;
+            h = p.length % 3;
+            if (0 < h)
+                for (; 3 > h++; )
+                    q += "\x3d", p += "\x00";
+            for (h = 0; h < p.length; h += 3)
+                g = p.charCodeAt(h),
+                        k = p.charCodeAt(h + 1), a = p.charCodeAt(h + 2), e = g << 16 | k << 8 | a, g = e >> 18 & 63, k = e >> 12 & 63, a = e >> 6 & 63, e &= 63, f[h / 3] = m.charAt(g) + m.charAt(k) + m.charAt(a) + m.charAt(e);
+            f = f.join("");
+            return f = f.slice(0, f.length - q.length) + q
+        }, decode: function (d, c) {
+            c = "undefined" == typeof c ? !1 : c;
+            var g, k, a, e, f, q = [], h, p = l.code;
+            h = c ? b.decode(d) : d;
+            for (var m = 0; m < h.length; m += 4)
+                g = p.indexOf(h.charAt(m)), k = p.indexOf(h.charAt(m + 1)), e = p.indexOf(h.charAt(m + 2)), f = p.indexOf(h.charAt(m + 3)), a = g << 18 | k << 12 | e << 6 | f, g = a >>> 16 & 255, k = a >>> 8 & 255, a &= 255, q[m / 4] = String.fromCharCode(g,
+                        k, a), 64 == f && (q[m / 4] = String.fromCharCode(g, k)), 64 == e && (q[m / 4] = String.fromCharCode(g));
+            e = q.join("");
+            return c ? b.decode(e) : e
+        }}, b = {encode: function (b) {
+            b = b.replace(/[\u0080-\u07ff]/g, function (c) {
+                c = c.charCodeAt(0);
+                return String.fromCharCode(192 | c >> 6, 128 | c & 63)
+            });
+            return b = b.replace(/[\u0800-\uffff]/g, function (c) {
+                c = c.charCodeAt(0);
+                return String.fromCharCode(224 | c >> 12, 128 | c >> 6 & 63, 128 | c & 63)
+            })
+        }, decode: function (b) {
+            b = b.replace(/[\u00e0-\u00ef][\u0080-\u00bf][\u0080-\u00bf]/g, function (c) {
+                c = (c.charCodeAt(0) & 15) << 12 |
+                        (c.charCodeAt(1) & 63) << 6 | c.charCodeAt(2) & 63;
+                return String.fromCharCode(c)
+            });
+            return b = b.replace(/[\u00c0-\u00df][\u0080-\u00bf]/g, function (c) {
+                c = (c.charCodeAt(0) & 31) << 6 | c.charCodeAt(1) & 63;
+                return String.fromCharCode(c)
+            })
+        }}
+}(jwplayer.utils), function (f) {
+    f.events = {COMPLETE: "COMPLETE", ERROR: "ERROR", API_READY: "jwplayerAPIReady", JWPLAYER_READY: "jwplayerReady", JWPLAYER_FULLSCREEN: "jwplayerFullscreen", JWPLAYER_RESIZE: "jwplayerResize", JWPLAYER_ERROR: "jwplayerError", JWPLAYER_SETUP_ERROR: "jwplayerSetupError", JWPLAYER_MEDIA_BEFOREPLAY: "jwplayerMediaBeforePlay",
+        JWPLAYER_MEDIA_BEFORECOMPLETE: "jwplayerMediaBeforeComplete", JWPLAYER_MEDIA_BUFFER: "jwplayerMediaBuffer", JWPLAYER_MEDIA_BUFFER_FULL: "jwplayerMediaBufferFull", JWPLAYER_MEDIA_ERROR: "jwplayerMediaError", JWPLAYER_MEDIA_LOADED: "jwplayerMediaLoaded", JWPLAYER_MEDIA_COMPLETE: "jwplayerMediaComplete", JWPLAYER_MEDIA_SEEK: "jwplayerMediaSeek", JWPLAYER_MEDIA_TIME: "jwplayerMediaTime", JWPLAYER_MEDIA_VOLUME: "jwplayerMediaVolume", JWPLAYER_MEDIA_META: "jwplayerMediaMeta", JWPLAYER_MEDIA_MUTE: "jwplayerMediaMute", JWPLAYER_AUDIO_TRACKS: "jwplayerAudioTracks",
+        JWPLAYER_AUDIO_TRACK_CHANGED: "jwplayerAudioTrackChanged", JWPLAYER_MEDIA_LEVELS: "jwplayerMediaLevels", JWPLAYER_MEDIA_LEVEL_CHANGED: "jwplayerMediaLevelChanged", JWPLAYER_CAPTIONS_CHANGED: "jwplayerCaptionsChanged", JWPLAYER_CAPTIONS_LIST: "jwplayerCaptionsList", JWPLAYER_CAPTIONS_LOADED: "jwplayerCaptionsLoaded", JWPLAYER_PLAYER_STATE: "jwplayerPlayerState", state: {BUFFERING: "BUFFERING", IDLE: "IDLE", PAUSED: "PAUSED", PLAYING: "PLAYING"}, JWPLAYER_PLAYLIST_LOADED: "jwplayerPlaylistLoaded", JWPLAYER_PLAYLIST_ITEM: "jwplayerPlaylistItem",
+        JWPLAYER_PLAYLIST_COMPLETE: "jwplayerPlaylistComplete", JWPLAYER_DISPLAY_CLICK: "jwplayerViewClick", JWPLAYER_PROVIDER_CLICK: "jwplayerProviderClick", JWPLAYER_VIEW_TAB_FOCUS: "jwplayerViewTabFocus", JWPLAYER_CONTROLS: "jwplayerViewControls", JWPLAYER_USER_ACTION: "jwplayerUserAction", JWPLAYER_INSTREAM_CLICK: "jwplayerInstreamClicked", JWPLAYER_INSTREAM_DESTROYED: "jwplayerInstreamDestroyed", JWPLAYER_AD_TIME: "jwplayerAdTime", JWPLAYER_AD_ERROR: "jwplayerAdError", JWPLAYER_AD_CLICK: "jwplayerAdClicked", JWPLAYER_AD_COMPLETE: "jwplayerAdComplete",
+        JWPLAYER_AD_IMPRESSION: "jwplayerAdImpression", JWPLAYER_AD_COMPANIONS: "jwplayerAdCompanions", JWPLAYER_AD_SKIPPED: "jwplayerAdSkipped", JWPLAYER_AD_PLAY: "jwplayerAdPlay", JWPLAYER_AD_PAUSE: "jwplayerAdPause", JWPLAYER_AD_META: "jwplayerAdMeta", JWPLAYER_CAST_AVAILABLE: "jwplayerCastAvailable", JWPLAYER_CAST_SESSION: "jwplayerCastSession", JWPLAYER_CAST_AD_CHANGED: "jwplayerCastAdChanged"}
+}(jwplayer), function (f) {
+    var d = f.utils;
+    f.events.eventdispatcher = function (l, b) {
+        function j(c, a, b) {
+            if (c)
+                for (var g = 0; g < c.length; g++) {
+                    var f =
+                            c[g];
+                    if (f) {
+                        null !== f.count && 0 === --f.count && delete c[g];
+                        try {
+                            f.listener(a)
+                        } catch (h) {
+                            d.log('Error handling "' + b + '" event listener [' + g + "]: " + h.toString(), f.listener, a)
+                        }
+                    }
+                }
+        }
+        var c, g;
+        this.resetEventListeners = function () {
+            c = {};
+            g = []
+        };
+        this.resetEventListeners();
+        this.addEventListener = function (b, a, e) {
+            try {
+                d.exists(c[b]) || (c[b] = []), "string" === d.typeOf(a) && (a = (new Function("return " + a))()), c[b].push({listener: a, count: e || null})
+            } catch (g) {
+                d.log("error", g)
+            }
+            return!1
+        };
+        this.removeEventListener = function (b, a) {
+            var e;
+            if (c[b]) {
+                try {
+                    if (void 0 ===
+                            a) {
+                        c[b] = [];
+                        return
+                    }
+                    for (e = 0; e < c[b].length; e++)
+                        if (c[b][e].listener.toString() === a.toString()) {
+                            c[b].splice(e, 1);
+                            break
+                        }
+                } catch (g) {
+                    d.log("error", g)
+                }
+                return!1
+            }
+        };
+        this.addGlobalListener = function (b, a) {
+            try {
+                "string" === d.typeOf(b) && (b = (new Function("return " + b))()), g.push({listener: b, count: a || null})
+            } catch (c) {
+                d.log("error", c)
+            }
+            return!1
+        };
+        this.removeGlobalListener = function (b) {
+            if (b) {
+                try {
+                    for (var a = g.length; a--; )
+                        g[a].listener.toString() === b.toString() && g.splice(a, 1)
+                } catch (c) {
+                    d.log("error", c)
+                }
+                return!1
+            }
+        };
+        this.sendEvent =
+                function (k, a) {
+                    d.exists(a) || (a = {});
+                    d.extend(a, {id: l, version: f.version, type: k});
+                    b && d.log(k, a);
+                    j(c[k], a, k);
+                    j(g, a, k)
+                }
+    }
+}(window.jwplayer), function (f) {
+    var d = {}, l = {};
+    f.plugins = function () {
+    };
+    f.plugins.loadPlugins = function (b, j) {
+        l[b] = new f.plugins.pluginloader(new f.plugins.model(d), j);
+        return l[b]
+    };
+    f.plugins.registerPlugin = function (b, j, c, g) {
+        var k = f.utils.getPluginName(b);
+        d[k] || (d[k] = new f.plugins.plugin(b));
+        d[k].registerPlugin(b, j, c, g)
+    }
+}(jwplayer), function (f) {
+    f.plugins.model = function (d) {
+        this.addPlugin = function (l) {
+            var b =
+                    f.utils.getPluginName(l);
+            d[b] || (d[b] = new f.plugins.plugin(l));
+            return d[b]
+        };
+        this.getPlugins = function () {
+            return d
+        }
+    }
+}(jwplayer), function (f) {
+    var d = jwplayer.utils, l = jwplayer.events;
+    f.pluginmodes = {FLASH: 0, JAVASCRIPT: 1, HYBRID: 2};
+    f.plugin = function (b) {
+        function j() {
+            switch (d.getPluginPathType(b)) {
+                case d.pluginPathType.ABSOLUTE:
+                    return b;
+                case d.pluginPathType.RELATIVE:
+                    return d.getAbsolutePath(b, window.location.href)
+                }
+        }
+        function c() {
+            q = setTimeout(function () {
+                k = d.loaderstatus.COMPLETE;
+                h.sendEvent(l.COMPLETE)
+            }, 1E3)
+        }
+        function g() {
+            k =
+                    d.loaderstatus.ERROR;
+            h.sendEvent(l.ERROR, {url: b})
+        }
+        var k = d.loaderstatus.NEW, a, e, r, q, h = new l.eventdispatcher;
+        d.extend(this, h);
+        this.load = function () {
+            if (k === d.loaderstatus.NEW)
+                if (0 < b.lastIndexOf(".swf"))
+                    a = b, k = d.loaderstatus.COMPLETE, h.sendEvent(l.COMPLETE);
+                else if (d.getPluginPathType(b) === d.pluginPathType.CDN)
+                    k = d.loaderstatus.COMPLETE, h.sendEvent(l.COMPLETE);
+                else {
+                    k = d.loaderstatus.LOADING;
+                    var e = new d.scriptloader(j());
+                    e.addEventListener(l.COMPLETE, c);
+                    e.addEventListener(l.ERROR, g);
+                    e.load()
+                }
+        };
+        this.registerPlugin =
+                function (b, c, g, f) {
+                    q && (clearTimeout(q), q = void 0);
+                    r = c;
+                    g && f ? (a = f, e = g) : "string" === typeof g ? a = g : "function" === typeof g ? e = g : !g && !f && (a = b);
+                    k = d.loaderstatus.COMPLETE;
+                    h.sendEvent(l.COMPLETE)
+                };
+        this.getStatus = function () {
+            return k
+        };
+        this.getPluginName = function () {
+            return d.getPluginName(b)
+        };
+        this.getFlashPath = function () {
+            if (a)
+                switch (d.getPluginPathType(a)) {
+                    case d.pluginPathType.ABSOLUTE:
+                        return a;
+                    case d.pluginPathType.RELATIVE:
+                        return 0 < b.lastIndexOf(".swf") ? d.getAbsolutePath(a, window.location.href) : d.getAbsolutePath(a,
+                                j())
+                }
+            return null
+        };
+        this.getJS = function () {
+            return e
+        };
+        this.getTarget = function () {
+            return r
+        };
+        this.getPluginmode = function () {
+            if ("undefined" !== typeof a && "undefined" !== typeof e)
+                return f.pluginmodes.HYBRID;
+            if ("undefined" !== typeof a)
+                return f.pluginmodes.FLASH;
+            if ("undefined" !== typeof e)
+                return f.pluginmodes.JAVASCRIPT
+        };
+        this.getNewInstance = function (a, b, c) {
+            return new e(a, b, c)
+        };
+        this.getURL = function () {
+            return b
+        }
+    }
+}(jwplayer.plugins), function (f) {
+    var d = f.utils, l = f.events, b = f._, j = d.foreach;
+    f.plugins.pluginloader = function (c,
+            g) {
+        function f() {
+            q || (q = !0, r = d.loaderstatus.COMPLETE, u.sendEvent(l.COMPLETE))
+        }
+        function a() {
+            if (!w && ((!h || 0 === b.keys(h).length) && f(), !q)) {
+                var a = c.getPlugins();
+                m = b.after(p, f);
+                d.foreach(h, function (b) {
+                    b = d.getPluginName(b);
+                    var c = a[b];
+                    b = c.getJS();
+                    var e = c.getTarget(), c = c.getStatus();
+                    c === d.loaderstatus.LOADING || c === d.loaderstatus.NEW || (b && !d.versionCheck(e) && u.sendEvent(l.ERROR, {message: "Incompatible player version"}), m())
+                })
+            }
+        }
+        function e(b) {
+            w || (u.sendEvent(l.ERROR, {message: "File not found"}), b.url && d.log("File not found",
+                    b.url), a())
+        }
+        var r = d.loaderstatus.NEW, q = !1, h = g, p = b.size(h), m, w = !1, u = new l.eventdispatcher;
+        d.extend(this, u);
+        this.setupPlugins = function (a, b, e) {
+            var g = {length: 0, plugins: {}}, f = 0, h = {}, k = c.getPlugins();
+            j(b.plugins, function (c, j) {
+                var p = d.getPluginName(c), l = k[p], r = l.getFlashPath(), m = l.getJS(), u = l.getURL();
+                r && (g.plugins[r] = d.extend({}, j), g.plugins[r].pluginmode = l.getPluginmode(), g.length++);
+                try {
+                    if (m && b.plugins && b.plugins[u]) {
+                        var q = document.createElement("div");
+                        q.id = a.id + "_" + p;
+                        q.style.position = "absolute";
+                        q.style.top =
+                                0;
+                        q.style.zIndex = f + 10;
+                        h[p] = l.getNewInstance(a, d.extend({}, b.plugins[u]), q);
+                        f++;
+                        a.onReady(e(h[p], q, !0));
+                        a.onResize(e(h[p], q))
+                    }
+                } catch (w) {
+                    d.log("ERROR: Failed to load " + p + ".")
+                }
+            });
+            a.plugins = h;
+            return g
+        };
+        this.load = function () {
+            if (!(d.exists(g) && "object" !== d.typeOf(g))) {
+                r = d.loaderstatus.LOADING;
+                j(g, function (b) {
+                    d.exists(b) && (b = c.addPlugin(b), b.addEventListener(l.COMPLETE, a), b.addEventListener(l.ERROR, e))
+                });
+                var b = c.getPlugins();
+                j(b, function (a, b) {
+                    b.load()
+                })
+            }
+            a()
+        };
+        this.destroy = function () {
+            w = !0;
+            u && (u.resetEventListeners(),
+                    u = null)
+        };
+        this.pluginFailed = e;
+        this.getStatus = function () {
+            return r
+        }
+    }
+}(jwplayer), function (f) {
+    f.parsers = {localName: function (d) {
+            return d ? d.localName ? d.localName : d.baseName ? d.baseName : "" : ""
+        }, textContent: function (d) {
+            return d ? d.textContent ? f.utils.trim(d.textContent) : d.text ? f.utils.trim(d.text) : "" : ""
+        }, getChildNode: function (d, f) {
+            return d.childNodes[f]
+        }, numChildren: function (d) {
+            return d.childNodes ? d.childNodes.length : 0
+        }}
+}(jwplayer), function (f) {
+    var d = f.parsers;
+    (d.jwparser = function () {
+    }).parseEntry = function (l, b) {
+        for (var j =
+        [], c = [], g = f.utils.xmlAttribute, k = 0; k < l.childNodes.length; k++) {
+            var a = l.childNodes[k];
+            if ("jwplayer" === a.prefix) {
+                var e = d.localName(a);
+                "source" === e ? (delete b.sources, j.push({file: g(a, "file"), "default": g(a, "default"), label: g(a, "label"), type: g(a, "type")})) : "track" === e ? (delete b.tracks, c.push({file: g(a, "file"), "default": g(a, "default"), kind: g(a, "kind"), label: g(a, "label")})) : (b[e] = f.utils.serialize(d.textContent(a)), "file" === e && b.sources && delete b.sources)
+            }
+            b.file || (b.file = b.link)
+        }
+        if (j.length) {
+            b.sources = [];
+            for (k = 0; k < j.length; k++)
+                0 < j[k].file.length && (j[k]["default"] = "true" === j[k]["default"] ? !0 : !1, j[k].label.length || delete j[k].label, b.sources.push(j[k]))
+        }
+        if (c.length) {
+            b.tracks = [];
+            for (k = 0; k < c.length; k++)
+                0 < c[k].file.length && (c[k]["default"] = "true" === c[k]["default"] ? !0 : !1, c[k].kind = !c[k].kind.length ? "captions" : c[k].kind, c[k].label.length || delete c[k].label, b.tracks.push(c[k]))
+        }
+        return b
+    }
+}(jwplayer), function (f) {
+    var d = jwplayer.utils, l = d.xmlAttribute, b = f.localName, j = f.textContent, c = f.numChildren, g = f.mediaparser =
+            function () {
+            };
+    g.parseGroup = function (f, a) {
+        var e, r, q = [];
+        for (r = 0; r < c(f); r++)
+            if (e = f.childNodes[r], "media" === e.prefix && b(e))
+                switch (b(e).toLowerCase()) {
+                    case "content":
+                        l(e, "duration") && (a.duration = d.seconds(l(e, "duration")));
+                        0 < c(e) && (a = g.parseGroup(e, a));
+                        l(e, "url") && (a.sources || (a.sources = []), a.sources.push({file: l(e, "url"), type: l(e, "type"), width: l(e, "width"), label: l(e, "label")}));
+                        break;
+                    case "title":
+                        a.title = j(e);
+                        break;
+                    case "description":
+                        a.description = j(e);
+                        break;
+                    case "guid":
+                        a.mediaid = j(e);
+                        break;
+                    case "thumbnail":
+                        a.image ||
+                                (a.image = l(e, "url"));
+                        break;
+                    case "group":
+                        g.parseGroup(e, a);
+                        break;
+                    case "subtitle":
+                        var h = {};
+                        h.file = l(e, "url");
+                        h.kind = "captions";
+                        if (0 < l(e, "lang").length) {
+                            var p = h;
+                            e = l(e, "lang");
+                            var m = {zh: "Chinese", nl: "Dutch", en: "English", fr: "French", de: "German", it: "Italian", ja: "Japanese", pt: "Portuguese", ru: "Russian", es: "Spanish"};
+                            e = m[e] ? m[e] : e;
+                            p.label = e
+                        }
+                        q.push(h)
+                }
+        a.hasOwnProperty("tracks") || (a.tracks = []);
+        for (r = 0; r < q.length; r++)
+            a.tracks.push(q[r]);
+        return a
+    }
+}(jwplayer.parsers), function (f) {
+    function d(c) {
+        for (var a = {}, e = 0; e <
+                c.childNodes.length; e++) {
+            var d = c.childNodes[e], j = g(d);
+            if (j)
+                switch (j.toLowerCase()) {
+                    case "enclosure":
+                        a.file = l.xmlAttribute(d, "url");
+                        break;
+                    case "title":
+                        a.title = b(d);
+                        break;
+                    case "guid":
+                        a.mediaid = b(d);
+                        break;
+                    case "pubdate":
+                        a.date = b(d);
+                        break;
+                    case "description":
+                        a.description = b(d);
+                        break;
+                    case "link":
+                        a.link = b(d);
+                        break;
+                    case "category":
+                        a.tags = a.tags ? a.tags + b(d) : b(d)
+                    }
+        }
+        a = f.mediaparser.parseGroup(c, a);
+        a = f.jwparser.parseEntry(c, a);
+        return new jwplayer.playlist.item(a)
+    }
+    var l = jwplayer.utils, b = f.textContent, j = f.getChildNode,
+            c = f.numChildren, g = f.localName;
+    f.rssparser = {};
+    f.rssparser.parse = function (b) {
+        for (var a = [], e = 0; e < c(b); e++) {
+            var f = j(b, e);
+            if ("channel" === g(f).toLowerCase())
+                for (var l = 0; l < c(f); l++) {
+                    var h = j(f, l);
+                    "item" === g(h).toLowerCase() && a.push(d(h))
+                }
+        }
+        return a
+    }
+}(jwplayer.parsers), function (f) {
+    var d = f.utils, l = f._;
+    f.playlist = function (b) {
+        var c = [];
+        b = l.isArray(b) ? b : [b];
+        l.each(b, function (b) {
+            c.push(new f.playlist.item(b))
+        });
+        return c
+    };
+    f.playlist.filterPlaylist = function (f, c) {
+        var g = [];
+        l.each(f, function (f) {
+            f = d.extend({}, f);
+            f.sources =
+                    b(f.sources, !1, c);
+            if (f.sources.length) {
+                for (var a = 0; a < f.sources.length; a++)
+                    f.sources[a].label = f.sources[a].label || a.toString();
+                g.push(f)
+            }
+        });
+        return g
+    };
+    var b = f.playlist.filterSources = function (b, c, g) {
+        var k, a = [], e = c ? f.embed.flashCanPlay : f.embed.html5CanPlay;
+        if (b)
+            return l.each(b, function (b) {
+                if (!b || !b.file)
+                    b = void 0;
+                else {
+                    var c = d.trim("" + b.file), f = b.type;
+                    f || (f = d.extension(c), f = d.extensionmap.extType(f));
+                    b = d.extend({}, b, {file: c, type: f})
+                }
+                b && e(b.file, b.type, g) && (k = k || b.type, b.type === k && a.push(b))
+            }), a
+    }
+}(jwplayer),
+        function (f) {
+            var d = f.item = function (l) {
+                var b = jwplayer.utils, j = b.extend({}, d.defaults, l), c, g;
+                j.tracks = l && b.exists(l.tracks) ? l.tracks : [];
+                0 === j.sources.length && (j.sources = [new f.source(j)]);
+                for (c = 0; c < j.sources.length; c++)
+                    g = j.sources[c]["default"], j.sources[c]["default"] = g ? "true" === g.toString() : !1, j.sources[c] = new f.source(j.sources[c]);
+                if (j.captions && !b.exists(l.tracks)) {
+                    for (l = 0; l < j.captions.length; l++)
+                        j.tracks.push(j.captions[l]);
+                    delete j.captions
+                }
+                for (c = 0; c < j.tracks.length; c++)
+                    j.tracks[c] = new f.track(j.tracks[c]);
+                return j
+            };
+            d.defaults = {description: void 0, image: void 0, mediaid: void 0, title: void 0, sources: [], tracks: []}
+        }(jwplayer.playlist), function (f) {
+    var d = f.utils, l = f.events, b = f.parsers;
+    f.playlist.loader = function () {
+        function j(a) {
+            try {
+                var c = a.responseXML.childNodes;
+                a = "";
+                for (var d = 0; d < c.length && !(a = c[d], 8 !== a.nodeType); d++)
+                    ;
+                "xml" === b.localName(a) && (a = a.nextSibling);
+                if ("rss" !== b.localName(a))
+                    g("Not a valid RSS feed");
+                else {
+                    var j = new f.playlist(b.rssparser.parse(a));
+                    k.sendEvent(l.JWPLAYER_PLAYLIST_LOADED, {playlist: j})
+                }
+            } catch (h) {
+                g()
+            }
+        }
+        function c(a) {
+            g(a.match(/invalid/i) ? "Not a valid RSS feed" : "")
+        }
+        function g(a) {
+            k.sendEvent(l.JWPLAYER_ERROR, {message: a ? a : "Error loading file"})
+        }
+        var k = new l.eventdispatcher;
+        d.extend(this, k);
+        this.load = function (a) {
+            d.ajax(a, j, c)
+        }
+    }
+}(jwplayer), function (f) {
+    var d = jwplayer.utils, l = {file: void 0, label: void 0, type: void 0, "default": void 0};
+    f.source = function (b) {
+        var f = d.extend({}, l);
+        d.foreach(l, function (c) {
+            d.exists(b[c]) && (f[c] = b[c], delete b[c])
+        });
+        f.type && 0 < f.type.indexOf("/") && (f.type = d.extensionmap.mimeType(f.type));
+        "m3u8" === f.type && (f.type = "hls");
+        "smil" === f.type && (f.type = "rtmp");
+        return f
+    }
+}(jwplayer.playlist), function (f) {
+    var d = jwplayer.utils, l = {file: void 0, label: void 0, kind: "captions", "default": !1};
+    f.track = function (b) {
+        var f = d.extend({}, l);
+        b || (b = {});
+        d.foreach(l, function (c) {
+            d.exists(b[c]) && (f[c] = b[c], delete b[c])
+        });
+        return f
+    }
+}(jwplayer.playlist), function (f) {
+    function d(b, c, a) {
+        var e = b.style;
+        e.backgroundColor = "#000";
+        e.color = "#FFF";
+        e.width = l.styleDimension(a.width);
+        e.height = l.styleDimension(a.height);
+        e.display = "table";
+        e.opacity = 1;
+        a = document.createElement("p");
+        e = a.style;
+        e.verticalAlign = "middle";
+        e.textAlign = "center";
+        e.display = "table-cell";
+        e.font = "15px/20px Arial, Helvetica, sans-serif";
+        a.innerHTML = c.replace(":", ":\x3cbr\x3e");
+        b.innerHTML = "";
+        b.appendChild(a)
+    }
+    var l = f.utils, b = f.events, j = f._, c = f.embed = function (g) {
+        function k() {
+            if (!z) {
+                var e = p.playlist;
+                if (j.isArray(e)) {
+                    if (0 === e.length) {
+                        r();
+                        return
+                    }
+                    if (1 === e.length && (!e[0].sources || 0 === e[0].sources.length || !e[0].sources[0].file)) {
+                        r();
+                        return
+                    }
+                }
+                if (!x)
+                    if (j.isString(e))
+                        v = new f.playlist.loader,
+                                v.addEventListener(b.JWPLAYER_PLAYLIST_LOADED, function (a) {
+                                    p.playlist = a.playlist;
+                                    x = !1;
+                                    k()
+                                }), v.addEventListener(b.JWPLAYER_ERROR, function (a) {
+                            x = !1;
+                            r(a)
+                        }), x = !0, v.load(p.playlist);
+                    else if (n.getStatus() === l.loaderstatus.COMPLETE) {
+                        for (e = 0; e < p.modes.length; e++) {
+                            var d = p.modes[e], h = d.type;
+                            if (h && c[h]) {
+                                var m = l.extend({}, p);
+                                B = new c[h](F, d, m, n, g);
+                                if (B.supportsConfig())
+                                    return B.addEventListener(b.ERROR, a), B.embed(), l.css("object.jwswf, .jwplayer:focus", {outline: "none"}), l.css(".jw-tab-focus:focus", {outline: "solid 2px #0B7EF4"}),
+                                    g
+                            }
+                        }
+                        console.log(p);
+                        p.fallback ? (e = "No suitable players found and fallback enabled", q(e, !0), l.log(e), new c.download(F, p, r)) : (e = "No suitable players found and fallback disabled", q(e, !1), l.log(e))
+                    }
+            }
+        }
+        function a(a) {
+            h(u + a.message)
+        }
+        function e(a) {
+            g.dispatchEvent(b.JWPLAYER_ERROR, {message: "Could not load plugin: " + a.message})
+        }
+        function r(a) {
+            a && a.message ? h("Error loading playlist: " + a.message) : h(u + "No playable sources found")
+        }
+        function q(a, c) {
+            clearTimeout(y);
+            y = setTimeout(function () {
+                g.dispatchEvent(b.JWPLAYER_SETUP_ERROR, {message: a,
+                    fallback: c})
+            }, 0)
+        }
+        function h(a) {
+            z || (t.parentNode.replaceChild(F, t), p.fallback ? (z = !0, d(F, a, p), q(a, !0)) : q(a, !1))
+        }
+        var p = new c.config(g.config), m = p.width, w = p.height, u = "Error loading player: ", t = document.getElementById(g.id), n = f.plugins.loadPlugins(g.id, p.plugins), v, x = !1, z = !1, B = null, y = -1;
+        p.id = g.id;
+        p.aspectratio ? g.config.aspectratio = p.aspectratio : delete g.config.aspectratio;
+        var E = g;
+        l.foreach(p.events, function (a, b) {
+            var c = E[a];
+            "function" === typeof c && c.call(E, b)
+        });
+        var F = document.createElement("div");
+        F.id = t.id;
+        F.style.width = 0 < m.toString().indexOf("%") ? m : m + "px";
+        F.style.height = 0 < w.toString().indexOf("%") ? w : w + "px";
+        this.embed = function () {
+            z || (n.addEventListener(b.COMPLETE, k), n.addEventListener(b.ERROR, e), n.load())
+        };
+        this.destroy = function () {
+            B && (B.destroy(), B = null);
+            n && (n.destroy(), n = null);
+            v && (v.resetEventListeners(), v = null)
+        };
+        this.errorScreen = h;
+        return this
+    };
+    f.embed.errorScreen = d
+}(jwplayer), function (f) {
+    function d(c) {
+        if (c.playlist)
+            for (var d = 0; d < c.playlist.length; d++)
+                c.playlist[d] = new j(c.playlist[d]);
+        else {
+            var f = {};
+            b.foreach(j.defaults, function (a) {
+                l(c, f, a)
+            });
+            f.sources || (c.levels ? (f.sources = c.levels, delete c.levels) : (d = {}, l(c, d, "file"), l(c, d, "type"), f.sources = d.file ? [d] : []));
+            c.playlist = [new j(f)]
+        }
+    }
+    function l(c, d, f) {
+        b.exists(c[f]) && (d[f] = c[f], delete c[f])
+    }
+    var b = f.utils, j = f.playlist.item;
+    (f.embed.config = function (c) {
+        var g = {fallback: !0, height: 270, primary: "html5", width: 480, base: c.base ? c.base : b.getScriptPath("jwplayer.js"), aspectratio: ""};
+        c = b.extend({}, g, f.defaults, c);
+        var g = {type: "html5", src: c.base + "jwplayer.html5.js.xhtml?ln=jwplayer"},
+        k = {type: "flash", src: c.base + "jwplayer.flash.swf.xhtml?ln=jwplayer"};
+        console.log(k);
+        console.log(g);
+        c.modes = "flash" === c.primary ? [k, g] : [g, k];
+        c.listbar && (c.playlistsize = c.listbar.size, c.playlistposition = c.listbar.position, c.playlistlayout = c.listbar.layout);
+        c.flashplayer && (k.src = c.flashplayer);
+        c.html5player && (g.src = c.html5player);
+        d(c);
+        k = c.aspectratio;
+        if ("string" !== typeof k || !b.exists(k))
+            g = 0;
+        else {
+            var a = k.indexOf(":");
+            -1 === a ? g = 0 : (g = parseFloat(k.substr(0, a)), k = parseFloat(k.substr(a + 1)), g = 0 >= g || 0 >= k ? 0 : 100 * (k / g) + "%")
+        }
+        -1 === c.width.toString().indexOf("%") ?
+                delete c.aspectratio : g ? c.aspectratio = g : delete c.aspectratio;
+        return c
+    }).addConfig = function (c, f) {
+        d(f);
+        return b.extend(c, f)
+    }
+}(jwplayer), function (f) {
+    function d(b, d) {
+        function c(a, b) {
+            f[k].style[a] = b
+        }
+        for (var f = document.querySelectorAll(b), k = 0; k < f.length; k++)
+            l.foreach(d, c)
+    }
+    var l = f.utils;
+    f.embed.download = function (b, f, c) {
+        function g(a, b, c) {
+            a = document.createElement(a);
+            b && (a.className = "jwdownload" + b);
+            c && c.appendChild(a);
+            return a
+        }
+        var k = l.extend({}, f), a, e = k.width ? k.width : 480, r = k.height ? k.height : 320, q;
+        f = f.logo ? f.logo :
+                {prefix: l.repo(), file: "logo.png", margin: 10};
+        var h, p, m, w, u, t;
+        p = k.playlist;
+        k = ["mp4", "aac", "mp3"];
+        if (p && p.length) {
+            m = p[0];
+            w = m.sources;
+            for (p = 0; p < w.length; p++)
+                u = w[p], u.file && (t = u.type || l.extensionmap.extType(l.extension(u.file)), 0 <= l.indexOf(k, t) ? (a = u.file, q = m.image) : l.isYouTube(u.file, t) && (h = u.file));
+            a ? (c = a, b && (a = g("a", "display", b), g("div", "icon", a), g("div", "logo", a), c && a.setAttribute("href", l.getAbsolutePath(c))), c = "#" + b.id + " .jwdownload", b.style.width = "", b.style.height = "", d(c + "display", {width: l.styleDimension(Math.max(320,
+                        e)), height: l.styleDimension(Math.max(180, r)), background: "black center no-repeat " + (q ? "url(" + q + ")" : ""), backgroundSize: "contain", position: "relative", border: "none", display: "block"}), d(c + "display div", {position: "absolute", width: "100%", height: "100%"}), d(c + "logo", {top: f.margin + "px", right: f.margin + "px", background: "top right no-repeat url(" + f.prefix + f.file + ")"}), d(c + "icon", {background: "center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAgNJREFUeNrs28lqwkAYB/CZqNVDDj2r6FN41QeIy8Fe+gj6BL275Q08u9FbT8ZdwVfotSBYEPUkxFOoks4EKiJdaDuTjMn3wWBO0V/+sySR8SNSqVRKIR8qaXHkzlqS9jCfzzWcTCYp9hF5o+59sVjsiRzcegSckFzcjT+ruN80TeSlAjCAAXzdJSGPFXRpAAMYwACGZQkSdhG4WCzehMNhqV6vG6vVSrirKVEw66YoSqDb7cqlUilE8JjHd/y1MQefVzqdDmiaJpfLZWHgXMHn8F6vJ1cqlVAkEsGuAn83J4gAd2RZymQygX6/L1erVQt+9ZPWb+CDwcCC2zXGJaewl/DhcHhK3DVj+KfKZrMWvFarcYNLomAv4aPRSFZVlTlcSPA5fDweW/BoNIqFnKV53JvncjkLns/n/cLdS+92O7RYLLgsKfv9/t8XlDn4eDyiw+HA9Jyz2eyt0+kY2+3WFC5hluej0Ha7zQQq9PPwdDq1Et1sNsx/nFBgCqWJ8oAK1aUptNVqcYWewE4nahfU0YQnk4ntUEfGMIU2m01HoLaCKbTRaDgKtaVLk9tBYaBcE/6Artdr4RZ5TB6/dC+9iIe/WgAMYADDpAUJAxjAAAYwgGFZgoS/AtNNTF7Z2bL0BYPBV3Jw5xFwwWcYxgtBP5OkE8i9G7aWGOOCruvauwADALMLMEbKf4SdAAAAAElFTkSuQmCC)"})) :
+                    h ? (f = h, b = g("iframe", "", b), b.src = "http://www.youtube.com/embed/" + l.youTubeID(f), b.width = e, b.height = r, b.style.border = "none") : c()
+        }
+    }
+}(jwplayer), function (f) {
+    var d = f.utils, l = f.events, b = {};
+    (f.embed.flash = function (c, g, k, a, e) {
+        function r(a, b, c) {
+            var e = document.createElement("param");
+            e.setAttribute("name", b);
+            e.setAttribute("value", c);
+            a.appendChild(e)
+        }
+        function q(a, b, c) {
+            return function () {
+                try {
+                    c && document.getElementById(e.id + "_wrapper").appendChild(b);
+                    var d = document.getElementById(e.id).getPluginConfig("display");
+                    "function" === typeof a.resize && a.resize(d.width, d.height);
+                    b.style.left = d.x;
+                    b.style.top = d.h
+                } catch (f) {
+                }
+            }
+        }
+        function h(a) {
+            if (!a)
+                return{};
+            var b = {}, c = [];
+            d.foreach(a, function (a, e) {
+                var f = d.getPluginName(a);
+                c.push(a);
+                d.foreach(e, function (a, c) {
+                    b[f + "." + a] = c
+                })
+            });
+            b.plugins = c.join(",");
+            return b
+        }
+        var p = new f.events.eventdispatcher, m = d.flashVersion();
+        d.extend(this, p);
+        this.embed = function () {
+            k.id = e.id;
+            if (10 > m)
+                return p.sendEvent(l.ERROR, {message: "Flash version must be 10.0 or greater"}), !1;
+            var f, j, t = c.id, n = e.config.listbar,
+                    v = d.extend({}, k);
+            f = document.getElementById(e.id);
+            f.parentNode.replaceChild(c, f);
+            if (t + "_wrapper" === c.parentNode.id)
+                f = document.getElementById(t + "_wrapper");
+            else {
+                f = document.createElement("div");
+                j = document.createElement("div");
+                j.style.display = "none";
+                j.id = t + "_aspect";
+                f.id = t + "_wrapper";
+                f.style.position = "relative";
+                f.style.display = "block";
+                f.style.width = d.styleDimension(v.width);
+                f.style.height = d.styleDimension(v.height);
+                if (e.config.aspectratio) {
+                    var x = parseFloat(e.config.aspectratio);
+                    j.style.display = "block";
+                    j.style.marginTop = e.config.aspectratio;
+                    f.style.height = "auto";
+                    f.style.display = "inline-block";
+                    n && ("bottom" === n.position ? j.style.paddingBottom = n.size + "px" : "right" === n.position && (j.style.marginBottom = -1 * n.size * (x / 100) + "px"))
+                }
+                c.parentNode.replaceChild(f, c);
+                f.appendChild(c);
+                f.appendChild(j)
+            }
+            n = a.setupPlugins(e, v, q);
+            0 < n.length ? d.extend(v, h(n.plugins)) : delete v.plugins;
+            "undefined" !== typeof v["dock.position"] && "false" === v["dock.position"].toString().toLowerCase() && (v.dock = v["dock.position"], delete v["dock.position"]);
+            n = v.wmode || (v.height && 40 >= v.height ? "transparent" : "opaque");
+            j = "height width modes events primary base fallback volume".split(" ");
+            for (x = 0; x < j.length; x++)
+                delete v[j[x]];
+            j = d.getCookies();
+            d.foreach(j, function (a, b) {
+                "undefined" === typeof v[a] && (v[a] = b)
+            });
+            j = window.location.href.split("/");
+            j.splice(j.length - 1, 1);
+            j = j.join("/");
+            v.base = j + "/";
+            b[t] = v;
+            d.isMSIE() ? (c.outerHTML = '\x3cobject classid\x3d"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width\x3d"100%" height\x3d"100%" id\x3d"' + t + '" name\x3d"' + t + '" tabindex\x3d"0"\x3e\x3cparam name\x3d"movie" value\x3d"' +
+                    g.src + '"\x3e\x3cparam name\x3d"allowfullscreen" value\x3d"true"\x3e\x3cparam name\x3d"allowscriptaccess" value\x3d"always"\x3e\x3cparam name\x3d"seamlesstabbing" value\x3d"true"\x3e\x3cparam name\x3d"wmode" value\x3d"' + n + '"\x3e\x3cparam name\x3d"bgcolor" value\x3d"#000000"\x3e\x3c/object\x3e', f = f.getElementsByTagName("object")[0], f.style.outline = "none") : (f = document.createElement("object"), f.setAttribute("type", "application/x-shockwave-flash"), f.setAttribute("data", g.src), f.setAttribute("width", "100%"),
+                    f.setAttribute("height", "100%"), f.setAttribute("bgcolor", "#000000"), f.setAttribute("id", t), f.setAttribute("name", t), f.className = "jwswf", r(f, "allowfullscreen", "true"), r(f, "allowscriptaccess", "always"), r(f, "seamlesstabbing", "true"), r(f, "wmode", n), c.parentNode.replaceChild(f, c));
+            e.config.aspectratio && (f.style.position = "absolute", f.style.left = "0");
+            e.container = f;
+            e.setPlayer(f, "flash")
+        };
+        this.supportsConfig = function () {
+            if (m)
+                if (k) {
+                    if ("string" === d.typeOf(k.playlist))
+                        return!0;
+                    try {
+                        var a = k.playlist[0].sources;
+                        if ("undefined" === typeof a)
+                            return!0;
+                        for (var b = 0; b < a.length; b++)
+                            if (a[b].file && j(a[b].file, a[b].type))
+                                return!0
+                    } catch (c) {
+                    }
+                } else
+                    return!0;
+            return!1
+        };
+        this.destroy = function () {
+        }
+    }).getVars = function (c) {
+        return b[c]
+    };
+    var j = f.embed.flashCanPlay = function (b, f) {
+        if (d.isYouTube(b, f) || d.isRtmp(b, f) || "hls" === f)
+            return!0;
+        var k = d.extensionmap[f ? f : d.extension(b)];
+        return!k ? !1 : !!k.flash
+    }
+}(jwplayer), function (f) {
+    var d = f.utils, l = d.extensionmap, b = f.events, j;
+    f.embed.html5 = function (c, g, k, a, e) {
+        function l(a, b, e) {
+            return function () {
+                try {
+                    var d =
+                            document.querySelector("#" + c.id + " .jwmain");
+                    e && d.appendChild(b);
+                    "function" === typeof a.resize && (a.resize(d.clientWidth, d.clientHeight), setTimeout(function () {
+                        a.resize(d.clientWidth, d.clientHeight)
+                    }, 400));
+                    b.left = d.style.left;
+                    b.top = d.style.top
+                } catch (f) {
+                }
+            }
+        }
+        var q = new b.eventdispatcher;
+        d.extend(this, q);
+        this.embed = function () {
+            if (f.html5) {
+                a.setupPlugins(e, k, l);
+                d.emptyElement(c);
+                var b = f.utils.extend({}, k);
+                delete b.volume;
+                b = new f.html5.player(b);
+                e.setPlayer(b, "html5")
+            } else
+                this.loadEmbedder()
+        };
+        this.loadEmbedder =
+                function () {
+                    j = j || new d.scriptloader(g.src);
+                    j.addEventListener(b.ERROR, this.loadError);
+                    j.addEventListener(b.COMPLETE, this.embed);
+                    j.load()
+                };
+        this.loadError = function (a) {
+            this.sendEvent(a.type, {message: "HTML5 player not found"})
+        };
+        this.supportsConfig = function () {
+            if (f.vid.canPlayType)
+                try {
+                    if ("string" === d.typeOf(k.playlist))
+                        return!0;
+                    for (var a = k.playlist[0].sources, b = 0; b < a.length; b++)
+                        if (f.embed.html5CanPlay(a[b].file, a[b].type, k.androidhls))
+                            return!0
+                } catch (c) {
+                }
+            return!1
+        };
+        this.destroy = function () {
+            j && (j.resetEventListeners(),
+                    j = null)
+        }
+    };
+    f.embed.html5CanPlay = function (b, g, k) {
+        if (null !== navigator.userAgent.match(/BlackBerry/i) || d.isIE(9))
+            return!1;
+        if (d.isYouTube(b, g))
+            return!0;
+        var a = d.extension(b);
+        g = g || l.extType(a);
+        if ("hls" === g)
+            if (k) {
+                k = d.isAndroidNative;
+                if (k(2) || k(3) || k("4.0"))
+                    return!1;
+                if (d.isAndroid())
+                    return!0
+            } else if (d.isAndroid())
+                return!1;
+        if (d.isRtmp(b, g))
+            return!1;
+        b = l[g] || l[a];
+        if (!b || b.flash && !b.html5)
+            return!1;
+        var e;
+        a:if (b = b.html5) {
+            try {
+                e = !!f.vid.canPlayType(b);
+                break a
+            } catch (j) {
+            }
+            e = !1
+        } else
+            e = !0;
+        return e
+    }
+}(jwplayer), function (f) {
+    var d =
+            f.embed, l = f.embed.html5CanPlay, b = f.utils, j = f._, c = /\.(js|swf)$/;
+    f.cast = f.cast || {};
+    f.embed = b.extend(function (g) {
+        function k() {
+            v = "Adobe SiteCatalyst Error: Could not find Media Module"
+        }
+        var a = b.repo(), e = b.extend({}, f.defaults), j = b.extend({}, e, g.config), l = g.config, h = j.plugins, p = j.analytics, m = a + "jwpsrv.js", w = a + "sharing.js", u = a + "related.js", t = a + "gapro.js", e = f.key ? f.key : e.key, n = (new f.utils.key(e)).edition(), v, h = h ? h : {};
+        "ads" == n && j.advertising && (c.test(j.advertising.client) ? h[j.advertising.client] = j.advertising :
+                h[a + j.advertising.client + ".js"] = j.advertising);
+        delete l.advertising;
+        l.key = e;
+        j.analytics && c.test(j.analytics.client) && (m = j.analytics.client);
+        delete l.analytics;
+        p && !("ads" === n || "enterprise" === n) && delete p.enabled;
+        if ("free" == n || !p || !1 !== p.enabled)
+            h[m] = p ? p : {};
+        delete h.sharing;
+        delete h.related;
+        switch (n) {
+            case "ads":
+            case "enterprise":
+                if (l.sitecatalyst)
+                    try {
+                        window.s && window.s.hasOwnProperty("Media") ? new f.embed.sitecatalyst(g) : k()
+                    } catch (x) {
+                        k()
+                    }
+            case "premium":
+                j.related && (c.test(j.related.client) && (u = j.related.client),
+                        h[u] = j.related), j.ga && (c.test(j.ga.client) && (t = j.ga.client), h[t] = j.ga);
+            case "pro":
+                j.sharing && (c.test(j.sharing.client) && (w = j.sharing.client), h[w] = j.sharing), j.skin && (l.skin = j.skin.replace(/^(beelden|bekle|five|glow|modieus|roundster|stormtrooper|vapor)$/i, b.repo() + "skins/$1.xml"))
+        }
+        l.plugins = h;
+        g.config = l;
+        g = new d(g);
+        v && g.errorScreen(v);
+        return g
+    }, f.embed);
+    f.embed.html5CanPlay = function (b, c) {
+        var a;
+        var d = {file: b, type: c};
+        a = f.html5 && f.html5.chooseProvider ? f.html5.chooseProvider(d) !== f.html5.VideoProvider :
+                j.any(f.unregisteredProviders, function (a) {
+                    return a.supports(d)
+                });
+        return a ? !0 : l.apply(this, arguments)
+    }
+}(jwplayer), function (f) {
+    var d = jwplayer.utils;
+    f.sitecatalyst = function (f) {
+        function b(b) {
+            a.debug && d.log(b)
+        }
+        function j(a) {
+            a = a.split("/");
+            a = a[a.length - 1];
+            a = a.split("?");
+            return a[0]
+        }
+        function c() {
+            if (!p) {
+                p = !0;
+                var a = k.getPosition();
+                b("stop: " + r + " : " + a);
+                s.Media.stop(r, a)
+            }
+        }
+        function g() {
+            m || (c(), m = !0, b("close: " + r), s.Media.close(r), w = !0, h = 0)
+        }
+        var k = f, a = d.extend({}, k.config.sitecatalyst), e = {onPlay: function () {
+                if (!w) {
+                    var a =
+                            k.getPosition();
+                    p = !1;
+                    b("play: " + r + " : " + a);
+                    s.Media.play(r, a)
+                }
+            }, onPause: c, onBuffer: c, onIdle: g, onPlaylistItem: function (b) {
+                try {
+                    w = !0;
+                    g();
+                    h = 0;
+                    var c;
+                    if (a.mediaName)
+                        c = a.mediaName;
+                    else {
+                        var e = k.getPlaylistItem(b.index);
+                        c = e.title ? e.title : e.file ? j(e.file) : e.sources && e.sources.length ? j(e.sources[0].file) : ""
+                    }
+                    r = c;
+                    q = a.playerName ? a.playerName : k.id
+                } catch (f) {
+                    d.log(f)
+                }
+            }, onTime: function () {
+                if (w) {
+                    var a = k.getDuration();
+                    if (-1 == a)
+                        return;
+                    m = p = w = !1;
+                    b("open: " + r + " : " + a + " : " + q);
+                    s.Media.open(r, a, q);
+                    b("play: " + r + " : 0");
+                    s.Media.play(r,
+                            0)
+                }
+                a = k.getPosition();
+                if (3 <= Math.abs(a - h)) {
+                    var c = h;
+                    b("seek: " + c + " to " + a);
+                    b("stop: " + r + " : " + c);
+                    s.Media.stop(r, c);
+                    b("play: " + r + " : " + a);
+                    s.Media.play(r, a)
+                }
+                h = a
+            }, onComplete: g}, r, q, h, p = !0, m = !0, w;
+        d.foreach(e, function (a) {
+            k[a](e[a])
+        })
+    }
+}(jwplayer.embed), function (f) {
+    function d(b, d) {
+        b[d] && (b[d] = l.getAbsolutePath(b[d]))
+    }
+    var l = f.utils, b = f._, j = window.location.href;
+    f.cast.setupCastConfig = function (b, g) {
+        var k = l.extend({}, b.config);
+        k.cast = l.extend({pageUrl: j}, g);
+        for (var a = "base autostart controls fallback fullscreen width height mobilecontrols modes playlistlayout playlistposition playlistsize primary stretching sharing related ga skin logo listbar events".split(" "),
+                e = a.length; e--; )
+            delete k[a[e]];
+        a = k.plugins;
+        delete k.plugins;
+        for (var r in a)
+            if (a.hasOwnProperty(r)) {
+                var q = a[r];
+                if (q.client && (/[\.\/]/.test(q.client) && d(q, "client"), -1 < q.client.indexOf("vast"))) {
+                    e = k;
+                    q = l.extend({}, q);
+                    q.client = "vast";
+                    delete q.companiondiv;
+                    if (q.schedule) {
+                        var h = void 0;
+                        for (h in q.schedule)
+                            q.schedule.hasOwnProperty(h) && d(q.schedule[h].ad || q.schedule[h], "tag")
+                    }
+                    d(q, "tag");
+                    e.advertising = q
+                }
+            }
+        b.position && (k.position = b.position);
+        0 < b.item && (k.item = b.item);
+        k.captionLabel = l.getCookies().captionLabel;
+        k.playerVersion = f.version;
+        return k
+    };
+    f.cast.setupFlashCastConfig = function (c) {
+        var d = c.config;
+        d.playlist = c.getPlaylist();
+        var j;
+        (j = b.find(d.plugins, function (a, b) {
+            return 0 < b.indexOf("vast.js")
+        })) ? (j.client = "vast", j = {advertising: j}) : j = {};
+        d = b.pick(d, "id captionLabel cast key playlist repeat".split(" "));
+        d.cast.pageUrl = window.location.href;
+        l.extend(d, {playerVersion: f.version, captionLabel: l.getCookies().captionLabel, volume: c.getVolume(), mute: c.getMute(), id: c.id, position: c.getPosition(), item: c.getPlaylistIndex()},
+        j);
+        return d
+    }
+}(window.jwplayer), function (f, d) {
+    function l(a, b) {
+        a[b] && (a[b] = j.getAbsolutePath(a[b]))
+    }
+    var b = d.cast, j = d.utils, c = d.events, g = c.state, k = {};
+    b.NS = "urn:x-cast:com.longtailvideo.jwplayer";
+    b.debug = !1;
+    b.availability = null;
+    b.available = function (a) {
+        a = a || b.availability;
+        var c = f.chrome, d = "available";
+        c.cast && c.cast.ReceiverAvailability && (d = c.cast.ReceiverAvailability.AVAILABLE);
+        return a === d
+    };
+    b.controller = function (a, e) {
+        var r, q;
+        function h(a, c) {
+            b.log("send command", a, c);
+            var d = {command: a};
+            void 0 !== c && (d.args =
+                    c);
+            A.sendMessage(b.NS, d, N, function (a) {
+                b.log("error message", a);
+                "Invalid namespace" === a.description && x()
+            })
+        }
+        function p(a) {
+            a = !!b.available(a.availability);
+            M.available !== a && (M.available = a, t(c.JWPLAYER_CAST_AVAILABLE))
+        }
+        function m(a) {
+            b.log("existing session", a);
+            !A && !H && (H = a.session, H.addMessageListener(b.NS, w))
+        }
+        function w(f, g) {
+            var h = JSON.parse(g);
+            if (!h)
+                throw"Message not proper JSON";
+            if (h.reconcile) {
+                H.removeMessageListener(b.NS, w);
+                var j = h.diff, k = H;
+                if (!j.id || !h.appid || !h.pageUrl)
+                    j.id = d().id, h.appid = G.appid,
+                            h.pageUrl = T, H = A = null;
+                j.id === a.id && (h.appid === G.appid && h.pageUrl === T) && (A || (a.jwInstreamState() && a.jwInstreamDestroy(!0), B(k), e.sendEvent(c.JWPLAYER_PLAYER_STATE, {oldstate: j.oldstate, newstate: j.newstate})), P(h));
+                H = null
+            }
+        }
+        function u(a) {
+            M.active = !!a;
+            a = M;
+            var b;
+            b = A && A.receiver ? A.receiver.friendlyName : "";
+            a.deviceName = b;
+            t(c.JWPLAYER_CAST_SESSION, {})
+        }
+        function t(a) {
+            var b = j.extend({}, M);
+            e.sendEvent(a, b)
+        }
+        function n(a) {
+            var c = f.chrome;
+            a.code !== c.cast.ErrorCode.CANCEL && (b.log("Cast Session Error:", a, A), a.code ===
+                    c.cast.ErrorCode.SESSION_ERROR && x())
+        }
+        function v(a) {
+            var c = f.chrome;
+            a.code !== c.cast.ErrorCode.CANCEL && (b.log("Cast Session Error:", a, A), a.code === c.cast.ErrorCode.SESSION_ERROR && x())
+        }
+        function x() {
+            A ? (F(), A.stop(E, z), Q({item: 0}), P({type: "state", diff: {buffer: 0, position: 0, duration: 0}})) : E()
+        }
+        function z(a) {
+            b.error("Cast Session Stop error:", a, A);
+            E()
+        }
+        function B(k) {
+            b.log("Session started:", k);
+            if (A)
+                x(), O = k;
+            else {
+                A = k;
+                A.addMessageListener(b.NS, J);
+                A.addUpdateListener(y);
+                a.jwPause(!0);
+                a.jwSetFullscreen(!1);
+                L = e.getVideo();
+                r = e.volume;
+                q = e.mute;
+                D = new b.provider(h);
+                D.init();
+                e.setVideoProvider(D);
+                a.jwPlay = function (a) {
+                    !1 === a ? D.pause() : D.play()
+                };
+                a.jwPause = function (b) {
+                    a.jwPlay(!!b)
+                };
+                a.jwLoad = function (a) {
+                    "number" === j.typeOf(a) && e.setItem(a);
+                    D.load(a)
+                };
+                a.jwPlaylistItem = function (a) {
+                    "number" === j.typeOf(a) && e.setItem(a);
+                    D.playlistItem(a)
+                };
+                a.jwPlaylistNext = function () {
+                    a.jwPlaylistItem(e.item + 1)
+                };
+                a.jwPlaylistPrev = function () {
+                    a.jwPlaylistItem(e.item - 1)
+                };
+                a.jwSetVolume = function (a) {
+                    j.exists(a) && (a = Math.min(Math.max(0, a), 100) | 0, R(a) && (a =
+                            Math.max(0, Math.min(a / 100, 1)), A.setReceiverVolumeLevel(a, K, function (a) {
+                        b.error("set volume error", a);
+                        K()
+                    })))
+                };
+                a.jwSetMute = function (a) {
+                    j.exists(a) || (a = !I.mute);
+                    S(a) && A.setReceiverMuted(!!a, K, function (a) {
+                        b.error("set muted error", a);
+                        K()
+                    })
+                };
+                a.jwGetVolume = function () {
+                    return I.volume | 0
+                };
+                a.jwGetMute = function () {
+                    return!!I.mute
+                };
+                a.jwIsBeforePlay = function () {
+                    return!1
+                };
+                var p = a.jwSetCurrentCaptions;
+                a.jwSetCurrentCaptions = function (a) {
+                    p(a);
+                    D.sendCommand("caption", a)
+                };
+                a.jwSkipAd = function (a) {
+                    C && (C.skipAd(a), a = C.getAdModel(),
+                            a.complete = !0, e.sendEvent(c.JWPLAYER_CAST_AD_CHANGED, a))
+                };
+                a.jwClickAd = function (b) {
+                    if (C && 300 < C.timeSinceClick() && (C.clickAd(b), e.state !== g.PAUSED)) {
+                        var h = {tag: b.tag};
+                        b.sequence && (h.sequence = b.sequence);
+                        b.podcount && (h.podcount = b.podcount);
+                        d(a.id).dispatchEvent(c.JWPLAYER_AD_CLICK, h);
+                        f.open(b.clickthrough)
+                    }
+                };
+                a.jwPlayAd = a.jwPauseAd = a.jwSetControls = a.jwForceState = a.jwReleaseState = a.jwSetFullscreen = a.jwDetachMedia = a.jwAttachMedia = N;
+                var l = d(a.id).plugins;
+                l.vast && l.vast.jwPauseAd !== N && (U = {jwPlayAd: l.vast.jwPlayAd,
+                    jwPauseAd: l.vast.jwPauseAd}, l.vast.jwPlayAd = l.vast.jwPauseAd = N);
+                K();
+                u(!0);
+                k !== H && (D.setup(d.cast.setupCastConfig(e, G), e), d.cast.loader.sendDummyMedia(k))
+            }
+        }
+        function y(a) {
+            b.log("Cast Session status", a);
+            a ? K() : (D.sendEvent(c.JWPLAYER_PLAYER_STATE, {oldstate: e.state, newstate: g.BUFFERING}), E())
+        }
+        function E() {
+            b.log("_sessionStopped");
+            A && (F(), A = null);
+            if (L) {
+                delete a.jwSkipAd;
+                delete a.jwClickAd;
+                a.initializeAPI();
+                var f = d(a.id).plugins;
+                f.vast && j.extend(f.vast, U);
+                e.volume = r;
+                e.mute = q;
+                e.setVideoProvider(L);
+                e.duration =
+                        0;
+                D && (D.destroy(), D = null);
+                C && (C.destroy(), C = null);
+                e.state !== g.IDLE ? j.isIPad() || j.isIPod() ? (a.jwStop(!0), L.sendEvent(c.JWPLAYER_PLAYER_STATE, {oldstate: g.BUFFERING, newstate: g.IDLE})) : (e.state = g.IDLE, a.jwPlay(!0), a.jwSeek(e.position)) : L.sendEvent(c.JWPLAYER_PLAYER_STATE, {oldstate: g.BUFFERING, newstate: g.IDLE});
+                L = null
+            }
+            u(!1);
+            null !== O && (B(O), O = null)
+        }
+        function F() {
+            A.removeUpdateListener(y);
+            A.removeMessageListener(b.NS, J)
+        }
+        function J(a, b) {
+            var c = JSON.parse(b);
+            if (!c)
+                throw"Message not proper JSON";
+            P(c)
+        }
+        function P(d) {
+            if ("state" ===
+                    d.type) {
+                if (C && (d.diff.newstate || d.diff.position))
+                    C.destroy(), C = null, e.setVideoProvider(D), e.sendEvent(c.JWPLAYER_CAST_AD_CHANGED, {done: !0});
+                D.updateModel(d.diff, d.type);
+                Q(d.diff)
+            } else if ("ad" === d.type) {
+                null === C && (C = new b.adprovider(b.NS, A), C.init(), e.setVideoProvider(C));
+                C.updateModel(d.diff, d.type);
+                var f = C.getAdModel();
+                d.diff.clickthrough && (f.onClick = a.jwClickAd);
+                d.diff.skipoffset && (f.onSkipAd = a.jwSkipAd);
+                e.sendEvent(c.JWPLAYER_CAST_AD_CHANGED, f);
+                d.diff.complete && C.resetAdModel()
+            } else
+                "connection" ===
+                        d.type ? !0 === d.closed && x() : b.error("received unhandled message", d.type, d)
+        }
+        function Q(a) {
+            void 0 !== a.item && e.item !== a.item && (e.item = a.item, e.sendEvent(c.JWPLAYER_PLAYLIST_ITEM, {index: e.item}))
+        }
+        function K() {
+            if (A && A.receiver) {
+                var a = A.receiver.volume;
+                if (a) {
+                    var b = 100 * a.level | 0;
+                    S(!!a.muted);
+                    R(b)
+                }
+            }
+        }
+        function R(a) {
+            var b = I.volume !== a;
+            b && (I.volume = a, D.sendEvent(c.JWPLAYER_MEDIA_VOLUME, {volume: a}));
+            return b
+        }
+        function S(a) {
+            var b = I.mute !== a;
+            b && (I.mute = a, D.sendEvent(c.JWPLAYER_MEDIA_MUTE, {mute: a}));
+            return b
+        }
+        function N() {
+        }
+        var A = null, M = {available: !1, active: !1, deviceName: ""}, I = {volume: null, mute: null}, T = j.getAbsolutePath(f.location.href), G, D = null, C = null, L = null;
+        r = e.volume;
+        q = e.mute;
+        var H = null, O = null, U = null;
+        G = j.extend({}, k, e.cast);
+        l(G, "loadscreen");
+        l(G, "endscreen");
+        l(G, "logo");
+        if (G.appid && (!f.cast || !f.cast.receiver))
+            b.loader.addEventListener("availability", p), b.loader.addEventListener("session", m), b.loader.initialize(G.appid);
+        this.startCasting = function () {
+            A || a.jwInstreamState() || f.chrome.cast.requestSession(B, n)
+        };
+        this.stopCasting =
+                x;
+        this.openExtension = function () {
+            a.jwInstreamState() || f.chrome.cast.requestSession(B, v)
+        }
+    };
+    b.log = function () {
+        if (b.debug) {
+            var a = Array.prototype.slice.call(arguments, 0);
+            console.log.apply(console, a)
+        }
+    };
+    b.error = function () {
+        var a = Array.prototype.slice.call(arguments, 0);
+        console.error.apply(console, a)
+    }
+}(window, jwplayer), function (f) {
+    function d(a) {
+        h.log("existing session", a);
+        !y && !x && (x = a.session, x.addMessageListener(h.NS, l))
+    }
+    function l(a, b) {
+        var c = JSON.parse(b), d = x;
+        if (!c)
+            throw"Message not proper JSON";
+        if (c.reconcile) {
+            x.removeMessageListener(h.NS,
+                    l);
+            c.receiverFriendlyName = x.receiver.friendlyName;
+            if (!c.pageUrl || !c.diff.id || !c.appid)
+                c.pageUrl = B, c.diff.id = f().id, c.appid = v, x = y = null;
+            t[c.diff.id] && (v === c.appid && c.pageUrl === B) && (u = c.diff.id, v = c.appid, r(u, "jwInstreamDestroy"), g(d), r(u, n.message, c), x = null)
+        }
+    }
+    function b() {
+        y && (y.removeUpdateListener(e), y.removeMessageListener(h.NS, k), y.stop(j.bind(this), a.bind(this)), y = null);
+        r(u, n.cleanup)
+    }
+    function j() {
+        "undefined" !== typeof z && null !== z && (g(z), z = null)
+    }
+    function c(a, b) {
+        y.sendMessage(h.NS, {command: a, args: b},
+        p.noop, function (a) {
+            h.error("message send error", a)
+        })
+    }
+    function g(a) {
+        var d = f(u);
+        y ? (b(), z = a) : (y = a, y.addMessageListener(h.NS, k), y.addUpdateListener(e), d = f.cast.setupFlashCastConfig(d), x !== y && (c("setup", d), f.cast.loader.sendDummyMedia(y)), r(u, n.connected, {receiverFriendlyName: a.receiver.friendlyName}))
+    }
+    function k(a, b) {
+        if (b) {
+            var c = JSON.parse(b);
+            if (!c)
+                throw"Message not proper JSON";
+            r(u, n.message, c)
+        }
+    }
+    function a(a) {
+        r(u, n.error, a || {})
+    }
+    function e(a) {
+        a ? q() : b()
+    }
+    function r(a, b, c) {
+        c ? f(a).callInternal(b, c) : f(a).callInternal(b)
+    }
+    function q() {
+        if (y && y.receiver) {
+            var a = y.receiver.volume;
+            if (a) {
+                var b = 100 * a.level | 0, a = !!a.muted;
+                f(u).setVolume(b).setMute(a)
+            }
+        }
+    }
+    var h = f.cast, p = f.utils, m = f._, w = window.chrome || {}, u, t = {}, n = {}, v, x, z, B = p.getAbsolutePath(window.location.href), y;
+    h.NS = "urn:x-cast:com.longtailvideo.jwplayer";
+    h.flash = {checkAvailability: function (a, b, c) {
+            n = c;
+            v = b;
+            t[a] = !0;
+            h.loader.addEventListener("availability", function (b) {
+                "available" === b.availability && r(a, n.available, b)
+            });
+            h.loader.addEventListener("session", d);
+            h.loader.initialize(b)
+        },
+        startCasting: function (b) {
+            u = b;
+            w.cast.requestSession(g.bind(this), a.bind(this))
+        }, stopCasting: b, openExtension: function (b) {
+            u = b;
+            w.cast.requestSession(g.bind(this), a.bind(this))
+        }, mute: function (a) {
+            y.setReceiverMuted(a, q, function (a) {
+                h.error("set muted error", a)
+            })
+        }, volume: function (a) {
+            a = Math.max(0, Math.min(a / 100, 1));
+            y.setReceiverVolumeLevel(a, q, function (a) {
+                h.error("set volume error", a)
+            })
+        }, messageReceiver: c, canCastItem: function (a) {
+            return m.any(a.levels, function (a) {
+                return f.embed.html5CanPlay(a.file, a.type) ||
+                        "hls" === a.type
+            })
+        }}
+}(window.jwplayer), function (f, d) {
+    function l(a) {
+        var b = new d.cast.media.MediaInfo("");
+        b.contentType = "video/mp4";
+        b = new d.cast.media.LoadRequest(b);
+        b.autoplay = !1;
+        a.loadMedia(b)
+    }
+    function b() {
+        d && d.cast && d.cast.isAvailable && !e.apiConfig ? (e.apiConfig = new d.cast.ApiConfig(new d.cast.SessionRequest(m), k, a, d.cast.AutoJoinPolicy.ORIGIN_SCOPED), d.cast.initialize(e.apiConfig, g, c)) : 15 > p++ && setTimeout(b, 1E3)
+    }
+    function j() {
+        h && (h.resetEventListeners(), h = null)
+    }
+    function c() {
+        e.apiConfig = null
+    }
+    function g() {
+    }
+    function k(a) {
+        w.sendEvent("session", {session: a});
+        a.sendMessage(e.NS, {whoami: 1});
+        0 === a.media.length && l(a)
+    }
+    function a(a) {
+        e.availability = a;
+        w.sendEvent("availability", {availability: a})
+    }
+    window.chrome = d;
+    var e = f.cast, r = f.utils, q = f.events, h, p = 0, m = null, w = r.extend({initialize: function (a) {
+            m = a;
+            null !== e.availability ? w.sendEvent("availability", {availability: e.availability}) : d && d.cast ? b() : h || (h = new r.scriptloader("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"), h.addEventListener(q.ERROR, j), h.addEventListener(q.COMPLETE,
+                    b), h.load())
+        }}, new q.eventdispatcher("cast.loader"));
+    f.cast.loader = w;
+    f.cast.loader.sendDummyMedia = l
+}(window.jwplayer, window.chrome || {}), function (f, d) {
+    var l = [], b = f.utils, j = f.events, c = f._, g = 0, k = j.state, a = "getBuffer getCaptionsList getControls getCurrentCaptions getCurrentQuality getCurrentAudioTrack getDuration getFullscreen getHeight getLockState getMute getPlaylistIndex getSafeRegion getPosition getQualityLevels getState getVolume getWidth isBeforeComplete isBeforePlay releaseState".split(" "), e =
+            "playlistNext stop forceState playlistPrev seek setCurrentCaptions setControls setCurrentQuality setVolume setCurrentAudioTrack".split(" "), r = {onBufferChange: j.JWPLAYER_MEDIA_BUFFER, onBufferFull: j.JWPLAYER_MEDIA_BUFFER_FULL, onError: j.JWPLAYER_ERROR, onSetupError: j.JWPLAYER_SETUP_ERROR, onFullscreen: j.JWPLAYER_FULLSCREEN, onMeta: j.JWPLAYER_MEDIA_META, onMute: j.JWPLAYER_MEDIA_MUTE, onPlaylist: j.JWPLAYER_PLAYLIST_LOADED, onPlaylistItem: j.JWPLAYER_PLAYLIST_ITEM, onPlaylistComplete: j.JWPLAYER_PLAYLIST_COMPLETE,
+        onReady: j.API_READY, onResize: j.JWPLAYER_RESIZE, onComplete: j.JWPLAYER_MEDIA_COMPLETE, onSeek: j.JWPLAYER_MEDIA_SEEK, onTime: j.JWPLAYER_MEDIA_TIME, onVolume: j.JWPLAYER_MEDIA_VOLUME, onBeforePlay: j.JWPLAYER_MEDIA_BEFOREPLAY, onBeforeComplete: j.JWPLAYER_MEDIA_BEFORECOMPLETE, onDisplayClick: j.JWPLAYER_DISPLAY_CLICK, onControls: j.JWPLAYER_CONTROLS, onQualityLevels: j.JWPLAYER_MEDIA_LEVELS, onQualityChange: j.JWPLAYER_MEDIA_LEVEL_CHANGED, onCaptionsList: j.JWPLAYER_CAPTIONS_LIST, onCaptionsChange: j.JWPLAYER_CAPTIONS_CHANGED,
+        onAdError: j.JWPLAYER_AD_ERROR, onAdClick: j.JWPLAYER_AD_CLICK, onAdImpression: j.JWPLAYER_AD_IMPRESSION, onAdTime: j.JWPLAYER_AD_TIME, onAdComplete: j.JWPLAYER_AD_COMPLETE, onAdCompanions: j.JWPLAYER_AD_COMPANIONS, onAdSkipped: j.JWPLAYER_AD_SKIPPED, onAdPlay: j.JWPLAYER_AD_PLAY, onAdPause: j.JWPLAYER_AD_PAUSE, onAdMeta: j.JWPLAYER_AD_META, onCast: j.JWPLAYER_CAST_SESSION, onAudioTrackChange: j.JWPLAYER_AUDIO_TRACK_CHANGED, onAudioTracks: j.JWPLAYER_AUDIO_TRACKS}, q = {onBuffer: k.BUFFERING, onPause: k.PAUSED, onPlay: k.PLAYING,
+        onIdle: k.IDLE};
+    f.api = function (h) {
+        function g(a, c) {
+            b.foreach(a, function (a, b) {
+                n[a] = function (a) {
+                    return c(b, a)
+                }
+            })
+        }
+        function m(a, b) {
+            var c = "jw" + b.charAt(0).toUpperCase() + b.slice(1);
+            n[b] = function () {
+                var b = t.apply(this, [c].concat(Array.prototype.slice.call(arguments, 0)));
+                return a ? n : b
+            }
+        }
+        function w(a, c) {
+            try {
+                a.jwAddEventListener(c, 'function(dat) { jwplayer("' + n.id + '").dispatchEvent("' + c + '", dat); }')
+            } catch (d) {
+                if ("flash" === n.renderingMode) {
+                    var e = document.createElement("a");
+                    e.href = z.data;
+                    e.protocol !== location.protocol &&
+                            b.log("Warning: Your site [" + location.protocol + "] and JWPlayer [" + e.protocol + "] are hosted using different protocols")
+                }
+                b.log("Could not add internal listener")
+            }
+        }
+        function u(a, b) {
+            v[a] || (v[a] = [], z && B && w(z, a));
+            v[a].push(b);
+            return n
+        }
+        function t() {
+            if (B) {
+                if (z) {
+                    var a = Array.prototype.slice.call(arguments, 0), b = a.shift();
+                    if ("function" === typeof z[b]) {
+                        switch (a.length) {
+                            case 6:
+                                return z[b](a[0], a[1], a[2], a[3], a[4], a[5]);
+                            case 5:
+                                return z[b](a[0], a[1], a[2], a[3], a[4]);
+                            case 4:
+                                return z[b](a[0], a[1], a[2], a[3]);
+                            case 3:
+                                return z[b](a[0],
+                                        a[1], a[2]);
+                            case 2:
+                                return z[b](a[0], a[1]);
+                            case 1:
+                                return z[b](a[0])
+                        }
+                        return z[b]()
+                    }
+                }
+                return null
+            }
+            y.push(arguments)
+        }
+        var n = this, v = {}, x = {}, z, B = !1, y = [], E, F = {}, J = {};
+        n.container = h;
+        n.id = h.id;
+        n.setup = function (a) {
+            if (f.embed) {
+                f.api.destroyPlayer(n.id);
+                var b = new f.api(n.container);
+                f.api.addPlayer(b);
+                b.config = a;
+                b._embedder = new f.embed(b);
+                b._embedder.embed();
+                return b
+            }
+            return n
+        };
+        n.getContainer = function () {
+            return n.container
+        };
+        n.addButton = function (a, c, d, e) {
+            try {
+                J[e] = d, t("jwDockAddButton", a, c, 'jwplayer("' + n.id + '").callback("' +
+                        e + '")', e)
+            } catch (f) {
+                b.log("Could not add dock button" + f.message)
+            }
+        };
+        n.removeButton = function (a) {
+            t("jwDockRemoveButton", a)
+        };
+        n.callback = function (a) {
+            if (J[a])
+                J[a]()
+        };
+        n.getMeta = function () {
+            return n.getItemMeta()
+        };
+        n.getPlaylist = function () {
+            var a = t("jwGetPlaylist");
+            "flash" === n.renderingMode && b.deepReplaceKeyName(a, ["__dot__", "__spc__", "__dsh__", "__default__"], [".", " ", "-", "default"]);
+            return a
+        };
+        n.getPlaylistItem = function (a) {
+            b.exists(a) || (a = n.getPlaylistIndex());
+            return n.getPlaylist()[a]
+        };
+        n.getRenderingMode = function () {
+            return n.renderingMode
+        };
+        n.setFullscreen = function (a) {
+            b.exists(a) ? t("jwSetFullscreen", a) : t("jwSetFullscreen", !t("jwGetFullscreen"));
+            return n
+        };
+        n.setMute = function (a) {
+            b.exists(a) ? t("jwSetMute", a) : t("jwSetMute", !t("jwGetMute"));
+            return n
+        };
+        n.lock = function () {
+            return n
+        };
+        n.unlock = function () {
+            return n
+        };
+        n.load = function (a) {
+            t("jwInstreamDestroy");
+            f(n.id).plugins.googima && t("jwDestroyGoogima");
+            t("jwLoad", a);
+            return n
+        };
+        n.playlistItem = function (a) {
+            t("jwPlaylistItem", parseInt(a, 10));
+            return n
+        };
+        n.resize = function (a, c) {
+            if ("flash" !== n.renderingMode)
+                t("jwResize",
+                        a, c);
+            else {
+                var d = document.getElementById(n.id + "_wrapper"), e = document.getElementById(n.id + "_aspect");
+                e && (e.style.display = "none");
+                d && (d.style.display = "block", d.style.width = b.styleDimension(a), d.style.height = b.styleDimension(c))
+            }
+            return n
+        };
+        n.play = function (a) {
+            if (a !== d)
+                return t("jwPlay", a), n;
+            a = n.getState();
+            var b = E && E.getState();
+            b && (b === k.IDLE || b === k.PLAYING || b === k.BUFFERING ? t("jwInstreamPause") : t("jwInstreamPlay"));
+            a === k.PLAYING || a === k.BUFFERING ? t("jwPause") : t("jwPlay");
+            return n
+        };
+        n.pause = function (a) {
+            a ===
+                    d ? (a = n.getState(), a === k.PLAYING || a === k.BUFFERING ? t("jwPause") : t("jwPlay")) : t("jwPause", a);
+            return n
+        };
+        n.createInstream = function () {
+            return new f.api.instream(this, z)
+        };
+        n.setInstream = function (a) {
+            return E = a
+        };
+        n.loadInstream = function (a, b) {
+            E = n.setInstream(n.createInstream()).init(b);
+            E.loadItem(a);
+            return E
+        };
+        n.destroyPlayer = function () {
+            B = !0;
+            t("jwPlayerDestroy")
+        };
+        n.playAd = function (a) {
+            var b = f(n.id).plugins;
+            b.vast ? b.vast.jwPlayAd(a) : t("jwPlayAd", a)
+        };
+        n.pauseAd = function () {
+            var a = f(n.id).plugins;
+            a.vast ? a.vast.jwPauseAd() :
+                    t("jwPauseAd")
+        };
+        g(q, function (a, b) {
+            x[a] || (x[a] = [], u(j.JWPLAYER_PLAYER_STATE, function (b) {
+                var c = b.newstate;
+                b = b.oldstate;
+                if (c === a) {
+                    var d = x[c];
+                    if (d)
+                        for (var e = 0; e < d.length; e++) {
+                            var f = d[e];
+                            "function" === typeof f && f.call(this, {oldstate: b, newstate: c})
+                        }
+                }
+            }));
+            x[a].push(b);
+            return n
+        });
+        g(r, u);
+        b.foreach(a, function (a, b) {
+            m(!1, b)
+        });
+        b.foreach(e, function (a, b) {
+            m(!0, b)
+        });
+        n.remove = function () {
+            this._embedder && this._embedder.destroy && this._embedder.destroy();
+            y = [];
+            var a = 1 < c.size(c.where(l, {id: n.id}));
+            a || b.clearCss("#" + n.id);
+            var d = document.getElementById(n.id + ("flash" === n.renderingMode ? "_wrapper" : ""));
+            if (d) {
+                if ("html5" === n.renderingMode)
+                    n.destroyPlayer();
+                else if (b.isMSIE(8)) {
+                    var e = document.getElementById(n.id);
+                    if (e && e.parentNode) {
+                        e.style.display = "none";
+                        for (var f in e)
+                            "function" === typeof e[f] && (e[f] = null);
+                        e.parentNode.removeChild(e)
+                    }
+                }
+                a || (a = document.createElement("div"), a.id = n.id, d.parentNode.replaceChild(a, d))
+            }
+            l = c.filter(l, function (a) {
+                return a.uniqueId !== n.uniqueId
+            })
+        };
+        n.registerPlugin = function (a, b, c, d) {
+            f.plugins.registerPlugin(a,
+                    b, c, d)
+        };
+        n.setPlayer = function (a, b) {
+            z = a;
+            n.renderingMode = b
+        };
+        n.detachMedia = function () {
+            if ("html5" === n.renderingMode)
+                return t("jwDetachMedia")
+        };
+        n.attachMedia = function (a) {
+            if ("html5" === n.renderingMode)
+                return t("jwAttachMedia", a)
+        };
+        n.getAudioTracks = function () {
+            return t("jwGetAudioTracks")
+        };
+        n.removeEventListener = function (a, b) {
+            var c = v[a];
+            if (c)
+                for (var d = c.length; d--; )
+                    c[d] === b && c.splice(d, 1)
+        };
+        n.dispatchEvent = function (a, c) {
+            var d = v[a];
+            if (d)
+                for (var d = d.slice(0), e = b.translateEventResponse(a, c), f = 0; f < d.length; f++) {
+                    var h =
+                            d[f];
+                    if ("function" === typeof h)
+                        try {
+                            a === j.JWPLAYER_PLAYLIST_LOADED && b.deepReplaceKeyName(e.playlist, ["__dot__", "__spc__", "__dsh__", "__default__"], [".", " ", "-", "default"]), h.call(this, e)
+                        } catch (g) {
+                            b.log("There was an error calling back an event handler", g)
+                        }
+                }
+        };
+        n.dispatchInstreamEvent = function (a) {
+            E && E.dispatchEvent(a, arguments)
+        };
+        n.callInternal = t;
+        n.playerReady = function (a) {
+            B = !0;
+            z || n.setPlayer(document.getElementById(a.id));
+            n.container = document.getElementById(n.id);
+            b.foreach(v, function (a) {
+                w(z, a)
+            });
+            u(j.JWPLAYER_PLAYLIST_ITEM,
+                    function () {
+                        F = {}
+                    });
+            u(j.JWPLAYER_MEDIA_META, function (a) {
+                b.extend(F, a.metadata)
+            });
+            u(j.JWPLAYER_VIEW_TAB_FOCUS, function (a) {
+                var c = n.getContainer();
+                !0 === a.hasFocus ? b.addClass(c, "jw-tab-focus") : b.removeClass(c, "jw-tab-focus")
+            });
+            for (n.dispatchEvent(j.API_READY); 0 < y.length; )
+                t.apply(n, y.shift())
+        };
+        n.getItemMeta = function () {
+            return F
+        };
+        return n
+    };
+    f.playerReady = function (a) {
+        var b = f.api.playerById(a.id);
+        b || (b = f.api.selectPlayer(a.id));
+        b.playerReady(a)
+    };
+    f.api.selectPlayer = function (a) {
+        var c;
+        b.exists(a) || (a = 0);
+        a.nodeType ?
+                c = a : "string" === typeof a && (c = document.getElementById(a));
+        return c ? (a = f.api.playerById(c.id)) ? a : new f.api(c) : "number" === typeof a ? l[a] : null
+    };
+    f.api.playerById = function (a) {
+        for (var b = 0; b < l.length; b++)
+            if (l[b].id === a)
+                return l[b];
+        return null
+    };
+    f.api.addPlayer = function (a) {
+        for (var b = 0; b < l.length; b++)
+            if (l[b] === a)
+                return a;
+        g++;
+        a.uniqueId = g;
+        l.push(a);
+        return a
+    };
+    f.api.destroyPlayer = function (a) {
+        a = c.where(l, {id: a});
+        c.each(a, c.partial(c.result, c, "remove"))
+    }
+}(window.jwplayer), function (f) {
+    var d = f.events, l = f.utils, b = d.state;
+    f.api.instream = function (f, c) {
+        function g(a, b) {
+            r[a] || (r[a] = [], c.jwInstreamAddEventListener(a, 'function(dat) { jwplayer("' + f.id + '").dispatchInstreamEvent("' + a + '", dat); }'));
+            r[a].push(b);
+            return this
+        }
+        function k(a, b) {
+            q[a] || (q[a] = [], g(d.JWPLAYER_PLAYER_STATE, function (b) {
+                var c = b.newstate, d = b.oldstate;
+                if (c === a) {
+                    var e = q[c];
+                    if (e)
+                        for (var f = 0; f < e.length; f++) {
+                            var g = e[f];
+                            "function" === typeof g && g.call(this, {oldstate: d, newstate: c, type: b.type})
+                        }
+                }
+            }));
+            q[a].push(b);
+            return this
+        }
+        var a, e, r = {}, q = {}, h = this;
+        h.type = "instream";
+        h.init = function () {
+            f.callInternal("jwInitInstream");
+            return h
+        };
+        h.loadItem = function (b, c) {
+            a = b;
+            e = c || {};
+            "array" === l.typeOf(b) ? f.callInternal("jwLoadArrayInstream", a, e) : f.callInternal("jwLoadItemInstream", a, e)
+        };
+        h.removeEvents = function () {
+            r = q = {}
+        };
+        h.removeEventListener = function (a, b) {
+            var c = r[a];
+            if (c)
+                for (var d = c.length; d--; )
+                    c[d] === b && c.splice(d, 1)
+        };
+        h.dispatchEvent = function (a, b) {
+            var c = r[a];
+            if (c)
+                for (var c = c.slice(0), d = l.translateEventResponse(a, b[1]), e = 0; e < c.length; e++) {
+                    var f = c[e];
+                    "function" === typeof f && f.call(this,
+                            d)
+                }
+        };
+        h.onError = function (a) {
+            return g(d.JWPLAYER_ERROR, a)
+        };
+        h.onMediaError = function (a) {
+            return g(d.JWPLAYER_MEDIA_ERROR, a)
+        };
+        h.onFullscreen = function (a) {
+            return g(d.JWPLAYER_FULLSCREEN, a)
+        };
+        h.onMeta = function (a) {
+            return g(d.JWPLAYER_MEDIA_META, a)
+        };
+        h.onMute = function (a) {
+            return g(d.JWPLAYER_MEDIA_MUTE, a)
+        };
+        h.onComplete = function (a) {
+            return g(d.JWPLAYER_MEDIA_COMPLETE, a)
+        };
+        h.onPlaylistComplete = function (a) {
+            return g(d.JWPLAYER_PLAYLIST_COMPLETE, a)
+        };
+        h.onPlaylistItem = function (a) {
+            return g(d.JWPLAYER_PLAYLIST_ITEM, a)
+        };
+        h.onTime =
+                function (a) {
+                    return g(d.JWPLAYER_MEDIA_TIME, a)
+                };
+        h.onBuffer = function (a) {
+            return k(b.BUFFERING, a)
+        };
+        h.onPause = function (a) {
+            return k(b.PAUSED, a)
+        };
+        h.onPlay = function (a) {
+            return k(b.PLAYING, a)
+        };
+        h.onIdle = function (a) {
+            return k(b.IDLE, a)
+        };
+        h.onClick = function (a) {
+            return g(d.JWPLAYER_INSTREAM_CLICK, a)
+        };
+        h.onInstreamDestroyed = function (a) {
+            return g(d.JWPLAYER_INSTREAM_DESTROYED, a)
+        };
+        h.onAdSkipped = function (a) {
+            return g(d.JWPLAYER_AD_SKIPPED, a)
+        };
+        h.play = function (a) {
+            c.jwInstreamPlay(a)
+        };
+        h.pause = function (a) {
+            c.jwInstreamPause(a)
+        };
+        h.hide = function () {
+            f.callInternal("jwInstreamHide")
+        };
+        h.destroy = function () {
+            h.removeEvents();
+            f.callInternal("jwInstreamDestroy")
+        };
+        h.setText = function (a) {
+            c.jwInstreamSetText(a ? a : "")
+        };
+        h.getState = function () {
+            return c.jwInstreamState()
+        };
+        h.setClick = function (a) {
+            c.jwInstreamClick && c.jwInstreamClick(a)
+        }
+    }
+}(jwplayer), function (f) {
+    var d = f.api, l = d.selectPlayer, b = f._;
+    d.selectPlayer = function (b) {
+        var c = l.apply(this, arguments);
+        return c ? c : {registerPlugin: function (b, c, a) {
+                "jwpsrv" !== b && f.plugins.registerPlugin(b, c, a)
+            }}
+    };
+    f.unregisteredProviders =
+    [];
+    d.registerProvider = function (d) {
+        f && f.html5 && b.isFunction(f.html5.registerProvider) ? f.html5.registerProvider(d) : f.unregisteredProviders.push(d)
+    }
+}(jwplayer));
+jwplayer.key="XSqlcJG56DcOdLM3HPRm3EdgFySd+ATpUsBEjg+9NeM=";

@@ -317,6 +317,9 @@ Large devices (large desktops, 1200px and up)
     font-size: 12px;
     color: #666;
 }
+.product-item.video {
+    width: 100%;
+}
 
 .product-item.music {
     position: relative;

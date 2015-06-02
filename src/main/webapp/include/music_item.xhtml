@@ -13,7 +13,7 @@
                     <img src="#{productEntity.thumbFile.URL}" 
                          alt="#{productEntity.title}" 
                          class="img-responsive img-circle img-thumbnail"
-                         jsf:rendered="#{productEntity.thumbFile.hasFile}"/>
+                         jsf:rendered="#{productEntity.thumbFile.URL != null}"/>
                 </h:link>
             </div>
 

@@ -55,22 +55,26 @@ public class FileDownloadTask implements Runnable {
         }
 
         if (fileEntry != null) {
-
             if (fileEntry.isUpload() && fileEntry.getFilePath() != null && !""
                     .equals(fileEntry.getFilePath().trim())) { // validate file entry has file.
-
-                // prepare response information
-                response.setContentLength((int) fileEntry.getFileSize());
-                response.setContentType(fileEntry.getContentType());
-                response.setHeader("Content-Disposition", (download ? "attachment" : "inline")
-                        + ";filename=\"" + fileEntry.getTitle() + "\"");
 
                 // write file to response
                 File file = new File(AppConfig.getFileStorePath() + fileEntry.getFilePath());
                 try (OutputStream out = response.getOutputStream()) {
-                    FileUtils.copyFile(file, out);
+                    if (file.exists()) {
+                        // prepare response information
+                        response.setContentLength((int) fileEntry.getFileSize());
+                        response.setContentType(fileEntry.getContentType());
+                        response.setHeader("Content-Disposition", (download ? "attachment" : "inline")
+                                + ";filename=\"" + fileEntry.getTitle() + "\"");
+                        FileUtils.copyFile(file, out);
+                        out.flush();
+                    } else {
+                        sendResponseError(response, HttpServletResponse.SC_BAD_REQUEST);
+                    }
                 } catch (IOException e) {
                     LOGGER.log(Level.SEVERE, "Error when download file: fileId =" + fileId, e);
+                    sendResponseError(response, HttpServletResponse.SC_BAD_REQUEST);
                 }
 
             } else { // throw 400
@@ -80,7 +84,6 @@ public class FileDownloadTask implements Runnable {
         } else { // throw 404
             sendResponseError(response, HttpServletResponse.SC_NOT_FOUND);
         }
-
         // complete async context
         asyncContext.complete();
     }

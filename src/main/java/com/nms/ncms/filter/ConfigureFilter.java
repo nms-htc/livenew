@@ -12,14 +12,12 @@ import java.io.StringWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,14 +25,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author CuongNT
  */
-@WebFilter(filterName = "Configure Filter", urlPatterns = {"/admin/configuration.xhtml", "/admin/login.xhtml"}, dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
+// @WebFilter(filterName = "Configure Filter", urlPatterns = {"/admin/configuration.xhtml", "/admin/login.xhtml"}, dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
 public class ConfigureFilter implements Filter {
 
     private static final boolean debug = true;
     private static final Logger LOGGER = Logger.getLogger(ConfigureFilter.class.getName());
 
-//    @EJB
-//    private UserService userService;
+    @EJB
+    private UserService userService;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
@@ -122,7 +120,7 @@ public class ConfigureFilter implements Filter {
             String uri = httpServletRequest.getRequestURI();
             
 
-            if (false) { // !userService.hasAdminUser()
+            if (!userService.hasAdminUser()) {
                 if (uri.contains("login.xhtml")) {
                     httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/admin/configuration.xhtml");
                 } else {

@@ -86,7 +86,7 @@
             <role-name>cp</role-name>
         </auth-constraint>
         <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+            <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
     <security-constraint>
@@ -95,7 +95,7 @@
             <url-pattern>/admin/configuration.xhtml</url-pattern>
         </web-resource-collection>
         <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+            <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
     <login-config>

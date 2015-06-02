@@ -33,8 +33,8 @@ public class ConfigureFilter implements Filter {
     private static final boolean debug = true;
     private static final Logger LOGGER = Logger.getLogger(ConfigureFilter.class.getName());
 
-    @EJB
-    private UserService userService;
+//    @EJB
+//    private UserService userService;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
@@ -122,7 +122,7 @@ public class ConfigureFilter implements Filter {
             String uri = httpServletRequest.getRequestURI();
             
 
-            if (!userService.hasAdminUser()) {
+            if (false) { // !userService.hasAdminUser()
                 if (uri.contains("login.xhtml")) {
                     httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/admin/configuration.xhtml");
                 } else {

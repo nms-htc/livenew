@@ -37,6 +37,9 @@
         <session-timeout>
             30
         </session-timeout>
+        <cookie-config>
+            <name>MLSID</name>
+        </cookie-config>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>

@@ -20,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -81,8 +82,10 @@ public abstract class Product extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    @XmlTransient
     protected Category category;
+    
+    @Transient
+    protected String thumbUrl;
 
     public Product() {
     }
@@ -159,6 +162,7 @@ public abstract class Product extends BaseEntity {
         this.viewCount = viewCount;
     }
 
+    @XmlTransient
     public User getUser() {
         return user;
     }
@@ -181,5 +185,16 @@ public abstract class Product extends BaseEntity {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getThumbUrl() {
+        if (thumbFile != null && thumbUrl == null   ) {
+            thumbUrl = "/file?id=" + thumbFile.getId();
+        }
+        return thumbUrl;
+    }
+
+    public void setThumbUrl(String thumbUrl) {
+        this.thumbUrl = thumbUrl;
     }
 }

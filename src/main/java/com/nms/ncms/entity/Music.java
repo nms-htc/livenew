@@ -21,6 +21,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @DiscriminatorValue("Music")
@@ -53,6 +54,15 @@ public class Music extends Product {
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name = "MAIN_FILEID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     protected FileEntry musicFile = new FileEntry();
+
+    @Transient
+    protected String rtmpUrl;
+
+    @Transient
+    protected String m3u8Url;
+
+    @Transient
+    protected String rtspUrl;
 
     public Music() {
     }
@@ -104,17 +114,15 @@ public class Music extends Product {
     public void setLyric(String lyric) {
         this.lyric = lyric;
     }
-    
-    @Transient
+
     public String getRtmpUrl() {
-        if (musicFile != null && musicFile.filePath != null) {
+        if (musicFile != null && musicFile.filePath != null && rtmpUrl == null) {
             String si = AppUtil.buildStreamingIdentifier(musicFile.getFilePath());
-            return MessageFormat.format(AppConfig.getConfig(AppConfig.RTMP_URL), si);
+            rtmpUrl =  MessageFormat.format(AppConfig.getConfig(AppConfig.RTMP_URL), si);
         }
-        return null;
+        return rtmpUrl;
     }
-    
-    @Transient
+
     public String getM3u8Url() {
         if (musicFile != null && musicFile.filePath != null) {
             String si = AppUtil.buildStreamingIdentifier(musicFile.getFilePath());
@@ -122,13 +130,24 @@ public class Music extends Product {
         }
         return null;
     }
-    
-    @Transient
+
     public String getRtspUrl() {
         if (musicFile != null && musicFile.filePath != null) {
             String si = AppUtil.buildStreamingIdentifier(musicFile.getFilePath());
             return MessageFormat.format(AppConfig.getConfig(AppConfig.RTSP_URL), si);
         }
         return null;
+    }
+
+    public void setRtmpUrl(String rtmpUrl) {
+        this.rtmpUrl = rtmpUrl;
+    }
+
+    public void setM3u8Url(String m3u8Url) {
+        this.m3u8Url = m3u8Url;
+    }
+
+    public void setRtspUrl(String rtspUrl) {
+        this.rtspUrl = rtspUrl;
     }
 }

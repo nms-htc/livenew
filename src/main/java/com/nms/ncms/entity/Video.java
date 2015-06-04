@@ -6,7 +6,6 @@ package com.nms.ncms.entity;
 
 import com.nms.ncms.web.util.AppConfig;
 import com.nms.ncms.web.util.AppUtil;
-import java.text.Format;
 import java.text.MessageFormat;
 import javax.persistence.CascadeType;
 import javax.persistence.ConstraintMode;
@@ -18,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @DiscriminatorValue("Video")
@@ -42,6 +42,14 @@ public class Video extends Product {
     }
     
     @Transient
+    protected String rtmpUrl;
+
+    @Transient
+    protected String m3u8Url;
+
+    @Transient
+    protected String rtspUrl;
+    
     public String getRtmpUrl() {
         if (videoFile != null && videoFile.filePath != null) {
             String si = AppUtil.buildStreamingIdentifier(videoFile.getFilePath());
@@ -50,7 +58,6 @@ public class Video extends Product {
         return null;
     }
     
-    @Transient
     public String getM3u8Url() {
         if (videoFile != null && videoFile.filePath != null) {
             String si = AppUtil.buildStreamingIdentifier(videoFile.getFilePath());
@@ -59,7 +66,6 @@ public class Video extends Product {
         return null;
     }
     
-    @Transient
     public String getRtspUrl() {
         if (videoFile != null && videoFile.filePath != null) {
             String si = AppUtil.buildStreamingIdentifier(videoFile.getFilePath());
@@ -67,4 +73,18 @@ public class Video extends Product {
         }
         return null;
     }
+
+    public void setRtmpUrl(String rtmpUrl) {
+        this.rtmpUrl = rtmpUrl;
+    }
+
+    public void setM3u8Url(String m3u8Url) {
+        this.m3u8Url = m3u8Url;
+    }
+
+    public void setRtspUrl(String rtspUrl) {
+        this.rtspUrl = rtspUrl;
+    }
+    
+    
 }

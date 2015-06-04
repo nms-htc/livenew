@@ -6,6 +6,7 @@ package com.nms.ncms.service.entity;
 
 import com.nms.ncms.entity.Category;
 import com.nms.ncms.entity.Product;
+import com.nms.ncms.service.MobileChecker;
 import java.util.List;
 
 public interface ProductService<E extends Product, C extends Category> extends BaseService<E> {
@@ -27,4 +28,9 @@ public interface ProductService<E extends Product, C extends Category> extends B
     public void increaseViewCount(E product);
     
     public void increateDownloadCount(E product);
+    
+    public List<E> search(String keywords, C category, MobileChecker mobileChecker, 
+            String orderField, boolean asc, int start, int ranger);
+    
+    public int count(String keywords, C category, MobileChecker mobileChecker);
 }

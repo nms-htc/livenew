@@ -12,13 +12,13 @@ import javax.ws.rs.core.Application;
  *
  * @author Cuong
  */
-@ApplicationPath("/contents")
+@ApplicationPath("/api")
 public class EIPApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<>();
-        //classes.add(EipContentResource.class);
+        classes.add(NcmsContentResource.class);
         return classes;
     }
 }

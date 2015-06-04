@@ -4,15 +4,18 @@
  */
 package com.nms.ncms.ejb;
 
+import com.nms.ncms.entity.BaseEntity_;
 import com.nms.ncms.entity.Category;
-import com.nms.ncms.entity.FileEntry;
 import com.nms.ncms.entity.Product;
+import com.nms.ncms.entity.Product_;
+import com.nms.ncms.service.MobileChecker;
 import com.nms.ncms.service.entity.FileService;
 import com.nms.ncms.service.entity.ProductService;
 import com.nms.ncms.web.util.AppConfig;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import javax.ejb.EJB;
@@ -25,7 +28,7 @@ import javax.persistence.criteria.Root;
 import org.apache.commons.io.FileUtils;
 
 public abstract class AbstractProductBean<C extends Category, P extends Product> extends AbstractFacadeBean<P> implements ProductService<P, C> {
-    
+
     private static final long serialVersionUID = -2603765016508854535L;
     
     @EJB
@@ -269,6 +272,78 @@ public abstract class AbstractProductBean<C extends Category, P extends Product>
             getLogger().log(Level.SEVERE, "Duplicate product code error - \"{0}\"", product.getCode());
             throw new EJBException("product.code.error.duplicate");
         }
+    }
+    
+    @Override
+    public List<P> search(String keywords, C category, MobileChecker mobileChecker, String orderField, boolean asc, int start, int range) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<P> cq = cb.createQuery(entityClass);
+        Root<P> root = cq.from(entityClass);
+        cq.select(root);
+
+        List<Predicate> predicates = buildPredicates(cb, root, category, keywords);
+        List<Predicate> mobilePredicates = buildPredicates(cb, root, mobileChecker);
+
+        predicates.addAll(mobilePredicates);
+
+        if (!predicates.isEmpty()) {
+            cq.where(predicates.toArray(new Predicate[]{}));
+        }
+
+        if (orderField != null && !orderField.trim().isEmpty()) {
+            if (asc) {
+                cq.orderBy(cb.asc(root.get(orderField)));
+            } else {
+                cq.orderBy(cb.desc(root.get(orderField)));
+            }
+        }
+
+        TypedQuery<P> q = em.createQuery(cq);
+        q.setFirstResult(start);
+        q.setMaxResults(range);
+        return q.getResultList();
+    }
+
+    @Override
+    public int count(String keywords, C category, MobileChecker mobileChecker) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    /**
+     * Build predicates for search
+     *
+     * @param cb
+     * @param root
+     * @param category
+     * @param keywords
+     * @return
+     */
+    protected List<Predicate> buildPredicates(CriteriaBuilder cb, Root<P> root, C category, String keywords) {
+        List<Predicate> predicates = new LinkedList<>();
+        
+        //predicates.add(cb.isTrue(root.get(Product_.enable)));
+
+        if (category != null) {
+            predicates.add(cb.equal(root.get(Product_.category), category));
+        }
+
+        if (keywords != null && !keywords.trim().isEmpty()) {
+           predicates.add(cb.like(cb.upper(root.get(Product_.title)), '%' + keywords.trim().toUpperCase() + '%'));
+        }
+
+        return predicates;
+    }
+    
+    /**
+     * Build predicats for search on Wap
+     *
+     * @param cd
+     * @param root
+     * @param mobileChecker
+     * @return
+     */
+    protected List<Predicate> buildPredicates(CriteriaBuilder cd, Root<P> root, MobileChecker mobileChecker) {
+        return new LinkedList<>();
     }
 
 }

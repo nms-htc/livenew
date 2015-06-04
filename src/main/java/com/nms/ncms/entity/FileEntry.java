@@ -45,7 +45,7 @@ public class FileEntry extends BaseEntity {
     @Transient
     @XmlTransient
     protected InputStream inputStream;
-
+    
     public FileEntry() {
     }
 
@@ -73,6 +73,7 @@ public class FileEntry extends BaseEntity {
         this.fileSize = fileSize;
     }
 
+    @XmlTransient
     public String getFilePath() {
         return filePath;
     }
@@ -81,6 +82,7 @@ public class FileEntry extends BaseEntity {
         this.filePath = filePath;
     }
 
+    @XmlTransient
     public boolean isUpload() {
         return upload;
     }
@@ -110,7 +112,7 @@ public class FileEntry extends BaseEntity {
         }
         return null;
     }
-
+    
     public String getUrl() {
         return url;
     }

@@ -6,23 +6,11 @@
              xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:form>
         <p:menu style="width: 90%" toggleable="true" >
-            <p:submenu label="#{msg['slide-content']}">
-                <p:menuitem value="#{msg['slide-content']}"  outcome="/admin/contents/slide-content/slide-contents.xhtml"/>
+            <p:submenu label="#{msg['media']}">
+                <p:menuitem value="#{msg['media.category']}"  outcome="/admin/contents/media/categories.xhtml"/>
+                <p:menuitem value="#{msg['content']}" outcome="/admin/contents/media/list.xhtml"/>
             </p:submenu>
-            <p:submenu label="#{msg['category']}" rendered="#{request.isUserInRole('admin')}">
-                <p:menuitem value="#{msg['game.cateory']}"  outcome="/admin/contents/game/categories.xhtml"/>
-                <p:menuitem value="#{msg['music.category']}" outcome="/admin/contents/music/categories.xhtml"/>
-                <p:menuitem value="#{msg['video.category']}" outcome="/admin/contents/video/categories.xhtml"/>
-                <p:menuitem value="#{msg['picture.category']}" outcome="/admin/contents/picture/categories.xhtml"/>
-                <p:menuitem value="#{msg['post.category']}" outcome="/admin/contents/post/categories.xhtml"/>
-            </p:submenu>
-            <p:submenu label="#{msg['product']}">
-                <p:menuitem value="#{msg['game']}"  outcome="/admin/contents/game/list.xhtml"/>
-                <p:menuitem value="#{msg['music']}" outcome="/admin/contents/music/list.xhtml"/>
-                <p:menuitem value="#{msg['video']}" outcome="/admin/contents/video/list.xhtml"/>
-                <p:menuitem value="#{msg['picture']}" outcome="/admin/contents/picture/list.xhtml"/>
-                <p:menuitem value="#{msg['post']}" outcome="/admin/contents/post/list.xhtml"/>
-            </p:submenu>
+           
         </p:menu>
     </h:form>
 </ui:fragment>

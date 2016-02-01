@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @version 1.0
  */
 @Entity
-@Table(name = "NCMS_FILE")
+@Table(name = "NL_FILE")
 @XmlRootElement
 public class FileEntry extends BaseEntity {
 
@@ -40,7 +40,7 @@ public class FileEntry extends BaseEntity {
     protected String url;
 
     @Column(name = "UPLOAD")
-    protected boolean upload;
+    protected boolean upload = true;
 
     @Transient
     @XmlTransient

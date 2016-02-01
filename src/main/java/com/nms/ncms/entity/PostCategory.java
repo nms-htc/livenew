@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @DiscriminatorValue("Post")
 @XmlRootElement
-public class PostCategory extends Category {
+public class PostCategory extends BaseCategory {
 
     private static final long serialVersionUID = -441920658452895022L;
 

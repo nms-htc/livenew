@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "NCMS_SLIDECONTENT")
+@Table(name = "NL_SLIDECONTENT")
 @XmlRootElement
 public class SlideContent extends BaseEntity {
 

@@ -15,11 +15,11 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "NCMS_CATEGORY")
+@Table(name = "NL_CATEGORY")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE")
 @XmlRootElement
-public abstract class Category extends BaseEntity {
+public abstract class BaseCategory extends BaseEntity {
 
     private static final long serialVersionUID = -615131548850056148L;
 
@@ -28,7 +28,7 @@ public abstract class Category extends BaseEntity {
     @Column(name = "TITLE", length = 250)
     protected String title;
 
-    public Category() {
+    public BaseCategory() {
     }
 
     public String getTitle() {

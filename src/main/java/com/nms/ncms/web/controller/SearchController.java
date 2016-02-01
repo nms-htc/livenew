@@ -4,7 +4,7 @@
  */
 package com.nms.ncms.web.controller;
 
-import com.nms.ncms.entity.Category;
+import com.nms.ncms.entity.BaseCategory;
 import java.io.Serializable;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
@@ -17,7 +17,7 @@ public class SearchController implements Serializable {
     private static final long serialVersionUID = 8158143780958276893L;
 
     private String productType = "music";
-    private Category productCategory;
+    private BaseCategory productCategory;
     private String keywords;
 
     public SearchController() {
@@ -31,11 +31,11 @@ public class SearchController implements Serializable {
         this.productType = productType;
     }
 
-    public Category getProductCategory() {
+    public BaseCategory getProductCategory() {
         return productCategory;
     }
 
-    public void setProductCategory(Category productCategory) {
+    public void setProductCategory(BaseCategory productCategory) {
         this.productCategory = productCategory;
     }
 

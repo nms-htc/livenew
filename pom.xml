@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.nms</groupId>
-    <artifactId>ncms</artifactId>
+    <artifactId>livenew</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>ncms</name>
+    <name>livenew</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -32,17 +32,17 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>3.10-FINAL</version>
+            <version>3.13</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>3.10-FINAL</version>
+            <version>3.13</version>
         </dependency>
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>5.1</version>
+            <version>5.3</version>
         </dependency>
         <dependency>
             <groupId>org.primefaces.themes</groupId>
@@ -63,7 +63,7 @@
     </dependencies>
 
     <build>
-        <finalName>ncms</finalName>
+        <finalName>livenew</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -5,7 +5,7 @@
 package com.nms.ncms.ejb;
 
 import com.nms.ncms.entity.BaseEntity_;
-import com.nms.ncms.entity.Category;
+import com.nms.ncms.entity.BaseCategory;
 import com.nms.ncms.entity.Product;
 import com.nms.ncms.entity.Product_;
 import com.nms.ncms.service.MobileChecker;
@@ -27,7 +27,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.apache.commons.io.FileUtils;
 
-public abstract class AbstractProductBean<C extends Category, P extends Product> extends AbstractFacadeBean<P> implements ProductService<P, C> {
+public abstract class AbstractProductBean<C extends BaseCategory, P extends Product> extends AbstractFacadeBean<P> implements ProductService<P, C> {
 
     private static final long serialVersionUID = -2603765016508854535L;
     
@@ -46,7 +46,7 @@ public abstract class AbstractProductBean<C extends Category, P extends Product>
         cq.select(root);
         
         if (category != null) {
-            cq.where(cb.equal(root.get("category"), (Category) category));
+            cq.where(cb.equal(root.get("category"), (BaseCategory) category));
         }
         
         if (orderField != null && !orderField.trim().isEmpty()) {
@@ -66,7 +66,7 @@ public abstract class AbstractProductBean<C extends Category, P extends Product>
     @Override
     public List<P> findExcludeCurrent(int start, int range, P product) {
         if (product != null) {
-            Category category = product.getCategory();
+            BaseCategory category = product.getCategory();
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<P> cq = cb.createQuery(entityClass);
             Root<P> root = cq.from(entityClass);

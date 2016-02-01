@@ -42,7 +42,7 @@
         </cookie-config>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>admin/index.xhtml</welcome-file>
     </welcome-file-list>
     <!-- web fonts -->
     <mime-mapping>
@@ -103,7 +103,7 @@
     </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>
-        <realm-name>ncmsRealm</realm-name>
+        <realm-name>newlive-realm</realm-name>
         <form-login-config>
             <form-login-page>/admin/login.xhtml</form-login-page>
             <form-error-page>/admin/login.xhtml</form-error-page>

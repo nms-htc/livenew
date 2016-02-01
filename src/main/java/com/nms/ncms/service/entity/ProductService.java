@@ -4,12 +4,12 @@
  */
 package com.nms.ncms.service.entity;
 
-import com.nms.ncms.entity.Category;
+import com.nms.ncms.entity.BaseCategory;
 import com.nms.ncms.entity.Product;
 import com.nms.ncms.service.MobileChecker;
 import java.util.List;
 
-public interface ProductService<E extends Product, C extends Category> extends BaseService<E> {
+public interface ProductService<E extends Product, C extends BaseCategory> extends BaseService<E> {
 
     public List<E> findByCat(int start, int range, C category, String orderField, boolean asc);
 

@@ -3,7 +3,7 @@
  */
 package com.nms.ncms.rs;
 
-import com.nms.ncms.entity.Category;
+import com.nms.ncms.entity.BaseCategory;
 import com.nms.ncms.entity.GameCategory;
 import com.nms.ncms.entity.Game;
 import com.nms.ncms.entity.Music;
@@ -270,7 +270,7 @@ public class NcmsContentResource {
         return videos;
     }
 
-    private <E extends Product, C extends Category, S extends ProductService> List<E> search(Supplier<C> catSupplier,
+    private <E extends Product, C extends BaseCategory, S extends ProductService> List<E> search(Supplier<C> catSupplier,
             Supplier<S> serviceSupplier, String keywords, int page, int range, String orderType) {
 
         List<E> products = null;

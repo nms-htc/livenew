@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "NCMS_USER")
+@Table(name = "NL_USER")
 @XmlRootElement
 public class User extends BaseEntity {
 
@@ -59,7 +59,7 @@ public class User extends BaseEntity {
 
     @ElementCollection(targetClass = Group.class)
     @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "NCMS_USERGROUP", joinColumns = {
+    @CollectionTable(name = "NL_USERGROUP", joinColumns = {
         @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")})
     @Column(name = "GROUPNAME")
     protected List<Group> groups;

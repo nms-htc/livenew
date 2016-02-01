@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @DiscriminatorValue("Video")
 @XmlRootElement
-public class VideoCategory extends Category {
+public class VideoCategory extends BaseCategory {
 
     private static final long serialVersionUID = -3616424826071801796L;
 

@@ -1,0 +1,27 @@
+# Create a jdbc connection poool
+asadmin create-jdbc-connection-pool 
+--datasourceclassname oracle.jdbc.pool.OracleDataSource 
+--restype javax.sql.DataSource 
+--property user=dbuser:password=dbpassword:url="jdbc:oracle\:thin\:@localhost\:1521\:ORCL" myjdbc_oracle-pool
+
+asadmin create-jdbc-connection-pool	\
+  --datasourceclassname \
+  com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource \
+  --restype javax.sql.DataSource \
+  --property User=arquillian:Password=arquillian:URL=\"jdbc:mysql://localhost:3306/arquillian\" \
+  ArquillianPool
+
+
+# List jdbc connection pool
+asadmin list-jdbc-connection-pools
+
+# Create jdbc resource
+asadmin create-jdbc-resouce --connectionpoolid SamplePool jdbc/newlive
+
+# Create auth realm
+asadmin create-auth-realm
+  --classname com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm
+  --property user-name-column=${USER_NAME}:password-column=${PASSWORD}:group-name-column=${GROUP_NAME}:jaas-context=jdbcRealm:datasource-jndi="${JNDI_NAME}":group-table=${GROUP_TABLE}:user-table=${USER_TABLE}
+  ${REALM_NAME}
+  
+asadmin create-auth-realm --classname com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm --property user-name-column=USERNAME:password-column=PASSWORD:group-name-column=GROUPNAME:jaas-context=jdbcRealm:datasource-jndi="jdbc/newlive":group-table=NL_USERGROUP:user-table=NL_USER newlive-realm

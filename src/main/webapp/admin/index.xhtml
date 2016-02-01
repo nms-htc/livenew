@@ -3,9 +3,120 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template/admin/main.xhtml">
-        
+        <ui:define name="dialogs">
+            <p:dialog id="previewDl" widgetVar="previewDl"
+                      closeOnEscape="true" modal="true" header="Preview" minWidth="500" minHeight="100">
+                <h:graphicImage width="600" 
+                                value="${mediaBean.current.contentFile.URL}" 
+                                rendered="#{mediaBean.current.contentFile.contentType.contains('image')}"/>
+                
+                <ui:fragment rendered="#{mediaBean.current.contentFile.contentType.contains('audio')}">
+                    <audio controls="controls" autoplay="autoplay">
+                        <source src="${mediaBean.current.contentFile.URL}"/>
+                    </audio>
+                </ui:fragment>
+                
+                <ui:fragment rendered="#{mediaBean.current.contentFile.contentType.contains('video')}">
+                    <video controls="controls" autoplay="autoplay">
+                        <source src="${mediaBean.current.contentFile.URL}"/>
+                    </video>
+                </ui:fragment>
+            </p:dialog>
+        </ui:define>
+        <ui:define name="main-content">
+            <p:panel header="#{msg['media-content']}">
+            <h:form id="listForm">
+                <p:messages globalOnly="true" closable="true"/>
+                <p:toolbar>
+                    <f:facet name="left">
+                        <p:commandButton value="Export" ajax="false">
+                            <p:dataExporter target="listTable" type="csv" fileName="datas" pageOnly="true"/>
+                        </p:commandButton>
+                        
+                        <p:spacer width="10"/>
+                        
+                        <p:commandButton value="Export All" ajax="false">
+                            <p:dataExporter target="listTable" type="csv" fileName="datas-all" pageOnly="false"/>
+                        </p:commandButton>
+                    </f:facet>
+                </p:toolbar>
+
+                <p:spacer height="10"/>
+
+                <p:dataTable id="listTable"
+                             widgetVar="listTable"
+                             value="#{mediaBean.model}"
+                             var="media"
+                             rowIndexVar="index"
+                             lazy="true"
+                             paginator="true"
+                             rows="10"
+                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                             rowsPerPageTemplate="10,15,20" 
+                             paginatorPosition="bottom">
+                    
+                    <p:column headerText="#{msg['product.code']}" 
+                              filterBy="#{media.code}" 
+                              sortBy="#{media.code}" 
+                              filterStyle="width: 90%;">
+                        <h:outputText value="#{media.code}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msg['title']}" 
+                              filterBy="#{media.title}" 
+                              sortBy="#{media.title}" 
+                              filterStyle="width: 90%;">
+                        <h:outputText value="#{media.title}"/>
+                    </p:column>
+                    
+                    <p:column headerText="#{msg['category']}" >
+                        <h:outputText value="#{media.category.title}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msg['download-url']}" width="300" exportable="false">
+                        <a href="#{media.contentFile.downloadURL}">#{media.contentFile.title}</a>
+                    </p:column>
+                    
+                    <p:column headerText="#{msg['download-url']}" width="500" exportable="true" visible="false">
+                        <h:outputText value="#{media.contentFile.downloadURL}"/>
+                    </p:column>
+                    
+                    <p:column headerText="#{msg['size']}" >
+                        <h:outputText value="#{media.contentFile.fileSize}"/>
+                    </p:column>
+                    
+                    <p:column headerText="#{msg['content-type']}" >
+                        <h:outputText value="#{media.contentFile.contentType}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msg['createdDate']}" 
+                              sortBy="#{media.createdDate}">
+                        <h:outputText value="#{media.createdDate}">
+                            <f:convertDateTime parent="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column headerText="#{msg['modifiedDate']}" 
+                              sortBy="#{media.modifiedDate}">
+                        <h:outputText value="#{media.modifiedDate}">
+                            <f:convertDateTime parent="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column style="width: 40px" toggleable="false" exportable="false">
+                        <p:commandButton icon="ui-icon-search" 
+                                     update=":previewDl" 
+                                     immediate="true"
+                                     actionListener="#{mediaBean.prepareEntity(media)}"
+                                     oncomplete="PF('previewDl').show();"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:panel>        
+        </ui:define>
     </ui:composition>
 </html>

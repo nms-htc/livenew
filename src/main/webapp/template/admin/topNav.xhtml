@@ -9,10 +9,8 @@
         <h:form>
             <p:menubar>
                 <p:menuitem value="#{msg['dashboard']}" outcome="/admin/index.xhtml"/>
-                <p:menuitem value="#{msg['contents']}" outcome="/admin/contents/index.xhtml"/>
-                <p:menuitem value="#{msg['user']}" outcome="/admin/user/list.xhtml"/>
-                <p:menuitem value="#{msg['statistics']}" outcome="/admin/statistics/index.xhtml"/>
-                <p:menuitem value="#{msg['settings']}" outcome="/admin/settings/index.xhtml"/>
+                <p:menuitem value="#{msg['contents']}" outcome="/admin/contents/index.xhtml" rendered="#{request.isUserInRole('admin') || request.isUserInRole('cp')}"/>
+                <p:menuitem value="#{msg['user']}" outcome="/admin/user/list.xhtml" rendered="#{request.isUserInRole('admin')}"/>
                 <f:facet name="options">
                     <p:commandButton value="#{msg['sign.out']}" 
                                      icon="ui-icon-extlink" 

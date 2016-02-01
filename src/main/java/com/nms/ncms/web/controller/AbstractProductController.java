@@ -3,7 +3,7 @@
  */
 package com.nms.ncms.web.controller;
 
-import com.nms.ncms.entity.Category;
+import com.nms.ncms.entity.BaseCategory;
 import com.nms.ncms.entity.Product;
 import com.nms.ncms.service.ChargingService;
 import com.nms.ncms.service.MobileChecker;
@@ -17,7 +17,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-public abstract class AbstractProductController<T extends Product, C extends Category> implements Serializable {
+public abstract class AbstractProductController<T extends Product, C extends BaseCategory> implements Serializable {
 
     private static final long serialVersionUID = -1246504599210472022L;
     protected static final Logger LOGGER = Logger.getLogger("AbstractProductController");

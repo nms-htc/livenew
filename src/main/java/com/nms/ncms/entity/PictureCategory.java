@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @DiscriminatorValue("Picture")
 @XmlRootElement
-public class PictureCategory extends Category {
+public class PictureCategory extends BaseCategory {
 
     private static final long serialVersionUID = -5809524831295842691L;
 

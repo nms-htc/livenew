@@ -14,6 +14,7 @@
                 <h:outputLabel value="#{msg['pictureCat.action.create.dialog']}" rendered="#{entityType == 'picture'}"/>
                 <h:outputLabel value="#{msg['videoCat.action.create.dialog']}" rendered="#{entityType == 'video'}"/>
                 <h:outputLabel value="#{msg['postCat.action.create.dialog']}" rendered="#{entityType == 'post'}"/>
+                <h:outputLabel value="#{msg['mediaCat.action.create.dialog']}" rendered="#{entityType == 'media'}"/>
             </ui:fragment>
             
             <ui:fragment rendered="#{mode == 'edit'}">
@@ -30,6 +31,9 @@
                     <f:param value="#{entityBean.current.title}"/>
                 </h:outputFormat>
                 <h:outputFormat value="#{msg['postCat.action.edit.dialog']}" rendered="#{entityType == 'post'}">
+                    <f:param value="#{entityBean.current.title}"/>
+                </h:outputFormat>
+                <h:outputFormat value="#{msg['mediaCat.action.edit.dialog']}" rendered="#{entityType == 'media'}">
                     <f:param value="#{entityBean.current.title}"/>
                 </h:outputFormat>
             </ui:fragment>

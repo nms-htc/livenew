@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(name = "NCMS_PRODUCT")
+@Table(name = "NL_PRODUCT")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE")
 @XmlRootElement
@@ -82,7 +82,7 @@ public abstract class Product extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    protected Category category;
+    protected BaseCategory category;
     
     @Transient
     protected String thumbUrl;
@@ -171,7 +171,7 @@ public abstract class Product extends BaseEntity {
         this.user = user;
     }
 
-    public Category getCategory() {
+    public BaseCategory getCategory() {
         return category;
     }
 
@@ -183,7 +183,7 @@ public abstract class Product extends BaseEntity {
         this.thumbFile = thumbFile;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(BaseCategory category) {
         this.category = category;
     }
 

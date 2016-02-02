@@ -6,7 +6,6 @@
 target/
 nb-configuration.xml
 faces-config.NavData
-
 # Package Files #
 *.jar
 *.war

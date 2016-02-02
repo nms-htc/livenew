@@ -5,15 +5,22 @@
  */
 package com.nms.ncms.ejb;
 
+import com.nms.ncms.entity.BaseEntity_;
 import com.nms.ncms.entity.Media;
+import com.nms.ncms.entity.Media_;
 import com.nms.ncms.service.entity.MediaService;
 import com.nms.ncms.web.util.AppConfig;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -22,19 +29,19 @@ import org.apache.commons.io.FileUtils;
  */
 @Stateless
 public class MediaServiceBean extends AbstractFacadeBean<Media> implements MediaService {
-    
+
     private static final Logger LOGGER = Logger.getLogger(MediaServiceBean.class.getName());
     private static final long serialVersionUID = -7335500168503945339L;
 
     public MediaServiceBean() {
         super(Media.class);
     }
-    
+
     @Override
     protected Logger getLogger() {
         return LOGGER;
     }
-    
+
     @Override
     protected void onAfterPersist(Media entity) {
         super.onAfterPersist(entity);
@@ -67,8 +74,27 @@ public class MediaServiceBean extends AbstractFacadeBean<Media> implements Media
     @Override
     protected void onBeforeRemove(Media entity) {
         super.onBeforeRemove(entity);
-        if (entity.getContentFile()!= null) {
+        if (entity.getContentFile() != null) {
             FileUtils.deleteQuietly(new File(AppConfig.getFileStorePath() + entity.getContentFile().getId()));
         }
     }
+
+    //*** Override this method to custom condition for search from. ***//
+    @Override
+    protected Predicate buildCondition(Map.Entry<String, Object> entry, Root<Media> root, CriteriaBuilder cb) {
+        String key = entry.getKey();
+        switch (key) {
+            case "code":
+                return cb.like(cb.upper(root.get(Media_.code)), entry.getValue().toString().toUpperCase() + "%");
+            case "title":
+                return cb.like(cb.upper(root.get(Media_.title)), "%" + entry.getValue().toString().toUpperCase() + "%");
+            case "startDate":
+                return cb.greaterThanOrEqualTo(root.get(BaseEntity_.createdDate), (Date) entry.getValue());
+            case "endDate":
+                return cb.lessThanOrEqualTo(root.get(BaseEntity_.createdDate), (Date) entry.getValue());
+            default:
+                return super.buildCondition(entry, root, cb);
+        }
+    }
+
 }

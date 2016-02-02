@@ -8,13 +8,17 @@ package com.nms.ncms.web.controller.admin;
 import com.nms.ncms.entity.FileEntry;
 import com.nms.ncms.entity.Media;
 import com.nms.ncms.entity.User;
+import com.nms.ncms.search.MediaSearcher;
+import com.nms.ncms.search.Searcher;
 import com.nms.ncms.service.entity.BaseService;
 import com.nms.ncms.service.entity.MediaService;
 import com.nms.ncms.web.util.MessageUtil;
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -35,6 +39,9 @@ public class MediaBean extends AbstractManagedBean<Media>{
     private MediaService mediaServiceBean;
     
     @Inject
+    private MediaSearcher searcher;
+    
+    @Inject
     protected User currentUser;
 
     @Override
@@ -42,6 +49,16 @@ public class MediaBean extends AbstractManagedBean<Media>{
         return new Media();
     }
 
+    @Override
+    protected void alterModelFilters(Map<String, Object> filters) {
+        super.alterModelFilters(filters);
+        searcher.updateFilter(filters);
+    }
+    
+    public void search() {
+        this.model = null;
+    }
+    
     @Override
     protected BaseService<Media> getBaseService() {
         return mediaServiceBean;

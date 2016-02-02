@@ -13,13 +13,13 @@
                 <h:graphicImage width="600" 
                                 value="${mediaBean.current.contentFile.URL}" 
                                 rendered="#{mediaBean.current.contentFile.contentType.contains('image')}"/>
-                
+
                 <ui:fragment rendered="#{mediaBean.current.contentFile.contentType.contains('audio')}">
                     <audio controls="controls" autoplay="autoplay">
                         <source src="${mediaBean.current.contentFile.URL}"/>
                     </audio>
                 </ui:fragment>
-                
+
                 <ui:fragment rendered="#{mediaBean.current.contentFile.contentType.contains('video')}">
                     <video controls="controls" autoplay="autoplay">
                         <source src="${mediaBean.current.contentFile.URL}"/>
@@ -28,22 +28,56 @@
             </p:dialog>
         </ui:define>
         <ui:define name="main-content">
-            <p:panel header="#{msg['media-content']}">
-            <h:form id="listForm">
-                <p:messages globalOnly="true" closable="true"/>
-                <p:toolbar>
-                    <f:facet name="left">
-                        <p:commandButton value="Export" ajax="false">
-                            <p:dataExporter target="listTable" type="xls" fileName="datas" pageOnly="true"/>
+            <h:form id="searchForm">
+                <p:panel header="${msg['search.title']}" toggleable="true">
+
+                    <h:panelGrid columns="3">
+                        <p:outputLabel for="code" value="#{msg['label-code']}"/>
+                        <p:inputText id="code" value="#{mediaSearcher.code}" size="40"/>
+                        <p:message for="code"/>
+
+                        <p:outputLabel for="title" value="#{msg['label-title']}"/>
+                        <p:inputText id="title" value="#{mediaSearcher.title}" size="40"/>
+                        <p:message for="title"/>
+
+                        <p:outputLabel for="category" value="#{msg['label-category']}"/>
+                        <p:selectOneMenu id="category" value="#{mediaSearcher.category}" converter="mediaCatConverter">
+                            <f:selectItems value="#{mediaCatBean.selectItems}"/>
+                        </p:selectOneMenu>
+                        <p:message for="category"/>
+                        
+                        <p:outputLabel for="startDate" value="#{msg['label-start-date']}"/>
+                        <p:calendar id="startDate" pattern="dd/MM/yyyy" value="#{mediaSearcher.startDate}" size="40"/>
+                        <p:message for="startDate"/>
+                        
+                        <p:outputLabel for="endDate" value="#{msg['label-end-date']}"/>
+                        <p:calendar id="endDate" pattern="dd/MM/yyyy" value="#{mediaSearcher.endDate}" size="40"/>
+                        <p:message for="endDate"/>                        
+                        
+                    </h:panelGrid>
+
+                    <f:facet name="footer">
+                        <p:defaultCommand target="search"/>
+                        <p:commandButton id="search" 
+                                         icon="fa fa-search" 
+                                         value="#{msg['search.title']}" 
+                                         update=":listForm"
+                                         actionListener="#{mediaBean.search()}"/>
+
+                        <p:commandButton icon="fa fa-file-excel-o" value="Export" ajax="false">
+                            <p:dataExporter target=":listForm:listTable" type="xls" fileName="datas" pageOnly="true"/>
                         </p:commandButton>
-                        
-                        <p:spacer width="10"/>
-                        
-                        <p:commandButton value="Export All" ajax="false">
-                            <p:dataExporter target="listTable" type="xls" fileName="datas-all" pageOnly="false"/>
+
+                        <p:commandButton icon="fa fa-file-excel-o" value="Export All" ajax="false">
+                            <p:dataExporter target=":listForm:listTable" type="xls" fileName="datas-all" pageOnly="false"/>
                         </p:commandButton>
                     </f:facet>
-                </p:toolbar>
+                </p:panel>
+            </h:form>
+
+            <h:form id="listForm">
+                <p:messages globalOnly="true" closable="true"/>
+                <!--TODO: Implement the Search Form -->
 
                 <p:spacer height="10"/>
 
@@ -54,25 +88,24 @@
                              rowIndexVar="index"
                              lazy="true"
                              paginator="true"
+                             style="width: 100%"
                              rows="10"
+                             reflow="true"
                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                              rowsPerPageTemplate="10,15,20" 
                              paginatorPosition="bottom">
-                    
+
                     <p:column headerText="#{msg['product.code']}" 
-                              filterBy="#{media.code}" 
-                              sortBy="#{media.code}" 
-                              filterStyle="width: 90%;">
+                              sortBy="#{media.code}" >
                         <h:outputText value="#{media.code}"/>
                     </p:column>
 
                     <p:column headerText="#{msg['title']}" 
-                              filterBy="#{media.title}" 
                               sortBy="#{media.title}" 
                               filterStyle="width: 90%;">
                         <h:outputText value="#{media.title}"/>
                     </p:column>
-                    
+
                     <p:column headerText="#{msg['category']}" >
                         <h:outputText value="#{media.category.title}"/>
                     </p:column>
@@ -80,15 +113,15 @@
                     <p:column headerText="#{msg['download-url']}" width="300" exportable="false">
                         <a href="#{media.contentFile.downloadURL}">#{media.contentFile.title}</a>
                     </p:column>
-                    
+
                     <p:column headerText="#{msg['download-url']}" width="500" exportable="true" visible="false">
                         <h:outputText value="#{media.contentFile.downloadURL}"/>
                     </p:column>
-                    
+
                     <p:column headerText="#{msg['size']}" >
                         <h:outputText value="#{media.contentFile.fileSize}"/>
                     </p:column>
-                    
+
                     <p:column headerText="#{msg['content-type']}" >
                         <h:outputText value="#{media.contentFile.contentType}"/>
                     </p:column>
@@ -107,16 +140,15 @@
                         </h:outputText>
                     </p:column>
 
-                    <p:column style="width: 40px" toggleable="false" exportable="false">
+                    <p:column headerText="Preview" style="width: 40px" toggleable="false" exportable="false">
                         <p:commandButton icon="ui-icon-search" 
-                                     update=":previewDl" 
-                                     immediate="true"
-                                     actionListener="#{mediaBean.prepareEntity(media)}"
-                                     oncomplete="PF('previewDl').show();"/>
+                                         update=":previewDl" 
+                                         immediate="true"
+                                         actionListener="#{mediaBean.prepareEntity(media)}"
+                                         oncomplete="PF('previewDl').show();"/>
                     </p:column>
                 </p:dataTable>
             </h:form>
-        </p:panel>        
         </ui:define>
     </ui:composition>
 </html>

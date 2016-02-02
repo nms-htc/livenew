@@ -12,7 +12,7 @@ import javax.ws.rs.core.Application;
  *
  * @author Cuong
  */
-@ApplicationPath("/api")
+//@ApplicationPath("/api")
 public class EIPApplication extends Application {
 
     @Override

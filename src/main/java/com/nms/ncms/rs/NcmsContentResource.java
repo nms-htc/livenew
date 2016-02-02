@@ -44,8 +44,8 @@ import javax.ws.rs.core.Response;
  *
  * @author Cuong
  */
-@Path("/")
-@Produces({MediaType.APPLICATION_JSON + ";" + MediaType.CHARSET_PARAMETER + "=UTF-8"})
+//@Path("/")
+//@Produces({MediaType.APPLICATION_JSON + ";" + MediaType.CHARSET_PARAMETER + "=UTF-8"})
 public class NcmsContentResource {
 
     private static final Logger LOGGER = Logger.getLogger(NcmsContentResource.class.getName());

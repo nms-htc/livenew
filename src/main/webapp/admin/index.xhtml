@@ -42,6 +42,7 @@
 
                         <p:outputLabel for="category" value="#{msg['label-category']}"/>
                         <p:selectOneMenu id="category" value="#{mediaSearcher.category}" converter="mediaCatConverter">
+                            <f:selectItem itemLabel="${msg['empty-select']}"/>
                             <f:selectItems value="#{mediaCatBean.selectItems}"/>
                         </p:selectOneMenu>
                         <p:message for="category"/>
@@ -70,6 +71,10 @@
 
                         <p:commandButton icon="fa fa-file-excel-o" value="Export All" ajax="false">
                             <p:dataExporter target=":listForm:listTable" type="xls" fileName="datas-all" pageOnly="false"/>
+                        </p:commandButton>
+                        
+                        <p:commandButton value="#{msg['reset']}">
+                            <p:ajax update="@form" resetValues="true"/>
                         </p:commandButton>
                     </f:facet>
                 </p:panel>

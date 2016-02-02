@@ -7,9 +7,7 @@ package com.nms.ncms.ejb;
 import com.nms.ncms.entity.VideoCategory;
 import com.nms.ncms.service.entity.VideoCategoryService;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
 
-@Stateless
 public class VideoCategoryServiceBean extends AbstractFacadeBean<VideoCategory> implements VideoCategoryService {
 
     private static final long serialVersionUID = -6276138478905188216L;

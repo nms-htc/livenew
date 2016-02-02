@@ -5,7 +5,6 @@
  */
 package com.nms.ncms.ejb;
 
-import com.nms.ncms.entity.Music;
 import com.nms.ncms.entity.SlideContent;
 import com.nms.ncms.service.entity.SlideContentService;
 import com.nms.ncms.web.util.AppConfig;
@@ -14,10 +13,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJBException;
-import javax.ejb.Stateless;
 import org.apache.commons.io.FileUtils;
 
-@Stateless
 public class SlideContentServiceBean extends AbstractFacadeBean<SlideContent> implements SlideContentService {
 
     private static final long serialVersionUID = -367600908111391886L;

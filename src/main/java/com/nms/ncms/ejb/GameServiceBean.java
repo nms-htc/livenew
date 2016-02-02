@@ -13,10 +13,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJBException;
-import javax.ejb.Stateless;
 import org.apache.commons.io.FileUtils;
 
-@Stateless
 public class GameServiceBean extends AbstractProductBean<GameCategory, Game> implements GameService {
 
     private static final long serialVersionUID = 4734878632483200574L;

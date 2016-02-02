@@ -13,10 +13,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJBException;
-import javax.ejb.Stateless;
 import org.apache.commons.io.FileUtils;
 
-@Stateless
 public class PictureServiceBean extends AbstractProductBean<PictureCategory, Picture> implements PictureService {
 
     private static final long serialVersionUID = -1752966518637682180L;

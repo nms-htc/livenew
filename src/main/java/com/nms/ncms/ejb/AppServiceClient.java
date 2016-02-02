@@ -11,7 +11,6 @@ import com.nms.ncms.web.util.MessageUtil;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 //import nmscgw.CHARGING;
@@ -21,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author Cuong
  */
-@Stateless
 public class AppServiceClient implements Serializable {
 
     public  final String MSISDN = "MSISDN";

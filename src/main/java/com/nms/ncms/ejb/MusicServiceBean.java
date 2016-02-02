@@ -13,10 +13,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJBException;
-import javax.ejb.Stateless;
 import org.apache.commons.io.FileUtils;
 
-@Stateless
 public class MusicServiceBean extends AbstractProductBean<MusicCategory, Music> implements MusicService {
 
     private static final long serialVersionUID = 4317161615998592675L;

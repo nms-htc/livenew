@@ -110,14 +110,14 @@
                         <h:outputText value="#{media.category.title}"/>
                     </p:column>
 
-                    <p:column headerText="#{msg['download-url']}" width="300" exportable="false">
-                        <a href="#{media.contentFile.downloadURL}">#{media.contentFile.title}</a>
+                    <p:column headerText="#{msg['origin-name']}">
+                        <h:outputText value="#{media.contentFile.title}"/>
                     </p:column>
-
-                    <p:column headerText="#{msg['download-url']}" width="500" exportable="true" visible="false">
+                    
+                    <p:column headerText="#{msg['download-url']}" width="300" >
                         <h:outputText value="#{media.contentFile.downloadURL}"/>
                     </p:column>
-
+                    
                     <p:column headerText="#{msg['size']}" >
                         <h:outputText value="#{media.contentFile.fileSize}"/>
                     </p:column>

@@ -116,9 +116,9 @@ public class FileEntry extends BaseEntity {
             
             try {
                 String encodedId = Base64.getUrlEncoder().encodeToString(String.valueOf(id).getBytes("utf-8"));
-                downloadUrl += "/" + encodedId + "/" + UUID.randomUUID() + "/" + UUID.randomUUID();
-                downloadUrl += "?sub_aff1=" + Base64.getUrlEncoder().encodeToString(UUID.randomUUID().toString().getBytes("utf-8"));
-                downloadUrl += "&sub_aff2=" + Base64.getUrlEncoder().encodeToString(UUID.randomUUID().toString().getBytes("utf-8"));
+                downloadUrl += "/" + encodedId + "/" + UUID.randomUUID(); // + "/" + UUID.randomUUID();
+                //downloadUrl += "?sub_aff1=" + Base64.getUrlEncoder().encodeToString(UUID.randomUUID().toString().getBytes("utf-8"));
+                //downloadUrl += "&sub_aff2=" + Base64.getUrlEncoder().encodeToString(UUID.randomUUID().toString().getBytes("utf-8"));
             } catch (UnsupportedEncodingException e) {
                 // Nothing to do.
                 downloadUrl += "?id=" + id + "&act=1";

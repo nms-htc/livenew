@@ -4,7 +4,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://java.sun.com/jsf">
 
     <ui:composition template="/template/admin/main.xhtml">
         <ui:define name="dialogs">
@@ -25,6 +26,18 @@
                         <source src="${mediaBean.current.contentFile.URL}"/>
                     </video>
                 </ui:fragment>
+                
+                <ui:fragment rendered="#{!mediaBean.current.contentFile.contentType.contains('video') and
+                                     !mediaBean.current.contentFile.contentType.contains('audio') and 
+                                     !mediaBean.current.contentFile.contentType.contains('image')}">
+                    <div class="ui-message-warn" style="padding: 10px; white-space: nowrap">
+                        <span class="ui-message-warn-icon"/>
+                        <span class="ui-message-warn-detail" >
+                            <h:outputText value="${msg['this-content-is-not-support-for-previewing']}"/>
+                        </span>
+                    </div>
+                </ui:fragment >
+                
             </p:dialog>
         </ui:define>
         <ui:define name="main-content">

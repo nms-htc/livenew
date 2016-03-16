@@ -2,6 +2,9 @@ package com.nms.ncms.entity;
 
 import com.nms.ncms.entity.validation.Url;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
+import java.util.UUID;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.persistence.Column;
@@ -105,10 +108,23 @@ public class FileEntry extends BaseEntity {
     public String getDownloadURL() {
         if (this.isUpload()) {
             ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-            return externalContext.getRequestScheme()
+            String downloadUrl = externalContext.getRequestScheme()
                     + "://" + externalContext.getRequestServerName()
                     + ":" + externalContext.getRequestServerPort()
-                    + externalContext.getRequestContextPath() + "/file?id=" + id + "&act=1";
+                    + externalContext.getRequestContextPath() 
+                    + "/file";
+            
+            try {
+                String encodedId = Base64.getUrlEncoder().encodeToString(String.valueOf(id).getBytes("utf-8"));
+                downloadUrl += "/" + encodedId + "/" + UUID.randomUUID() + "/" + UUID.randomUUID();
+                downloadUrl += "?sub_aff1=" + Base64.getUrlEncoder().encodeToString(UUID.randomUUID().toString().getBytes("utf-8"));
+                downloadUrl += "&sub_aff2=" + Base64.getUrlEncoder().encodeToString(UUID.randomUUID().toString().getBytes("utf-8"));
+            } catch (UnsupportedEncodingException e) {
+                // Nothing to do.
+                downloadUrl += "?id=" + id + "&act=1";
+            }
+            
+            return downloadUrl;
         }
         return null;
     }

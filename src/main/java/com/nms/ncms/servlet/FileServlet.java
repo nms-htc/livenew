@@ -9,6 +9,9 @@ import com.nms.ncms.service.entity.FileService;
 import com.nms.ncms.servlet.task.FileDownloadTask;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
@@ -17,8 +20,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "FileServlet", urlPatterns = {"/file"}, asyncSupported = true)
+@WebServlet(name = "FileServlet", urlPatterns = {"/file/*"}, asyncSupported = true)
 public class FileServlet extends HttpServlet {
+
+    private static final long serialVersionUID = -7386823170154173756L;
+    private static final Logger LOGGER = Logger.getLogger(FileServlet.class.getName());
 
     @EJB
     private FileService fileService;
@@ -35,24 +41,45 @@ public class FileServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // file entry id
-        String id = request.getParameter("id");
-        // action type (1 => download, default => inline)
-        String act = request.getParameter("act");
-
         Long fileId = null;
         boolean download = false;
 
-        // validate fileId
-        try {
-            fileId = Long.parseLong(id);
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-        }
+        String pathInfor = request.getPathInfo();
+        if (pathInfor != null) {
+            
+            String[] paths = pathInfor.split("/");
+            //file endtry id
+            String id = new String(Base64.getUrlDecoder().decode(paths[1]), "utf-8");
+            // validate fileId
+            try {
+                fileId = Long.parseLong(id);
+            } catch (NumberFormatException e) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                return;
+            }
+            
+            if (paths.length > 2) {
+                download = true;
+            }
+           
+        } else {
+            // file entry id
+            String id = request.getParameter("id");
+            // action type (1 => download, default => inline)
+            String act = request.getParameter("act");
 
-        // check download param
-        if (act != null && "1".equals(act)) {
-            download = true;
+            // validate fileId
+            try {
+                fileId = Long.parseLong(id);
+            } catch (NumberFormatException e) {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                return;
+            }
+
+            // check download param
+            if (act != null && "1".equals(act)) {
+                download = true;
+            }
         }
 
         AsyncContext asyncContext = request.startAsync();
